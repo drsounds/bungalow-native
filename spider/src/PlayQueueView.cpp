@@ -2,7 +2,7 @@
 #include "HeaderElement.h"
 #include "TableElement.h"
 #include "MockTableDataSource.h"
-#include <regex>
+using namespace std;
 namespace spider {
     namespace views {
         PlayQueueView::PlayQueueView()

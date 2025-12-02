@@ -8,6 +8,9 @@
 #include "TableDataSource.h"
 
 namespace spider {
+class ViewElement;
+#ifdef VIEWELEMENT_CLASS
+#ifndef TABBARVIEWELEMENT_CLASS
 class TabbarViewElement : public ViewElement
 {
     public:
@@ -26,6 +29,9 @@ class TabbarViewElement : public ViewElement
 
     private:
 };
+#define TABBARVIEWELEMENT_CLASS
+#endif
+#endif
 }
 
 #endif // TABBARVIEWELEMENT_H

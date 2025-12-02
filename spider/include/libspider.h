@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 #include <vector>
-#include <boost/lexical_cast.hpp>
 #include <string>
 #include <sstream>
 #include <vector>
@@ -16,15 +15,16 @@
 using namespace std;
 
 namespace spider {
-
-
-    struct margin {
-        int left;
-        int top;
-        int bottom;
-        int right;
-    };
-    int htmlToColor(string str);
+	#ifndef MARGIN_STRUCT
+	struct margin {
+			int left;
+			int top;
+			int bottom;
+			int right;
+	};
+	#define MARGIN_STRUCT
+	#endif
+	int htmlToColor(string str);
 	struct spider_position {
 		int x;
 		int y;

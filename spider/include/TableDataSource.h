@@ -1,7 +1,7 @@
 #ifndef TABLEVIEWDATASOURCE_H
 #define TABLEVIEWDATASOURCE_H
-#include <TableCell.h>
-#include <TableColumn.h>
+#include "TableCell.h"
+#include "TableColumn.h"
 #include <vector>
 namespace spider {
 class TableCell;

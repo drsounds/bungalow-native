@@ -14,12 +14,19 @@
 #include <string>
 namespace spider {
 class Node;
+class Stylesheet;
+
 #ifdef NODE_CLASS
+#ifndef SELECTOR_CLASS
 class Selector : Node {
 public:
     Selector();
     virtual ~Selector();
 };
+#define SELECTOR_CLASS
+#endif
+
+#ifndef STYLESHEET_CLASS
 class Stylesheet
 {
 
@@ -32,7 +39,8 @@ class Stylesheet
         map<string, string> *selectors;
     private:
 };
-#define SELECTOR_CLASS
+#define STYLESHEET_CLASS
+#endif
 #endif
 }
 

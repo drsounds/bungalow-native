@@ -1,6 +1,7 @@
 #ifndef TEXTELEMENT_H
 #define TEXTELEMENT_H
 #include "Element.h"
+#include "GraphicsContext.h"
 namespace spider {
 class Element;
 class GraphicsContext;
@@ -20,6 +21,8 @@ class TextElement : public Element
     private:
 };
 #define TEXTELEMENT_CLASS
+#endif
+#endif
 #endif
 }
 #endif // TEXTELEMENT_H

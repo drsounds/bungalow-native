@@ -6,7 +6,9 @@
 using namespace std;
 
 namespace spider {
-
+    class VBoxElement;
+    #ifdef VBOXELEMENT_CLASS
+    #ifndef WINDOWELEMENT_CLASS
 	class WindowElement : public VBoxElement {
 public:
 		void draw(spider::GraphicsContext *gs);
@@ -21,7 +23,9 @@ public:
         spider::Element *deepestView;
 
 	};
-
+    #define WINDOWELEMENT_CLASS
+    #endif
+    #endif
 };
 
 #endif

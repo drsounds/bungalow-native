@@ -2,7 +2,6 @@
 #define NODE_H
 #include "SPType.h"
 #include "Color.h"
-#include <boost/lexical_cast.hpp>
 #include <map>
 #include <string>
 #include <vector>
@@ -11,6 +10,7 @@
 using namespace std;
 namespace spider {
 #ifdef SPTYPE_CLASS
+#ifndef NODE_CLASS
 class Node : public SPType {
 protected:
     map<string, void *> *properties;
@@ -62,6 +62,7 @@ public:
     string getStringAttribute(string attribute, string defaultValue);
 };
 #define NODE_CLASS
+#endif
 #endif
 }
 #endif // NODE_H

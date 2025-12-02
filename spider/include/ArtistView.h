@@ -1,6 +1,7 @@
 #ifndef ARTISTVIEW_H
 #define ARTISTVIEW_H
 #include "TabbarViewElement.h"
+
 namespace spider {
     class TabbarViewElement;
     #ifdef TABBARVIEWELEMENT_CLASS
@@ -17,6 +18,7 @@ namespace spider {
         private:
     };
     #define ARTISTVIEW_CLASS
+    #endif
     #endif
 }
 #endif // ARTISTVIEW_H

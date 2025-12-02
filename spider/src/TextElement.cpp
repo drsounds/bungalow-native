@@ -1,4 +1,5 @@
 #include "TextElement.h"
+
 namespace spider {
 TextElement::TextElement(Element *parent)
  : Element(parent)
@@ -6,10 +7,10 @@ TextElement::TextElement(Element *parent)
     //ctor
 }
 void TextElement::draw(int x, int y, GraphicsContext *g) {
-    Color *bgcolor = (Color *)this->getAttributeObj("bgcolor");
-    Color *fgcolor = (Color *)this->getAttributeObj("fgcolor");
-    FontStyle font = this->getFontStyle();
-    g->drawString(this->data, font, fgcolor, x ,y , this->getWidth(), this->getHeight());
+    Color bgcolor = this->getAttributeObj("bgcolor", Color(0, 0, 0, 1));
+    Color fgcolor = this->getColorAttribute("fgcolor", Color(255, 255, 255, 0));
+    FontStyle fontStyle = this->getFontStyle();
+    g->drawString(this->data, fontStyle, fgcolor, x ,y , this->getWidth(), this->getHeight());
 }
 TextElement::~TextElement()
 {

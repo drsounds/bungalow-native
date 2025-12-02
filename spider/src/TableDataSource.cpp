@@ -1,4 +1,5 @@
 #include "TableDataSource.h"
+
 namespace spider {
 TableDataSource::TableDataSource()
 {

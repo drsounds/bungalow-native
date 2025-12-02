@@ -6,8 +6,10 @@
 using namespace std;
 namespace spider {
     class ViewElement;
-    #ifdef VIEWELEMENT_CLASS
-    #ifndef VIEWELEMENT_H
+    #ifdef URI_CLASS
+    #ifdef ELEMENT_CLASS
+    #ifndef VIEWELEMENT_CLASS
+    #ifdef VBOXELEMENT_CLASS
     class ViewElement : public VBoxElement
     {
         public:
@@ -26,6 +28,8 @@ namespace spider {
         private:
     };
     #define VIEWELEMENT_CLASS
+    #endif
+    #endif
     #endif
     #endif
 }

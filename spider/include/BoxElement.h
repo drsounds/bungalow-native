@@ -8,8 +8,8 @@ using namespace std;
 namespace spider {
 class BoxElement;
 class Element;
-#ifndef BOXELEMENT_CLASS
 #ifdef ELEMENT_CLASS
+#ifndef BOXELEMENT_CLASS
 class BoxElement : public Element {
 
 public:

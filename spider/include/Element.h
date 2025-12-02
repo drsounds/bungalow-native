@@ -15,6 +15,9 @@ namespace spider {
     class Skin;
     class GraphicsContext;
     class Observable;
+    #ifdef STYLESHEET_CLASS
+    #ifdef FONTSTYLE_CLASS
+    #ifdef SKIN_CLASS
     #ifdef OBSERVABLE_CLASS
     #ifdef NODE_CLASS
     #ifndef ELEMENT_CLASS
@@ -153,6 +156,9 @@ namespace spider {
 
     };
     #define ELEMENT_CLASS
+    #endif
+    #endif
+    #endif
     #endif
     #endif
     #endif

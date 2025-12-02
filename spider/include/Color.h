@@ -4,6 +4,7 @@
 #include <string>
 namespace spider {
 #ifdef SPTYPE_CLASS
+#ifndef COLOR_CLASS
 class Color : public SPType {
 private:
     short r;
@@ -27,6 +28,8 @@ public:
     Color(const string& html);
     string toHTMLColor();
 };
+#define COLOR_CLASS
+#endif
 #endif
 }
 #endif // COLOR_H

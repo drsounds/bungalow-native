@@ -8,6 +8,7 @@
 using namespace std;
 namespace spider {
 class GraphicsContext;
+#ifndef SLICE_CLASS
 class slice {
 public:
     Image *image;
@@ -22,6 +23,11 @@ public:
     slice(Image *image, int x1, int x2, int y1, int y2, int leftBorder, int topBorder, int rightBorder, int bottomBorder);
 };
 #define SLICE_CLASS
+#endif
+#ifdef IMAGE_CLASS
+#ifdef PIXEL_STRUCT
+#ifdef SLICE_CLASS
+#ifndef SKIN_CLASS
 class Skin
 {
     public:
@@ -42,5 +48,9 @@ class Skin
     private:
 };
 #define SKIN_CLASS
+#endif
+#endif
+#endif
+#endif
 }
 #endif // SKIN_H

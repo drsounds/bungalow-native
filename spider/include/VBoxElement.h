@@ -5,7 +5,7 @@
 using namespace std;
 namespace spider {
     class BoxElement;
-    #ifdef BOXXELEMENT_CLASS	
+    #ifdef BOXELEMENT_CLASS	
     #ifndef VBOXELEMENT_CLASS
     class VBoxElement : public BoxElement {
 

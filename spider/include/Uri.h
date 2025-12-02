@@ -7,7 +7,9 @@
 using namespace std;
 
 namespace spider {
-    class Uri {
+	class Uri;
+	#ifndef URI_CLASS
+    class Uri : public string {
 	private:
 
 		vector<string> *fragments;
@@ -15,13 +17,11 @@ namespace spider {
 		string protocol;
 		string entity;
 		string id;
-		string uri;
 		Uri(string uri);
-		string getUri() {
-            return this->uri;
-		}
 		~Uri();
 	};
+	#define URI_CLASS;
+	#endif
 }
 
 #endif // URI_H

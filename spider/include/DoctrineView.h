@@ -12,9 +12,7 @@ namespace spider {
         #ifndef DOCTRINEVIEW_CLASS
         class DoctrineView : public ContainerViewElement
         {
-
             public:
-
                 DoctrineView(Element *parent);
                 virtual ~DoctrineView();
                 void navigate(string uri);

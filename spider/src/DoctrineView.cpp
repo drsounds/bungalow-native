@@ -1,5 +1,5 @@
 #include "DoctrineView.h"
-#include "TextElement.h"
+
 #include <regex>
 #include <string>
 #include <vector>
