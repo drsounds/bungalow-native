@@ -1,7 +1,7 @@
-#include "ArtistOverviewView.h"
+#include "ArtistOverView.h"
 #include "HBoxElement.h"
 namespace spider {
-ArtistOverviewView::ArtistOverviewView(Element *parent)
+ArtistOverView::ArtistOverView(Element *parent)
  : ViewElement(parent)
 {
     //ctor
@@ -12,7 +12,7 @@ ArtistOverviewView::ArtistOverviewView(Element *parent)
 
 }
 
-ArtistOverviewView::~ArtistOverviewView()
+ArtistOverView::~ArtistOverView()
 {
     //dtor
 }

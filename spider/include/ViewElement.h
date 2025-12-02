@@ -5,6 +5,9 @@
 #include <string>
 using namespace std;
 namespace spider {
+    class ViewElement;
+    #ifdef VIEWELEMENT_CLASS
+    #ifndef VIEWELEMENT_H
     class ViewElement : public VBoxElement
     {
         public:
@@ -22,5 +25,8 @@ namespace spider {
         protected:
         private:
     };
+    #define VIEWELEMENT_CLASS
+    #endif
+    #endif
 }
 #endif // VIEWELEMENT_H

@@ -1,18 +1,29 @@
 #ifndef BOXELEMENT_H
 #define BOXELEMENT_H
 #include "Element.h"
+#include <string>
+
+using namespace std;
+
 namespace spider {
-	class BoxElement : public Element {
+class BoxElement;
+class Element;
+#ifndef BOXELEMENT_CLASS
+#ifdef ELEMENT_CLASS
+class BoxElement : public Element {
 
-	public:
-	    BoxElement(Element *parent);
-		BoxElement();
-		~BoxElement();
-		void pack();
-		virtual string gettype() {
-            return "box";
-		}
+public:
+	BoxElement(Element *parent);
+	BoxElement();
+	~BoxElement();
+	void pack();
+	virtual string gettype() {
+		return "box";
+	}
 
-	};
+};
+#define BOXELEMENT_CLASS
+#endif
+#endif
 }
 #endif // BOXELEMENT_H

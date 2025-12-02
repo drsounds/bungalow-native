@@ -14,8 +14,10 @@ using namespace std;
 namespace spider {
     class Skin;
     class GraphicsContext;
+    class Observable;
     #ifdef OBSERVABLE_CLASS
     #ifdef NODE_CLASS
+    #ifndef ELEMENT_CLASS
     class Element : public Node, public Observable {
 
 
@@ -150,8 +152,9 @@ namespace spider {
         virtual void pack() {}
 
     };
-    #endif
     #define ELEMENT_CLASS
+    #endif
+    #endif
     #endif
 }
 

@@ -2,6 +2,9 @@
 #define ARTISTVIEW_H
 #include "TabbarViewElement.h"
 namespace spider {
+    class TabbarViewElement;
+    #ifdef TABBARVIEWELEMENT_CLASS
+    #ifndef ARTISTVIEW_CLASS
     class ArtistView : public TabbarViewElement
     {
         public:
@@ -13,5 +16,7 @@ namespace spider {
         protected:
         private:
     };
+    #define ARTISTVIEW_CLASS
+    #endif
 }
 #endif // ARTISTVIEW_H

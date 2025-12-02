@@ -33,6 +33,7 @@ void MockTableDataSource::removeIndexesFromSelection (int indexes) {
 MockTableDataSource::MockTableDataSource()
 {
     //ctor
+    this->selectedIndexes = new vector<int>;
 }
 int MockTableDataSource::getColumnCount() {
     return 3;

@@ -4,19 +4,29 @@
 #include "TextElement.h"
 namespace spider {
     namespace views {
-class DoctrineView : public ContainerViewElement
-{
+        class DoctrineView;
+        class ContainerViewElement;
+        class TextElement;
+        #ifdef CONTAINERVIEWELEMENT_CLASS
+        #ifdef TEXTELEMENT_CLASS
+        #ifndef DOCTRINEVIEW_CLASS
+        class DoctrineView : public ContainerViewElement
+        {
 
-    public:
+            public:
 
-        DoctrineView(Element *parent);
-        virtual ~DoctrineView();
-        void navigate(string uri);
-        bool acceptsUri(string uri);
-    protected:
-        TextElement *text;
-    private:
-};
+                DoctrineView(Element *parent);
+                virtual ~DoctrineView();
+                void navigate(string uri);
+                bool acceptsUri(string uri);
+            protected:
+                TextElement *text;
+            private:
+        };
+        #define DOCTRINEVIEW_CLASS
+        #endif
+        #endif
+        #endif
     }
 }
 #endif // DOCTRINEVIEW_H

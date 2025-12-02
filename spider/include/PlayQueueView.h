@@ -5,6 +5,10 @@
 #include "ContainerViewElement.h"
 namespace spider {
     namespace views {
+        class ContainerViewElement;
+        #ifdef CONTAINERVIEWELEMENT_CLASS
+        #ifndef PLAYQUEUEVIEW_CLASS
+
         class PlayQueueView : public ContainerViewElement
         {
             public:
@@ -17,6 +21,9 @@ namespace spider {
             protected:
             private:
         };
+        #define PLAYQUEUEVIEW_CLASS
+        #endif
+        #endif
     }
 }
 

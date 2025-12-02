@@ -6,6 +6,8 @@
 using namespace std;
 namespace spider {
 class TableElement;
+#ifdef TABLEELEMENT_CLASS
+#ifndef TABLEROW_CLASS
 class TableRow
 {
     public:
@@ -20,6 +22,8 @@ class TableRow
     private:
 };
 #define TABLEROW_CLASS
+#endif
+#endif
 }
 
 #endif // TABLEROW_H

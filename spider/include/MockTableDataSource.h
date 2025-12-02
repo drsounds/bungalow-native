@@ -3,6 +3,9 @@
 #include "TableDataSource.h"
 #include <vector>
 namespace spider {
+class TableDataSource;
+#ifdef TABLEDATASOURCE_CLASS
+#ifndef MOCKTABLEDATASOURCE_CLASS
 class MockTableDataSource : public TableDataSource
 {
     public:
@@ -27,5 +30,8 @@ class MockTableDataSource : public TableDataSource
     protected:
     private:
 };
+#define MOCKTABLEDATASOURCE_CLASS
+#endif
+#endif
 }
 #endif // MOCKTABLEDATASOURCE_H
