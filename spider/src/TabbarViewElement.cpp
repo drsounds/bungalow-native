@@ -2,7 +2,7 @@
 namespace spider {
     int tabbar_tabselected(SPType *sender, EventArgs *e) {
         TabBarEventArgs *args = (TabBarEventArgs *)e;
-        string uri = *args->tab->getUri();
+        string uri = args->tab->getUri();
         TabBarElement *tabView = (TabBarElement *)sender;
         TabbarViewElement *tabbarView = (TabbarViewElement *)tabView->parent;
         tabbarView->navigate(uri);

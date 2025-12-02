@@ -26,7 +26,7 @@ namespace spider {
         this->appendChild(this->btnElement);
 
     }
-    void InfoElement::show(MessageType type, stringtext) {
+    void InfoElement::show(MessageType type, string text) {
         this->setMessageType(type);
         this->textElement->setInnerText(text);
         Element::show();

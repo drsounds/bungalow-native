@@ -33,6 +33,7 @@ namespace spider {
         }
 
     };
+    #define FONTSTYLE_CLASS
 }
 
 #endif // FONTSTYLE_H

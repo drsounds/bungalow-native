@@ -117,7 +117,7 @@ void TreeViewElement::draw(int x, int y, GraphicsContext *g) {
 
 		rectangle strB = g->measureString(item->text(), font);
         int ttop = (top + (itemHeight / 2)) - (strB.height / 2);
-		g->drawString(item->text(), this->getFont(), (Color *)color, 20 + x, y + ttop, this->getWidth(), itemHeight);
+		g->drawString(item->text(), this->getFontStyle(), (Color *)color, 20 + x, y + ttop, this->getWidth(), itemHeight);
 
 		top += itemHeight;
 	}

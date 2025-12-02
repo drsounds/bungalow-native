@@ -1,7 +1,7 @@
 #ifndef WHATSNEWVIEW_H
 #define WHATSNEWVIEW_H
 #include "ContainerViewElement.h"
-#include "DOMViewElement.h"
+
 namespace spider {
     namespace views {
         class WhatsNewView : public ContainerViewElement

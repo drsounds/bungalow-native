@@ -7,7 +7,7 @@ StandardTableDataSource::StandardTableDataSource()
 {
     //ctor
     this->rows = new vector<TableRow *>;
-    this->columnHeaders = vector<TableColumnHeader *>;
+    this->columnHeaders = new vector<TableColumnHeader *>;
 
 }
 int StandardTableDataSource::getColumnCount() {
@@ -18,22 +18,23 @@ int StandardTableDataSource::getRowCount() {
     return this->rows->size();
 }
 StandardTableDataSource::~StandardTableDataSource() {
-
+    delete this->rows;
+    delete this->columnHeaders;
 }
 string StandardTableDataSource::getUriForCell (int column, int row) {
     return "spoyler:internal:debug";
 }
 string StandardTableDataSource::getTextForCell (int column, int row) {
     string t ("Row ");
-    t.append(to_string<int>(row));
+    t.append(std::to_string(row));
     t.append(" ");
     t.append(" at column ");
-    t.append(to_string<int>(column));
+    t.append(std::to_string(column));
     return t;
 }    //dtor
 string StandardTableDataSource::getTextForColumn (int column) {
     string t = "Column ";
-    t.append(to_string<int>(column));
+    t.append(std::to_string(column));
     return t;
 }
 string StandardTableDataSource::getRowUri(int index) {

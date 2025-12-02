@@ -2,15 +2,20 @@
 #define STANDARDTABLEDATASOURCE_H
 #include <vector>
 #include "TableCell.h"
+#include "TableDataSource.h"
 #include "TableRow.h"
 using namespace std;
 namespace spider {
+class TableRow;
+class TableColumnHeader;
+class TableDataSource;
+#ifdef TABLEDATASOURCE_CLASS
+#ifndef STANDARDTABLEDATASOURCE_CLASS
 class StandardTableDataSource : public TableDataSource
 {
     public:
         StandardTableDataSource();
         virtual ~StandardTableDataSource();
-        virtual ~TableDataSource();
         virtual int getColumnCount();
         virtual int getRowCount();
         virtual string getUriForCell (int column, int row);
@@ -26,6 +31,9 @@ class StandardTableDataSource : public TableDataSource
     protected:
     private:
 };
+#define STANDARDTABLEDATASOURCE_CLASS
+#endif
+#endif
 }
 
 #endif // STANDARDTABLEDATASOURCE_H

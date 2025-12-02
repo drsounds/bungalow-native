@@ -9,6 +9,7 @@ namespace spider {
             return "Undefined";
         }
     };
+    #define SPTYPE_CLASS
 
 
 }

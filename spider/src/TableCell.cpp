@@ -1,9 +1,9 @@
 #include "TableCell.h"
 namespace spider {
-TableCell::TableCell(TableCell *tableCell)
+TableCell::TableCell(TableRow *tableRow)
 {
-    this->tableCell = tableCell;
-    this->tableElement = tableCell->tableRow->tableElement;
+    this->tableRow = tableRow;
+    this->tableElement = tableRow->tableElement;
     //ctor
 }
 

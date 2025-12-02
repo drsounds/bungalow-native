@@ -5,9 +5,9 @@ Server::Server()
     //ctor
 }
 
-void Server::request(stringmethod, stringuri, void *data, spider_server_reply *reply) {
-    if (strcmp(method, "GET") == 0) {
-        if (strcmp(uri, "spacify:internal:home") == 0) {
+void Server::request(string method, string uri, void *data, spider_server_reply *reply) {
+    if (strcmp(method.c_str(), "GET") == 0) {
+        if (strcmp(uri.c_str(), "spacify:internal:home") == 0) {
 
         }
     }
@@ -15,4 +15,5 @@ void Server::request(stringmethod, stringuri, void *data, spider_server_reply *r
 Server::~Server()
 {
     //dtor
+}
 }

@@ -14,7 +14,8 @@ using namespace std;
 namespace spider {
     class Skin;
     class GraphicsContext;
-
+    #ifdef OBSERVABLE_CLASS
+    #ifdef NODE_CLASS
     class Element : public Node, public Observable {
 
 
@@ -58,7 +59,7 @@ namespace spider {
         margin *margins;
         margin *padding;
         std::vector<Observer *> *observers;
-        FontStyle *font;
+        FontStyle fontStyle = FontStyle("Tahoma", 13, 1, false, false);;
         string id;
         string data;
         Element *windowElement;
@@ -113,9 +114,9 @@ namespace spider {
         void setScrollY(int y) {
             this->scrollY = y;
         }
-        FontStyle *getFont();
-        void setFont(FontStyle *font)  {
-            this->font = font;
+        FontStyle getFontStyle();
+        void setFontStyle(FontStyle value)  {
+            this->fontStyle = value;
         }
         Element();
         Element(Element *parent);
@@ -140,8 +141,8 @@ namespace spider {
         void setWidth(int width);
         void setHeight(int height);
         void setZ(int z);
-        void set(const std::string& title, const std::string val);
-        void set(const std::string& title, std::string *val);
+        void set(const std::string& title, const std::string& val);
+        void set(const std::string& title, std::string& val);
 
 
         string getId();
@@ -149,6 +150,9 @@ namespace spider {
         virtual void pack() {}
 
     };
+    #endif
+    #define ELEMENT_CLASS
+    #endif
 }
 
 #endif // ELEMENT_H

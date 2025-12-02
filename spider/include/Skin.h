@@ -21,6 +21,7 @@ public:
     int bottomBorder;
     slice(Image *image, int x1, int x2, int y1, int y2, int leftBorder, int topBorder, int rightBorder, int bottomBorder);
 };
+#define SLICE_CLASS
 class Skin
 {
     public:
@@ -40,5 +41,6 @@ class Skin
     protected:
     private:
 };
+#define SKIN_CLASS
 }
 #endif // SKIN_H

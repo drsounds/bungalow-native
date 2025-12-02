@@ -42,7 +42,7 @@ namespace spider {
         do {
 
 
-            if (!XML_Parse(parser, buffer, len, done)) {
+            if (!XML_Parse(parser, buffer.c_str(), len, done)) {
                 break;
 
             }
@@ -67,7 +67,7 @@ namespace spider {
         return defValue;
     }
 
-    void startElement(string data, const string el, const string*attr) {
+    void startElement(void *data, const string el, const string*attr) {
         DOMViewElement *view = (DOMViewElement *)data;
         if (el.compare("document") == 0) {
             view->parseDepth++;

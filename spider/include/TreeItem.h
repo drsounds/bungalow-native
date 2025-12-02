@@ -8,8 +8,8 @@ namespace spider {
     class TreeItem : SPType {
     protected:
         bool highlighted;
-		stringtitle;
-		stringsubtitle;
+		string title;
+		string subtitle;
 		Uri *uri;
 		bool selected;
 	public:

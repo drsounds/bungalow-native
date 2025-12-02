@@ -7,14 +7,14 @@ namespace spider {
         this->resource = resource;
     }
     void ResourceElement::draw(int x, int y, GraphicsContext *g) {
-        FontStyle *font = (FontStyle *)this->getFont();
-        Color *fgColor = (Color *)this->getAttributeObj("fgcolor");
-        Color *bgColor = (Color *)this->getAttributeObj("bgcolor");
+        FontStyle font = this->getFontStyle();
+        Color fgColor = this->getColorAttribute("fgcolor", Color(255, 255, 255, 1));
+        Color bgColor = this->getColorAttribute("bgcolor", Color(0, 0, 0, 1));
         if (this->resource != NULL) {
 
             // draw title
-            string *name = this->resource->getName();
-            stringtitle = (string)name->c_str();
+            string name = this->resource->getName();
+            string title = name;
             rectangle txtSize = g->measureString(title, font);
             int top = (this->getHeight() / 2) - (txtSize.height / 2);
             g->drawString(title, font, fgColor, x + 10, top, this->getWidth(), this->getHeight());

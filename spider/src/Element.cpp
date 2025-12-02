@@ -3,6 +3,8 @@
 #include <cstdio>
 #include "WindowElement.h"
 #include "Observable.h"
+#include "MouseEventArgs.h"
+
 namespace spider {
 
 void Element::mouseDown(int& mouseButton, int& x, int& y) {
@@ -91,15 +93,15 @@ Element::Element() :
 	this->visible = true;
 	this->scrollX = 0;
 	this->scrollY = 0;
-    this->data = NULL;
+    this->data = "";
     this->visible = true;
 	this->observers = new vector<Observer *>();
-    this->set("fgcolor", new string("#ffffff"));
-    this->set("bgcolor", new string("#000000"));
-    this->set("highlight", "#a9d9fe");
-    this->set("font", new string("Tahoma"));
-    this->set("size", new string("11"));
-	this->font = new FontStyle("Tahoma", 13, 1, false, false);
+    this->setColorAttribute("fgcolor", Color(255, 255, 255, 255));
+    this->setColorAttribute("bgcolor", Color(0, 0, 0, 255));
+    this->setColorAttribute("highlight", Color(169, 217, 254, 255));
+    this->setStringAttribute("font", "Tahoma");
+    this->setIntegerAttribute("size", 11);
+	this->fontStyle = FontStyle("Tahoma", 13, 1, false, false);
 	this->x = 0;
 	this->y = 0;
 	this->z = 0;
@@ -117,8 +119,8 @@ Element::Element() :
 	this->padding->bottom = 0;
 
 }
-FontStyle *Element::getFont() {
-    return this->font;
+FontStyle Element::getFontStyle() {
+    return this->fontStyle;
 }
 void Element::applyStylesheet(Stylesheet *style) {
 
@@ -163,11 +165,11 @@ Element::Element(Element *parent) :
 	this->visible = true;
 	this->scrollX = 0;
 	this->scrollY = 0;
-    this->data = NULL;
+    this->data = "";
 	this->observers = new vector<Observer *>();
 	this->setParent(parent);
 	this->skin = ((Element *)this->parent)->skin;
-
+	this->fontStyle = FontStyle("Tahoma", 13, 1, false, false);
 
     #if false
     this->set("fgcolor", new string("#ffffff"));
@@ -195,7 +197,7 @@ Element::Element(Element *parent) :
         this->set("highlight", new string(this->getParent()->get("highlight")));
         this->set("size", new string(this->getParent()->get("size")));
         #endif
-        this->font = parent->font;
+        this->fontStyle = parent->fontStyle;
         this->mainWindowElement = parent->getMainWindowElement();
         this->windowElement = parent->getWindowElement();
 	}
@@ -266,53 +268,32 @@ void Element::setZ(int z) {
 	this->z = z;
 }
 
-
-void Element::setObject(const std::string& title, void *object) {
-    (*this->getProperties())[title] = (void *)object;
-}
-
-void Element::set(const std::string& title, std::string *val) {
+void Element::set(const std::string& title, const std::string& val) {
     int n = 0;
-        (*this->getAttributes())[title] = val;
+        (*this->getStringAttributes())[title] = val;
     try {
-        n = atoi(val->c_str());
-        if(title == "width")
-            this->setWidth(n);
-        if(title == "height")
-            this->setHeight(n);
-        if(title == "x")
-            this->setX(n);
-        if(title == "y")
-            this->setY(n);
-
-        (*this->getProperties())[title] = (void *)n;
-    } catch (const boost::bad_lexical_cast e) {
-        (*this->getProperties())[title] = (void *)val;
+        n = stoi(val);
+        this->setIntegerAttribute(title, n);
+    } catch (const boost::bad_lexical_cast e) { 
     }
 
-    if(val->find("#") == 0) {
-        Color *c =new Color(*val);
-        (*this->getProperties())[title] = (void *)c;
+    if(val.find("#") == 0) {
+        Color c = Color(val);
+        this->setColorAttribute(title, c);
     }
 }
- void Element::set(const std::string& title, const std::string value) {
-     this->set(title, new std::string(value));
-}
 
-void Element::setId(stringid) {
+void Element::setId(std::string id) {
 	this->id = id;
 }
-stringElement::getId() {
+std::string Element::getId() {
 	return this->id;
 }
 
 
-string Element::getType() {
+std::string Element::getType() {
     return "element";
 }
-
-
-
 
 void Element::draw(int x, int y, GraphicsContext *c) {
     if (!this->isVisible()) {
@@ -342,13 +323,10 @@ void Element::draw(int x, int y, GraphicsContext *c) {
 	if (this->clipView) {
         c->setClip(*absoluteBounds);
 	}
-    Color *bgColor = (Color *)this->getAttributeObj("bgcolor");
-    Color *fgColor = (Color *)this->getAttributeObj("fgcolor");
-    int fontSize = (int)this->getAttributeObj("size");
-    string *fontFamily = (string *)this->getAttributeObj("font");
-    if (fontFamily == NULL) {
-        fontFamily = new string("MS Sans Serif");
-    }
+    Color bgColor = this->getColorAttribute("bgcolor", Color(0, 0, 0, 1));
+    Color fgColor = this->getColorAttribute("fgcolor", Color(255, 255, 255, 1));
+    int fontSize = this->getIntegerAttribute("size", 12);
+    string fontFamily = this->getStringAttribute("font", "MS Sans Serif");
     c->fillRectangle(x, y, width, height, bgColor);
     string sel = "";
     sel.append(this->getType());
@@ -356,7 +334,7 @@ void Element::draw(int x, int y, GraphicsContext *c) {
     c->skin->drawImageSlice(sel, c, x, y, width, height);
 
     // Draw background image
-    if (this->getId() != NULL && strlen(this->getId()) > 0) {
+    if (this->getId() != "" && this->getId().length() > 0) {
         string sel2 = "#";
         sel2.append(this->getId());
         sel2.append(".background.image");
@@ -369,7 +347,7 @@ void Element::draw(int x, int y, GraphicsContext *c) {
     string text = this->getInnerText();
     // draw text
     if (!text.empty())
-        c->drawString(this->getInnerText(), new FontStyle((string)fontFamily->c_str(), fontSize, fontSize / 2, false, false), fgColor, x - scrollX, y - scrollY, this->getWidth(), this->getHeight());
+        c->drawString(this->getInnerText(), FontStyle(fontFamily, fontSize, fontSize / 2, false, false), fgColor, x - scrollX, y - scrollY, this->getWidth(), this->getHeight());
 
 	// adjust for scroll
     x -= this->scrollX;
@@ -413,8 +391,7 @@ void Element::scroll(int scrollX, int scrollY, int x, int y) {
             break;
         }
 		Element *elm = static_cast<Element *>(*it);
-		string ttype = elm->getType();
-		stringtype = (string)ttype.c_str();
+		string type = elm->getType();
 		cout << type << endl;
         if (elm->isVisible()) {
             if (elm->getAbsoluteBounds() != NULL) {

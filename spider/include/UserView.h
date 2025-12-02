@@ -1,7 +1,7 @@
 #ifndef USERVIEW_H
 #define USERVIEW_H
 #include "TabbarViewElement.h"
-#include "DOMViewElement.h"
+
 #include "HeaderElement.h"
 #include <string>
 using namespace std;

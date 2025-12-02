@@ -13,8 +13,8 @@ namespace spider {
 
 vector<int> MockTableDataSource::getSelectedIndexes() {
     vector<int> indexes;
-    for (vector<int>::iterator it = this->selectedIndexes->begin(); i != this->selectedIndexes->end(); ++it) {
-        int index = **it;
+    for (vector<int>::iterator it = this->selectedIndexes->begin(); it != this->selectedIndexes->end(); ++it) {
+        int index = *it;
         indexes.push_back(index);
     }
     return indexes;
@@ -23,10 +23,11 @@ bool MockTableDataSource::isIndexSelected (int index) {
     return (std::find(this->selectedIndexes->begin(), this->selectedIndexes->end(), index) != this->selectedIndexes->end());
 
 }
-void MockTableDataSource::addIndexToSelection(int index) {
+void MockTableDataSource::addIndexesToSelection(int indexes) {
     this->selectedIndexes->push_back(indexes);
 }
-void MockTableDataSource::removeIndexFromSelection (int index) {
+void MockTableDataSource::removeIndexesFromSelection (int indexes) {
+    //this->selectedIndexes->remove(indexes);
 }
 
 MockTableDataSource::MockTableDataSource()
@@ -67,6 +68,7 @@ bool MockTableDataSource::isRowActive(int index) {
     if (index == 1) {
         return true;
     }
+    return false;
 }
 
 bool MockTableDataSource::isCellActive (int index) {

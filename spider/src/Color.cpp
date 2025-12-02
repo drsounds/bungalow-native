@@ -1,6 +1,8 @@
 #include "libspider.h"
 #include "Color.h"
 #include <stdio.h>
+#include <string>
+using namespace std;
 /*!
  * From http://www.dreamincode.net/forums/topic/58058-converting-rgb-to-hex/
  **/
@@ -62,13 +64,20 @@ Color::Color(short r, short g, short b, short a){
 	this->a = a;
 }
 
+Color::Color() {
+	this->r = 0;
+	this->g = 0;
+	this->b = 0;
+	this->a = 0;
+}
+
 Color::Color(const string& html) {
 	// TODO Fix this later
 	int color = htmlToColor(html);
 
-	short r, g, b;
+	short r, g, b, a = 0;
 	if(html.length() > 6 + 1) {
-		r = color >> 16 + 8 & 0xff;
+		r = color >> (16 + 8) & 0xff;
 		g = color >> 16 & 0xff;
 		b = color >> 8 & 0xff;
 	} else {

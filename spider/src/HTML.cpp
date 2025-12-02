@@ -1,7 +1,7 @@
 #include "HTML.h"
 #include <regex>
 namespace spider {
-HTML::HTML(string *text)
+HTML::HTML(string text)
 {
     //ctor
     /*this->text = text;

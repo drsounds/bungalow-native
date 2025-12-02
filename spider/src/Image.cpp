@@ -35,18 +35,18 @@ Image::Image()
 {
     //ctor
 }
-void abort_(stringtext, int t, png_byte byte) {
+void abort_(char *text, int t, png_byte byte) {
     throw;
 }
-void abort_(stringtext, stringfileName) {
+void abort_(char *text, char *fileName) {
     throw;
 }
-void abort_(stringtext) {
+void abort_(char *text) {
     throw;
 }
 Image::Image(const string& fileName) {
 
-    stringfile_name = (string)fileName.c_str();
+    char *file_name = (char *)fileName.c_str();
     png_bytep header[8];    // 8 is the maximum size that can be checked
 
     /* open file and test for it being a png */
@@ -110,7 +110,7 @@ Image::Image(const string& fileName) {
 
     if (png_get_color_type(png_ptr, info_ptr) == PNG_COLOR_TYPE_RGB)
                 abort_("[process_file] input file is PNG_COLOR_TYPE_RGB but must be PNG_COLOR_TYPE_RGBA "
-                       "(lacks the alpha channel)");
+                       "(lacks the alpha channel)", file_name);
 
     if (png_get_color_type(png_ptr, info_ptr) != PNG_COLOR_TYPE_RGBA)
             abort_("[process_file] color_type of input file must be PNG_COLOR_TYPE_RGBA (%d) (is %d)",

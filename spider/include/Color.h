@@ -3,6 +3,7 @@
 #include "SPType.h"
 #include <string>
 namespace spider {
+#ifdef SPTYPE_CLASS
 class Color : public SPType {
 private:
     short r;
@@ -21,9 +22,11 @@ public:
     void setG(short g);
     void setB(short b);
     void setA(short a);
+    Color();
     Color(short r, short g, short b, short a);
     Color(const string& html);
     string toHTMLColor();
 };
+#endif
 }
 #endif // COLOR_H

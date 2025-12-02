@@ -29,13 +29,13 @@ namespace spider {
 		int x;
 		int y;
 	};
-	typedef struct  {
+	struct rectangle {
 		int width;
 		int height;
 		int x;
 		int y;
 		int z;
-	} s_size, rectangle;
+	};
 
 	typedef int(*s_event)(SPType *, EventArgs *);
 }

@@ -4,7 +4,6 @@
 #include "InputEventArgs.h"
 #include "SplitterElement.h"
 #include "DoctrineView.h"
-#include "Win32GraphicsContext.h"
 #include "PlayQueueView.h"
 #include "UserView.h"
 namespace spider {
@@ -26,7 +25,7 @@ namespace spider {
         TreeViewEventArgs *args = (TreeViewEventArgs *)e;
         TreeItem *selectedItem = args->getItem();
         Uri *uri = selectedItem->getUri();
-        stringuri2 = uri->getUri();
+        string uri2 = uri->getUri();
         string uri3 (uri2);
         mainWindow->navigate(uri3);
 
@@ -37,7 +36,7 @@ namespace spider {
         this->setWindowElement(parent);
 
     }
-    void MainWindowElement::showMessage(MessageType msgType, stringmsg) {
+    void MainWindowElement::showMessage(MessageType msgType, string msg) {
         this->infoElement->show(msgType, msg);
         this->invalidate();
     }

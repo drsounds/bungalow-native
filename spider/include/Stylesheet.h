@@ -13,6 +13,8 @@
 #include <sstream>
 #include <string>
 namespace spider {
+class Node;
+#ifdef NODE_CLASS
 class Selector : Node {
 public:
     Selector();
@@ -30,6 +32,8 @@ class Stylesheet
         map<string, string> *selectors;
     private:
 };
+#define SELECTOR_CLASS
+#endif
 }
 
 #endif // STYLESHEET_H

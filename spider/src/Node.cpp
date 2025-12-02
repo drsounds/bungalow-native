@@ -8,17 +8,32 @@ namespace spider {
             this->window = this;
             this->children = new vector<Node *>();
             this->properties = new map<string, void*>();
-            this->attributes = new map<string, string*>();
+            this->stringAttributes = new map<string, string>();
+            this->colorAttributes = new map<string, Color>();
+            this->integerAttributes = new map<string, int>();
     }
     Node* Node::getParent() {
         return this->parent;
     }
     void Node::removeChild(Node *child) {
     }
-    void *Node::getAttributeObj(string prop) {
-
-        void *t = (void *)(*this->properties)[prop];
-        return t;
+    string Node::getStringAttribute(string title, string defaultValue) {
+        return (*this->stringAttributes)[title];
+    }
+    void Node::setStringAttribute(string title, string value) {
+        (*this->stringAttributes)[title] = value;
+    }
+    void Node::setColorAttribute(string title, Color value) {
+        (*this->colorAttributes)[title] = value;
+    }
+    Color Node::getColorAttribute(string title, Color defaultValue) {
+        return (*this->colorAttributes)[title];
+    }
+    int Node::getIntegerAttribute(string title, int defaultValue) {
+        return (*this->integerAttributes)[title];
+    }
+    void Node::setIntegerAttribute(string title, int value) {
+        (*this->integerAttributes)[title] = value;
     }
     std::vector<Node *> *Node::getChildNodes() {
         return (this->children);
@@ -32,35 +47,31 @@ namespace spider {
         this->parent = (elm);
     }
     std::string Node::get(const std::string& title) {
-        std::string *val = (*this->attributes)[title];
-        return *val;
+        std::string val = (*this->stringAttributes)[title];
+        return val;
     }
     void* Node::getObject(const std::string& title) {
         return (*this->properties)[title];
     }
 
 
-    void Node::set(const std::string& title, std::string *val) {
+    void Node::set(const std::string& title, const std::string& val) {
         int n = 0;
-        (*this->getAttributes())[title] = val;
+        (*this->stringAttributes)[title] = val;
         try {
-            n = atoi(val->c_str());
+            n = atoi(val.c_str());
 
 
 
-            (*this->attributes)[title] = val;
-            (*this->properties)[title] = (void *)n;
+            (*this->integerAttributes)[title] = n;
         } catch (exception e) {
-            (*this->properties)[title] = (void *)val;
+            
         }
 
-        if(val->find("#") == 0) {
-            Color *c =new Color(*val);
-            (*this->properties)[title] = (void *)c;
+        if(val.find("#") == 0) {
+            Color c = Color(val);
+            (*this->colorAttributes)[title] = c;
         }
-    }
-     void Node::set(const std::string& title, const std::string value) {
-        this->set(title, new std::string(value));
     }
 
     void Node::appendChild(spider::Node *child) {

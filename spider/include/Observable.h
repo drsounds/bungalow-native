@@ -18,6 +18,7 @@ namespace spider {
             list<Observer *> *observers;
         private:
     };
+    #define OBSERVABLE_CLASS
 }
 
 #endif // OBSERVABLE_H

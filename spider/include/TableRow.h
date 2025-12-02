@@ -5,6 +5,7 @@
 #include <string>
 using namespace std;
 namespace spider {
+class TableElement;
 class TableRow
 {
     public:
@@ -18,6 +19,7 @@ class TableRow
     protected:
     private:
 };
+#define TABLEROW_CLASS
 }
 
 #endif // TABLEROW_H

@@ -5,6 +5,8 @@
 string RGBToHex(int rNum, int gNum, int bNum);
 
 namespace spider {
+	class Element;
+	#ifdef ELEMENT_CLASS
 	class ButtonElement : public Element {
 	public:
         ButtonElement(Element *parent) : Element(parent) {
@@ -16,6 +18,7 @@ namespace spider {
             return "button";
 		}
 	};
+	#endif
 }
 
 

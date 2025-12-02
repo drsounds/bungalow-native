@@ -13,8 +13,8 @@ namespace spider {
             //ctor
             this->viewStack->appendChild(new views::WhatsNewView(this->viewStack));
             this->viewStack->appendChild(new views::TopListView(this->viewStack));
-            this->tabBar->addTab(new string ("Overview"), new string("overview"), new string("spacify:internal:start"));
-            this->tabBar->addTab(new string ("Top List"), new string("toplist"), new string("spacify:internal:toplist"));
+            this->tabBar->addTab("Overview", "overview", "spacify:internal:start");
+            this->tabBar->addTab("Top List", "toplist", "spacify:internal:toplist");
         }
 
         bool StartView::acceptsUri(string uri) {

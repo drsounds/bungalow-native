@@ -7,13 +7,14 @@ class Resource
 {
     public:
         Resource(string uri);
+        Resource();
         virtual ~Resource();
-        string *getName() {
+        string getName() {
             return this->name;
         }
     protected:
-        string *uri;
-        string *name;
+        string uri;
+        string name;
         Resource *author;
         Resource *collection;
         Resource *playlist;

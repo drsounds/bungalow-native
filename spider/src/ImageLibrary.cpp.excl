@@ -1,9 +1,9 @@
 #include "ImageLibrary.h"
 namespace spider {
-image *ImageLibrary::get(string uri) {
-    return static_cast<image *>((*this->mImages)[uri]);
+Image *ImageLibrary::get(string uri) {
+    return static_cast<Image *>((*this->mImages)[uri]);
 }
-void ImageLibrary::set(string uri, image *image) {
+void ImageLibrary::set(string uri, Image *image) {
     (*this->mImages)[uri] = image;
 }
 ImageLibrary::ImageLibrary()

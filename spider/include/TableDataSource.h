@@ -4,6 +4,9 @@
 #include <TableColumn.h>
 #include <vector>
 namespace spider {
+class TableCell;
+#ifdef TABLECELL_CLASS
+#ifndef TABLEDATASOURCE_CLASS
 class TableDataSource
 {
     public:
@@ -29,5 +32,8 @@ class TableDataSource
     protected:
     private:
 };
+#define TABLEDATASOURCE_CLASS
+#endif
+#endif
 }
 #endif // TABLEVIEWDATASOURCE_H

@@ -1,6 +1,6 @@
 #include "Resource.h"
 namespace spider {
-Resource::Resource(string *uri)
+Resource::Resource(string uri)
 {
     //ctor
     this->uri = uri;
@@ -9,6 +9,5 @@ Resource::Resource(string *uri)
 Resource::~Resource()
 {
     //dtor
-    delete uri;
 }
 }
