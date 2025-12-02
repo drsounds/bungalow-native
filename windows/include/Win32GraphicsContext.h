@@ -1,0 +1,52 @@
+#pragma once
+
+#ifndef H_WIN32SPIDER
+#define H_WIN32SPIDER
+
+#include <Windows.h>
+#include <wingdi.h>
+#include <map>
+#include "Color.h"
+#include "Element.h"
+#include "GraphicsContext.h"
+#include "InputEventArgs.h"
+#include <map>
+using namespace std;
+LRESULT CALLBACK subEditProc(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam);
+namespace spider {
+
+    class WindowElement;
+	COLORREF toWin32Color(spider::Color color);
+	class Win32GraphicsContext : public GraphicsContext {
+	private:
+		HDC hDC;
+		HWND hWnd;
+	public:
+	    LPPOINT currentOffset;
+	    void restoreOrigo();
+	    HRGN currentRgn;
+		static map<Element *, HWND> *controls;
+		static map<HWND, Element *> *hwnds;
+		Win32GraphicsContext(HWND hWnd, HDC hDC, WindowElement *window);
+		~Win32GraphicsContext();
+        Image *loadImage(const string& bitmap);
+
+        virtual void drawImagePart(Image *image, int x, int y, int width, int height, int x1, int y1, int x2, int y2);
+        virtual void drawSkinImage(string resourceId, int x, int y, int w, int h);
+		void setClip(rectangle rect);
+		void drawLine(int x1, int y1, int w, int h, spider::Color *color);
+		void drawImage(Image *image, int x1, int y1, int w, int h);
+		void drawRectangle(int x1, int y1, int w, int h, spider::Color *color);
+		void fillRectangle(int x1, int y1, int w, int h, spider::Color *color);
+        void drawControl(stringcontrol, Element *elm, int x, int y, int w, int h);
+		void invalidateRegion(rectangle region);
+		void drawString(stringtext, spider::FontStyle *fontStyle, spider::Color *color,int x, int y, int w, int h);
+		void drawInputElement(Element *elm, int x, int y, int w, int h);
+		void setFontStyle(spider::FontStyle *fs);
+		void setOrigo(const int& x, const int& y);
+		void drawHTMLText(stringhtml, FontStyle *fs, Color *color, int x, int y, int w, int h);
+		rectangle measureString(stringtext, spider::FontStyle *font);
+		virtual void declipRect();
+	};
+};
+#endif
