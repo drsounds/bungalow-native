@@ -1,4 +1,6 @@
 #include "TableElement.h"
+
+#include "TableDataSource.h"
 namespace spider {
     TableElement::TableElement()
     {
@@ -11,7 +13,7 @@ namespace spider {
     {
         //ctor
         this->dataSource = dataSource;
-        this->colums = new vector<TableColumnHeader *>;
+        this->columns = new vector<TableColumnHeader *>;
         this->rows = new vector<TableRow *>;
     }
     TableElement::~TableElement()
@@ -59,7 +61,7 @@ namespace spider {
         clipRect.y = y;
         clipRect.width = width;
         clipRect.height = ((Element *)this->parent->parent)->getHeight();
- int left = 0;
+        int left = 0;
         int padding = 10;
         int columnWidth = width / dataSource->getColumnCount();
         int top = columnY + 18;
@@ -78,7 +80,7 @@ namespace spider {
             for (int j = 0; j < dataSource->getColumnCount(); j++) {
                 string text = dataSource->getTextForCell(j, i);
                 left = x + (j * columnWidth) + padding;
-                g->drawString((string)text.c_str(), new FontStyle("Tahoma", 13, 1, false, false), new Color(255, 255, 255, 255), left, top + 2, columnWidth, 18);
+                g->drawString((string)text.c_str(), FontStyle("Tahoma", 13, 1, false, false), Color(255, 255, 255, 255), left, top + 2, columnWidth, 18);
             }
             top += 18;
         }
@@ -88,14 +90,14 @@ namespace spider {
             // If columnY is below zero, set it to the position at top
             columnY = ((Element *)this->parent)->absoluteBounds->y + 1;
         }
-        g->skin->drawImageSlice("table::columnheader.background.image", g, x, columnY, width, 18);
+        g->drawImageSlices(this->skin->slices, "table::columnheader.background.image", x, columnY, width, 18);
 
         left =0;
         for (int i = 0; i < dataSource->getColumnCount(); i++) {
             string text = dataSource->getTextForColumn(i);
-            stringstr = (string)text.c_str();
-            g->drawString(str, new FontStyle("Tahoma", 13, 1, true, false), new Color(200, 200, 200, 255), x + padding + left, columnY + 2, columnWidth, 18);
-            g->drawString(str, new FontStyle("Tahoma", 13, 1, true, false), new Color(0, 0, 0, 255), x + padding + left, columnY + 1, columnWidth, 18);
+            string str = text.c_str();
+            g->drawString(str, FontStyle("Tahoma", 13, 1, true, false), Color(200, 200, 200, 255), x + padding + left, columnY + 2, columnWidth, 18);
+            g->drawString(str, FontStyle("Tahoma", 13, 1, true, false), Color(0, 0, 0, 255), x + padding + left, columnY + 1, columnWidth, 18);
             left += columnWidth;
         }
         columnY = columnYY;

@@ -1,4 +1,7 @@
 #include "Skin.h"
+
+#include <iostream>
+
 namespace spider {
 Skin::Skin()
 {
@@ -15,13 +18,8 @@ slice::slice(Image *image, int x1, int y1, int x2, int y2, int leftBorder, int t
     this->rightBorder = rightBorder;
     this->bottomBorder = bottomBorder;
 }
-void Skin::drawImageSlice(string selector, GraphicsContext *g, int left, int top, int width, int height) {
-    if(this->slices->find(selector) != this->slices->end()) {
-        slice *slice = (*this->slices)[selector];
-        g->drawImagePart(slice->image, left, top, width, height, slice->x1, slice->y1, slice->x2, slice->y2);
-    }
-}
-Skin::Skin(const string& bitmap, GraphicsContext *g) {
+    
+Skin::Skin(const string& bitmap) {
     this->colors = new std::map<string, pixel *>;
     this->images = new std::map<string, Image *>;
     this->slices = new std::map<string, slice *>;

@@ -9,10 +9,11 @@
 using namespace std;
 
 namespace spider {
-class TableDataSource;
-class TableRow;
-class TableColumnHeader;
+#ifdef TABLEROW_CLASS
+#ifdef TABLECOLUMNHEADER_CLASS
+#ifdef TABLEDATASOURCE_CLASS
 #ifdef ELEMENT_CLASS
+#ifndef TABLEELEMENT_CLASS
 class TableElement : public Element
 {
     public:
@@ -29,6 +30,9 @@ class TableElement : public Element
     private:
 };
 #define TABLEELEMENT_CLASS
+#endif
+#endif
+#endif
 #endif
 }
 #endif // TABLEVIEWELEMENT_H

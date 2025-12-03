@@ -1,6 +1,7 @@
 #include "TreeViewElement.h"
+#include "MouseEventArgs.h"
 #include "WindowElement.h"
-#include "Win32WindowElement.h"
+
 namespace spider {
 
 void treeview_mousedown(SPType *sender, EventArgs *e) {
@@ -24,7 +25,7 @@ void treeview_mousedown(SPType *sender, EventArgs *e) {
 		}
 		top += treeView->getItemHeight();
 	}
-	Win32WindowElement * winElement = (Win32WindowElement *)treeView->getWindowElement();
+	WindowElement * winElement = (WindowElement *)treeView->getWindowElement();
 	rectangle region;
 	region.x = treeView->getAbsoluteBounds()->x;
 	region.y = treeView->getAbsoluteBounds()->y;
@@ -56,7 +57,7 @@ void treeview_mouseup(SPType *sender, EventArgs *e) {
 		}
 		top += treeView->getItemHeight();
 	}
-	Win32WindowElement * winElement = (Win32WindowElement *)treeView->getWindowElement();
+	WindowElement * winElement = (WindowElement *)treeView->getWindowElement();
 	rectangle region;
 	region.x = treeView->getX();
 	region.y = treeView->getY();
@@ -107,10 +108,10 @@ void TreeViewElement::draw(int x, int y, GraphicsContext *g) {
 		if (item->isHighlighted()) {
             g->fillRectangle(x, y + top , this->getWidth(), itemHeight, this->getMainWindowElement()->skin->getColor("treeitem::focus.background.color", ""));
 		}
-		Color *color = (Color *)this->getMainWindowElement()->skin->getColor("treeview.foreground.color", "");
+		Color color =  this->getMainWindowElement()->skin->getColor("treeview.foreground.color", "");
 		if(item->isSelected()) {
-            if (FALSE)
-                color = (Color *)this->getAttributeObj("highlight");
+            if (false)
+                color = this->getColorAttribute("highlight", Color(0, 0, 255, 1));
             else
                 color = this->getMainWindowElement()->skin->getColor("treeitem::selected.foreground.color", "");
 		}

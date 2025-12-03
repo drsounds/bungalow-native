@@ -3,6 +3,7 @@
 #include "SPType.h"
 #include "Color.h"
 #include <map>
+#include <boost/lexical_cast.hpp>
 #include <string>
 #include <vector>
 #include "libspider.h"

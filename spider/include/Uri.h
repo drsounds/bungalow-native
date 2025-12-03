@@ -7,20 +7,23 @@
 using namespace std;
 
 namespace spider {
-	class Uri;
 	#ifndef URI_CLASS
-    class Uri : public string {
+    class Uri {
 	private:
 
 		vector<string> *fragments;
 	public:
+    	string uri;
 		string protocol;
 		string entity;
 		string id;
+    	string getUri() {
+    		return uri;
+    	}
 		Uri(string uri);
 		~Uri();
 	};
-	#define URI_CLASS;
+	#define URI_CLASS
 	#endif
 }
 

@@ -5,8 +5,6 @@
 namespace spider {
     namespace views {
         class DoctrineView;
-        class ContainerViewElement;
-        class TextElement;
         #ifdef CONTAINERVIEWELEMENT_CLASS
         #ifdef TEXTELEMENT_CLASS
         #ifndef DOCTRINEVIEW_CLASS

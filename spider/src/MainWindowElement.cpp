@@ -3,7 +3,6 @@
 #include "InputElement.h"
 #include "InputEventArgs.h"
 #include "SplitterElement.h"
-#include "DoctrineView.h"
 #include "PlayQueueView.h"
 #include "UserView.h"
 namespace spider {

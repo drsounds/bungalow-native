@@ -118,7 +118,9 @@ void TabBarElement::draw(int x, int y, GraphicsContext *g) {
     //g->fillRectangle(x, y, this->getWidth(), this->getHeight(), (Color *)this->getAttributeObj("bgcolor"));
     // Draw background image
 
-    g->skin->drawImageSlice("tabbar.background.image", g, x, y-1, this->getWidth(), this->getHeight());
+    map<string, slice *> *slices = this->skin->slices;
+
+    g->drawImageSlices(slices, "tabbar.background.image", x, y-1, this->getWidth(), this->getHeight());
 
     int left = 0;
     std::vector<Tab *>::iterator it = this->getTabs()->begin();

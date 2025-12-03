@@ -5,7 +5,7 @@ ArtistOverView::ArtistOverView(Element *parent)
  : ViewElement(parent)
 {
     //ctor
-    HBoxElement *header = new HBoxElement(this);
+    auto *header = new HBoxElement(this);
     header->set("height", "128");
 
 

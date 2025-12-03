@@ -128,7 +128,7 @@ void Element::applyStylesheet(Stylesheet *style) {
 
 void Element::applyColorAttributeFromSkin (string attr, string prop) {
     if (this->skin == NULL) {
-        this->skin = new Skin("skin.png", NULL);
+        this->skin = new Skin("skin.png");
     }
     cout << prop << "\r\n";
     cout << this->skin->colors << "\r\n";
@@ -142,7 +142,7 @@ void Element::applyColorAttributeFromSkin (string attr, string prop) {
 
 void Element::applyImageAttributeFromSkin (string attr, string prop) {
     if (this->skin == NULL) {
-        this->skin = new Skin("skin.png", NULL);
+        this->skin = new Skin("skin.png");
     }
     cout << attr << "\r\n";
     cout << skin << "\r\n";
@@ -331,14 +331,14 @@ void Element::draw(int x, int y, GraphicsContext *c) {
     string sel = "";
     sel.append(this->getType());
     sel.append(".background.image");
-    c->skin->drawImageSlice(sel, c, x, y, width, height);
+    c->drawImageSlices(this->skin->slices, sel, x, y, width, height);
 
     // Draw background image
     if (this->getId() != "" && this->getId().length() > 0) {
         string sel2 = "#";
         sel2.append(this->getId());
         sel2.append(".background.image");
-        c->skin->drawImageSlice(sel2, c, x, y, width, height);
+        c->drawImageSlices(this->skin->slices, sel2, x, y, width, height);
        // c->drawImage(this->backgroundImage,  x - scrollX, y - scrollY, width, height);
     }
 	//c->drawRectangle(x, y, this->getWidth(), this->getHeight(), (Color *)this->getAttributeObj("bgcolor"));

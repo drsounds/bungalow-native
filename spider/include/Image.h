@@ -20,7 +20,6 @@ struct pixel {
 void read_png_file(char* file_name);
 
 namespace spider {
-    class Color;
     /*!
      * Converts pixel to HTML color
      **/

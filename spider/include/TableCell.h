@@ -5,8 +5,7 @@
 #include <string>
 using namespace std;
 namespace spider {
-class TableElement;
-class TableRow;
+#ifdef TABLEELEMENT_CLASS
 #ifndef TABLECELL_CLASS
 #ifdef TABLEROW_CLASS
 class TableCell
@@ -22,6 +21,7 @@ class TableCell
     private:
 };
 #define TABLECELL_CLASS
+#endif
 #endif
 #endif
 }

@@ -2,7 +2,6 @@
 #define TREEVIEWELEMENT_H
 #include "Uri.h"
 #include "Element.h"
-#include "SPType.h"
 #include "EventArgs.h"
 #include "TreeItem.h"
 #include <string>
@@ -10,6 +9,11 @@
 using namespace std;
 
 namespace spider {
+#ifdef GRAPHICSCONTEXT_CLASS
+#ifdef ELEMENT_CLASS
+#ifdef EVENTARGS_CLASS
+#ifdef TREEITEM_CLASS
+#ifndef TREEVIEWEVENTARGS_CLASS
     class TreeViewEventArgs : public EventArgs {
     protected:
 
@@ -40,7 +44,11 @@ namespace spider {
 		int getItemHeight();
         void addItem(TreeItem *item);
 	};
-
-
+#define TREEVIEWELEMENT_CLASS
+#endif
+#endif
+#endif
+#endif
+#endif
 }
 #endif // TREEVIEWELEMENT_H

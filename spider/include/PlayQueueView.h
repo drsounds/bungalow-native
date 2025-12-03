@@ -1,11 +1,11 @@
 #ifndef PLAYQUEUEVIEW_H
 #define PLAYQUEUEVIEW_H
+#include <regex>
 #include "Element.h"
 #include "ViewElement.h"
 #include "ContainerViewElement.h"
 namespace spider {
     namespace views {
-        class ContainerViewElement;
         #ifdef CONTAINERVIEWELEMENT_CLASS
         #ifndef PLAYQUEUEVIEW_CLASS
 

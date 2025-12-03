@@ -5,16 +5,21 @@
 #include <string>
 using namespace std;
 namespace spider {
-class TableCell;
-class TableElement;
+#ifdef TABLEELEMENT_CLASS
+#ifdef TABLEROW_CLASS
 #ifdef TABLECELL_CLASS
-class TableColumnHeader : public TableCell {
-    public:
-        TableColumnHeader(TableElement *tableElement);
-        virtual ~TableColumnHeader();
+class TableColumnHeader {
+public:
+    TableColumnHeader(TableElement *tableElement);
+    virtual ~TableColumnHeader();
+    string uri;
+    string title;
+    TableElement *tableElement;
     protected:
     private:
 };
+#endif
+#endif
 #endif
 }
 

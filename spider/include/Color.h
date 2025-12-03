@@ -6,7 +6,6 @@ namespace spider {
 #ifdef SPTYPE_CLASS
 #ifndef COLOR_CLASS
 class Color : public SPType {
-private:
     short r;
     short g;
     short b;

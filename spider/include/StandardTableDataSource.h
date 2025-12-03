@@ -1,14 +1,10 @@
 #ifndef STANDARDTABLEDATASOURCE_H
 #define STANDARDTABLEDATASOURCE_H
 #include <vector>
-#include "TableCell.h"
 #include "TableDataSource.h"
-#include "TableRow.h"
+
 using namespace std;
 namespace spider {
-class TableRow;
-class TableColumnHeader;
-class TableDataSource;
 #ifdef TABLEDATASOURCE_CLASS
 #ifndef STANDARDTABLEDATASOURCE_CLASS
 class StandardTableDataSource : public TableDataSource

@@ -1,9 +1,9 @@
 #include "TableColumnHeader.h"
 namespace spider {
 TableColumnHeader::TableColumnHeader(TableElement *tableElement)
- : TableCell(TableElement)
 {
     //ctor
+    this->tableElement = tableElement;
 }
 
 TableColumnHeader::~TableColumnHeader()

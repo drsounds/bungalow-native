@@ -1,7 +1,7 @@
 #include "PlayQueueView.h"
-#include "HeaderElement.h"
-#include "TableElement.h"
+
 #include "MockTableDataSource.h"
+#include "TableElement.h"
 using namespace std;
 namespace spider {
     namespace views {
@@ -23,7 +23,7 @@ namespace spider {
             /*HeatherElement *headerElement = new HeaderElement(this);
             headerElement->title->setTitle("Test");
             this->appendChild(headerElement);*/
-            TableElement *tableView = new TableElement(this, new MockTableDataSource());
+            TableElement *tableView = new TableElement(this, new spider::MockTableDataSource());
             this->appendChild(tableView);
             tableView->setHeight(100);
         }
