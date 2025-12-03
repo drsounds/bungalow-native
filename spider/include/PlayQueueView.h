@@ -1,14 +1,15 @@
 #ifndef PLAYQUEUEVIEW_H
 #define PLAYQUEUEVIEW_H
-#include <regex>
-#include "Element.h"
-#include "ViewElement.h"
-#include "ContainerViewElement.h"
-namespace spider {
-    namespace views {
-        #ifdef CONTAINERVIEWELEMENT_CLASS
-        #ifndef PLAYQUEUEVIEW_CLASS
 
+#include <string>
+
+#include "ContainerViewElement.h"
+
+using namespace std;
+
+namespace spider {
+    class Element;
+    namespace views {
         class PlayQueueView : public ContainerViewElement
         {
             public:
@@ -21,9 +22,6 @@ namespace spider {
             protected:
             private:
         };
-        #define PLAYQUEUEVIEW_CLASS
-        #endif
-        #endif
     }
 }
 

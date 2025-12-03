@@ -2,9 +2,6 @@
 #define HBOXELEMENT_H
 #include "Element.h"
 namespace spider {
-    class Element;
-    #ifdef ELEMENT_CLASS
-    #ifndef HBOX_ELEMENT
     class HBoxElement : public Element {
 
     public:
@@ -17,8 +14,5 @@ namespace spider {
         HBoxElement();
         void pack();
     };
-    #define HBOX_ELEMENT
-    #endif
-    #endif
 }
 #endif // HBOXELEMENT_H

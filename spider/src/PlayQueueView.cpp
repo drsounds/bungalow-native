@@ -1,5 +1,5 @@
 #include "PlayQueueView.h"
-
+#include <regex>
 #include "MockTableDataSource.h"
 #include "TableElement.h"
 using namespace std;

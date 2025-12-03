@@ -1,15 +1,18 @@
 #ifndef TABBARELEMENT_H
 #define TABBARELEMENT_H
+
 #include <string>
-#include "Element.h"
-#include "MouseEventArgs.h"
 #include <vector>
+
+#include "EventArgs.h"
+#include "Element.h"
+
 using namespace std;
 namespace spider {
 class Element;
+class GraphicsContext;
 class Image;
 class TabBarElement;
-#ifndef TAB_CLASS
 class Tab {
 protected:
 public:
@@ -32,19 +35,13 @@ public:
     Tab(TabBarElement *tabBar, string name, string id, string uri);
     ~Tab();
 };
-#define TAB_CLASS
-#endif
 class EventArgs;
-#ifndef TABBAREVENTARGS_CLASS
 
 class TabBarEventArgs : public EventArgs {
 public:
     TabBarEventArgs(Tab *tab);
     Tab *tab;
 };
-#define TABBAREVENTARGS_CLASS
-#endif
-#ifndef TABBARELEMENT_CLASS
 class TabBarElement : public Element
 {
     public:
@@ -65,8 +62,6 @@ class TabBarElement : public Element
     protected:
     private:
 };
-#define TABBARELEMENT_CLASS
-#endif
 }
 
 

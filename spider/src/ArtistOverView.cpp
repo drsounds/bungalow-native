@@ -1,5 +1,8 @@
 #include "ArtistOverView.h"
 
+#include "HBoxElement.h"
+#include "Element.h"
+
 namespace spider {
 ArtistOverView::ArtistOverView(Element *parent)
  : ViewElement(parent)

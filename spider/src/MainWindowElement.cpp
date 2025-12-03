@@ -3,7 +3,12 @@
 #include "InputElement.h"
 #include "InputEventArgs.h"
 #include "SplitterElement.h"
+#include "InfoElement.h"
+#include "TreeItem.h"
+#include "ViewStackElement.h"
+#include "Skin.h"
 #include "PlayQueueView.h"
+#include "TreeViewElement.h"
 #include "UserView.h"
 namespace spider {
     MainWindowElement::MainWindowElement()
@@ -78,24 +83,21 @@ namespace spider {
         searchElement->addEventListener("enter", &search_entered);
         // Add the info element
         this->infoElement = new spider::InfoElement(this);
-        this->infoElement->set("height", "28");
-        this->appendChild(this->infoElement);
+        this->infoElement->setIntegerAttribute("height", 28);
+        this->appendChild((Node *)this->infoElement);
         this->infoElement->hide();
-
 
         // Add header children
 
-        spider::HBoxElement *body = new spider::HBoxElement(this);
+        HBoxElement *body = new HBoxElement(this);
         body->set("bgcolor", "#474747");
         body->set("flex", "1");
         body->set("height", "100");
 
         this->appendChild(body);
 
-
-
-            // Inside body
-        spider::VBoxElement *sidebar = new spider::VBoxElement(body);
+        // Inside body
+        VBoxElement *sidebar = new VBoxElement(body);
         sidebar->set("width", "220");
         sidebar->set("bgcolor", "#474747");
         body->appendChild(sidebar);
@@ -132,12 +134,12 @@ namespace spider {
         viewStack->setWindowElement(this->getWindowElement());
         viewStack->appendChild(new spider::views::StartView(this));
         viewStack->appendChild(new spider::views::PlayQueueView(this));
-        spider::HBoxElement *footer = new spider::HBoxElement(this);
+        HBoxElement *footer = new spider::HBoxElement(this);
         footer->set("bgcolor", "#444444");
         footer->set("height", "86");
         this->appendChild(footer);
-        // Add header buttons
 
+        // Add header buttons
 
         this->pack();
         this->navigate("spacify:internal:start");

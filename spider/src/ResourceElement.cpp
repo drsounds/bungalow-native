@@ -1,4 +1,9 @@
 #include "ResourceElement.h"
+#include "GraphicsContext.h"
+#include "FontStyle.h"
+#include "Resource.h"
+#include <regex>
+
 namespace spider {
     ResourceElement::ResourceElement(Resource *resource, Element *parent)
      : Element(parent)

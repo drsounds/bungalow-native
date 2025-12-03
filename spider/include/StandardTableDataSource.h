@@ -5,8 +5,8 @@
 
 using namespace std;
 namespace spider {
-#ifdef TABLEDATASOURCE_CLASS
-#ifndef STANDARDTABLEDATASOURCE_CLASS
+    class TableRow;
+    class TableColumnHeader;
 class StandardTableDataSource : public TableDataSource
 {
     public:
@@ -27,9 +27,6 @@ class StandardTableDataSource : public TableDataSource
     protected:
     private:
 };
-#define STANDARDTABLEDATASOURCE_CLASS
-#endif
-#endif
 }
 
 #endif // STANDARDTABLEDATASOURCE_H

@@ -1,5 +1,8 @@
 #include "BoxElement.h"
 
+#include "Element.h"
+#include "Node.h"
+
 namespace spider {
 BoxElement::BoxElement()
  : Element()

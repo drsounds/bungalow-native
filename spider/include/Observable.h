@@ -7,9 +7,6 @@
 #include "EventArgs.h"
 using namespace std;
 namespace spider {
-    #ifdef SPTYPE_CLASS
-    #ifdef EVENTARGS_CLASS
-    #ifndef OBSREVABLE_CLASS
     class Observable
     {
         public:
@@ -21,10 +18,6 @@ namespace spider {
             list<Observer *> *observers;
         private:
     };
-    #define OBSERVABLE_CLASS
-    #endif
-    #endif
-    #endif
 }
 
 #endif // OBSERVABLE_H

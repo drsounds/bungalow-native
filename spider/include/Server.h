@@ -12,8 +12,6 @@ class Server
         Server();
         virtual ~Server();
         void request(string method, string uri, void *data, spider_server_reply *reply);
-    protected:
-    private:
 };
 }
 #endif // SERVER_H

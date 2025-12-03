@@ -1,4 +1,8 @@
 #include "HeaderElement.h"
+
+#include "ImageElement.h"
+#include "TitleElement.h"
+
 namespace spider {
 HeaderElement::HeaderElement(Element *parent)
  : HBoxElement(parent)

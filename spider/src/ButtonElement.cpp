@@ -1,12 +1,12 @@
 #include "ButtonElement.h"
+#include "GraphicsContext.h"
+#include "Color.h"
 
-spider::ButtonElement::ButtonElement()
-: spider::Element() {
-
+spider::ButtonElement::ButtonElement() {
 	this->setColorAttribute("bgcolor", Color(0, 0, 0, 1));
 	this->setColorAttribute("fgcolor", Color(255, 255, 255, 1));
 }
-void spider::ButtonElement::draw(int x, int y, spider::GraphicsContext *c)
+void spider::ButtonElement::draw(int x, int y, GraphicsContext *c)
 {
     if (this->absoluteBounds == NULL)
     this->absoluteBounds = new rectangle;

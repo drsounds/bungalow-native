@@ -4,8 +4,7 @@
 
 namespace spider {
     class TabbarViewElement;
-    #ifdef TABBARVIEWELEMENT_CLASS
-    #ifndef ARTISTVIEW_CLASS
+    class Element;
     class ArtistView : public TabbarViewElement
     {
         public:
@@ -17,8 +16,5 @@ namespace spider {
         protected:
         private:
     };
-    #define ARTISTVIEW_CLASS
-    #endif
-    #endif
 }
 #endif // ARTISTVIEW_H

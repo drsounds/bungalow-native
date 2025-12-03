@@ -1,4 +1,7 @@
 #include "TableCell.h"
+
+#include "TableRow.h"
+
 namespace spider {
 TableCell::TableCell(TableRow *tableRow)
 {

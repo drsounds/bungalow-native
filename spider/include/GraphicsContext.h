@@ -1,16 +1,17 @@
 #ifndef GRAPHICSCONTEXT_H
 #define GRAPHICSCONTEXT_H
+#include "Color.h"
 #include "FontStyle.h"
 #include "libspider.h"
-#include "Color.h"
-#include "Skin.h"
 
 namespace spider {  
 	class WindowElement;
 	class Element;
-	#ifdef COLOR_CLASS
-	#ifdef SKIN_CLASS
-	#ifndef GRAPHICSCONTEXT_CLASS
+	class Image;
+	class slice;
+	class Skin;
+	class Color;
+	class FontStyle;
     class GraphicsContext {
 	protected:
 		FontStyle *fontStyle;
@@ -44,10 +45,6 @@ namespace spider {
 		virtual void drawInputElement(Element *srcElement, int x, int y, int w, int h) { return; }
 		virtual void setOrigo(const int& x, const int& y);
 	};
-	#define GRAPHICSCONTEXT_CLASS
-	#endif
-	#endif
-	#endif
 
 }
 #endif // GRAPHICSCONTEXT_H

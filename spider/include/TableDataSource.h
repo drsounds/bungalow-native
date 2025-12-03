@@ -1,10 +1,11 @@
 #ifndef TABLEVIEWDATASOURCE_H
 #define TABLEVIEWDATASOURCE_H
-#include "TableCell.h"
+#include <string>
 #include <vector>
+using namespace std;
+
 namespace spider {
-#ifdef TABLECELL_CLASS
-#ifndef TABLEDATASOURCE_CLASS
+class TableCell;
 class TableDataSource
 {
     public:
@@ -30,8 +31,5 @@ class TableDataSource
     protected:
     private:
 };
-#define TABLEDATASOURCE_CLASS
-#endif
-#endif
 }
 #endif // TABLEVIEWDATASOURCE_H

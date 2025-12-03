@@ -3,6 +3,8 @@
 #include <string>
 #include <vector>
 #include <regex>
+#include "HeaderElement.h"
+
 using namespace std;
 namespace spider {
     namespace views {
@@ -35,13 +37,13 @@ namespace spider {
             std::vector<std::string> strs;
             boost::split(strs, uri, boost::is_any_of(":"));
             string id = strs.at(2);
-            stringbuffer = new char[50];
+            string buffer = new char[50];
             int length = id.copy(buffer, id.size(), 0);
             buffer[length] = '\0';
             this->header->title->setTitle(string(buffer));
         }
         bool UserView::acceptsUri(string uri) {
-            stringuri2 = (string)uri.c_str();
+            string uri2 = (string)uri.c_str();
             bool a = std::regex_match(uri2, std::regex("spacify:user:(.*)"));
             return a;
         }

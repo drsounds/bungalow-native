@@ -1,15 +1,9 @@
 #ifndef VIEWELEMENT_H
 #define VIEWELEMENT_H
 #include "VBoxElement.h"
-#include "Uri.h"
 #include <string>
 using namespace std;
 namespace spider {
-    class ViewElement;
-    #ifdef URI_CLASS
-    #ifdef ELEMENT_CLASS
-    #ifndef VIEWELEMENT_CLASS
-    #ifdef VBOXELEMENT_CLASS
     class ViewElement : public VBoxElement
     {
         public:
@@ -27,10 +21,5 @@ namespace spider {
         protected:
         private:
     };
-    #define VIEWELEMENT_CLASS
-    #endif
-    #endif
-    #endif
-    #endif
 }
 #endif // VIEWELEMENT_H

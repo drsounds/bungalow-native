@@ -1,4 +1,11 @@
 #include "Node.h"
+
+#include <map>
+
+#include "Color.h"
+
+using namespace std;
+
 namespace spider {
 
 

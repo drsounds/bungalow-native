@@ -2,7 +2,6 @@
 #define OBSERVER_H
 #include "libspider.h"
 namespace spider {
-#ifndef OBSERVER_CLASS
 class Observer {
 private:
     string _event;
@@ -21,7 +20,5 @@ public:
     ~Observer() {
     }
 };
-#define OBSERVER_CLASS
-#endif
 }
 #endif // OBSERVER_H

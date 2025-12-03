@@ -3,10 +3,6 @@
 #include "Node.h"
 #include "Observable.h"
 #include "FontStyle.h"
-
-#include "GraphicsContext.h"
-#include "Stylesheet.h"
-#include "Skin.h"
 #include <vector>
 
 using namespace std;
@@ -14,16 +10,10 @@ using namespace std;
 namespace spider {
     class Skin;
     class GraphicsContext;
-    class Observable;
-    #ifdef STYLESHEET_CLASS
-    #ifdef FONTSTYLE_CLASS
-    #ifdef SKIN_CLASS
-    #ifdef OBSERVABLE_CLASS
-    #ifdef NODE_CLASS
-    #ifndef ELEMENT_CLASS
+    class Stylesheet;
+    class Image;
+    class FontStyle;
     class Element : public Node, public Observable {
-
-
     public:
         Skin *skin;
         void scroll(int x, int y);
@@ -155,13 +145,6 @@ namespace spider {
         virtual void pack() {}
 
     };
-    #define ELEMENT_CLASS
-    #endif
-    #endif
-    #endif
-    #endif
-    #endif
-    #endif
 }
 
 #endif // ELEMENT_H

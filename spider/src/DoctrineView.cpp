@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 #include <boost/algorithm/string.hpp>
+#include "Element.h"
+#include "TextElement.h"
 
 
 using namespace std;

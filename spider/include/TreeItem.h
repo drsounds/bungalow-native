@@ -5,9 +5,6 @@
 #include <string>
 using namespace std;
 namespace spider {
-#ifdef URI_CLASS
-#ifdef SPTYPE_CLASS
-#ifndef TREEITEM_CLASS
     class TreeItem : SPType {
     protected:
         bool highlighted;
@@ -41,9 +38,5 @@ namespace spider {
 		~TreeItem();
 
 	};
-#define TREEITEM_CLASS
-#endif
-#endif
-#endif
 }
 #endif // TREEITEM_H

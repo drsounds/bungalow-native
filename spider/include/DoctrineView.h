@@ -1,13 +1,9 @@
 #ifndef DOCTRINEVIEW_H
 #define DOCTRINEVIEW_H
 #include "ContainerViewElement.h"
-#include "TextElement.h"
 namespace spider {
     namespace views {
-        class DoctrineView;
-        #ifdef CONTAINERVIEWELEMENT_CLASS
-        #ifdef TEXTELEMENT_CLASS
-        #ifndef DOCTRINEVIEW_CLASS
+        class TextElement;
         class DoctrineView : public ContainerViewElement
         {
             public:
@@ -19,10 +15,6 @@ namespace spider {
                 TextElement *text;
             private:
         };
-        #define DOCTRINEVIEW_CLASS
-        #endif
-        #endif
-        #endif
     }
 }
 #endif // DOCTRINEVIEW_H

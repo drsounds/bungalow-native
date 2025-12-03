@@ -4,8 +4,6 @@
 #include <vector>
 namespace spider {
 class TableDataSource;
-#ifdef TABLEDATASOURCE_CLASS
-#ifndef MOCKTABLEDATASOURCE_CLASS
 class MockTableDataSource : public TableDataSource
 {
     public:
@@ -31,7 +29,5 @@ class MockTableDataSource : public TableDataSource
     private:
 };
 #define MOCKTABLEDATASOURCE_CLASS
-#endif
-#endif
 }
 #endif // MOCKTABLEDATASOURCE_H

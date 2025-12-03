@@ -5,21 +5,18 @@
 string RGBToHex(int rNum, int gNum, int bNum);
 
 namespace spider {
-	class Element;
-	#ifdef ELEMENT_CLASS
+	class Color;
+	class GraphicsContext;
 	class ButtonElement : public Element {
 	public:
         ButtonElement(Element *parent) : Element(parent) {
 
 	    }
 		ButtonElement();
-		void draw(int x, int y, spider::GraphicsContext *c);
+		void draw(int x, int y, GraphicsContext *c);
 		virtual string getType() {
             return "button";
 		}
 	};
-	#endif
 }
-
-
 #endif // BUTTONELEMENT_H

@@ -2,8 +2,8 @@
 #define RESOURCEELEMENT_H
 
 #include "Element.h"
-#include "Resource.h"
 namespace spider {
+    class Resource;
 class ResourceElement : public Element
 {
     public:

@@ -1,5 +1,8 @@
 #include "Skin.h"
 
+#include "Image.h"
+#include "Color.h"
+
 #include <iostream>
 
 namespace spider {
@@ -59,11 +62,11 @@ bool Skin::hasImage(string selector) {
     }
     return false;
 }
-Color *Skin::getColor(string selector, string def) {
+Color Skin::getColor(string selector, string def) {
     if (!this->hasColor(selector)) {
-        return new Color(255, 255, 255, 255);
+        return Color(255, 255, 255, 255);
     }
-    return spider_pixel_to_colour((*this->colors)[selector]);
+    return *spider_pixel_to_colour((*this->colors)[selector]);
 }
 Image *Skin::getImage(string selector, string def) {
     if (!this->hasImage(selector)) {

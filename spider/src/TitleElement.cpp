@@ -1,4 +1,7 @@
 #include "TitleElement.h"
+
+#include "Color.h"
+
 namespace spider {
 TitleElement::TitleElement()
 {
@@ -26,17 +29,17 @@ TitleElement::TitleElement(Element *parent)
  : VBoxElement(parent){
     entity = new TextElement(this);
     entity->setInnerText("Object");
-    entity->set("height", "180");
-    entity->set("fgcolor", "#888888");
-    entity->set("size", "15");
+    entity->setIntegerAttribute("height", 180);
+    entity->setColorAttribute("fgcolor", Color(10, 10, 10, 1));
+    entity->setIntegerAttribute("size", 15);
     entity->set("width", "100%");
     this->appendChild(entity);
 
     title = new TextElement(this);
     title->setInnerText("Title");
-    title->set("height", "160");
-    title->set("fgcolor", "#ffffff");
-    title->set("size", "25");
+    title->setIntegerAttribute("height", 160);
+    title->setColorAttribute("fgcolor", Color(255, 255, 255, 1));
+    title->setIntegerAttribute("size", 25);
     title->set("width", "100%");
     this->appendChild(title);
 }

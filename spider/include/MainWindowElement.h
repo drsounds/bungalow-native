@@ -1,13 +1,13 @@
 #ifndef MAINWINDOWELEMENT_H
 #define MAINWINDOWELEMENT_H
 #include "VBoxElement.h"
-#include "HBoxElement.h"
-#include "ViewStackElement.h"
-#include "ButtonElement.h"
-#include "InfoElement.h"
-#include "TreeViewElement.h"
-#include "Skin.h"
 namespace spider {
+    class HBoxElement;
+    class ViewStackElement;
+    class TreeViewElement;
+    class InfoElement;
+    class Stylesheet;
+    class MessageType;
 class MainWindowElement : public VBoxElement
 {
     protected:

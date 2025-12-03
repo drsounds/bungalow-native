@@ -1,9 +1,10 @@
 #ifndef HEADERELEMENT_H
 #define HEADERELEMENT_H
 #include "HBoxElement.h"
-#include "ImageElement.h"
-#include "TitleElement.h"
 namespace spider {
+    class ImageElement;
+    class Element;
+    class TitleElement;
     class HeaderElement : public HBoxElement
     {
         public:

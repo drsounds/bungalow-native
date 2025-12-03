@@ -1,11 +1,12 @@
 #ifndef VIEWSTACKELEMENT_H
 #define VIEWSTACKELEMENT_H
-#include "BoxElement.h"
-#include "ViewElement.h"
+#include "VBoxElement.h"
 #include <stack>
 #include <string>
 using namespace std;
 namespace spider {
+    class Element;
+    class ViewElement;
     class ViewStackElement : public VBoxElement {
     private:
         std::stack<string> *history;

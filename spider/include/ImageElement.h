@@ -2,8 +2,7 @@
 #define IMAGEELEMENT_H
 #include "Element.h"
 namespace spider {
-#ifdef ELEMENT_CLASS
-#ifndef IMAGEELEMENT_CLASS
+class GraphicsContext;
 class ImageElement : public Element
 {
     public:
@@ -16,9 +15,6 @@ class ImageElement : public Element
     protected:
     private:
 };
-#define IMAGEELEMENT_CLASS
-#endif
-#endif
 }
 
 #endif // IMAGEELEMENT_H

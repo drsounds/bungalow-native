@@ -5,16 +5,13 @@
 #include <vector>
 #include <png.h>
 using namespace std;
-#ifndef PIXEL_STRUCT
+
 struct pixel {
     unsigned char r;
     unsigned char g;
     unsigned char b;
     unsigned char a;
 };
-#define PIXEL_STRUCT
-#endif
-
 
 /*! \from http://zarb.org/~gc/html/libpng.html */
 void read_png_file(char* file_name);

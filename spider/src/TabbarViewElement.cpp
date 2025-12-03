@@ -1,4 +1,10 @@
 #include "TabbarViewElement.h"
+
+#include "Element.h"
+#include "ViewElement.h"
+#include "TabBarElement.h"
+#include "ViewStackElement.h"
+
 namespace spider {
     int tabbar_tabselected(SPType *sender, EventArgs *e) {
         TabBarEventArgs *args = (TabBarEventArgs *)e;

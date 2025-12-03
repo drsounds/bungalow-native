@@ -2,8 +2,10 @@
 #include "ButtonElement.h"
 #include "HBoxElement.h"
 #include "TableElement.h"
-#include "MockTableDataSource.h"
+#include "Color.h"
+
 #include <regex>
+
 namespace spider {
     namespace views {
         WhatsNewView::WhatsNewView()
@@ -75,11 +77,11 @@ namespace spider {
             this->appendChild(hbox2);
 
             HBoxElement *title2 = new HBoxElement(hbox);
-            title2->set("fgcolor", "#ffaaff");
+            title2->setColorAttribute("fgcolor", Color(255, 127, 255, 1));
             title2->setInnerText("Artists you might like \0");
-            title2->set("height", "60");
-            title2->set("width", "620");
-            title2->set("size", "16");
+            title2->setIntegerAttribute("height", 60);
+            title2->setIntegerAttribute("width", 620);
+            title2->setIntegerAttribute("size", 16);
             hbox2->appendChild(title2);
 
         }

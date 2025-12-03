@@ -7,7 +7,6 @@
 using namespace std;
 
 namespace spider {
-	#ifndef URI_CLASS
     class Uri {
 	private:
 
@@ -23,8 +22,6 @@ namespace spider {
 		Uri(string uri);
 		~Uri();
 	};
-	#define URI_CLASS
-	#endif
 }
 
 #endif // URI_H

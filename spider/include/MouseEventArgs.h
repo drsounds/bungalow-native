@@ -1,10 +1,8 @@
 #ifndef MOUSEEVENT_H
 #define MOUSEEVENT_H
-#include "libspider.h"
 #include "EventArgs.h"
 namespace spider {
 class MouseEventArgs : public EventArgs {
-private:
     int button;
     int x;
     int y;

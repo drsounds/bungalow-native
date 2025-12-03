@@ -1,12 +1,12 @@
 #ifndef USERVIEW_H
 #define USERVIEW_H
-#include "TabbarViewElement.h"
-
-#include "HeaderElement.h"
+#include "ViewElement.h"
 #include <string>
 using namespace std;
 namespace spider {
     namespace views {
+        class HeaderElement;
+        class Element;
         class UserView : public ViewElement
         {
             public:

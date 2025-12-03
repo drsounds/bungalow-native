@@ -2,7 +2,6 @@
 #define FONTSTYLE_H
 #include "libspider.h"
 namespace spider {
-    #ifndef FONTSTYLE_CLASS
     class FontStyle {
         int height;
         int weight;
@@ -34,8 +33,6 @@ namespace spider {
         }
 
     };
-    #define FONTSTYLE_CLASS
-    #endif
 }
 
 #endif // FONTSTYLE_H

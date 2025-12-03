@@ -4,9 +4,7 @@
 #include <string>
 using namespace std;
 namespace spider {
-    class BoxElement;
-    #ifdef BOXELEMENT_CLASS	
-    #ifndef VBOXELEMENT_CLASS
+	class Element;
     class VBoxElement : public BoxElement {
 
 	public:
@@ -18,8 +16,5 @@ namespace spider {
         }
 		void pack();
 	};
-    #define VBOXELEMENT_CLASS
-    #endif
-	#endif
 }
 #endif // VBOXELEMENT_H

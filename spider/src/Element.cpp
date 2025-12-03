@@ -4,6 +4,12 @@
 #include "WindowElement.h"
 #include "Observable.h"
 #include "MouseEventArgs.h"
+#include "GraphicsContext.h"
+#include "Skin.h"
+#include "Image.h"
+#include "Observer.h"
+#include "Stylesheet.h"
+#include "FontStyle.h"
 
 namespace spider {
 

@@ -1,5 +1,10 @@
 #include "TextElement.h"
 
+#include "Element.h"
+#include "GraphicsContext.h"
+#include "FontStyle.h"
+#include "Color.h"
+
 namespace spider {
 TextElement::TextElement(Element *parent)
  : Element(parent)

@@ -1,13 +1,12 @@
 #ifndef SKIN_H
 #define SKIN_H
 #include <map>
-#include "Image.h"
-#include "Color.h"
 #include <string>
 using namespace std;
 namespace spider {
-
-#ifndef SLICE_CLASS
+class Image;
+class Color;
+class pixel;
 class slice {
 public:
     Image *image;
@@ -21,14 +20,6 @@ public:
     int bottomBorder;
     slice(Image *image, int x1, int x2, int y1, int y2, int leftBorder, int topBorder, int rightBorder, int bottomBorder);
 };
-#define SLICE_CLASS
-#endif
-
-#ifdef COLOR_CLASS
-#ifdef IMAGE_CLASS
-#ifdef PIXEL_STRUCT
-#ifdef SLICE_CLASS
-#ifndef SKIN_CLASS
 class Skin
 {
     public:
@@ -47,11 +38,5 @@ class Skin
     protected:
     private:
 };
-#define SKIN_CLASS
-#endif
-#endif
-#endif
-#endif
-#endif
 }
 #endif // SKIN_H

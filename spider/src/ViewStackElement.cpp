@@ -1,4 +1,7 @@
 #include "ViewStackElement.h"
+
+#include <iostream>
+
 #include "WhatsNewView.h"
 #include <regex>
 #include "PlayQueueView.h"
@@ -26,17 +29,16 @@ namespace spider {
             exit(0);
         }
     }
-    ViewStackElement::ViewStackElement()
-    : VBoxElement::VBoxElement() {
-         this->history = new std::stack<string *>;
-         this->future = new std::stack<string *>;
+    ViewStackElement::ViewStackElement() {
+         this->history = new std::stack<string>;
+         this->future = new std::stack<string>;
     }
 
     ViewStackElement::ViewStackElement(Element *parent)
      : VBoxElement::VBoxElement(parent) {
          this->setParent(this);
-         this->history = new std::stack<string *>;
-         this->future = new std::stack<string *>;
+         this->history = new std::stack<string>;
+         this->future = new std::stack<string>;
          this->activeView = NULL;
         vector<Node *> *children = this->getChildNodes();
     }
@@ -60,11 +62,6 @@ namespace spider {
      **/
     void ViewStackElement::navigate(string uri) {
         // TODO add navigation handler
-
-        std::stack<string *> *history = this->history;
-        ViewStackElement *th = this;
-
-
         // Hide all views
         this->pack();
         this->invalidate();

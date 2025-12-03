@@ -1,4 +1,12 @@
 #include "TabBarElement.h"
+
+#include <iostream>
+
+#include "MouseEventArgs.h"
+#include "Color.h"
+#include "Skin.h"
+#include "GraphicsContext.h"
+
 namespace spider {
 
 Tab::Tab(TabBarElement *tabBar, string name, string id, string uri) {
@@ -97,7 +105,7 @@ void TabBarElement::mousedown(int mouseButton, int x, int y) {
             tabBar->activeTab = tab;
             TabBarEventArgs *args = new TabBarEventArgs(tab);
             tabBar->notify(string("tabselected"), (SPType *)tabBar, (EventArgs *)args);
-        cout << title.c_str();
+            cout << title.c_str();
             break;
         }
 

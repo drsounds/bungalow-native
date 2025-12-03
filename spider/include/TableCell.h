@@ -1,13 +1,10 @@
 #ifndef TABLECELL_H
 #define TABLECELL_H
-#include "TableRow.h"
-#include "TableElement.h"
 #include <string>
 using namespace std;
 namespace spider {
-#ifdef TABLEELEMENT_CLASS
-#ifndef TABLECELL_CLASS
-#ifdef TABLEROW_CLASS
+    class TableRow;
+    class TableElement;
 class TableCell
 {
     public:
@@ -20,10 +17,6 @@ class TableCell
     protected:
     private:
 };
-#define TABLECELL_CLASS
-#endif
-#endif
-#endif
 }
 
 #endif // TABLECELL_H

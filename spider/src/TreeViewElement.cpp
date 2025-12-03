@@ -2,6 +2,12 @@
 #include "MouseEventArgs.h"
 #include "WindowElement.h"
 
+#include "TreeItem.h"
+
+#include "GraphicsContext.h"
+#include "Skin.h"
+#include "Color.h"
+
 namespace spider {
 
 void treeview_mousedown(SPType *sender, EventArgs *e) {
@@ -116,9 +122,9 @@ void TreeViewElement::draw(int x, int y, GraphicsContext *g) {
                 color = this->getMainWindowElement()->skin->getColor("treeitem::selected.foreground.color", "");
 		}
 
-		rectangle strB = g->measureString(item->text(), font);
+		rectangle strB = g->measureString(item->getText(), font);
         int ttop = (top + (itemHeight / 2)) - (strB.height / 2);
-		g->drawString(item->text(), this->getFontStyle(), (Color *)color, 20 + x, y + ttop, this->getWidth(), itemHeight);
+		g->drawString(item->getText(), this->getFontStyle(), color, 20 + x, y + ttop, this->getWidth(), itemHeight);
 
 		top += itemHeight;
 	}

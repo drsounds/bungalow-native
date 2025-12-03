@@ -3,6 +3,7 @@
 #include "TextElement.h"
 
 namespace spider {
+class Element;
 class LinkElement : public TextElement
 {
     public:
