@@ -1,16 +1,18 @@
 #include "app.h"
 
+#include "SpiderWidget.h"
+
 wxIMPLEMENT_APP(SpacifyApp);
- 
+
 bool SpacifyApp::OnInit()
 {
     SpacifyFrame *frame = new SpacifyFrame();
     frame->Show(true);
     return true;
 }
- 
+
 SpacifyFrame::SpacifyFrame()
-    : wxFrame(NULL, wxID_ANY, "Hello World")
+    : wxFrame(NULL, wxID_ANY, "Spider")
 {
     wxMenu *menuFile = new wxMenu;
     menuFile->Append(ID_Hello, "&Hello...\tCtrl-H",
@@ -29,24 +31,23 @@ SpacifyFrame::SpacifyFrame()
  
     CreateStatusBar();
     SetStatusText("Welcome to wxWidgets!");
- 
-    Bind(wxEVT_MENU, &MyFrame::OnHello, this, ID_Hello);
-    Bind(wxEVT_MENU, &MyFrame::OnAbout, this, wxID_ABOUT);
-    Bind(wxEVT_MENU, &MyFrame::OnExit, this, wxID_EXIT);
+
+    SpiderWidget *spider_widget = new SpiderWidget(this, wxID_ANY, "Hello World");
+    spider_widget->Show();
 }
  
-void MyFrame::OnExit(wxCommandEvent& event)
+void SpacifyFrame::OnExit(wxCommandEvent& event)
 {
     Close(true);
 }
  
-void MyFrame::OnAbout(wxCommandEvent& event)
+void SpacifyFrame::OnAbout(wxCommandEvent& event)
 {
     wxMessageBox("This is a wxWidgets Hello World example",
                  "About Hello World", wxOK | wxICON_INFORMATION);
 }
  
-void MyFrame::OnHello(wxCommandEvent& event)
+void SpacifyFrame::OnHello(wxCommandEvent& event)
 {
     wxLogMessage("Hello world from wxWidgets!");
 }

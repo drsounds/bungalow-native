@@ -9,9 +9,9 @@ namespace spider {
 	class GraphicsContext;
 	class WindowElement : public VBoxElement {
 public:
-		void draw(spider::GraphicsContext *gs);
-		WindowElement();
-		virtual spider::GraphicsContext *createGraphics();
+		void draw(spider::GraphicsContext *gc);
+		WindowElement(GraphicsContext *gc);
+		GraphicsContext *gc;
 		virtual void invalidateRegion(rectangle rect) {}
         virtual string getType() {
             return "window";

@@ -10,53 +10,50 @@ enum MySpecialWidgetStyles
 
     SWS_DEFAULT_STYLE = (SWS_SHOW_BUTTON|SWS_LOOK_SERIOUS)
 };
-
+namespace spider
+{
+    class WindowElement;
+}
 class SpiderWidget : public wxControl
 {
-    WxWidgetsGraphicsContext *gc;
+    spider::platform::wxwidgets::WxWidgetsGraphicsContext *gc;
 public:
-    SpiderWidget() { Init(); }
+    SpiderWidget();
 
-    SpiderWidget(wxWindow *parent,
-                    wxWindowID winid,
-                    const wxString& label,
-                    const wxPoint& pos = wxDefaultPosition,
-                    const wxSize& size = wxDefaultSize,
-                    long style = SWS_DEFAULT_STYLE,
-                    const wxValidator& val = wxDefaultValidator,
-                    const wxString& name = "MySpecialWidget")
-    {
-        Init();
+    SpiderWidget(
+        wxWindow *parent,
+        wxWindowID winid,
+        const wxString& label,
+        const wxPoint& pos = wxDefaultPosition,
+        const wxSize& size = wxDefaultSize,
+        long style = SWS_DEFAULT_STYLE,
+        const wxValidator& val = wxDefaultValidator,
+        const wxString& name = "MySpecialWidget"
+    );
 
-        Create(parent, winid, label, pos, size, style, val, name);
-    }
-
-    bool Create(wxWindow *parent,
-                wxWindowID winid,
-                const wxString& label,
-                const wxPoint& pos = wxDefaultPosition,
-                const wxSize& size = wxDefaultSize,
-                long style = SWS_DEFAULT_STYLE,
-                const wxValidator& val = wxDefaultValidator,
-                const wxString& name = wxCollapsiblePaneNameStr);
+    bool Create(
+        wxWindow *parent,
+        wxWindowID winid,
+        const wxString& label,
+        const wxPoint& pos = wxDefaultPosition,
+        const wxSize& size = wxDefaultSize,
+        long style = SWS_DEFAULT_STYLE,
+        const wxValidator& val = wxDefaultValidator,
+        const wxString& name = "Spider"
+    );
 
     // accessors...
 
 protected:
 
-    void Init() {
-        // init widget's internals...
-    }
+    void Init();
 
-    virtual wxSize DoGetBestSize() const {
-        // we need to calculate and return the best size of the widget...
-    }
+    virtual wxSize DoGetBestSize();
 
-    void OnPaint(wxPaintEvent&) {
-        // draw the widget on a wxDC...
-    }
+    void OnPaint(wxPaintEvent&);
 
 private:
+    spider::WindowElement *windowElement;
     wxDECLARE_DYNAMIC_CLASS(SpiderWidget);
     wxDECLARE_EVENT_TABLE();
 };
