@@ -1,8 +1,9 @@
-#include <wx/wxprec.h>
- 
+#include <wx/wx.h>
+
 #ifndef WX_PRECOMP
     #include <wx/wx.h>
 #endif
+
 
 namespace spider {
 class SpacifyApp : public wxApp

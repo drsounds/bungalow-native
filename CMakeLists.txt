@@ -11,6 +11,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Find dependencies
 find_package(Boost REQUIRED)
 find_package(Lua REQUIRED)
+find_package(wxWidgets REQUIRED)
 
 # Include directories
 include_directories(${Boost_INCLUDE_DIRS})
@@ -24,8 +25,8 @@ if(WIN32)
 else()
     file(GLOB SOURCES "spider/src/*.cpp" "wxwidgets/src/*.cpp")
     file(GLOB HEADERS "spider/include/*.h" "wxwidgets/include/*.h")
+    include_directories(spider/include wxwidgets/include)
 endif()
-
 # Executable
 add_executable(spacify-client ${SOURCES} ${HEADERS})
 
