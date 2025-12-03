@@ -1,3 +1,0 @@
-#include "SPType.h"
-namespace {
-    }

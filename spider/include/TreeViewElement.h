@@ -28,7 +28,7 @@ namespace spider {
 		vector<TreeItem *> *mItems;
 		int itemHeight;
 	public:
-		TreeViewElement(Element *parent);
+		explicit TreeViewElement(Element *parent);
         virtual string getType() {
             return "tree";
         }

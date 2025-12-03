@@ -1,9 +1,9 @@
 #ifndef COLOR_H
 #define COLOR_H
-#include "SPType.h"
+#include "SPObject.h"
 #include <string>
 namespace spider {
-class Color : public SPType {
+class Color : public SPObject {
     short r;
     short g;
     short b;

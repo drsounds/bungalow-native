@@ -1,14 +1,9 @@
 #include "ButtonElement.h"
 #include "GraphicsContext.h"
 #include "Color.h"
-
-spider::ButtonElement::ButtonElement() {
-	this->setColorAttribute("bgcolor", Color(0, 0, 0, 1));
-	this->setColorAttribute("fgcolor", Color(255, 255, 255, 1));
-}
 void spider::ButtonElement::draw(int x, int y, GraphicsContext *c)
 {
-    if (this->absoluteBounds == NULL)
+    if (this->absoluteBounds == nullptr)
     this->absoluteBounds = new rectangle;
 
     this->absoluteBounds->x = x + this->getX();
@@ -23,12 +18,12 @@ void spider::ButtonElement::draw(int x, int y, GraphicsContext *c)
 	c->fillRectangle(this->absoluteBounds->x, this->absoluteBounds->y, width, height, bgColor);
 
     if(!this->getInnerText().empty()) {
-        spider::FontStyle font = FontStyle(fontFamily, fontSize, false, false, false);
+        spider::FontStyle fontStyle = FontStyle(fontFamily, fontSize, false, false, false);
 		string text = this->getInnerText();
-		spider::rectangle tSize = c->measureString(text, font);
+		spider::rectangle tSize = c->measureString(text, fontStyle);
 		int x = (this->getWidth() / 2) - (tSize.width / 2) + this->absoluteBounds->x;
 		int y = (this->getHeight() / 2) - (tSize.height / 2) + this->absoluteBounds->y;
 
-		c->drawString(text,font, fgColor, x, y, this->getWidth(), tSize.height);
+		c->drawString(text,fontStyle, fgColor, x, y, this->getWidth(), tSize.height);
 	}
 }

@@ -26,8 +26,10 @@ private:
     void OnPaint(wxPaintEvent&);
 
 public:
-    SpiderWidget();
-
+    spider::Spider *getApp()
+    {
+        return m_spider;
+    }
     SpiderWidget(
         wxWindow *parent,
         wxWindowID winId,

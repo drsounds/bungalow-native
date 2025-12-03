@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 namespace spider {
-    class SPType {
+    class SPObject {
     public:
         virtual string getType() {
             return "Undefined";

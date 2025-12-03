@@ -15,7 +15,7 @@
 #define SP_EVENT_MOUSE_MOVE 3
 #define SP_EVENT_NAVIGATE 4
 
-#include "SPType.h"
+#include "SPObject.h"
 #include "EventArgs.h"
 using namespace std;
 
@@ -26,8 +26,8 @@ namespace spider {
 	public:
 		string type;
 		EventArgs *args;
-		SPType *sender;
-		SPEvent(const string& type, EventArgs *args, SPType *sender) {
+		SPObject *sender;
+		SPEvent(const string& type, EventArgs *args, SPObject *sender) {
 			this->type = type;
 			this->args = args;
 			this->sender = sender;
@@ -60,6 +60,6 @@ namespace spider {
 		int z;
 	};
 
-	typedef int(*sp_callback)(const string& action, SPType *, EventArgs *);
+	typedef int(*sp_callback)(const string& action, SPObject *, EventArgs *);
 }
 #endif

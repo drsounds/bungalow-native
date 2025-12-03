@@ -1,11 +1,11 @@
 #ifndef TREEITEM_H
 #define TREEITEM_H
 #include "Uri.h"
-#include "SPType.h"
+#include "SPObject.h"
 #include <string>
 using namespace std;
 namespace spider {
-    class TreeItem : SPType {
+    class TreeItem : SPObject {
     protected:
         bool highlighted;
 		string title;
@@ -25,7 +25,7 @@ namespace spider {
 	    void setSelected(bool selected) {
             this->selected = selected;
 	    }
-		TreeItem(Uri *uri);
+		explicit TreeItem(Uri *uri);
 		string getText() {
 			return this->title;
 		}

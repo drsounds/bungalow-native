@@ -18,7 +18,7 @@ namespace spider {
     void MainElement::hideMessage() {
         this->infoElement->hide();
     }
-    int treeview_itemselected(SPType *sender, EventArgs *e) {
+    int treeview_itemselected(SPObject *sender, EventArgs *e) {
         TreeViewElement *treeView = (TreeViewElement *)sender;
         MainElement *mainWindow = (MainElement *)treeView->getParent();
         TreeViewEventArgs *args = (TreeViewEventArgs *)e;
@@ -34,7 +34,7 @@ namespace spider {
     {
     }
 
-    int search_entered(SPType *sender, EventArgs *e) {
+    int search_entered(SPObject *sender, EventArgs *e) {
         InputEventArgs *ie = (InputEventArgs *)e;
         Element * elm = (Element *)sender;
         MainElement *mainWindow = (MainElement *)elm->getMainWindowElement();

@@ -6,12 +6,12 @@ Observable::Observable()
 	this->observers = new list<Observer *>;
 }
 
-void Observable::dispatchEvent(const string& event, EventArgs* args, SPType* sender)
+void Observable::dispatchEvent(const string& event, EventArgs* args, SPObject* sender)
 {
 	this->notify(event, sender, args);
 }
 
-void Observable::notify(const string& evt, SPType *sender, EventArgs *data) const
+void Observable::notify(const string& evt, SPObject *sender, EventArgs *data) const
 {
 	for(auto observer : *this->observers) {
 		string t = observer->getEvent();

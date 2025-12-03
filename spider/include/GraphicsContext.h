@@ -16,9 +16,8 @@ namespace spider {
     class GraphicsContext {
 	protected:
 		FontStyle *fontStyle;
-		void *window;
 	public:
-		GraphicsContext(WindowElement *window);
+		GraphicsContext();
 		Skin *skin;
 		virtual void drawImagePart(Image *image, int x, int y, int width, int height, int x1, int y1, int x2, int y2) {}
 		virtual void drawSkinImage(const string& resourceId, int x, int y, int w, int h) {}

@@ -16,7 +16,7 @@ Tab::Tab(TabBarElement *tabBar, string name, string id, string uri) {
     this->uri = uri;
 }
 
-int tabbar_mousedown(SPType *sender, EventArgs *e) {
+int tabbar_mousedown(SPObject *sender, EventArgs *e) {
     TabBarElement *tabBar = (TabBarElement *)sender;
     MouseEventArgs *me = (MouseEventArgs *)e;
     int x = tabBar->getAbsoluteBounds() != NULL ? me->getX() - tabBar->getAbsoluteBounds()->y : me->getX();
@@ -35,7 +35,7 @@ int tabbar_mousedown(SPType *sender, EventArgs *e) {
         if (x > left && x < left + width) {
             tabBar->activeTab = tab;
             TabBarEventArgs *args = new TabBarEventArgs(tab);
-            tabBar->notify(string("tabselected"), (SPType *)tabBar, (EventArgs *)args);
+            tabBar->notify(string("tabselected"), (SPObject *)tabBar, (EventArgs *)args);
         }
 
         left += width;
@@ -104,7 +104,7 @@ void TabBarElement::mouseDown(int mouseButton, int x, int y) {
         if (x > left  && x < left + width) {
             tabBar->activeTab = tab;
             TabBarEventArgs *args = new TabBarEventArgs(tab);
-            tabBar->notify(string("tabselected"), (SPType *)tabBar, (EventArgs *)args);
+            tabBar->notify(string("tabselected"), (SPObject *)tabBar, (EventArgs *)args);
             cout << title.c_str();
             break;
         }

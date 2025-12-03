@@ -6,7 +6,13 @@
 
 using namespace spider::platform::wxwidgets;
 
-WxWidgetsGraphicsContext::WxWidgetsGraphicsContext() : m_dc(nullptr) {
+WxWidgetsGraphicsContext::WxWidgetsGraphicsContext(SpiderApp* app) : GraphicsContext()
+{
+    this->m_app = app;
+}
+
+WxWidgetsGraphicsContext::WxWidgetsGraphicsContext()
+{
 }
 
 WxWidgetsGraphicsContext::~WxWidgetsGraphicsContext() {

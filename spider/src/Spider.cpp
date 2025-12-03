@@ -3,7 +3,7 @@
 //
 
 #include "../include/Spider.h"
-#include "Skin.h"
+
 #include "libspider.h"
 #include "WindowElement.h"
 
@@ -11,13 +11,13 @@ spider::Spider::Spider(GraphicsContext* graphicsContext)
 {
     this->m_graphicsContext = graphicsContext;
     this->m_windows = new vector<WindowElement *>();
-    this->m_messages = new queue<SPMessage *>();
+    this->m_messages = new queue<SPMessage>();
+    this->m_events = new queue<SPEvent>();
 }
 
 spider::WindowElement* spider::Spider::createWindow()
 {
     auto *windowElement = new WindowElement(this);
-    windowElement->m_skin = new Skin("skin.png");
     return windowElement;
 }
 
@@ -32,21 +32,21 @@ void spider::Spider::dispatchEvent(const SPEvent& event) const
     this->m_events->push(event);
 }
 
-void spider::Spider::postMessage(const SPMessage& message)
+void spider::Spider::postMessage(const SPMessage& message) const
 {
     this->m_messages->push(message);
 }
 
-void spider::Spider::processEvent(const SPEvent& event)
+void spider::Spider::processEvent(const SPEvent& event) const
 {
-    for (auto it = this->m_windows->begin(); it != this->m_windows->end(); ++it) {
-        (*it)->processEvent(event);
+    for (auto & m_window : *this->m_windows) {
+        m_window->processEvent(event);
     }
 }
 
-void spider::Spider::processMessage(const SPMessage& message)
+void spider::Spider::processMessage(const SPMessage& message) const
 {
-    for (auto it = this->m_windows->begin(); it != this->m_windows->end(); ++it) {
-        (*it)->processMessage(message);
+    for (auto & m_window : *this->m_windows) {
+        m_window->processMessage(message);
     }
 }

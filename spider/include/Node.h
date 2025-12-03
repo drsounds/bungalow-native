@@ -1,6 +1,6 @@
 #ifndef NODE_H
 #define NODE_H
-#include "SPType.h"
+#include "SPObject.h"
 #include <map>
 #include <boost/lexical_cast.hpp>
 #include <string>
@@ -9,7 +9,7 @@ using namespace std;
 namespace spider {
     class Spider;
     class Color;
-class Node : public SPType {
+class Node : public SPObject {
 protected:
     map<string, void *> *properties;
     map<string, string> *stringAttributes;

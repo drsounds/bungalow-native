@@ -1,0 +1,8 @@
+//
+// Created by Alexander Forselius on 2025-12-03.
+//
+
+#ifndef SPACIFYCLIENT_SPACIFYAPP_H
+#define SPACIFYCLIENT_SPACIFYAPP_H
+
+#endif //SPACIFYCLIENT_SPACIFYAPP_H

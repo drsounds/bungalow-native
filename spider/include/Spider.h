@@ -7,6 +7,8 @@
 #include <boost/json/string.hpp>
 #include <string>
 
+#include "libspider.h"
+
 using namespace std;
 
 namespace spider
@@ -27,10 +29,15 @@ namespace spider
             return this->m_graphicsContext;
         }
         explicit Spider(GraphicsContext *graphicsContext);
+        Spider();
         WindowElement * createWindow();
         void postMessage(const SPMessage&);
         void processEvent(const SPEvent&);
         SPMessage dequeueNextMessage();
+        void dispatchEvent(const SPEvent& event) const;
+        void postMessage(const SPMessage& message) const;
+        void processEvent(const SPEvent& event) const;
+        void processMessage(const SPMessage& message) const;
         void dispatchEvent(const SPEvent&);
         void processMessage(const SPMessage&);
     };

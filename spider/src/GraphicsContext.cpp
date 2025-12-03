@@ -5,9 +5,11 @@
 namespace spider {
     void GraphicsContext::setOrigo(const int& x, const int& y) {
     }
-    GraphicsContext::GraphicsContext(WindowElement *window) {
-        this->window = window;
+
+    GraphicsContext::GraphicsContext()
+    {
     }
+
     void GraphicsContext::drawImageSlices(map<string, slice *> *slices, string selector, int left, int top, int width, int height)
     {
         if(slices->find(selector) != slices->end()) {

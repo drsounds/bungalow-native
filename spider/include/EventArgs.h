@@ -1,8 +1,8 @@
 #ifndef EVENTARGS_H
 #define EVENTARGS_H
-#include "SPType.h"
+#include "SPObject.h"
 namespace spider {
-class EventArgs : public SPType
+class EventArgs : public SPObject
 {
     public:
         EventArgs();

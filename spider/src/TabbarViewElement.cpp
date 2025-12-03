@@ -6,7 +6,7 @@
 #include "ViewStackElement.h"
 
 namespace spider {
-    int tabbar_tabselected(SPType *sender, EventArgs *e) {
+    int tabbar_tabselected(SPObject *sender, EventArgs *e) {
         TabBarEventArgs *args = (TabBarEventArgs *)e;
         string uri = args->tab->getUri();
         TabBarElement *tabView = (TabBarElement *)sender;

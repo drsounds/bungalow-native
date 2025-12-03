@@ -193,7 +193,10 @@
 				68,
 				69,
 				70,
-				71
+				71,
+				72,
+				73,
+				74
 			]
 		}
 	],
@@ -377,16 +380,16 @@
 				68,
 				69,
 				70,
-				71
+				71,
+				72,
+				73,
+				74
 			]
 		},
 		{
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
-				72,
-				73,
-				74,
 				75,
 				76,
 				77,
@@ -459,7 +462,13 @@
 				144,
 				145,
 				146,
-				147
+				147,
+				148,
+				149,
+				150,
+				151,
+				152,
+				153
 			]
 		}
 	],
@@ -493,6 +502,12 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "spacify/src/PlayQueueView.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "spacify/src/SpacifyApp.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -702,7 +717,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "spider/src/SPType.cpp",
+			"path" : "spider/src/SPObject.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -715,6 +730,12 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "spider/src/Skin.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "spider/src/Spider.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -876,6 +897,18 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
+			"path" : "wxwidgets/src/SpiderApp.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "wxwidgets/src/SpiderFrame.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
 			"path" : "wxwidgets/src/SpiderWidget.cpp",
 			"sourceGroupIndex" : 0
 		},
@@ -883,12 +916,6 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "wxwidgets/src/WxWidgetsGraphicsContext.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "wxwidgets/src/app.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -915,6 +942,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "spacify/include/PlayQueueView.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "spacify/include/SpacifyApp.h",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -1099,7 +1131,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "spider/include/SPType.h",
+			"path" : "spider/include/SPObject.h",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -1110,6 +1142,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "spider/include/Skin.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "spider/include/Spider.h",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -1264,17 +1301,22 @@
 		},
 		{
 			"backtrace" : 1,
+			"path" : "wxwidgets/include/SpiderApp.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "wxwidgets/include/SpiderFrame.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
 			"path" : "wxwidgets/include/SpiderWidget.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
 			"path" : "wxwidgets/include/WxWidgetsGraphicsContext.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"path" : "wxwidgets/include/app.h",
 			"sourceGroupIndex" : 1
 		}
 	],
