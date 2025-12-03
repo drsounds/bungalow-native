@@ -22,6 +22,7 @@ public:
     void OnExit(wxCommandEvent& event);
     void OnAbout(wxCommandEvent& event);
     void OnHello(wxCommandEvent& event);
+    spider::WindowElement* getWindow() const { return m_window; }
     SpiderApp *getApp() const { return m_app; }
 };
 

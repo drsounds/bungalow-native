@@ -19,18 +19,17 @@ SpiderWidget::SpiderWidget(wxWindow *parent,
 {
     this->Init();
     auto *frame = dynamic_cast<SpiderFrame *>(parent);
-    SpiderApp *app = frame->getApp();
-    this->m_spider = app->getSpider();
+    this->m_frame = frame;
     this->Create(parent, winId, label, pos, size, style, val, name);
 }
 
 bool SpiderWidget::Create(wxWindow *parent,
             wxWindowID winId,
             const wxString& label,
-            const wxPoint& pos = wxDefaultPosition,
-            const wxSize& size = wxDefaultSize,
-            long style = SWS_DEFAULT_STYLE,
-            const wxValidator& val = wxDefaultValidator,
+            const wxPoint& pos,
+            const wxSize& size,
+            long style,
+            const wxValidator& val,
             const wxString& name = "Spider")
 {
     this->SetBackgroundColour(wxColour(0, 0, 0));
@@ -43,9 +42,17 @@ bool SpiderWidget::Create(wxWindow *parent,
     return FALSE;
 }
 
+void SpiderWidget::OnLeftClick(wxMouseEvent& event) {
+    auto *args = new spider::MouseEventArgs(0, event.GetX(), event.GetY());
+    const spider::SPEvent evt("click", args, nullptr);
+    this->m_spider->dispatchEvent(
+        evt
+    );
+}
+
 void SpiderWidget::OnLeftUp(wxMouseEvent& event) {
-    spider::MouseEventArgs *args = new spider::MouseEventArgs(1, event.GetX(), event.GetY());
-    spider::SPEvent evt("mouseup", args, nullptr);
+    auto *args = new spider::MouseEventArgs(1, event.GetX(), event.GetY());
+    const spider::SPEvent evt("mouseup", args, nullptr);
     this->m_spider->dispatchEvent(
         evt
     );
@@ -53,15 +60,19 @@ void SpiderWidget::OnLeftUp(wxMouseEvent& event) {
 
 void SpiderWidget::OnSize(wxSizeEvent& event)
 {
-    this->m_spider->resize(event.GetSize().GetWidth(), event.GetSize().GetHeight());
+    this->m_frame->getWindow().resize(event.GetSize().GetWidth(), event.GetSize().GetHeight());
 }
 
 void SpiderWidget::OnLeftDown(wxMouseEvent& event) {
-    spider::MouseEventArgs *args = new spider::MouseEventArgs(1, event.GetX(), event.GetY());
+    auto *args = new spider::MouseEventArgs(1, event.GetX(), event.GetY());
     spider::SPEvent evt("mousedown", args, nullptr);
     this->m_spider->dispatchEvent(
         evt
     );
+}
+
+void SpiderWidget::OnMouseMove(wxMouseEvent& event)
+{
 }
 
 void SpiderWidget::Init()
