@@ -25,7 +25,7 @@ namespace spider
         TabBarElement *tabBar;
 
     private:
-    }
+    };
 }
 
 #endif // TABBARVIEWELEMENT_H

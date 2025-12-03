@@ -1,6 +1,9 @@
 #include "TableElement.h"
 
+#include "Skin.h"
+#include "GraphicsContext.h"
 #include "TableDataSource.h"
+
 namespace spider {
     TableElement::TableElement()
     {

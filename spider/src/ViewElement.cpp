@@ -1,6 +1,9 @@
 #include "ViewElement.h"
 #include <string>
+#include <iostream>
+
 using namespace std;
+
 namespace spider {
 ViewElement::ViewElement()
  : VBoxElement::VBoxElement()
@@ -22,7 +25,7 @@ void ViewElement::request(std::string uri) {
 std::string ViewElement::loadView(std::string view) {
     std::string path = "C:\\Users\\Alecca\\Documents\\Spoyler\\resources\\views\\" + view;
     string fileName = (string)path.c_str();
-    FILE *fil = fopen(fileName, "rb");
+    FILE *fil = fopen(fileName.c_str(), "rb");
     fseek(fil, 0, SEEK_END);
     size_t fsize = ftell(fil);
     rewind(fil);

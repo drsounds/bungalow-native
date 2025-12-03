@@ -122,7 +122,7 @@ void TreeViewElement::draw(int x, int y, GraphicsContext *g) {
                 color = this->getMainWindowElement()->skin->getColor("treeitem::selected.foreground.color", "");
 		}
 
-		rectangle strB = g->measureString(item->getText(), font);
+		rectangle strB = g->measureString(item->getText(), fontStyle);
         int ttop = (top + (itemHeight / 2)) - (strB.height / 2);
 		g->drawString(item->getText(), this->getFontStyle(), color, 20 + x, y + ttop, this->getWidth(), itemHeight);
 

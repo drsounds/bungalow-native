@@ -2,8 +2,9 @@
 #define DOCTRINEVIEW_H
 #include "ContainerViewElement.h"
 namespace spider {
+    class Element;
+    class TextElement;
     namespace views {
-        class TextElement;
         class DoctrineView : public ContainerViewElement
         {
             public:

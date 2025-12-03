@@ -1,5 +1,6 @@
 #ifndef MAINWINDOWELEMENT_H
 #define MAINWINDOWELEMENT_H
+#include "MessageType.h"
 #include "VBoxElement.h"
 namespace spider {
     class HBoxElement;
@@ -7,7 +8,6 @@ namespace spider {
     class TreeViewElement;
     class InfoElement;
     class Stylesheet;
-    class MessageType;
 class MainWindowElement : public VBoxElement
 {
     protected:
@@ -29,7 +29,10 @@ class MainWindowElement : public VBoxElement
         void layout();
         virtual ~MainWindowElement();
         ViewStackElement *getViewStack();
-        void showMessage(MessageType msgType, string msg);
+
+        void showMessage(MessageType msgType, string msg)
+        {
+        }
 };
 }
 #include "libspider.h"

@@ -2,6 +2,10 @@
 #include <regex>
 #include "WhatsNewView.h"
 #include "TopListView.h"
+
+#include "ViewStackElement.h"
+#include "TabBarElement.h"
+
 namespace spider {
     namespace views {
         StartView::StartView() : TabbarViewElement() {

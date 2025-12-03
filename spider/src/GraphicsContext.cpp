@@ -1,5 +1,6 @@
 #include "GraphicsContext.h"
-#include "Color.h"
+
+#include "Skin.h"
 
 namespace spider {
     void GraphicsContext::setOrigo(const int& x, const int& y) {

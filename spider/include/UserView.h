@@ -4,9 +4,9 @@
 #include <string>
 using namespace std;
 namespace spider {
+    class HeaderElement;
+    class Element;
     namespace views {
-        class HeaderElement;
-        class Element;
         class UserView : public ViewElement
         {
             public:

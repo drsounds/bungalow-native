@@ -4,6 +4,7 @@
 #include <vector>
 #include <regex>
 #include "HeaderElement.h"
+#include "TitleElement.h"
 
 using namespace std;
 namespace spider {
@@ -37,7 +38,7 @@ namespace spider {
             std::vector<std::string> strs;
             boost::split(strs, uri, boost::is_any_of(":"));
             string id = strs.at(2);
-            string buffer = new char[50];
+            char *buffer = new char[50];
             int length = id.copy(buffer, id.size(), 0);
             buffer[length] = '\0';
             this->header->title->setTitle(string(buffer));

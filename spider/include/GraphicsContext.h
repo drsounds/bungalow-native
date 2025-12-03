@@ -1,17 +1,18 @@
 #ifndef GRAPHICSCONTEXT_H
 #define GRAPHICSCONTEXT_H
+#include "libspider.h"
+
 #include "Color.h"
 #include "FontStyle.h"
-#include "libspider.h"
 
 namespace spider {  
 	class WindowElement;
+	class Color;
+	class FontStyle;
 	class Element;
 	class Image;
 	class slice;
 	class Skin;
-	class Color;
-	class FontStyle;
     class GraphicsContext {
 	protected:
 		FontStyle *fontStyle;

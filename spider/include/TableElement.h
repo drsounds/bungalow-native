@@ -4,11 +4,12 @@
 #include <string>
 #include <vector>
 
-#include "TableColumnHeader.h"
-#include "TableDataSource.h"
 using namespace std;
 
 namespace spider {
+class TableDataSource;
+class TableRow;
+class TableColumnHeader;
 class TableElement : public Element
 {
     public:

@@ -9,7 +9,7 @@
 #include "Skin.h"
 #include "PlayQueueView.h"
 #include "TreeViewElement.h"
-#include "UserView.h"
+
 namespace spider {
     MainWindowElement::MainWindowElement()
     {
@@ -40,10 +40,7 @@ namespace spider {
         this->setWindowElement(parent);
 
     }
-    void MainWindowElement::showMessage(MessageType msgType, string msg) {
-        this->infoElement->show(msgType, msg);
-        this->invalidate();
-    }
+
     int search_entered(SPType *sender, EventArgs *e) {
         InputEventArgs *ie = (InputEventArgs *)e;
         Element * elm = (Element *)sender;
