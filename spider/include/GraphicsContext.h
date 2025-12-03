@@ -35,7 +35,9 @@ namespace spider {
 		virtual void drawHTMLText(const string& html, FontStyle fs, Color color, int x, int y, int w, int h) { return; }
 		virtual Image *loadImage(const string& bitmap) { return NULL; }
 		virtual rectangle measureString(const string& text, FontStyle font) { return rectangle(); }
-		virtual void declipRect() { return; }
+		virtual int getWidth() { return 0; }
+    	virtual int getHeight() { return 0; }
+    	virtual void declipRect() { return; }
 		void setFontStyle(spider::FontStyle *fs) {
 			this->fontStyle = fs;
 		}

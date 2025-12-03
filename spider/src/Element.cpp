@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdio>
 
-#include "App.h"
+#include "Spider.h"
 #include "WindowElement.h"
 #include "Observable.h"
 #include "MouseEventArgs.h"

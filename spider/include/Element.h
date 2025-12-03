@@ -5,9 +5,12 @@
 #include "FontStyle.h"
 #include <vector>
 
+#include "../src/Spider.h"
+
 using namespace std;
 
 namespace spider {
+    class Spider;
     struct sp_message;
     class Skin;
     class GraphicsContext;
@@ -16,6 +19,14 @@ namespace spider {
     class FontStyle;
     class Element : public Node, public Observable {
     public:
+    protected:
+        Spider *m_spider;
+    public:
+        Spider *getSpider()
+        {
+            return this->m_spider;
+        }
+
         Skin *skin;
         void scroll(int x, int y);
         void scrollTo(int x, int y);
@@ -81,7 +92,10 @@ namespace spider {
         Element *getWindowElement() {
              return this->windowElement;
         }
-        virtual GraphicsContext *createGraphics();
+        virtual GraphicsContext *createGraphics()
+        {
+            return this->m_spider->graphicsContext;
+        }
         void setWindowElement(Element *windowElement) {
             this->windowElement = windowElement;
         }

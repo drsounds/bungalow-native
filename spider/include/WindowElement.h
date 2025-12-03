@@ -5,15 +5,22 @@
 #include <string>
 
 #include "../../spacify/include/MainElement.h"
+
 using namespace std;
 
 namespace spider {
+	class Spider;
+	struct sp_event;
 	class GraphicsContext;
 	class WindowElement : public VBoxElement {
-public:
-		void draw();
-		WindowElement(GraphicsContext *gc);
-		GraphicsContext *gc;
+	public:
+		void draw(GraphicsContext *gc, int width, int height);
+		void processEvent(const sp_event& event);
+		WindowElement(Spider *);
+		GraphicsContext *getGraphicsContext()
+		{
+			return this->m_spider->getGraphicsContext();
+		}
 		virtual void invalidateRegion(rectangle rect) {}
         virtual string getType() {
             return "window";

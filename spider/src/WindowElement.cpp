@@ -3,26 +3,29 @@
 #include "GraphicsContext.h"
 
 #include "Element.h"
-#include "../../spacify/include/MainElement.h"
+#include "MainElement.h"
+#include "Spider.h"
 
 namespace spider
 {
-    WindowElement::WindowElement(GraphicsContext* gc)
+    class Spider;
+
+    WindowElement::WindowElement(Spider *spider)
     {
-        this->gc = gc;
+        this->m_spider = spider;
     }
 
-    void WindowElement::draw() {
+    void WindowElement::draw(GraphicsContext *gc, int x, int y) {
         std::vector<Node *> *elements = this->getChildNodes();
         for (std::vector<Node *>::iterator it = elements->begin(); it != elements->end(); ++it) {
             Node *node = (Node *)*it;
             Element *elm = static_cast<Element *>(node);
             if (elm->isVisible())
-                elm->draw(0, 0, this->gc);
+                elm->draw(0, 0, gc);
         }
     }
     void WindowElement::invalidateRegion(rectangle rect) {
-        gc->invalidateRegion(rect);
+        this->getGraphicsContext()->invalidateRegion(rect);
     }
     void WindowElement::navigate(string uri) {
         this->mainWindow->navigate(uri);

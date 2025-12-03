@@ -5,15 +5,16 @@
 
 #include "WindowElement.h"
 #include "Skin.h"
+#include "../../spider/src/Spider.h"
 
 SpiderWidget::SpiderWidget(wxWindow *parent,
-                wxWindowID winid,
-                const wxString& label,
-                const wxPoint& pos = wxDefaultPosition,
-                const wxSize& size = wxDefaultSize,
-                long style = SWS_DEFAULT_STYLE,
-                const wxValidator& val = wxDefaultValidator,
-                const wxString& name = "MySpecialWidget")
+                           wxWindowID winid,
+                           const wxString& label,
+                           const wxPoint& pos = wxDefaultPosition,
+                           const wxSize& size = wxDefaultSize,
+                           long style = SWS_DEFAULT_STYLE,
+                           const wxValidator& val = wxDefaultValidator,
+                           const wxString& name = "MySpecialWidget")
 {
     this->Init();
 
@@ -31,8 +32,7 @@ bool SpiderWidget::Create(wxWindow *parent,
 {
     this->gc = new spider::platform::wxwidgets::WxWidgetsGraphicsContext(this);
     this->SetBackgroundColour(wxColour(0, 0, 0));
-    this->windowElement = new spider::WindowElement(gc);
-    this->windowElement->skin = new spider::Skin("skin.png");
+    this->spider = new spider::Spider(gc);
     Bind(wxEVT_PAINT, &SpiderWidget::OnPaint, this);
     Bind(wxEVT_SIZE, &SpiderWidget::OnSize, this);
     Bind(wxEVT_LEFT_DOWN, &SpiderWidget::OnLeftDown, this);
@@ -50,7 +50,7 @@ void SpiderWidget::OnSize(wxSizeEvent& event)
 }
 
 void SpiderWidget::OnLeftDown(wxMouseEvent& event) {
-    this->windowElement->mouseDown(1, event.GetX(), event.GetY());
+
 }
 
 wxSize SpiderWidget::DoGetBestSize()
