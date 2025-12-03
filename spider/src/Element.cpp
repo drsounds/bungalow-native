@@ -1,6 +1,8 @@
 #include "Element.h"
 #include <iostream>
 #include <cstdio>
+
+#include "App.h"
 #include "WindowElement.h"
 #include "Observable.h"
 #include "MouseEventArgs.h"
@@ -13,21 +15,39 @@
 
 namespace spider {
 
-void Element::mouseDown(int& mouseButton, int& x, int& y) {
-
-}
 void Element::show() {
     this->setVisible(true);
 }
 void Element::hide() {
     this->setVisible(false);
 }
-void Element::mouseClick(int& mouseButton, int& x, int& y) {
+void Element::mouseClick(int mouseButton, int x, int y) {
 
 }
 GraphicsContext *Element::createGraphics() {
     return this->windowElement->createGraphics();
 }
+
+void Element::processMessage(const sp_message& message)
+{
+	if (message.predicate == "spacify:device:mouse:event:move")
+	{
+		auto *pos = (rectangle *)message.data;
+		this->mouseMove(pos->x, pos->y);
+	}
+	if (message.predicate == "spacify:device:mouse:event:up")
+	{
+		auto *pos = (rectangle *)message.data;
+		this->mouseUp(1, pos->x, pos->y);
+	}
+	if (message.predicate == "spacify:device:mouse:event:down")
+	{
+		auto *pos = (rectangle *)message.data;
+		this->mouseDown(1, pos->x, pos->y);
+	}
+}
+
+
 void Element::click(int mouseButton, int x, int y) {
 	int xx = this->getAbsoluteBounds() != NULL ? x - this->getAbsoluteBounds()->y : x;
     int yy = this->getAbsoluteBounds() != NULL ? y - this->getAbsoluteBounds()->y : y;
@@ -47,7 +67,7 @@ void Element::click(int mouseButton, int x, int y) {
 }
 
 
-void Element::mousedown(int mouseButton, int x, int y) {
+void Element::mouseDown(int mouseButton, int x, int y) {
 	int xx = this->getAbsoluteBounds() != NULL ? x - this->getAbsoluteBounds()->y : x;
     int yy = this->getAbsoluteBounds() != NULL ? y - this->getAbsoluteBounds()->y : y;
 	MouseEventArgs *me = new MouseEventArgs(mouseButton, xx, yy);
@@ -59,11 +79,11 @@ void Element::mousedown(int mouseButton, int x, int y) {
 		if(x > elm->getAbsoluteBounds()->x && x < elm->getAbsoluteBounds()->x + elm->getAbsoluteBounds()->width &&
 			y > elm->getAbsoluteBounds()->y && y < elm->getAbsoluteBounds()->y + elm->getAbsoluteBounds()->height) {
 
-			elm->mousedown(mouseButton, x, y);
+			elm->mouseDown(mouseButton, x, y);
 		}
 	}
 }
-void Element::mouseup(int mouseButton, int x, int y) {
+void Element::mouseUp(int mouseButton, int x, int y) {
 	int xx = this->getAbsoluteBounds() != NULL ? x - this->getAbsoluteBounds()->y : x;
     int yy = this->getAbsoluteBounds() != NULL ? y - this->getAbsoluteBounds()->y : y;
 	MouseEventArgs *me = new MouseEventArgs(mouseButton, xx, yy);
@@ -75,7 +95,7 @@ void Element::mouseup(int mouseButton, int x, int y) {
 		if(x > elm->getAbsoluteBounds()->x && x < elm->getAbsoluteBounds()->x + elm->getAbsoluteBounds()->width &&
 			y > elm->getAbsoluteBounds()->y && y < elm->getAbsoluteBounds()->y + elm->getAbsoluteBounds()->height) {
 
-			elm->mouseup(mouseButton, x, y);
+			elm->mouseUp(mouseButton, x, y);
 		}
 	}
 }

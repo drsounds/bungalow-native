@@ -1,6 +1,6 @@
 #ifndef ARTISTVIEW_H
 #define ARTISTVIEW_H
-#include "TabbarViewElement.h"
+#include "../../spider/include/TabbarViewElement.h"
 
 namespace spider {
     class TabbarViewElement;

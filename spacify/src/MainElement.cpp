@@ -1,5 +1,5 @@
-#include "MainWindowElement.h"
-#include "StartView.h"
+#include "../include/MainElement.h"
+#include "../include/StartView.h"
 #include "InputElement.h"
 #include "InputEventArgs.h"
 #include "SplitterElement.h"
@@ -7,25 +7,25 @@
 #include "TreeItem.h"
 #include "ViewStackElement.h"
 #include "Skin.h"
-#include "PlayQueueView.h"
+#include "../include/PlayQueueView.h"
 #include "TreeViewElement.h"
 
 namespace spider {
-    MainWindowElement::MainWindowElement()
+    MainElement::MainElement()
     {
 
     }
-    MainWindowElement::MainWindowElement(Element *parent, Skin *skin) {
+    MainElement::MainElement(Element *parent, Skin *skin) {
          this->setWindowElement(parent);
         this->skin = skin;
 
     }
-    void MainWindowElement::hideMessage() {
+    void MainElement::hideMessage() {
         this->infoElement->hide();
     }
     int treeview_itemselected(SPType *sender, EventArgs *e) {
         TreeViewElement *treeView = (TreeViewElement *)sender;
-        MainWindowElement *mainWindow = (MainWindowElement *)treeView->getMainWindowElement();
+        MainElement *mainWindow = (MainElement *)treeView->getMainWindowElement();
         TreeViewEventArgs *args = (TreeViewEventArgs *)e;
         TreeItem *selectedItem = args->getItem();
         Uri *uri = selectedItem->getUri();
@@ -35,7 +35,7 @@ namespace spider {
 
         return 0;
     }
-    MainWindowElement::MainWindowElement(Element *parent) : VBoxElement(parent)
+    MainElement::MainElement(Element *parent) : VBoxElement(parent)
     {
         this->setWindowElement(parent);
 
@@ -44,7 +44,7 @@ namespace spider {
     int search_entered(SPType *sender, EventArgs *e) {
         InputEventArgs *ie = (InputEventArgs *)e;
         Element * elm = (Element *)sender;
-        MainWindowElement *mainWindow = (MainWindowElement *)elm->getMainWindowElement();
+        MainElement *mainWindow = (MainElement *)elm->getMainWindowElement();
         string query = ie->getText();
         if (query.find("spacify:") < 0) {
             query = "spacify:search:" + query;
@@ -54,16 +54,16 @@ namespace spider {
 
         return 0;
     }
-    void MainWindowElement::navigate(string uri) {
+    void MainElement::navigate(string uri) {
         this->viewStack->navigate(uri);
     }
-    void MainWindowElement::layout() {
+    void MainElement::layout() {
         this->setMainWindowElement(this);
         this->clipView = false;
         this->set("bgcolor", "#373737");
-        spider::HBoxElement *header = new spider::HBoxElement(this);
-        header->set("bgcolor", "#767676");
-        header->set("height", "55");
+        auto *header = new HBoxElement(this);
+        header->setColorAttribute("bgcolor", Color("#767676"));
+        header->setIntegerAttribute("height", 55);
         header->getPadding()->top = 53;
         header->getPadding()->left = 13;
         header->getPadding()->bottom = 13;
@@ -72,11 +72,11 @@ namespace spider {
         this->appendChild(header);
         header->setId("header");
         // add search element
-        InputElement *searchElement = new InputElement(header);
+        auto *searchElement = new InputElement(header);
         header->appendChild(searchElement);
-        searchElement->set("width", "120");
+        searchElement->setIntegerAttribute("width", 120);
         searchElement->setName("searchBox");
-        searchElement->set("bgcolor", "#777777");
+        searchElement->setColorAttribute("bgcolor", Color("#777777"));
         searchElement->addEventListener("enter", &search_entered);
         // Add the info element
         this->infoElement = new spider::InfoElement(this);
@@ -86,15 +86,15 @@ namespace spider {
 
         // Add header children
 
-        HBoxElement *body = new HBoxElement(this);
-        body->set("bgcolor", "#474747");
+        auto *body = new HBoxElement(this);
+        body->setColorAttribute("bgcolor", Color("#474747"));
         body->set("flex", "1");
         body->set("height", "100");
 
         this->appendChild(body);
 
         // Inside body
-        VBoxElement *sidebar = new VBoxElement(body);
+        auto *sidebar = new VBoxElement(body);
         sidebar->set("width", "220");
         sidebar->set("bgcolor", "#474747");
         body->appendChild(sidebar);
@@ -112,10 +112,10 @@ namespace spider {
         treeView->setWindowElement(this->getWindowElement());
         treeView->setMainWindowElement(this);
         // Add sample elements
-        TreeItem *item = new TreeItem(new Uri("spacify:internal:start"));
+        auto *item = new TreeItem(new Uri("spacify:internal:start"));
 
         item->setSelected(false);
-        TreeItem *item2 = new TreeItem(new Uri("spacify:internal:history"));
+        auto *item2 = new TreeItem(new Uri("spacify:internal:history"));
 
         item2->setSelected(false);
         treeView->addEventListener("itemselected", treeview_itemselected);
@@ -131,7 +131,7 @@ namespace spider {
         viewStack->setWindowElement(this->getWindowElement());
         viewStack->appendChild(new spider::views::StartView(this));
         viewStack->appendChild(new spider::views::PlayQueueView(this));
-        HBoxElement *footer = new spider::HBoxElement(this);
+        auto *footer = new spider::HBoxElement(this);
         footer->set("bgcolor", "#444444");
         footer->set("height", "86");
         this->appendChild(footer);
@@ -141,10 +141,10 @@ namespace spider {
         this->pack();
         this->navigate("spacify:internal:start");
     }
-    ViewStackElement *MainWindowElement::getViewStack() {
+    ViewStackElement *MainElement::getViewStack() {
         return this->viewStack;
     }
-    MainWindowElement::~MainWindowElement()
+    MainElement::~MainElement()
     {
         //dtor
     }

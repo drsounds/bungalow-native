@@ -3,7 +3,7 @@
 #include "GraphicsContext.h"
 
 #include "Element.h"
-#include "MainWindowElement.h"
+#include "../../spacify/include/MainElement.h"
 
 namespace spider
 {
@@ -64,7 +64,7 @@ namespace spider
     void WindowElement::SampleLayout() {
         this->setColorAttribute("bgcolor", Color(127, 127, 127, 1));
         this->setWindowElement(this);
-        this->mainWindow = new MainWindowElement(this, wne Skin(string("skin.png"), this->createGraphics()));
+        this->mainWindow = new MainElement(this, wne Skin(string("skin.png"), this->createGraphics()));
         this->mainWindow->setWindowElement((WindowElement *)this);
         this->mainWindow->setVisible(true);
         this->mainWindow->layout();

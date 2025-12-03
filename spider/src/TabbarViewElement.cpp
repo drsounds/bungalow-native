@@ -17,8 +17,8 @@ namespace spider {
      : ViewElement() {
 
     }
-    void TabbarViewElement::mousedown(int mouseButton, int x, int y) {
-        Element::mousedown(mouseButton, x, y);
+    void TabbarViewElement::mouseDown(int mouseButton, int x, int y) {
+        Element::mouseDown(mouseButton, x, y);
     }
     TabbarViewElement::TabbarViewElement(Element *parent)
      : ViewElement::ViewElement(parent)

@@ -2,6 +2,7 @@
 
 #include "HBoxElement.h"
 #include "Element.h"
+#include "ViewElement.h"
 
 namespace spider {
 ArtistOverView::ArtistOverView(Element *parent)
@@ -9,7 +10,7 @@ ArtistOverView::ArtistOverView(Element *parent)
 {
     //ctor
     auto *header = new HBoxElement(this);
-    header->set("height", "128");
+    header->setIntegerAttribute("height", 128);
 
 
 

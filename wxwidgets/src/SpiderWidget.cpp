@@ -21,7 +21,7 @@ SpiderWidget::SpiderWidget(wxWindow *parent,
 }
 
 bool SpiderWidget::Create(wxWindow *parent,
-            wxWindowID winid,
+            wxWindowID winId,
             const wxString& label,
             const wxPoint& pos = wxDefaultPosition,
             const wxSize& size = wxDefaultSize,
@@ -50,11 +50,13 @@ void SpiderWidget::OnSize(wxSizeEvent& event)
 }
 
 void SpiderWidget::OnLeftDown(wxMouseEvent& event) {
-    this->windowElement->mouseDown(event.GetX(), event.GetY());
+    this->windowElement->mouseDown(1, event.GetX(), event.GetY());
 }
 
-wxSize SpiderWidget::DoGetBestSize() {
+wxSize SpiderWidget::DoGetBestSize()
+{
     // we need to calculate and return the best size of the widget...
+    return wxSize(100, 100);
 }
 
 void SpiderWidget::OnPaint(wxPaintEvent& event) {

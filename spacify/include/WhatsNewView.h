@@ -3,6 +3,7 @@
 #include "ContainerViewElement.h"
 
 namespace spider {
+    class Element;
     namespace views {
         class WhatsNewView : public ContainerViewElement
         {
@@ -13,8 +14,6 @@ namespace spider {
                 void navigate(string uri);
                 bool acceptsUri(string uri);
                 string getType();
-            protected:
-            private:
         };
     }
 }

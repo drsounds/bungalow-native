@@ -20,10 +20,7 @@ namespace spider {
             //ctor
             text = new TextElement(this);
             text->setInnerText("Doctrine");
-            text->set("height", "160");
-            text->set("fgcolor", "#99CC00");
-            text->set("size", "25");
-            text->set("width", "100%");
+            text->setStringAttribute("width", "100%");
             this->appendChild(text);
         }
 

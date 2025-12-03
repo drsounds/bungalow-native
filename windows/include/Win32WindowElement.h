@@ -2,7 +2,7 @@
 #ifndef H_SPIDER
 #define H_SPIDER
 #include <Windows.h>
-#include "MainWindowElement.h"
+#include "MainElement.h"
 #include <string>
 #include "WindowElement.h"
 #define MAX_LOADSTRING 100
@@ -13,12 +13,12 @@ namespace spider {
 		HINSTANCE hInst;								// current instance
 		HDC memHDC;
 		HWND hWnd;
-        MainWindowElement *mainWindow;
+        MainElement *mainWindow;
 	public:
 
 	    void invalidateRegion(rectangle rect);
 	    GraphicsContext *createGraphics();
-        MainWindowElement *getMainWindow() {
+        MainElement *getMainWindow() {
             return this->mainWindow;
         }
 	    void setHandle(HWND hWnd) {

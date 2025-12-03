@@ -52,7 +52,7 @@ class TabBarElement : public Element
         TabBarElement(Element *parent);
         void addTab(string id, string name, string uri);
         virtual ~TabBarElement();
-        void mousedown(int mouseButton, int x, int y);
+        void mouseDown(int mouseButton, int x, int y);
         void draw(int x, int y, GraphicsContext *g);
         vector<Tab *> *getTabs() {
             return this->tabs;

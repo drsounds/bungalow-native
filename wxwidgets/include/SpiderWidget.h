@@ -33,7 +33,7 @@ public:
 
     bool Create(
         wxWindow *parent,
-        wxWindowID winid,
+        wxWindowID winId,
         const wxString& label,
         const wxPoint& pos = wxDefaultPosition,
         const wxSize& size = wxDefaultSize,
@@ -41,6 +41,9 @@ public:
         const wxValidator& val = wxDefaultValidator,
         const wxString& name = "Spider"
     );
+    void OnLeftUp(wxMouseEvent& event);
+    void OnSize(wxSizeEvent& event);
+    void OnLeftDown(wxMouseEvent& event);
 
     // accessors...
 

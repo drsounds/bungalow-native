@@ -87,7 +87,7 @@ TabBarElement::TabBarElement(Element *parent)
 
 
 }
-void TabBarElement::mousedown(int mouseButton, int x, int y) {
+void TabBarElement::mouseDown(int mouseButton, int x, int y) {
     TabBarElement *tabBar = this;
     x = tabBar->getAbsoluteBounds() != NULL ? x - tabBar->getAbsoluteBounds()->x : x;
     y = tabBar->getAbsoluteBounds() != NULL ? y - tabBar->getAbsoluteBounds()->y : y;

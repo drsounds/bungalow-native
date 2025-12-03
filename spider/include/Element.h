@@ -8,6 +8,7 @@
 using namespace std;
 
 namespace spider {
+    struct sp_message;
     class Skin;
     class GraphicsContext;
     class Stylesheet;
@@ -117,16 +118,17 @@ namespace spider {
         Element(Element *parent);
         ~Element();
         int getX();
+        virtual void processMessage(const sp_message&);
         margin *getMargins();
         margin *getPadding();
         string getInnerText();
         void setInnerText(string data);
-        virtual void mouseMove(int& x, int& y) {}
-        virtual void mouseClick(int& mouseButton, int& x, int& y);
-        virtual void mouseDown(int& mouseButton, int& x, int& y);
+        virtual void mouseMove(int x, int y) {}
+        virtual void mouseClick(int mouseButton, int x, int y);
+        virtual void mouseDown(int mouseButton, int x, int y);
         virtual void click(int mouseButton, int x, int y);
-        virtual void mousedown(int mouseButton, int x, int y);
-        virtual void mouseup(int mouseButton, int x, int y);
+        virtual void mouseDown(int mouseButton, int x, int y);
+        virtual void mouseUp(int mouseButton, int x, int y);
         int getY();
         int getWidth();
         int getHeight();
