@@ -1,18 +1,25 @@
 # Spacify Client
 
-Spacify Client is a C++ desktop application.
+Spacify Client is a C++ desktop application that interacts with spacify.se services.
 
-## Installation
+It uses an own written GUI framework called **spider** which is a lightweight abstract GUI framework that aims to create an alternate protocol for serving content over the internet
+
+## Building
+
+Required libraries
+
+* Boost
+* libpng
+* wxWidgets
 
 ```bash
-npm install
+cmake .
+make
 ```
 
 ## Usage
 
-```bash
-npm run dev
-```
+TBA
 
 ## License
 
