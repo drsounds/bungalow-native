@@ -2,30 +2,34 @@
 namespace spider {
 Observable::Observable()
 {
-    //ctor
-    this->observers = new list<Observer *>;
+	//ctor
+	this->observers = new list<Observer *>;
+}
+
+void Observable::dispatchEvent(const string& event, EventArgs* args, SPType* sender)
+{
+	this->notify(event, sender, args);
+}
+
+void Observable::notify(const string& evt, SPType *sender, EventArgs *data) const
+{
+	for(auto observer : *this->observers) {
+		string t = observer->getEvent();
+		if(t == (evt)) {
+			sp_callback cb = observer->getCallback();
+			cb(evt, sender, data);
+		}
+	}
+}
+void Observable::addEventListener(const string& type, const sp_callback& callback) {
+	auto *observer = new Observer(type, callback);
+	this->observers->push_back(observer);
+
 }
 
 Observable::~Observable()
 {
-    //dtor
-}
-void Observable::notify(string evt, SPType *sender, EventArgs *data) {
-	for(list<Observer *>::iterator it = this->observers->begin(); it != this->observers->end(); ++it) {
-		Observer *observer = static_cast<Observer *>(*it);
-		string t = observer->getEvent();
-		if(t == (evt)) {
-			s_event evt = (observer->getCallback());
-			evt(sender, data);
-		}
-	}
-}
-void Observable::addEventListener(string evt, s_event callback) {
-    Observer *observer = new Observer(evt, callback);
-
-
-	this->observers->push_back(observer);
-
+	//dtor
 }
 
 }

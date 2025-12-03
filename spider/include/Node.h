@@ -7,7 +7,8 @@
 #include <vector>
 using namespace std;
 namespace spider {
-class Color;
+    class Spider;
+    class Color;
 class Node : public SPType {
 protected:
     map<string, void *> *properties;
@@ -16,10 +17,22 @@ protected:
     map<string, int> *integerAttributes;
     Node *pparent;
     Node *window;
+    Spider *m_spider;
 public:
     Node *parent;
+    Spider *getSpider() {
+        return this->m_spider;
+    }
     std::vector<Node *> *children;
-    Node();
+    Node(Spider *spider, Node *parent)
+    {
+        this->parent = parent;
+        this->m_spider = spider;
+    }
+
+    explicit Node(Node *parent) : Node(parent->getSpider(), parent) {
+
+    }
     void removeChild(Node *child);
     virtual void appendChild(Node *child);
     void setChildren(std::vector<Node *> *children) {

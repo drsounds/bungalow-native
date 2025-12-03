@@ -71,13 +71,13 @@ TabBarElement::TabBarElement()
 TabBarElement::TabBarElement(Element *parent)
  : Element(parent)
 {
-    this->backgroundImage = (Image *)this->skin->getImage("tabbar.background.image", "");
+    this->m_backgroundImage = (Image *)this->m_skin->getImage("tabbar.background.image", "");
     //ctor
     this->tabs = new std::vector<Tab *>;
     this->set("active_tab_fgcolor", "#ffffff");
     this->set("active_tab_bgcolor", "#474747");
     this->set("bgcolor", "#666666");
-    this->addEventListener(string("mousedown"), (s_event)&tabbar_mousedown);
+    this->addEventListener(string("mousedown"), (sp_callback)&tabbar_mousedown);
     std::vector<Observer *> *observers = this->observers;
     int count = observers->size();
     if (count < 1)
@@ -126,7 +126,7 @@ void TabBarElement::draw(int x, int y, GraphicsContext *g) {
     //g->fillRectangle(x, y, this->getWidth(), this->getHeight(), (Color *)this->getAttributeObj("bgcolor"));
     // Draw background image
 
-    map<string, slice *> *slices = this->skin->slices;
+    map<string, slice *> *slices = this->m_skin->slices;
 
     g->drawImageSlices(slices, "tabbar.background.image", x, y-1, this->getWidth(), this->getHeight());
 

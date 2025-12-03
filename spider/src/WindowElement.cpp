@@ -1,10 +1,13 @@
 #include "WindowElement.h"
 
+#include <iostream>
+
 #include "GraphicsContext.h"
 
 #include "Element.h"
 #include "MainElement.h"
-#include "Spider.h"
+#include "../include/Spider.h"
+#include "Element.h"
 
 namespace spider
 {
@@ -17,25 +20,14 @@ namespace spider
 
     void WindowElement::draw(GraphicsContext *gc, int x, int y) {
         std::vector<Node *> *elements = this->getChildNodes();
-        for (std::vector<Node *>::iterator it = elements->begin(); it != elements->end(); ++it) {
-            Node *node = (Node *)*it;
-            Element *elm = static_cast<Element *>(node);
+        for (auto node : *elements) {
+            auto *elm = dynamic_cast<Element *>(node);
             if (elm->isVisible())
                 elm->draw(0, 0, gc);
         }
     }
-    void WindowElement::invalidateRegion(rectangle rect) {
-        this->getGraphicsContext()->invalidateRegion(rect);
-    }
-    void WindowElement::navigate(string uri) {
-        this->mainWindow->navigate(uri);
-    }
-    void WindowElement::scroll(int x, int y) {
-        deepestView = (Element *)this->mainWindow;
-        this->mainWindow->scroll(x, y);
-    }
-    void WindowElement::scrollTo(int x, int y) {
-
+    void WindowElement::navigate(const string& uri) {
+        this->dispatchEvent("navigate", nullptr, this);
     }
     void WindowElement::pack() {
 
@@ -43,34 +35,13 @@ namespace spider
 
         int width = gc->getWidth();
         int height = gc->getHeight();
-        for (vector<Node *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
-            Element *elm = (Element *)static_cast<Node *>(*it);
+        for (auto & it : *this->getChildNodes()) {
+            auto *elm = dynamic_cast<Element *>(it);
             elm->setX(0);
             elm->setY(0);
             elm->setWidth(width);
             elm->setHeight(height);
             elm->pack();
         }
-    }
-    void WindowElement::scroll(int scrollX, int scrollY, int mouseX, int mouseY) {
-        this->deepestView = this->mainWindow;
-        this->mainWindow->scroll(scrollX, scrollY, mouseX, mouseY);
-        if (this->deepestView != NULL) {
-            cout << "Scrolling on" << endl;
-            this->deepestView->scroll(scrollX, scrollY);
-            this->deepestView = NULL;
-        }
-    }
-    void sample_click(spider::Element *elm, void *data) {
-        //MessageBox(((WindowElement *)elm->getWindowNode())->getHandle(), (LPCSTR)"Test",(LPCSTR)L"A", 0);
-    }
-    void WindowElement::SampleLayout() {
-        this->setColorAttribute("bgcolor", Color(127, 127, 127, 1));
-        this->setWindowElement(this);
-        this->mainWindow = new MainElement(this, wne Skin(string("skin.png"), this->createGraphics()));
-        this->mainWindow->setWindowElement((WindowElement *)this);
-        this->mainWindow->setVisible(true);
-        this->mainWindow->layout();
-        this->appendChild(mainWindow);
     }
 }

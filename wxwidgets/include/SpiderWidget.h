@@ -12,17 +12,25 @@ enum MySpecialWidgetStyles
 };
 namespace spider
 {
+    class Spider;
     class WindowElement;
 }
 class SpiderWidget : public wxControl
 {
-    spider::platform::wxwidgets::WxWidgetsGraphicsContext *gc;
+private:
+    spider::Spider *m_spider;
+    void Init();
+
+    virtual wxSize DoGetBestSize();
+
+    void OnPaint(wxPaintEvent&);
+
 public:
     SpiderWidget();
 
     SpiderWidget(
         wxWindow *parent,
-        wxWindowID winid,
+        wxWindowID winId,
         const wxString& label,
         const wxPoint& pos = wxDefaultPosition,
         const wxSize& size = wxDefaultSize,
@@ -46,17 +54,7 @@ public:
     void OnLeftDown(wxMouseEvent& event);
 
     // accessors...
-
-protected:
-
-    void Init();
-
-    virtual wxSize DoGetBestSize();
-
-    void OnPaint(wxPaintEvent&);
-
-private:
-    spider::WindowElement *windowElement;
     wxDECLARE_DYNAMIC_CLASS(SpiderWidget);
     wxDECLARE_EVENT_TABLE();
+
 };

@@ -68,3 +68,7 @@
 4095	4497	1764752780130989283	CMakeFiles/spacify-client.dir/spider/src/VBoxElement.cpp.o	929556c6498faa27
 3082	3485	1764752779116998190	CMakeFiles/spacify-client.dir/spider/src/TableColumnHeader.cpp.o	e1a57cc635be0d36
 3665	4330	1764752779700433107	CMakeFiles/spacify-client.dir/spider/src/TopListView.cpp.o	ee12c2da0d814c85
+37	1156	1764768324826505826	CMakeFiles/spacify-client.dir/spacify/src/ArtistView.cpp.o	867cad430fd300af
+38	1338	1764768324827460915	CMakeFiles/spacify-client.dir/spacify/src/PlayQueueView.cpp.o	4b0b3d1c9b3ea2de
+38	1340	1764768324827712947	CMakeFiles/spacify-client.dir/spacify/src/StartView.cpp.o	94a1610bae24fa1
+37	1550	1764768324826715609	CMakeFiles/spacify-client.dir/spacify/src/DoctrineView.cpp.o	58a22d2478bc3986

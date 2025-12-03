@@ -5,15 +5,15 @@ namespace spider {
 class Observer {
 private:
     string _event;
-    s_event callback;
+    sp_callback callback;
 public:
     string getEvent() {
         return this->_event;
     }
-    s_event getCallback() {
+    sp_callback getCallback() {
         return this->callback;
     }
-    Observer(string _event, s_event callback) {
+    Observer(string _event, sp_callback callback) {
         this->callback = callback;
         this->_event = _event;
     }

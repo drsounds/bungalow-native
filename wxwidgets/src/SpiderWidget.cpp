@@ -5,7 +5,7 @@
 
 #include "WindowElement.h"
 #include "Skin.h"
-#include "../../spider/src/Spider.h"
+#include "../../spider/include/Spider.h"
 
 SpiderWidget::SpiderWidget(wxWindow *parent,
                            wxWindowID winid,
@@ -32,7 +32,7 @@ bool SpiderWidget::Create(wxWindow *parent,
 {
     this->gc = new spider::platform::wxwidgets::WxWidgetsGraphicsContext(this);
     this->SetBackgroundColour(wxColour(0, 0, 0));
-    this->spider = new spider::Spider(gc);
+    this->m_spider = new spider::Spider(gc);
     Bind(wxEVT_PAINT, &SpiderWidget::OnPaint, this);
     Bind(wxEVT_SIZE, &SpiderWidget::OnSize, this);
     Bind(wxEVT_LEFT_DOWN, &SpiderWidget::OnLeftDown, this);
@@ -41,7 +41,9 @@ bool SpiderWidget::Create(wxWindow *parent,
 }
 
 void SpiderWidget::OnLeftUp(wxMouseEvent& event) {
-    this->windowElement->mouseUp(event.GetX(), event.GetY());
+    this->m_spider->dispatchEvent(
+
+    );
 }
 
 void SpiderWidget::OnSize(wxSizeEvent& event)
@@ -51,6 +53,10 @@ void SpiderWidget::OnSize(wxSizeEvent& event)
 
 void SpiderWidget::OnLeftDown(wxMouseEvent& event) {
 
+}
+
+void SpiderWidget::Init()
+{
 }
 
 wxSize SpiderWidget::DoGetBestSize()

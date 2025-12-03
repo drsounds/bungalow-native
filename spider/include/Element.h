@@ -2,45 +2,49 @@
 #define ELEMENT_H
 #include "Node.h"
 #include "Observable.h"
+#include "WindowElement.h"
 #include "FontStyle.h"
 #include <vector>
 
-#include "../src/Spider.h"
+#include "Spider.h"
 
 using namespace std;
 
 namespace spider {
     class Spider;
-    struct sp_message;
+    class SPMessage;
     class Skin;
     class GraphicsContext;
     class Stylesheet;
+    class WindowElement;
     class Image;
     class FontStyle;
     class Element : public Node, public Observable {
-    public:
     protected:
-        Spider *m_spider;
+        Image *m_backgroundImage;
+        vector<string> *m_classList;
+        Skin *m_skin;
     public:
-        Spider *getSpider()
+        Skin *getSkin() const
         {
-            return this->m_spider;
+            if (this->m_skin)
+            {
+                return this->m_skin;
+            }
+            if (this->getWindowElement() == nullptr)
+            {
+                return this->getWindowElement()->getSkin();
+            }
         }
 
-        Skin *skin;
         void scroll(int x, int y);
         void scrollTo(int x, int y);
-        void scroll(int scrollX, int scrollY, int x, int y);
-
-        Image *backgroundImage = NULL;
-        vector<string> *classList;
-
+        virtual void scroll(int scrollX, int scrollY, int x, int y);
         void applyColorAttributeFromSkin (string attr, string skin);
         void applyImageAttributeFromSkin (string attr, string skin);
         bool hasClass(string _class);
         void addClass(string _class);
         void removeClass(string _class);
-        void setObject(const std::string& title, void *object);
         rectangle *absoluteBounds;
         void applyStylesheet(Stylesheet *style);
         int width;
@@ -52,12 +56,10 @@ namespace spider {
         int scrollY;
         bool clipView = false;
         string name;
-
-
-        void setName(string name) {
-            this->name = name;
+        void setName(const string& value) {
+            this->name = value;
          }
-        string getName() {
+        string getName() const {
             return name;
         }
 
@@ -69,80 +71,78 @@ namespace spider {
         FontStyle fontStyle = FontStyle("Tahoma", 13, 1, false, false);;
         string id;
         string data;
-        Element *windowElement;
-        Element *mainWindowElement;
+        WindowElement *windowElement;
         virtual void draw(int x, int y, GraphicsContext *c);
-        virtual string getType();
-        rectangle *getAbsoluteBounds() {
+        string getType() override;
+        rectangle *getAbsoluteBounds() const
+        {
             return this->absoluteBounds;
         }
-        void invalidate();
-        void setAbsoluteBounds(rectangle *absoluteBounds) {
-            this->absoluteBounds = absoluteBounds;
+        void invalidate() const;
+        void setAbsoluteBounds(rectangle *value) {
+            this->absoluteBounds = value;
         }
-        Element *getMainWindowElement() {
-            return this->mainWindowElement;
-        }
-        void setMainWindowElement(Element* mainWindowElement) {
-            this->mainWindowElement = mainWindowElement;
-        }
-        bool isVisible() {
+        bool isVisible() const
+        {
             return this->visible;
         }
-        Element *getWindowElement() {
+        WindowElement *getWindowElement() const
+        {
              return this->windowElement;
         }
         virtual GraphicsContext *createGraphics()
         {
-            return this->m_spider->graphicsContext;
+            return this->getSpider()->getGraphicsContext();
         }
-        void setWindowElement(Element *windowElement) {
-            this->windowElement = windowElement;
+        void setWindowElement(WindowElement *value) {
+            this->windowElement = value;
         }
-        virtual void setVisible(bool visible) {
-            this->visible = visible;
-
+        virtual void setVisible(bool value) {
+            this->visible = value;
            // ((Element *)this->getParent())->pack();
         }
-        void show();
-        void hide();
-        bool isScrollable() {
+        bool isScrollable() const
+        {
             return this->scrollable;
         }
-        void setScrollable(bool scrollable) {
-            this->scrollable = scrollable;
+        void setScrollable(bool value) {
+            this->scrollable = value;
         }
-        int getScrollX() {
+        int getScrollX() const
+        {
             return this->scrollX;
         }
-        int getScrollY() {
+        int getScrollY() const
+        {
             return this->scrollY;
         }
-        void setScrollX(int x) {
-            this->scrollX = x;
+        void setScrollX(int value) {
+            this->scrollX = value;
         }
-        void setScrollY(int y) {
-            this->scrollY = y;
+        void setScrollY(int value) {
+            this->scrollY = value;
         }
         FontStyle getFontStyle();
-        void setFontStyle(FontStyle value)  {
+        void setFontStyle(const FontStyle& value)  {
             this->fontStyle = value;
         }
-        Element();
-        Element(Element *parent);
-        ~Element();
+
+        explicit Element(Element *parent) : Element(parent->getSpider(), parent->getWindowElement(), parent) {}
+
+        explicit Element(Spider *spider, WindowElement *window, Element *parent);
+        ~Element() override;
         int getX();
-        virtual void processMessage(const sp_message&);
+        void processEvent(const SPEvent& event);
+        virtual void processMessage(const SPMessage&);
         margin *getMargins();
         margin *getPadding();
         string getInnerText();
         void setInnerText(string data);
-        virtual void mouseMove(int x, int y) {}
-        virtual void mouseClick(int mouseButton, int x, int y);
-        virtual void mouseDown(int mouseButton, int x, int y);
-        virtual void click(int mouseButton, int x, int y);
-        virtual void mouseDown(int mouseButton, int x, int y);
-        virtual void mouseUp(int mouseButton, int x, int y);
+        virtual void mouseMove(int, int) {}
+        virtual void mouseClick(int, int, int);
+        virtual void mouseDown(int, int, int);
+        virtual void click(int, int, int);
+        virtual void mouseUp(int, int, int);
         int getY();
         int getWidth();
         int getHeight();
@@ -152,10 +152,7 @@ namespace spider {
         void setWidth(int width);
         void setHeight(int height);
         void setZ(int z);
-        void set(const std::string& title, const std::string& val);
-        void set(const std::string& title, std::string& val);
-
-
+        void set(const std::string& title, const std::string& val) override;
         string getId();
         void setId(string id);
         virtual void pack() {}

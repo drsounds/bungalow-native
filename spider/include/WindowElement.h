@@ -15,24 +15,19 @@ namespace spider {
 	class WindowElement : public VBoxElement {
 	public:
 		void draw(GraphicsContext *gc, int width, int height);
-		void processEvent(const sp_event& event);
-		WindowElement(Spider *);
-		GraphicsContext *getGraphicsContext()
+		explicit WindowElement(Spider *);
+		GraphicsContext *getGraphicsContext() const
 		{
 			return this->m_spider->getGraphicsContext();
 		}
 		virtual void invalidateRegion(rectangle rect) {}
-        virtual string getType() {
+
+		string getType() override
+		{
             return "window";
         }
-        virtual void scrollTo(int, int);
-        virtual void scroll(int, int);
-		virtual void resize(int, int);
-		virtual void navigate(string uri);
-		virtual void mouseDown(int x, int y);
-		virtual void mouseMove(int x, int y);
-        Element *deepestView;
-		MainElement *mainWindow;
+		virtual void navigate(const string& uri);
+		void pack() override;
 	};
 };
 

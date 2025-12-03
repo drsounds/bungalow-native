@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdio>
 
-#include "Spider.h"
+#include "../include/Spider.h"
 #include "WindowElement.h"
 #include "Observable.h"
 #include "MouseEventArgs.h"
@@ -100,51 +100,17 @@ void Element::mouseUp(int mouseButton, int x, int y) {
 	}
 }
 void Element::addClass(string value) {
-    this->classList->push_back(value);
+    this->m_classList->push_back(value);
 }
 
 bool Element::hasClass(string value) {
-   return  std::find(this->classList->begin(), this->classList->end(), value) != this->classList->end();
+   return  std::find(this->m_classList->begin(), this->m_classList->end(), value) != this->m_classList->end();
 }
 
 void Element::removeClass(string value) {
-    this->classList->erase(std::find(this->classList->begin(), this->classList->end(), value), this->classList->end());
+    this->m_classList->erase(std::find(this->m_classList->begin(), this->m_classList->end(), value), this->m_classList->end());
 }
 
-Element::Element() :
-    Node() {
-    this->classList = new vector<string>;
-    this->absoluteBounds = NULL;
-	this->setScrollable(false);
-	this->visible = true;
-	this->scrollX = 0;
-	this->scrollY = 0;
-    this->data = "";
-    this->visible = true;
-	this->observers = new vector<Observer *>();
-    this->setColorAttribute("fgcolor", Color(255, 255, 255, 255));
-    this->setColorAttribute("bgcolor", Color(0, 0, 0, 255));
-    this->setColorAttribute("highlight", Color(169, 217, 254, 255));
-    this->setStringAttribute("font", "Tahoma");
-    this->setIntegerAttribute("size", 11);
-	this->fontStyle = FontStyle("Tahoma", 13, 1, false, false);
-	this->x = 0;
-	this->y = 0;
-	this->z = 0;
-	this->width = 0;
-	this->height = 0;
-	this->margins = new margin();
-	this->margins->left = 0;
-	this->margins->top = 0;
-	this->margins->right= 0;
-	this->margins->bottom = 0;
-	this->padding = new margin();
-	this->padding->left = 0;
-	this->padding->top = 0;
-	this->padding->right= 0;
-	this->padding->bottom = 0;
-
-}
 FontStyle Element::getFontStyle() {
     return this->fontStyle;
 }
@@ -153,48 +119,47 @@ void Element::applyStylesheet(Stylesheet *style) {
 }
 
 void Element::applyColorAttributeFromSkin (string attr, string prop) {
-    if (this->skin == NULL) {
-        this->skin = new Skin("skin.png");
+    if (this->m_skin == NULL) {
+        this->m_skin = new Skin("skin.png");
     }
     cout << prop << "\r\n";
-    cout << this->skin->colors << "\r\n";
+    cout << this->m_skin->colors << "\r\n";
     cout << attr << "\r\n";
-    if (this->skin->colors->find(prop) != this->skin->colors->end()) {
-        pixel *color = (*this->skin->colors)[prop];
+    if (this->m_skin->colors->find(prop) != this->m_skin->colors->end()) {
+        pixel *color = (*this->m_skin->colors)[prop];
 
         this->set(attr, spider_pixel_to_hex(color));
     }
 }
 
 void Element::applyImageAttributeFromSkin (string attr, string prop) {
-    if (this->skin == NULL) {
-        this->skin = new Skin("skin.png");
+    if (this->m_skin == NULL) {
+        this->m_skin = new Skin("skin.png");
     }
     cout << attr << "\r\n";
-    cout << skin << "\r\n";
-    cout << this->skin->colors << "\r\n";
+    cout << m_skin << "\r\n";
+    cout << this->m_skin->colors << "\r\n";
     cout << attr << "\r\n";
-    if (this->skin->images->find(prop) != this->skin->images->end()) {
-        Image *img = (*this->skin->images)[prop];
+    if (this->m_skin->images->find(prop) != this->m_skin->images->end()) {
+        Image *img = (*this->m_skin->images)[prop];
 
         this->setObject(attr, (void *)img);
     }
 }
 
-
-Element::Element(Element *parent) :
-    Node() {
-    this->classList = new vector<string>;
+Element::Element(Spider *spider, WindowElement *window, Element *parent) : Node(static_cast<Node*>(parent)) {
+    this->m_classList = new vector<string>;
     this->absoluteBounds = NULL;
 	this->setScrollable(false);
-
+	this->m_spider = spider;
+	this->m_skin = parent->getSkin();
 	this->visible = true;
 	this->scrollX = 0;
 	this->scrollY = 0;
     this->data = "";
 	this->observers = new vector<Observer *>();
+	this->windowElement = window;
 	this->setParent(parent);
-	this->skin = ((Element *)this->parent)->skin;
 	this->fontStyle = FontStyle("Tahoma", 13, 1, false, false);
 
     #if false
@@ -212,8 +177,8 @@ Element::Element(Element *parent) :
 
     this->applyColorAttributeFromSkin(string("bgcolor"), string(this->getType()) + "body.background.color");
     this->applyColorAttributeFromSkin(string("fgcolor"), string(this->getType()) + "body.foreground.color");
-    if (this->skin->hasImage(string(this->getType()) + ".background.image")) {
-        this->backgroundImage = this->skin->getImage(string(this->getType()) + ".background.image", "");
+    if (this->m_skin->hasImage(this->Element::getType() + ".background.image")) {
+        this->m_backgroundImage = this->m_skin->getImage(string(this->getType()) + ".background.image", "");
     }
 	if (this->getParent() != NULL) {
         #if false
@@ -224,7 +189,6 @@ Element::Element(Element *parent) :
         this->set("size", new string(this->getParent()->get("size")));
         #endif
         this->fontStyle = parent->fontStyle;
-        this->mainWindowElement = parent->getMainWindowElement();
         this->windowElement = parent->getWindowElement();
 	}
 	this->x = 0;
@@ -244,11 +208,12 @@ Element::Element(Element *parent) :
 	this->padding->bottom = 0;
 
 }
-void Element::invalidate() {
+void Element::invalidate() const
+{
     rectangle *rect = this->getAbsoluteBounds();
     if (rect == NULL)
         return;
-    WindowElement *we = (WindowElement *)this->getWindowElement();
+    auto *we = (WindowElement *)this->getWindowElement();
     we->invalidateRegion(*rect);
 }
 margin *Element::getMargins() {
@@ -260,8 +225,6 @@ margin *Element::getPadding() {
 Element::~Element() {
 
 }
-
-
 int Element::getHeight() {
 	return this->height;
 };
@@ -271,6 +234,69 @@ int Element::getWidth() {
 int Element::getX() {
 	return this->x;
 }
+
+void Element::processEvent(const SPEvent& event)
+{
+	switch (event.type)
+	{
+	case SP_EVENT_MOUSE_DOWN:
+		{
+			auto *mouseEventArgs = dynamic_cast<MouseEventArgs *>(event.args);
+			if (mouseEventArgs != nullptr)
+			{
+				if (mouseEventArgs->getX() > this->getAbsoluteBounds()->x && mouseEventArgs->getX() < this->getAbsoluteBounds()->y + this->getWidth() &&
+					mouseEventArgs->getY() >this->getAbsoluteBounds()->y && mouseEventArgs->getY() < this->getAbsoluteBounds()->y + this->getHeight())
+				{
+					this->dispatchEvent("mousedown", mouseEventArgs, this);
+				}
+
+			}
+		}
+	case SP_EVENT_MOUSE_UP:
+		{
+			auto *mouseEventArgs = dynamic_cast<MouseEventArgs *>(event.args);
+			if (mouseEventArgs != nullptr)
+			{
+				if (mouseEventArgs->getX() > this->getAbsoluteBounds()->x && mouseEventArgs->getX() < this->getAbsoluteBounds()->y + this->getWidth() &&
+					mouseEventArgs->getY() >this->getAbsoluteBounds()->y && mouseEventArgs->getY() < this->getAbsoluteBounds()->y + this->getHeight())
+				{
+					this->dispatchEvent("mouseup", mouseEventArgs, this);
+				}
+
+			}
+		}
+	case SP_EVENT_MOUSE_MOVE:
+		{
+			auto *mouseEventArgs = dynamic_cast<MouseEventArgs *>(event.args);
+			if (mouseEventArgs != nullptr)
+			{
+				if (mouseEventArgs->getX() > this->getX() && mouseEventArgs->getX() < this->getX() + this->getWidth() &&
+					mouseEventArgs->getY() > this->getY() && mouseEventArgs->getY() < this->getY() + this->getHeight())
+				{
+					this->dispatchEvent("mousemove", mouseEventArgs, this);
+				}
+			}
+		}
+	default:
+		break;
+	}
+	for (auto & it : *this->children)
+	{
+		auto *elm = dynamic_cast<Element *>(it);
+		elm->processEvent(event);
+	}
+}
+
+void Element::processMessage(const SPMessage& message)
+{
+	for (auto & it : *this->children)
+	{
+		auto *elm = dynamic_cast<Element *>(it);
+
+		elm->processMessage(message);
+	}
+}
+
 int Element::getY() {
 	return this->y;
 }
@@ -326,7 +352,7 @@ void Element::draw(int x, int y, GraphicsContext *c) {
         return;
     }
 
-	spider_position pos;
+	position pos;
 	std::vector<Node *> *children = this->getChildNodes();
 	x += this->getX() ;
 	y += this->getY();
@@ -357,14 +383,14 @@ void Element::draw(int x, int y, GraphicsContext *c) {
     string sel = "";
     sel.append(this->getType());
     sel.append(".background.image");
-    c->drawImageSlices(this->skin->slices, sel, x, y, width, height);
+    c->drawImageSlices(this->m_skin->slices, sel, x, y, width, height);
 
     // Draw background image
     if (this->getId() != "" && this->getId().length() > 0) {
         string sel2 = "#";
         sel2.append(this->getId());
         sel2.append(".background.image");
-        c->drawImageSlices(this->skin->slices, sel2, x, y, width, height);
+        c->drawImageSlices(this->m_skin->slices, sel2, x, y, width, height);
        // c->drawImage(this->backgroundImage,  x - scrollX, y - scrollY, width, height);
     }
 	//c->drawRectangle(x, y, this->getWidth(), this->getHeight(), (Color *)this->getAttributeObj("bgcolor"));
@@ -401,7 +427,6 @@ void Element::draw(int x, int y, GraphicsContext *c) {
 }
 
 void Element::scroll(int scrollX, int scrollY, int x, int y) {
-
     int xx = this->getAbsoluteBounds() != NULL ? x - this->getAbsoluteBounds()->y : x;
     int yy = this->getAbsoluteBounds() != NULL ? y - this->getAbsoluteBounds()->y : y;
     cout << "Current scrolling element is " << this->getType() << endl;

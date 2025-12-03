@@ -10,22 +10,45 @@
 #include <iomanip>
 #define DEBUG
 #define CONTROL_INPUT 1
+#define SP_EVENT_MOUSE_DOWN 1
+#define SP_EVENT_MOUSE_UP 2
+#define SP_EVENT_MOUSE_MOVE 3
+#define SP_EVENT_NAVIGATE 4
+
 #include "SPType.h"
 #include "EventArgs.h"
 using namespace std;
 
+
 namespace spider {
-	#ifndef MARGIN_STRUCT
-	struct margin {
-			int left;
-			int top;
-			int bottom;
-			int right;
+	class SPEvent
+	{
+	public:
+		string type;
+		EventArgs *args;
+		SPType *sender;
+		SPEvent(const string& type, EventArgs *args, SPType *sender) {
+			this->type = type;
+			this->args = args;
+			this->sender = sender;
+		}
 	};
-	#define MARGIN_STRUCT
-	#endif
+	class SPMessage
+	{
+	public:
+		string type;
+		string subject_uri;
+		string predicate;
+		string object_uri;
+	};
+	struct margin {
+		int left;
+		int top;
+		int bottom;
+		int right;
+	};
 	int htmlToColor(string str);
-	struct spider_position {
+	struct position {
 		int x;
 		int y;
 	};
@@ -37,6 +60,6 @@ namespace spider {
 		int z;
 	};
 
-	typedef int(*s_event)(SPType *, EventArgs *);
+	typedef int(*sp_callback)(const string& action, SPType *, EventArgs *);
 }
 #endif

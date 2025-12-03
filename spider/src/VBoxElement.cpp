@@ -4,6 +4,9 @@ namespace spider {
     {
     }
 
+    VBoxElement::VBoxElement(WindowElement* parent) : BoxElement(parent)
+    {
+    }
 
 
     void spider::VBoxElement::pack() {

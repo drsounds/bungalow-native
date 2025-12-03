@@ -11,7 +11,9 @@ namespace spider {
 	    VBoxElement(Element *parent) : BoxElement(parent) {
 		}
 		VBoxElement();
-        virtual string getType() {
+	    explicit VBoxElement(WindowElement* parent);
+
+	    virtual string getType() {
             return "vbox";
         }
 		void pack();

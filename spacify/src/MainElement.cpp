@@ -15,17 +15,12 @@ namespace spider {
     {
 
     }
-    MainElement::MainElement(Element *parent, Skin *skin) {
-         this->setWindowElement(parent);
-        this->skin = skin;
-
-    }
     void MainElement::hideMessage() {
         this->infoElement->hide();
     }
     int treeview_itemselected(SPType *sender, EventArgs *e) {
         TreeViewElement *treeView = (TreeViewElement *)sender;
-        MainElement *mainWindow = (MainElement *)treeView->getMainWindowElement();
+        MainElement *mainWindow = (MainElement *)treeView->getParent();
         TreeViewEventArgs *args = (TreeViewEventArgs *)e;
         TreeItem *selectedItem = args->getItem();
         Uri *uri = selectedItem->getUri();
@@ -37,8 +32,6 @@ namespace spider {
     }
     MainElement::MainElement(Element *parent) : VBoxElement(parent)
     {
-        this->setWindowElement(parent);
-
     }
 
     int search_entered(SPType *sender, EventArgs *e) {
@@ -54,7 +47,7 @@ namespace spider {
 
         return 0;
     }
-    void MainElement::navigate(string uri) {
+    void MainElement::navigate(const string& uri) {
         this->viewStack->navigate(uri);
     }
     void MainElement::layout() {
@@ -68,7 +61,7 @@ namespace spider {
         header->getPadding()->left = 13;
         header->getPadding()->bottom = 13;
         header->getPadding()->right =  13;
-        header->backgroundImage = (Image *)(*header->skin->images)["header.background.image"];
+        header->m_backgroundImage = (Image *)(*header->m_skin->images)["header.background.image"];
         this->appendChild(header);
         header->setId("header");
         // add search element
