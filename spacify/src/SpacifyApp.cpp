@@ -6,6 +6,25 @@
 
 #include "SpiderFrame.h"
 #include "MainElement.h"
+#include "SPWindowElement.h"
+#include "SpiderFrame.h"
+#include "Spider.h"
+#include "SpiderWidget.h"
+#include "WxGraphicsContext.h"
+
+wxIMPLEMENT_APP(SpacifyApp);
+
+SpacifyApp::SpacifyApp()
+{
+     spider::SPGraphicsContext *gc = new spider::platform::wxwidgets::WxGraphicsContext(this->m_frame);
+     this->m_spider = new spider::Spider(gc);
+}
+
+SpiderFrame *SpacifyApp::createWindow(spider::SPWindowElement *window)
+{
+     auto *frame = new SpiderFrame(this, window);
+     return frame;
+}
 
 bool SpacifyApp::OnInit()
 {

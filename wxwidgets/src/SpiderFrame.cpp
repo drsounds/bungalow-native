@@ -2,7 +2,7 @@
 
 #include "SpiderWidget.h"
 
-SpiderFrame::SpiderFrame(SpiderApp *app, spider::SPWindowElement *window)
+SpiderFrame::SpiderFrame(wxApp *app, spider::SPWindowElement *window)
     : wxFrame(nullptr, wxID_ANY, "Spider")
 {
     this->m_app = app;

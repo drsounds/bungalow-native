@@ -4,13 +4,13 @@
 
 #include "WxGraphicsContext.h"
 
-#include "SpiderApp.h"
+#include "SpiderFrame.h"
 
 using namespace spider::platform::wxwidgets;
 
-WxGraphicsContext::WxGraphicsContext(SpiderApp* app) : SPGraphicsContext(app->getSpider())
+WxGraphicsContext::WxGraphicsContext(SpiderFrame* frame) : SPGraphicsContext(frame->getSpider())
 {
-    this->m_app = app;
+    this->m_frame = frame;
 }
 
 WxGraphicsContext::WxGraphicsContext()

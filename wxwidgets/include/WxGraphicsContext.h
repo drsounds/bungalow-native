@@ -4,7 +4,7 @@
 
 #include "SPGraphicsContext.h"
 
-class SpiderApp;
+class SpiderFrame;
 class SpiderWidget;
 
 namespace spider
@@ -15,9 +15,9 @@ namespace spider
     {
       class WxGraphicsContext : public SPGraphicsContext
       {
-        SpiderApp *m_app;
+        SpiderFrame *m_frame;
       public:
-        explicit WxGraphicsContext(SpiderApp *app);
+        explicit WxGraphicsContext(SpiderFrame *frame);
         WxGraphicsContext();
         virtual ~WxGraphicsContext();
 

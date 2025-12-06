@@ -1,6 +1,7 @@
 #ifndef SPIDER_FRAME_H
 #define SPIDER_FRAME_H
 #include "SPWindowElement.h"
+
 #ifndef WX_PRECOMP
     #include <wx/wx.h>
 #endif
@@ -14,16 +15,18 @@ namespace spider
 
 class SpiderFrame : public wxFrame
 {
-    SpiderApp *m_app{};
+    spider::Spider *m_spider;
     spider::SPWindowElement* m_window;
+    wxApp* m_app;
 
 public:
-    SpiderFrame(SpiderApp *, spider::SPWindowElement*);
+    spider::Spider* getSpider() const { return m_spider; }
+    SpiderFrame(wxApp *app, spider::SPWindowElement*);
     void OnExit(wxCommandEvent& event);
     void OnAbout(wxCommandEvent& event);
     void OnHello(wxCommandEvent& event);
     spider::SPWindowElement* getWindow() const { return m_window; }
-    SpiderApp *getApp() const { return m_app; }
+    wxApp *getApp() const { return m_app; }
 };
 
 #endif
