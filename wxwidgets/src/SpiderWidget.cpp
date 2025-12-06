@@ -159,9 +159,17 @@ wxSize SpiderWidget::DoGetBestSize()
 
 void SpiderWidget::OnPaint(wxPaintEvent& event) {
     wxPaintDC dc(this);
+	wxCoord 
+	x = 0,
+	y = 0,
+	width = 0,
+	height = 0,
+	tw = 0,
+	th = 0;
     // draw the widget on a wxDC...
     auto* gc = dynamic_cast<spider::platform::wxwidgets::WxGraphicsContext *>(this->m_frame->getWindowElement()->createGraphics());
     gc->setDC(&dc);
+	GetClientSize( &width, &height );
     int width = this->GetSize().GetWidth();
     int height = this->GetSize().GetHeight();
     cout << width;
