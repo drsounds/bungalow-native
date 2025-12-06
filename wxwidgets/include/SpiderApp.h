@@ -1,4 +1,3 @@
-#include "SPWindowElement.h"
 #ifndef SPIDER_APP_H
 #ifndef WX_PRECOMP
     #include <wx/wx.h>
@@ -9,6 +8,7 @@ class SpiderFrame;
 namespace spider
 {
     class Spider;
+    class SPWindowElement;
 }
 
 class SpiderApp : public wxApp

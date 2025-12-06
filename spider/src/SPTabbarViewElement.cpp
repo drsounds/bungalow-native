@@ -12,6 +12,7 @@ namespace spider {
         SPTabBarElement *tabView = (SPTabBarElement *)sender;
         SPTabbarViewElement *tabbarView = (SPTabbarViewElement *)tabView->getParent();
         tabbarView->navigate(uri);
+        return 0;
     }
     SPTabbarViewElement::SPTabbarViewElement()
      : SPViewElement() {

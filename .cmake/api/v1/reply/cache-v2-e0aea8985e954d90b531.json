@@ -91,7 +91,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "0"
+			"value" : "2"
 		},
 		{
 			"name" : "CMAKE_CACHE_PATCH_VERSION",
@@ -103,7 +103,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "2"
+			"value" : "0"
 		},
 		{
 			"name" : "CMAKE_COLOR_DIAGNOSTICS",
@@ -127,7 +127,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake"
+			"value" : "/opt/homebrew/bin/cmake"
 		},
 		{
 			"name" : "CMAKE_CPACK_COMMAND",
@@ -139,7 +139,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cpack"
+			"value" : "/opt/homebrew/bin/cpack"
 		},
 		{
 			"name" : "CMAKE_CTEST_COMMAND",
@@ -151,7 +151,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/ctest"
+			"value" : "/opt/homebrew/bin/ctest"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER",
@@ -939,7 +939,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0"
+			"value" : "/opt/homebrew/share/cmake"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1206,6 +1206,30 @@
 			"value" : "[/opt/homebrew/lib/liblua5.4.dylib][/opt/homebrew/include/lua][v5.4.8()]"
 		},
 		{
+			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_PNG",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Details about finding PNG"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "[/opt/homebrew/lib/libpng.dylib][/opt/homebrew/include][v1.6.51()]"
+		},
+		{
+			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_ZLIB",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Details about finding ZLIB"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "[/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/libz.tbd][/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include][ ][v1.2.12()]"
+		},
+		{
 			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_wxWidgets",
 			"properties" : 
 			[
@@ -1216,6 +1240,18 @@
 			],
 			"type" : "INTERNAL",
 			"value" : "[-L/opt/homebrew/lib;;;-framework IOKit;-framework Carbon;-framework Cocoa;-framework QuartzCore;-framework AudioToolbox;-framework System;-framework OpenGL;-lwx_osx_cocoau_xrc-3.3;-lwx_osx_cocoau_html-3.3;-lwx_osx_cocoau_qa-3.3;-lwx_osx_cocoau_core-3.3;-lwx_baseu_xml-3.3;-lwx_baseu_net-3.3;-lwx_baseu-3.3][/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3;/opt/homebrew/include/wx-3.3][v3.3.1()]"
+		},
+		{
+			"name" : "Ffi_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for Ffi."
+				}
+			],
+			"type" : "PATH",
+			"value" : "Ffi_DIR-NOTFOUND"
 		},
 		{
 			"name" : "LUA_INCLUDE_DIR",
@@ -1248,6 +1284,54 @@
 			],
 			"type" : "FILEPATH",
 			"value" : "/opt/homebrew/lib/liblua5.4.dylib"
+		},
+		{
+			"name" : "PNG_LIBRARY_DEBUG",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "PNG_LIBRARY_DEBUG-NOTFOUND"
+		},
+		{
+			"name" : "PNG_LIBRARY_RELEASE",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "/opt/homebrew/lib/libpng.dylib"
+		},
+		{
+			"name" : "PNG_PNG_INCLUDE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a file."
+				}
+			],
+			"type" : "PATH",
+			"value" : "/opt/homebrew/include"
 		},
 		{
 			"name" : "SpacifyClient_BINARY_DIR",
@@ -1286,6 +1370,54 @@
 			"value" : "/Users/buddhalow/Documents/spacify-client"
 		},
 		{
+			"name" : "ZLIB_INCLUDE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a file."
+				}
+			],
+			"type" : "PATH",
+			"value" : "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
+		},
+		{
+			"name" : "ZLIB_LIBRARY_DEBUG",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "ZLIB_LIBRARY_DEBUG-NOTFOUND"
+		},
+		{
+			"name" : "ZLIB_LIBRARY_RELEASE",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/libz.tbd"
+		},
+		{
 			"name" : "boost_headers_DIR",
 			"properties" : 
 			[
@@ -1300,6 +1432,30 @@
 			],
 			"type" : "PATH",
 			"value" : "/opt/homebrew/lib/cmake/boost_headers-1.89.0"
+		},
+		{
+			"name" : "ffi_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for ffi."
+				}
+			],
+			"type" : "PATH",
+			"value" : "ffi_DIR-NOTFOUND"
+		},
+		{
+			"name" : "libpng_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for libpng."
+				}
+			],
+			"type" : "PATH",
+			"value" : "libpng_DIR-NOTFOUND"
 		},
 		{
 			"name" : "wxWidgets_CONFIG_EXECUTABLE",

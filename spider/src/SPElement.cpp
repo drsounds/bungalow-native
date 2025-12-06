@@ -26,6 +26,7 @@ namespace spider {
 		{
 			return this->getWindowElement()->getSkin();
 		}
+		return nullptr;
 	}
 
 	SPElement::SPElement() : SPNode(), fontStyle(SPFontStyle("Tahoma", 13, 1, false, false))

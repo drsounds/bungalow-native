@@ -2,7 +2,7 @@
 // Created by Alexander Forselius on 2025-12-03.
 //
 
-#include "../include/Spider.h"
+#include "Spider.h"
 
 #include "libspider.h"
 #include "SPWindowElement.h"
@@ -25,11 +25,6 @@ spider::SPMessage spider::Spider::dequeueNextMessage() {
     auto message = this->m_messages->front();
     this->m_messages->pop();
     return message;
-}
-
-void spider::Spider::dispatchEvent(const SPEvent& event) const
-{
-    this->m_events->push(event);
 }
 
 void spider::Spider::postMessage(const SPMessage& message) const

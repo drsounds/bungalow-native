@@ -45,6 +45,7 @@ bool SPStandardTableDataSource::isRowActive(int index) {
     if (index == 1) {
         return true;
     }
+    return false;
 }
 
 bool SPStandardTableDataSource::isCellActive (int index) {

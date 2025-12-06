@@ -17,6 +17,7 @@ void SPTitleElement::setTitle(string title) {
     this->title->setInnerText((string)title.c_str());
 }
 string SPTitleElement::getTitle() {
+    return this->title->getInnerText();
 }
 
 void SPTitleElement::setEntity(string entity) {
@@ -24,6 +25,7 @@ void SPTitleElement::setEntity(string entity) {
     this->title->setInnerText((string)entity.c_str());
 }
 string SPTitleElement::getEntity() {
+    return this->entity->getInnerText();
 }
 SPTitleElement::SPTitleElement(SPElement *parent)
  : SPVBoxElement(parent){

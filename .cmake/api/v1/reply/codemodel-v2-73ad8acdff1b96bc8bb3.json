@@ -1,0 +1,141 @@
+{
+	"configurations" : 
+	[
+		{
+			"abstractTargets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Boost::boost::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Boost__boost-0dea6a7bae514e6fbb3b.json",
+					"name" : "Boost::boost",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Boost::diagnostic_definitions::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Boost__diagnostic_definitions-2bf9c5a88a6e02f5baad.json",
+					"name" : "Boost::diagnostic_definitions",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Boost::disable_autolinking::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Boost__disable_autolinking-e3cc3add1486440cc68f.json",
+					"name" : "Boost::disable_autolinking",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Boost::dynamic_linking::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Boost__dynamic_linking-a0e8434f8e34ccfa59b6.json",
+					"name" : "Boost::dynamic_linking",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Boost::headers::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Boost__headers-2b149c40b7eabcf6d838.json",
+					"name" : "Boost::headers",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "PNG::PNG::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-PNG__PNG-ab3699bec015c2aef656.json",
+					"name" : "PNG::PNG",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ZLIB::ZLIB::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ZLIB__ZLIB-1befa87572ba4d703865.json",
+					"name" : "ZLIB::ZLIB",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wxWidgets::wxWidgets::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wxWidgets__wxWidgets-51758028adc224aa1658.json",
+					"name" : "wxWidgets::wxWidgets",
+					"projectIndex" : 0
+				}
+			],
+			"directories" : 
+			[
+				{
+					"abstractTargetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7
+					],
+					"build" : ".",
+					"jsonFile" : "directory-.-9ad1a58d4644cf6543fa.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"abstractTargetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "SpacifyClient",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "spacify-client::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-spacify-client-1dcf01e97b899556576c.json",
+					"name" : "spacify-client",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/buddhalow/Documents/spacify-client",
+		"source" : "/Users/buddhalow/Documents/spacify-client"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 9
+	}
+}

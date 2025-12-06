@@ -41,6 +41,7 @@ int SPTabBarElement::tabbar_mousedown(SPObject *sender, SPEventArgs *e) {
         left += width;
     }
     tabBar->invalidate();
+    return 0;
 }
 string SPTabBarElement::getType() {
      return "tabbar";

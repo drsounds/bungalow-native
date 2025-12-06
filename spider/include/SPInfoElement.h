@@ -26,7 +26,6 @@ class SPInfoElement : public SPHBoxElement
         void setMessageType(SPMessageType type);
         SPInfoElement(SPElement *parent);
         virtual ~SPInfoElement();
-        void show();
     private:
 };
 }

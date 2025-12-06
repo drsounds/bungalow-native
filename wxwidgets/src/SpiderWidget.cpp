@@ -4,9 +4,16 @@
 #include "SpiderWidget.h"
 #include "SpiderFrame.h"
 #include "SPMouseEventArgs.h"
-#include "SpiderApp.h"
 #include "SPWindowElement.h"
-#include "../../spider/include/Spider.h"
+#include "WxGraphicsContext.h"
+#include "Spider.h"
+
+
+BEGIN_EVENT_TABLE(SpiderWidget, wxControl)
+    EVT_PAINT(SpiderWidget::OnPaint)
+END_EVENT_TABLE()
+
+IMPLEMENT_DYNAMIC_CLASS(SpiderWidget, wxControl);
 
 SpiderWidget::SpiderWidget(wxWindow *parent,
                            wxWindowID winId,
@@ -46,7 +53,9 @@ void SpiderWidget::OnLeftClick(wxCommandEvent& event) {
     auto *args = new spider::SPMouseEventArgs(0, this->m_mouseX, this->m_mouseY);
     const spider::SPEvent evt("click", args, nullptr);
     this->m_spider->dispatchEvent(
-        evt
+        "click",
+        args,
+        this->m_frame->getWindow()
     );
 }
 
@@ -55,7 +64,9 @@ void SpiderWidget::OnRightClick(wxCommandEvent& event)
     auto *args = new spider::SPMouseEventArgs(1, this->m_mouseX, this->m_mouseY);
     const spider::SPEvent evt("click", args, nullptr);
     this->m_spider->dispatchEvent(
-        evt
+        "click",
+        args,
+        this->m_frame->getWindow()
     );
 }
 
@@ -63,7 +74,9 @@ void SpiderWidget::OnLeftUp(wxMouseEvent& event) {
     auto *args = new spider::SPMouseEventArgs(0, event.GetX(), event.GetY());
     const spider::SPEvent evt("mouseup", args, nullptr);
     this->m_spider->dispatchEvent(
-        evt
+        "mouseup",
+        args,
+        this->m_frame->getWindow()
     );
 }
 
@@ -72,7 +85,9 @@ void SpiderWidget::OnRightDown(wxMouseEvent& event)
     auto *args = new spider::SPMouseEventArgs(1, event.GetX(), event.GetY());
     spider::SPEvent evt("mousedown", args, nullptr);
     this->m_spider->dispatchEvent(
-        evt
+        "mousedown",
+        args,
+        this->m_frame->getWindow()
     );
 }
 
@@ -85,7 +100,9 @@ void SpiderWidget::OnLeftDown(wxMouseEvent& event) {
     auto *args = new spider::SPMouseEventArgs(0, event.GetX(), event.GetY());
     spider::SPEvent evt("mousedown", args, nullptr);
     this->m_spider->dispatchEvent(
-        evt
+        "mousedown",
+        args,
+        this->m_frame->getWindow()
     );
 }
 
@@ -94,7 +111,9 @@ void SpiderWidget::OnRightUp(wxMouseEvent& event)
     auto *args = new spider::SPMouseEventArgs(1, event.GetX(), event.GetY());
     spider::SPEvent evt("mouseup", args, nullptr);
     this->m_spider->dispatchEvent(
-        evt
+        "mouseup",
+        args,
+        this->m_frame->getWindow()
     );
 }
 
@@ -105,7 +124,9 @@ void SpiderWidget::OnMouseMove(wxMouseEvent& event)
     auto *args = new spider::SPMouseEventArgs(0, event.GetX(), event.GetY());
     spider::SPEvent evt("mousemove", args, nullptr);
     this->m_spider->dispatchEvent(
-        evt
+        "mousemove",
+        args,
+        this->m_frame->getWindow()
     );
 }
 

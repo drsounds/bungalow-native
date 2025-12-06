@@ -1,7 +1,9 @@
+#ifndef SPIDERWIDGET_H
+#define SPIDERWIDGET_H
 #include <wx/wx.h>
 
-#include "SpiderFrame.h"
-#include "WxGraphicsContext.h"
+#include "Spider.h"
+#include "libspider.h"
 
 enum MySpecialWidgetStyles
 {
@@ -16,9 +18,9 @@ namespace spider
     class Spider;
     class SPWindowElement;
 }
+class SpiderFrame;
 class SpiderWidget : public wxControl
 {
-private:
     spider::Spider *m_spider;
     SpiderFrame* m_frame;
 
@@ -30,12 +32,18 @@ private:
     void OnPaint(wxPaintEvent&);
 
 public:
-    spider::Spider *getApp()
+    wxDECLARE_DYNAMIC_CLASS(SpiderWidget);
+    spider::Spider *getSpider() const
     {
         return m_spider;
     }
     void OnMouseMove(wxMouseEvent& event);
     void Init();
+    SpiderWidget()
+    {
+        this->m_spider = nullptr;
+        this->m_frame = nullptr;
+    }
     SpiderWidget(
         wxWindow *parent,
         wxWindowID winId,
@@ -66,7 +74,8 @@ public:
     void OnSize(wxSizeEvent& event);
 
     // accessors...
-    wxDECLARE_DYNAMIC_CLASS(SpiderWidget);
     wxDECLARE_EVENT_TABLE();
 
 };
+
+#endif

@@ -7,15 +7,16 @@
 #include <boost/json/string.hpp>
 #include <string>
 
-#include "libspider.h"
+#include "SPObservable.h"
 
 using namespace std;
 
 namespace spider
 {
     class SPWindowElement;
+    class SPEvent;
     class SPGraphicsContext;
-    class Spider
+    class Spider : public SPObservable
     {
     protected:
         SPGraphicsContext *m_graphicsContext;
@@ -31,15 +32,10 @@ namespace spider
         explicit Spider(SPGraphicsContext *graphicsContext);
         Spider();
         SPWindowElement * createWindow();
-        void postMessage(const SPMessage&);
-        void processEvent(const SPEvent&);
         SPMessage dequeueNextMessage();
-        void dispatchEvent(const SPEvent& event) const;
         void postMessage(const SPMessage& message) const;
         void processEvent(const SPEvent& event) const;
         void processMessage(const SPMessage& message) const;
-        void dispatchEvent(const SPEvent&);
-        void processMessage(const SPMessage&);
     };
 }
 

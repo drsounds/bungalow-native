@@ -6,17 +6,16 @@
 #include <png.h>
 using namespace std;
 
-struct pixel {
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-    unsigned char a;
-};
-
-/*! \from http://zarb.org/~gc/html/libpng.html */
-void read_png_file(char* file_name);
 
 namespace spider {
+
+    struct pixel {
+        unsigned char r;
+        unsigned char g;
+        unsigned char b;
+        unsigned char a;
+    };
+
     /*!
      * Converts pixel to HTML color
      **/

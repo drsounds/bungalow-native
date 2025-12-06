@@ -20,7 +20,7 @@ namespace spider {
 	this->observers = new list<SPObserver *>;
 }
 
-void SPObservable::dispatchEvent(const string& event, SPEventArgs* args, SPObject* sender)
+void SPObservable::dispatchEvent(const string& event, SPEventArgs* args, SPObject* sender) const
 {
 	this->notify(event, sender, args);
 }

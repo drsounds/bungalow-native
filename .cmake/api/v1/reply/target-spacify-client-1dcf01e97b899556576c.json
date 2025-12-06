@@ -26,19 +26,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 31,
+				"line" : 34,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 37,
-				"parent" : 0
-			},
-			{
-				"command" : 2,
-				"file" : 0,
-				"line" : 17,
+				"line" : 40,
 				"parent" : 0
 			},
 			{
@@ -62,10 +56,21 @@
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 28,
+				"line" : 23,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 31,
 				"parent" : 0
 			}
 		]
+	},
+	"codemodelVersion" : 
+	{
+		"major" : 2,
+		"minor" : 9
 	},
 	"compileGroups" : 
 	[
@@ -207,6 +212,10 @@
 				"role" : "flags"
 			},
 			{
+				"fragment" : "-Wl,-search_paths_first -Wl,-headerpad_max_install_names",
+				"role" : "flags"
+			},
+			{
 				"fragment" : "-L/usr/local/opt/libffi/lib",
 				"role" : "flags"
 			},
@@ -289,10 +298,86 @@
 				"backtrace" : 2,
 				"fragment" : "-lwx_baseu-3.3",
 				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/opt/homebrew/lib/libpng.dylib",
+				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
+	"linkLibraries" : 
+	[
+		{
+			"backtrace" : 2,
+			"fragment" : "/opt/homebrew/lib/liblua5.4.dylib"
+		},
+		{
+			"backtrace" : 2,
+			"fragment" : "-L/opt/homebrew/lib"
+		},
+		{
+			"backtrace" : 2,
+			"fragment" : "-framework IOKit"
+		},
+		{
+			"backtrace" : 2,
+			"fragment" : "-framework Carbon"
+		},
+		{
+			"backtrace" : 2,
+			"fragment" : "-framework Cocoa"
+		},
+		{
+			"backtrace" : 2,
+			"fragment" : "-framework QuartzCore"
+		},
+		{
+			"backtrace" : 2,
+			"fragment" : "-framework AudioToolbox"
+		},
+		{
+			"backtrace" : 2,
+			"fragment" : "-framework System"
+		},
+		{
+			"backtrace" : 2,
+			"fragment" : "-framework OpenGL"
+		},
+		{
+			"backtrace" : 2,
+			"fragment" : "-lwx_osx_cocoau_xrc-3.3"
+		},
+		{
+			"backtrace" : 2,
+			"fragment" : "-lwx_osx_cocoau_html-3.3"
+		},
+		{
+			"backtrace" : 2,
+			"fragment" : "-lwx_osx_cocoau_qa-3.3"
+		},
+		{
+			"backtrace" : 2,
+			"fragment" : "-lwx_osx_cocoau_core-3.3"
+		},
+		{
+			"backtrace" : 2,
+			"fragment" : "-lwx_baseu_xml-3.3"
+		},
+		{
+			"backtrace" : 2,
+			"fragment" : "-lwx_baseu_net-3.3"
+		},
+		{
+			"backtrace" : 2,
+			"fragment" : "-lwx_baseu-3.3"
+		},
+		{
+			"backtrace" : 2,
+			"fragment" : "/opt/homebrew/lib/libpng.dylib"
+		}
+	],
 	"name" : "spacify-client",
 	"nameOnDisk" : "spacify-client",
 	"paths" : 

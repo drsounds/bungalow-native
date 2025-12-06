@@ -1,4 +1,5 @@
-
+#ifndef SPGRAPHICSCONTEXT_H
+#define SPGRAPHICSCONTEXT_H
 #include <wx/dc.h>
 
 #include "SPGraphicsContext.h"
@@ -47,3 +48,4 @@ namespace spider
     }
   }
 }
+#endif

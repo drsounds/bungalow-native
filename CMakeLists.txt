@@ -12,11 +12,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Boost REQUIRED)
 find_package(Lua REQUIRED)
 find_package(wxWidgets REQUIRED)
+find_package(PNG REQUIRED)
 
 # Include directories
 include_directories(${Boost_INCLUDE_DIRS})
 include_directories(${LUA_INCLUDE_DIR})
 include_directories(${wxWidgets_INCLUDE_DIRS})
+include_directories(${FFI_INCLUDE_DIRS})
+include_directories(${PNG_INCLUDE_DIRS})
 include_directories(include)
 
 if(WIN32)
@@ -34,7 +37,7 @@ add_executable(spacify-client ${SOURCES} ${HEADERS})
 set(CMAKE_CXX_FLAGS "-I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__")
 
 # Link libraries
-target_link_libraries(spacify-client ${LUA_LIBRARIES} ${wxWidgets_LIBRARIES})
+target_link_libraries(spacify-client ${LUA_LIBRARIES} ${wxWidgets_LIBRARIES} ${PNG_LIBRARY})
 
 # Platform specific configuration
 if(WIN32)

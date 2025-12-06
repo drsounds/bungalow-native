@@ -1,8 +1,9 @@
 #include "SpiderApp.h"
-
+#include "SPWindowElement.h"
 #include "SpiderFrame.h"
 #include "Spider.h"
 #include "SpiderWidget.h"
+#include "WxGraphicsContext.h"
 
 wxIMPLEMENT_APP(SpiderApp);
 

@@ -8,12 +8,14 @@ SPRequest::SPRequest()
     //ctor
 }
 ISPRequestHandler *SPRequest::getMatchingHandlerForUri(string uri) {
-    for (std::vector<ISPRequestHandler *>::iterator it = spider::handlers->begin(); it != spider::handlers->end(); ++it) {
+    for (std::vector<ISPRequestHandler *>::iterator it = spider::handlers->begin(); it != spider::handlers->end(); ++it)
+    {
         ISPRequestHandler *handler = (ISPRequestHandler *)*it;
         if (handler->handlesUri(uri)) {
             return handler;
         }
     }
+    return nullptr;
 }
 SPResponse *SPRequest::request(string method, string uri, std::map<string, string> *headers, void *data) {
     ISPRequestHandler *handler = this->getMatchingHandlerForUri(uri);

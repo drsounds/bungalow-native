@@ -3,11 +3,6 @@
 #include <iostream>
 #include <cstdlib>
 using namespace std;
-/*! \from http://zarb.org/~gc/html/libpng.html */
-void read_png_file(char* file_name)
-{
-
-}
 
 namespace spider {
 SPColor *spider_pixel_to_colour(pixel *pixel) {
