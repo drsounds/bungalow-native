@@ -541,7 +541,9 @@
 				142,
 				143,
 				144,
-				145
+				145,
+				146,
+				147
 			]
 		}
 	],
@@ -1315,6 +1317,11 @@
 		},
 		{
 			"backtrace" : 1,
+			"path" : "spider/include/SPWindow.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
 			"path" : "spider/include/SPWindowElement.h",
 			"sourceGroupIndex" : 1
 		},
@@ -1331,6 +1338,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "spider/include/luahtml.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "wxwidgets/include/SpiderBase.h",
 			"sourceGroupIndex" : 1
 		},
 		{
