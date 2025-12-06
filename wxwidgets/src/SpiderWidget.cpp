@@ -109,6 +109,7 @@ void SpiderWidget::OnRightDown(wxMouseEvent& event)
 void SpiderWidget::OnSize(wxSizeEvent& event)
 {
     this->m_frame->getWindowElement()->resize(event.GetSize().GetWidth(), event.GetSize().GetHeight());
+    this->m_frame->getWindowElement()->pack();
 }
 
 void SpiderWidget::OnLeftDown(wxMouseEvent& event) {
@@ -162,12 +163,10 @@ void SpiderWidget::OnPaint(wxPaintEvent& event) {
     int width = this->GetSize().GetWidth();
     int height = this->GetSize().GetHeight();
     // draw the widget on a wxDC...
-    auto* gc = dynamic_cast<spider::platform::wxwidgets::WxGraphicsContext *>(this->m_frame->getWindowElement()->createGraphics());
+    spider::platform::wxwidgets::WxGraphicsContext* gc = dynamic_cast<spider::platform::wxwidgets::WxGraphicsContext *>(this->m_frame->getWindowElement()->createGraphics());
     gc->setFrame(this->m_frame);
     gc->setWindow(this->GetParent());
     gc->setPaintDC(&dc);
 	GetClientSize( &width, &height );
-    cout << width;
-    cout << height;
     this->m_frame->getWindowElement()->draw(gc, width, height);
 }

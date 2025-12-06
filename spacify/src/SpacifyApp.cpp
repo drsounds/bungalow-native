@@ -17,14 +17,14 @@
 
 wxIMPLEMENT_APP(SpacifyApp);
 
-bool SpacifyApp::OnInit()
-{
-     if( !wxApp::OnInit() )
+bool SpacifyApp::OnInit(){
+    if( !wxApp::OnInit() )
           return false;
-     this->m_spider = new spider::Spider();
-     this->m_frame = new SpiderFrame(this);
-     spider::platform::wxwidgets::WxGraphicsContext *gc = new spider::platform::wxwidgets::WxGraphicsContext(this->m_frame);
-     this->m_spider->setGraphicsContext(gc);
+    this->m_spider = new spider::Spider();
+    this->m_frame = new SpiderFrame(this, this->m_spider);
+    spider::platform::wxwidgets::WxGraphicsContext *gc = new spider::platform::wxwidgets::WxGraphicsContext(this->m_frame);
+
+    this->m_spider->setGraphicsContext(gc);
      this->m_windowElement = new spider::SPWindowElement(this->m_spider, new spider::SPSkin("/Users/buddhalow/Documents/spacify-client/skin.png"));
      this->m_frame->setWindowElement(this->m_windowElement);
      this->m_frame->setSpider(m_spider);

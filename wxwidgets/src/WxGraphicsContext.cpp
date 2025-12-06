@@ -12,10 +12,7 @@ namespace spider
     {
         namespace wxwidgets
         {
-            WxGraphicsContext::WxGraphicsContext(SpiderFrame *frame) : m_window(nullptr), elements(nullptr),
-                                                                       widgets(nullptr),
-                                                                       widget(nullptr),
-                                                                       m_paintDc(nullptr)
+            WxGraphicsContext::WxGraphicsContext(SpiderFrame *frame) : WxGraphicsContext()
             {
                 this->m_frame = frame;
             }
@@ -65,8 +62,8 @@ namespace spider
                 this->origo->y = 0;
             }
 
-            void WxGraphicsContext::drawHTMLText(string html, SPFontStyle* fs, SPColor* color, int x, int y, int w,
-                int h)
+            void WxGraphicsContext::drawHTMLText(const string& html, SPFontStyle fontSize, SPColor color, int x, int y,
+                                                 int w, int h)
             {
             }
 
@@ -76,23 +73,21 @@ namespace spider
 
             void WxGraphicsContext::drawLine(int x1, int y1,
                                              int x2, int y2,
-                                             SPColor* color) const
+                                             SPColor color)
             {
-                if (!color) return;
-
-                wxPen pen(wxColour(color->getR(),
-                                   color->getG(),
-                                   color->getB()), 1);
+                wxPen pen(wxColour(color.getR(),
+                                   color.getG(),
+                                   color.getB()), 1);
                 this->getPaintDC()->SetPen(pen);
             }
 
             void WxGraphicsContext::drawRectangle(int x1, int y1,
                                                      int x2, int y2,
-                                                     SPColor* color) const
+                                                     SPColor color)
             {
-                wxPen pen(wxColour(color->getR(),
-                                   color->getG(),
-                                   color->getB()), 1);
+                wxPen pen(wxColour(color.getR(),
+                                   color.getG(),
+                                   color.getB()), 1);
                 this->getPaintDC()->SetPen(pen);
                 this->getPaintDC()->SetBrush(*wxTRANSPARENT_BRUSH);
 
@@ -101,13 +96,11 @@ namespace spider
 
             void WxGraphicsContext::fillRectangle(int x1, int y1,
                                                      int x2, int y2,
-                                                     SPColor* color) const
+                                                     SPColor color)
             {
-                if (!color) return;
-
-                wxBrush brush(wxColour(color->getR(),
-                                       color->getG(),
-                                       color->getB()));
+                wxBrush brush(wxColour(color.getR(),
+                                       color.getG(),
+                                       color.getB()));
                 this->getPaintDC()->SetBrush(brush);
 
                 this->getPaintDC()->DrawRectangle(x1 - this->origo->x, y1 - this->origo->y, x2 - x1, y2 - y1);
@@ -175,17 +168,15 @@ namespace spider
                 return { size.GetWidth(), size.GetHeight(), size.x, size.y };
             }
 
-            void WxGraphicsContext::drawString(std::string text,
-                                               SPFontStyle* fs,
-                                               SPColor* color,
+            void WxGraphicsContext::drawString(const std::string& text,
+                                               SPFontStyle fs,
+                                               SPColor color,
                                                int x, int y,
-                                               int w, int h) const
+                                               int w, int h)
             {
-                if (!color) return;
+                wxColour col(color.getR(), color.getG(), color.getB());
 
-                wxColour col(color->getR(), color->getG(), color->getB());
-
-                wxFont font(fs->getHeight(),
+                wxFont font(fs.getHeight(),
                             wxFONTFAMILY_DEFAULT,
                             wxFONTSTYLE_NORMAL,
                             wxFONTWEIGHT_NORMAL);
@@ -208,10 +199,10 @@ namespace spider
             // Controls (text input)
             // --------------------------------------------------------------
 
-            void WxGraphicsContext::drawControl(std::string control,
+            void WxGraphicsContext::drawControl(const std::string& control,
                                                 SPElement* elm,
                                                 int x, int y,
-                                                int w, int h) const
+                                                int w, int h)
             {
                 // Only supports text controls (“EDIT”)
                 if (elements->count(elm) == 0)

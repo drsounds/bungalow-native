@@ -40,7 +40,7 @@ namespace spider
         {
           return this->m_frame;
         }
-        
+
         void setWindow(wxWindow *window)
         {
           this->m_window = window;
@@ -55,18 +55,18 @@ namespace spider
         virtual void drawSkinImage(string resourceId, int x, int y, int w, int h);
         void setClip(sp_rectangle rect) const;
         void declipRect() override;
-        void drawLine(int x1, int y1, int w, int h, spider::SPColor *color) const;
+        void drawLine(int x1, int y1, int w, int h, spider::SPColor color) override;
         void drawImage(SPImage *image, int x1, int y1, int w, int h) override;
-        void drawRectangle(int x1, int y1, int w, int h, spider::SPColor *color) const;
-        void fillRectangle(int x1, int y1, int w, int h, spider::SPColor *color) const;
-        void drawControl(string control, SPElement *elm, int x, int y, int w, int h) const;
+        void drawRectangle(int x1, int y1, int w, int h, spider::SPColor color) override;
+        void fillRectangle(int x1, int y1, int w, int h, spider::SPColor color) override;
+        void drawControl(const string& control, SPElement *elm, int x, int y, int w, int h) override;
         void invalidateRegion(sp_rectangle region) override;
-        void drawString(string text, spider::SPFontStyle *fontStyle, spider::SPColor *color,int x, int y, int w, int h) const;
+        void drawString(const string& text, spider::SPFontStyle fontStyle, spider::SPColor color,int x, int y, int w, int h) override;
         void drawInputElement(SPElement *elm, int x, int y, int w, int h) override;
         void setFontStyle(spider::SPFontStyle *fs) const;
         void setOrigo(const int& x, const int& y) override;
         void restoreOrigo() override;
-        void drawHTMLText(string html, SPFontStyle *fs, SPColor *color, int x, int y, int w, int h);
+        void drawHTMLText(const string& html, SPFontStyle fontSize, SPColor color, int x, int y, int w, int h) override;
         sp_rectangle measureString(string text, spider::SPFontStyle *font) const;
         void setPaintDC(wxPaintDC* dc) {
             m_paintDc = dc;

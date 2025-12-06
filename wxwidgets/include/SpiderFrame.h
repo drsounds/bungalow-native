@@ -43,7 +43,8 @@ public:
     void setWindowElement(spider::SPWindowElement *value) {
         this->m_windowElement = value;
     }
-    SpiderFrame(wxApp *app);
+    SpiderFrame(wxApp *app, spider::Spider *spider);
+    void OnSize(wxSizeEvent& event);
     void OnExit(wxCommandEvent& event);
     void OnAbout(wxCommandEvent& event);
     void OnHello(wxCommandEvent& event);

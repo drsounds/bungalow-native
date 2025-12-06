@@ -8,6 +8,7 @@ endif()
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(SourceFiles wxwidgets/src/*.cpp spider/src/*.cpp spacify/src/*.cpp)
 # Find dependencies
 find_package(Boost REQUIRED)
 find_package(Lua REQUIRED)
@@ -21,6 +22,7 @@ include_directories(${wxWidgets_INCLUDE_DIRS})
 include_directories(${FFI_INCLUDE_DIRS})
 include_directories(${PNG_INCLUDE_DIRS})
 include_directories(include)
+set(CMAKE_BUILD_TYPE Debug)
 
 if(WIN32)
     file(GLOB SOURCES "spacify/src/*.cpp" "spider/src/*.cpp" "windows/src/*.cpp")

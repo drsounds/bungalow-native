@@ -39,7 +39,7 @@ namespace spider {
 		virtual void drawRectangle(int x, int y, int w, int h, SPColor color) {}
 		virtual void fillRectangle(int x, int y, int w, int h, SPColor color) {}
 		virtual void drawImage(SPImage *image, int x, int y, int w, int h) {}
-		virtual void drawControl(int x, int y, int w, int h, const string& name) {}
+		virtual void drawControl(const string& name, SPElement *elm, int x, int y, int w, int h) {}
 		virtual void drawString(const string& text, SPFontStyle fs, SPColor color, int x, int y, int w, int h) { }
 		virtual void invalidateRegion(sp_rectangle region) {}
 		virtual void drawHTMLText(const string& html, SPFontStyle fs, SPColor color, int x, int y, int w, int h) { }
@@ -54,7 +54,6 @@ namespace spider {
 		SPFontStyle *getFontStyle() const {
 			return this->fontStyle;
 		}
-		virtual void drawControl(const string& control, SPElement *srcElement, int x, int y, int w, int h) { }
 		virtual void drawInputElement(SPElement *srcElement, int x, int y, int w, int h) { }
 		virtual void setOrigo(const int& x, const int& y);
 	};
