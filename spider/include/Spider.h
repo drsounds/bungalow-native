@@ -32,7 +32,9 @@ namespace spider
         {
             return this->m_graphicsContext;
         }
-        explicit Spider(SPGraphicsContext *graphicsContext);
+        void setGraphicsContext(SPGraphicsContext *value) {
+            this->m_graphicsContext = value;
+        }
         Spider();
         SPWindowElement * createWindow(SPSkin *skin);
         SPMessage dequeueNextMessage();

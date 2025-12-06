@@ -11,7 +11,7 @@ using namespace std;
 namespace spider {
     class Spider;
     class SPColor;
-    class SPNode : virtual public SPObject {
+    class SPNode : public SPObject {
     protected:
         map<string, void *> *properties;
         map<string, string> *stringAttributes;
@@ -19,7 +19,14 @@ namespace spider {
         map<string, int> *integerAttributes;
         SPNode *m_parent;
         SPWindow *m_window;
+        spider::Spider *m_spider;
     public:
+        void setSpider(spider::Spider *spider) {
+            this->m_spider = spider;
+        }
+        spider::Spider *getSpider() {
+            return this->m_spider;
+        }
         std::vector<SPNode *> *children;
         SPNode();
         SPWindow *getWindow() const
@@ -37,9 +44,7 @@ namespace spider {
             }
         }
 
-        explicit SPNode(SPNode *parent) : SPNode(parent->getSpider(), parent) {
-
-        }
+        explicit SPNode(SPNode *parent);
         void removeChild(SPNode *child);
         virtual void appendChild(SPNode *child);
         void setChildren(std::vector<SPNode *> *value) {

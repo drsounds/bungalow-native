@@ -3,11 +3,13 @@
 #include "SPVBoxElement.h"
 
 #include "SPMessageType.h"
+#include "SPWindow.h"
 
 #include "libspider.h"
 
 
 namespace spider {
+    class SPWindow;
     class SPViewStackElement;
     class SPTreeViewElement;
     class SPInfoElement;
@@ -29,7 +31,7 @@ namespace spider {
             {
                 return "window";
             }
-            MainElement::MainElement(SPElement *parent, SPWindow *window);
+            MainElement(SPElement *parent, SPWindow *window);
             explicit MainElement(SPElement *parent);
             int onSearchEntered(SPObject* sender, SPEventArgs* eventArgs) const;
             void layout();

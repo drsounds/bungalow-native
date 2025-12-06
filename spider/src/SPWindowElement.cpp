@@ -17,8 +17,8 @@ namespace spider
 
     SPWindowElement::SPWindowElement(Spider *spider, SPSkin *skin) : SPVBoxElement(nullptr, this)
     {
-        this->setSkin(skin);
-        this->setSpider(spider);
+        this->SPWindow::setSkin(skin);
+        this->SPWindow::setSpider(spider);
     }
 
     void SPWindowElement::draw(SPGraphicsContext *gc, int x, int y) {

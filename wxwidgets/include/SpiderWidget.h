@@ -20,7 +20,7 @@ namespace spider
     class SPWindowElement;
 }
 class SpiderFrame;
-class SpiderWidget : public wxControl, SPObject
+class SpiderWidget : public wxControl
 {
     spider::Spider *m_spider;
     SpiderFrame* m_frame;
@@ -33,6 +33,12 @@ class SpiderWidget : public wxControl, SPObject
     void OnPaint(wxPaintEvent&);
 
 public:
+    void setSpider(spider::Spider *spider) {
+        this->m_spider = spider;
+    }
+    spider::Spider *getSpider() {
+        return this->m_spider;
+    }
     wxDECLARE_DYNAMIC_CLASS(SpiderWidget);
 	wxSize DoGetBestSize() const;
     void OnMouseMove(wxMouseEvent& event);

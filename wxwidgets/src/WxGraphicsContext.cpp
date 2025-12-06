@@ -4,6 +4,8 @@
 
 #include "WxGraphicsContext.h"
 
+#include "SPWindowElement.h"
+
 #include "SpiderFrame.h"
 
 using namespace spider::platform::wxwidgets;

@@ -7,6 +7,7 @@
 
 #include <map>
 
+#include "SpiderBase.h"
 #include "Spider.h"
 
 using namespace std;
@@ -20,7 +21,7 @@ namespace spider {
 	class slice;
 	class SPSkin;
 	class Spider;
-    class SPGraphicsContext {
+	class SPGraphicsContext {
 	protected:
 		SPFontStyle *fontStyle{};
     	Spider *m_spider;
@@ -29,7 +30,6 @@ namespace spider {
     	SPGraphicsContext();
 		explicit SPGraphicsContext(Spider *spider);
 		SPSkin *skin{};
-    	[[nodiscard]] Spider *getSpider() const { return this->m_spider; }
 		virtual void drawImagePart(SPImage *image, int x, int y, int width, int height, int x1, int y1, int x2, int y2) {}
 		virtual void drawSkinImage(const string& resourceId, int x, int y, int w, int h) {}
 		virtual void restoreOrigo() {}

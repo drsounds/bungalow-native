@@ -70,7 +70,7 @@ void SpiderWidget::OnLeftClick(wxCommandEvent& event) {
     this->getSpider()->dispatchEvent(
         "click",
         args,
-        this->m_frame->getWindow()
+        this->m_frame->getWindowElement()
     );
 }
 
@@ -81,7 +81,7 @@ void SpiderWidget::OnRightClick(wxCommandEvent& event)
     this->m_spider->dispatchEvent(
         "click",
         args,
-        this->m_frame->getWindow()
+        this->m_frame->getWindowElement()
     );
 }
 
@@ -91,7 +91,7 @@ void SpiderWidget::OnLeftUp(wxMouseEvent& event) {
     this->getSpider()->dispatchEvent(
         "mouseup",
         args,
-        this->m_frame->getWindow()
+        this->m_frame->getWindowElement()
     );
 }
 
@@ -102,13 +102,13 @@ void SpiderWidget::OnRightDown(wxMouseEvent& event)
     this->getSpider()->dispatchEvent(
         "mousedown",
         args,
-        this->m_frame->getWindow()
+        this->m_frame->getWindowElement()
     );
 }
 
 void SpiderWidget::OnSize(wxSizeEvent& event)
 {
-    this->m_frame->getWindow()->resize(event.GetSize().GetWidth(), event.GetSize().GetHeight());
+    this->m_frame->getWindowElement()->resize(event.GetSize().GetWidth(), event.GetSize().GetHeight());
 }
 
 void SpiderWidget::OnLeftDown(wxMouseEvent& event) {
@@ -117,7 +117,7 @@ void SpiderWidget::OnLeftDown(wxMouseEvent& event) {
     this->getSpider()->dispatchEvent(
         "mousedown",
         args,
-        this->m_frame->getWindow()
+        this->m_frame->getWindowElement()
     );
 }
 
@@ -128,7 +128,7 @@ void SpiderWidget::OnRightUp(wxMouseEvent& event)
     this->getSpider()->dispatchEvent(
         "mouseup",
         args,
-        this->m_frame->getWindow()
+        this->m_frame->getWindowElement()
     );
 }
 
@@ -141,7 +141,7 @@ void SpiderWidget::OnMouseMove(wxMouseEvent& event)
     this->getSpider()->dispatchEvent(
         "mousemove",
         args,
-        this->m_frame->getWindow()
+        this->m_frame->getWindowElement()
     );
 }
 
@@ -160,11 +160,11 @@ wxSize SpiderWidget::DoGetBestSize()
 void SpiderWidget::OnPaint(wxPaintEvent& event) {
     wxPaintDC dc(this);
     // draw the widget on a wxDC...
-    auto* gc = dynamic_cast<spider::platform::wxwidgets::WxGraphicsContext *>(this->m_frame->getWindow()->createGraphics());
+    auto* gc = dynamic_cast<spider::platform::wxwidgets::WxGraphicsContext *>(this->m_frame->getWindowElement()->createGraphics());
     gc->setDC(&dc);
     int width = this->GetSize().GetWidth();
     int height = this->GetSize().GetHeight();
     cout << width;
     cout << height;
-    this->m_frame->getWindow()->draw(gc, width, height);
+    this->m_frame->getWindowElement()->draw(gc, width, height);
 }

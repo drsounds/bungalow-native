@@ -11,6 +11,18 @@ SPBoxElement::SPBoxElement()
     //ctor
 }
 
+SPBoxElement::SPBoxElement(SPElement *parent, SPWindow *window)
+ : SPElement(parent, window)
+{
+
+}
+
+SPBoxElement::SPBoxElement(SPElement *parent)
+ : SPElement(parent)
+{
+
+}
+
 SPBoxElement::~SPBoxElement()
 {
     //dtor

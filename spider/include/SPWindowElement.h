@@ -14,7 +14,7 @@ namespace spider {
 	struct sp_event;
 	class SPGraphicsContext;
 	class MainElement;
-	class SPWindowElement : public SPVBoxElement, SPWindow {
+	class SPWindowElement : public SPVBoxElement, public SPWindow {
 	public:
 		void draw(SPGraphicsContext *gc, int width, int height);
 		explicit SPWindowElement(Spider *, SPSkin *);

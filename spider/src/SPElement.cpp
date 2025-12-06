@@ -48,6 +48,11 @@ namespace spider {
 
 	}
 
+	void SPElement::setSkin(SPSkin *value) {
+		this->m_skin = value;
+		this->applySkin();
+	}
+
 	void SPElement::click(int mouseButton, int x, int y) {
 		int xx = this->getAbsoluteBounds() != NULL ? x - this->getAbsoluteBounds()->y : x;
 	    int yy = this->getAbsoluteBounds() != NULL ? y - this->getAbsoluteBounds()->y : y;
@@ -141,56 +146,22 @@ namespace spider {
 	    }
 	}
 
-	SPElement::SPElement(Spider *spider, SPWindow *window, SPElement *parent) : SPNode(static_cast<SPNode*>(parent)), fontStyle("Tahoma", 13, 1, false, false) {
-	    this->m_classList = new vector<string>;
-	    this->absoluteBounds = NULL;
+	SPElement::SPElement(SPElement *parent) : SPNode(static_cast<SPNode*>(parent)), fontStyle("Tahoma", 13, 1, false, false) {
+		this->m_classList = new vector<string>;
+		this->absoluteBounds = NULL;
 		this->setScrollable(false);
-		this->m_spider = spider;
-		if (window == nullptr) {
-			this->setWindow(parent->getWindow());	
-		}
-		if (window != nullptr) {
-			this->m_skin = window->getSkin();
-		}
 		if (parent != nullptr) {
 			this->m_skin = parent->getSkin();
+			this->fontStyle = parent->fontStyle;
 		}
 		this->visible = true;
 		this->scrollX = 0;
 		this->scrollY = 0;
 	    this->data = "";
 		this->observers = new vector<SPObserver *>();
-		this->m_window = window;
 		this->setParent(parent);
-
-	    #if false
-	    this->set("fgcolor", new string("#ffffff"));
-	    this->set("bgcolor", new string("#000000"));
-	    this->set("font", new string("MS Sans Serif"));
-	    this->set("highlight", "#a9d9fe");
-	    this->set("size", new string("11"));
-	    #endif
-
-	    this->applyColorAttributeFromSkin(string("bgcolor"), string("body.background.color"));
-	    this->applyColorAttributeFromSkin(string("fgcolor"), string("body.foreground.color"));
-
-	    string type = string(this->getType());
-
-	    this->applyColorAttributeFromSkin(string("bgcolor"), string(this->getType()) + "body.background.color");
-	    this->applyColorAttributeFromSkin(string("fgcolor"), string(this->getType()) + "body.foreground.color");
-	    if (this->m_skin->hasImage(this->SPElement::getType() + ".background.image")) {
-	        this->m_backgroundImage = this->m_skin->getImage(string(this->getType()) + ".background.image", "");
-	    }
-		if (this->getParent() != NULL) {
-	        #if false
-	        this->set("bgcolor", new string(this->getParent()->get("bgcolor")));
-	        this->set("fgcolor", new string(this->getParent()->get("fgcolor")));
-	        this->set("font", new string(this->getParent()->get("font")));
-	        this->set("highlight", new string(this->getParent()->get("highlight")));
-	        this->set("size", new string(this->getParent()->get("size")));
-	        #endif
-	        this->fontStyle = parent->fontStyle;
-	        this->m_window = parent->getWindow();
+		if (this->m_skin != nullptr) {
+			this->applySkin();	   
 		}
 		this->x = 0;
 		this->y = 0;
@@ -208,6 +179,61 @@ namespace spider {
 		this->padding->right = 0;
 		this->padding->bottom = 0;
 
+		if (parent != nullptr) {
+			SPWindow *window = parent->getWindow();
+			if (window != nullptr) {
+				this->m_window = window;
+				if (window->getSkin() != nullptr) {
+					this->m_skin = window->getSkin();
+				}
+			}
+			SPSkin *skin = parent->getSkin();
+			if (skin != nullptr) {
+				this->m_skin = skin;
+			}
+		}
+	}
+
+	void SPElement::applySkin() {
+		#if false
+		this->set("fgcolor", new string("#ffffff"));
+		this->set("bgcolor", new string("#000000"));
+		this->set("font", new string("MS Sans Serif"));
+		this->set("highlight", "#a9d9fe");
+		this->set("size", new string("11"));
+		#endif
+
+		this->applyColorAttributeFromSkin(string("bgcolor"), string("body.background.color"));
+		this->applyColorAttributeFromSkin(string("fgcolor"), string("body.foreground.color"));
+
+		string type = string(this->getType());
+
+		this->applyColorAttributeFromSkin(string("bgcolor"), string(this->getType()) + "body.background.color");
+		this->applyColorAttributeFromSkin(string("fgcolor"), string(this->getType()) + "body.foreground.color");
+		if (this->m_skin->hasImage(this->SPElement::getType() + ".background.image")) {
+			this->m_backgroundImage = this->m_skin->getImage(string(this->getType()) + ".background.image", "");
+		}
+		if (this->getParent() != NULL) {
+			#if false
+			this->set("bgcolor", new string(this->getParent()->get("bgcolor")));
+			this->set("fgcolor", new string(this->getParent()->get("fgcolor")));
+			this->set("font", new string(this->getParent()->get("font")));
+			this->set("highlight", new string(this->getParent()->get("highlight")));
+			this->set("size", new string(this->getParent()->get("size")));
+			#endif
+		}
+	}
+
+	SPElement::SPElement(SPElement *parent, SPWindow *window) : SPElement(parent) {
+		if (window == nullptr) {
+			this->setWindow(parent->getWindow());	
+		}
+		if (window != nullptr && window->getSpider() != nullptr) {
+			this->m_spider = window->getSpider();
+		}
+		if (window != nullptr) {
+			this->m_skin = window->getSkin();
+		}
 	}
 
 	void SPElement::setBackgroundImage(SPImage* value)
@@ -324,7 +350,7 @@ namespace spider {
 
 	void SPElement::set(const std::string& title, const std::string& val) {
 	    int n = 0;
-	        (*this->getStringAttributes())[title] = val;
+			(*this->getStringAttributes())[title] = val;
 	    try {
 	        n = stoi(val);
 	        this->setIntegerAttribute(title, n);

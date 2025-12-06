@@ -8,9 +8,8 @@
 #include "libspider.h"
 #include "SPWindowElement.h"
 
-spider::Spider::Spider(SPGraphicsContext* graphicsContext)
-{
-    this->m_graphicsContext = graphicsContext;
+spider::Spider::Spider()
+{ 
     this->m_windows = new vector<SPWindowElement *>();
     this->m_messages = new queue<SPMessage>();
     this->m_events = new queue<SPEvent>();

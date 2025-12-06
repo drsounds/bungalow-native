@@ -40,13 +40,17 @@ namespace spider {
         int scrollY;
         bool clipView = false;
         string name;
+        spider::Spider *m_spider;
     public:
+        void setSpider(spider::Spider *spider) {
+            this->m_spider = spider;
+        }
+        spider::Spider *getSpider() {
+            return this->m_spider;
+        }
         SPSkin *getSkin() const;
         SPElement();
-        void setSkin(SPSkin *value)
-        {
-            this->m_skin = value;
-        }
+        void setSkin(SPSkin *value);
         SPElement *getDeepestView()
         {
             return this->deepestView;
@@ -54,6 +58,7 @@ namespace spider {
         virtual void resize(int width, int height);
         void scroll(int x, int y);
         void scrollTo(int x, int y);
+        void applySkin();
         virtual void scroll(int scrollX, int scrollY, int x, int y);
         void applyColorAttributeFromSkin (string attr, string skin);
         void applyImageAttributeFromSkin (string attr, string skin);
@@ -118,11 +123,11 @@ namespace spider {
             this->fontStyle = value;
         }
 
-        explicit SPElement(SPElement *parent) : SPElement(parent->getSpider(), parent->getWindow(), parent) {}
+        explicit SPElement(SPElement *parent);
 
-        explicit SPElement(SPElement *parent, SPWindow *window) : SPElement(parent->getSpider(), window, parent) {}
+        explicit SPElement(SPElement *parent, SPWindow *window);
 
-        explicit SPElement(Spider *spider, SPWindow *window, SPElement *parent);
+        explicit SPElement(SPWindow *window, SPElement *parent);
         ~SPElement() override;
         int getX();
         void processEvent(const SPEvent& event);

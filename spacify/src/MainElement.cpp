@@ -8,7 +8,6 @@
 #include "SPTreeItem.h"
 #include "SPViewStackElement.h"
 #include "SPSkin.h"
-#include "SPVBoxElement.h"
 #include "PlayQueueView.h"
 #include "SPTreeViewElement.h"
 
@@ -22,7 +21,7 @@ namespace spider {
         this->infoElement->hide();
     }
     int MainElement::treeview_itemselected(SPObject *sender, SPEventArgs *e) {
-        auto *treeView = dynamic_cast<SPTreeViewElement>(sender);
+        auto *treeView = (SPTreeViewElement *)sender;
         auto *mainWindow = (MainElement *)treeView->getParent();
         auto *args = (TreeViewEventArgs *)e;
         SPTreeItem *selectedItem = args->getItem();

@@ -9,11 +9,18 @@ namespace spider {
   class Spider;
   class SPSkin;
   class SPElement;
-  class SPWindow : virtual public SPObject {
+  class SPWindow {
   protected:
+    spider::Spider *m_spider;
     SPSkin *m_skin;
     SPElement *m_deepestElement;
   public:
+    spider::Spider *getSpider() {
+      return this->m_spider;
+    }
+    void setSpider(spider::Spider *value) {
+      this->m_spider = value;
+    }
     virtual void invalidateRegion(sp_rectangle region) {}
     SPElement *getDeepestElement() {
       return this->m_deepestElement;

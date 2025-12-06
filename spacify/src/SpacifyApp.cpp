@@ -4,6 +4,8 @@
 
 #include "SpacifyApp.h"
 
+#include "MainElement.h"
+#include "SPWindowElement.h"
 #include "SPSkin.h"
 #include "SpiderFrame.h"
 #include "MainElement.h"
@@ -19,16 +21,20 @@ bool SpacifyApp::OnInit()
 {
      if( !wxApp::OnInit() )
           return false;
-     auto *window = new spider::SPWindowElement(this->m_spider, new spider::SPSkin("/Users/buddhalow/Documents/spacify-client/skin.png"));
-    
-     auto *frame = new SpiderFrame(this, window);
-     this->m_frame = frame;
+     this->m_spider = new spider::Spider();
+     this->m_frame = new SpiderFrame(this);
      spider::platform::wxwidgets::WxGraphicsContext *gc = new spider::platform::wxwidgets::WxGraphicsContext(this->m_frame);
-     this->m_spider = new spider::Spider(gc);
+     this->m_spider->setGraphicsContext(gc);
+     this->m_windowElement = new spider::SPWindowElement(this->m_spider, new spider::SPSkin("/Users/buddhalow/Documents/spacify-client/skin.png"));
+     this->m_frame->setWindowElement(this->m_windowElement);
      this->m_frame->setSpider(m_spider);
-     window->setSpider(m_spider);
-     auto *main = new spider::MainElement(window);
-     window->appendChild(main);
+     this->m_windowElement->SPWindow::setSpider(m_spider);
+     this->m_windowElement->SPElement::setSpider(m_spider);
+     this->m_windowElement->SPNode::setSpider(m_spider);
+     this->m_windowElement->setWindow(this->m_windowElement);
+     this->m_windowElement->SPWindow::setSpider(this->m_spider);
+     this->m_main = new spider::MainElement(this->m_windowElement, this->m_windowElement);
+     this->m_windowElement->appendChild(this->m_main);
      this->m_frame->Show(true);
      this->m_frame->getSpiderWidget()->Show();
      return true;

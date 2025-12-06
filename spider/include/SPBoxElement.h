@@ -10,7 +10,7 @@ namespace spider {
 class SPBoxElement : public SPElement {
 public:
 	explicit SPBoxElement(SPElement *parent);
-	SPBoxElement(SPElement *parent, SPWindow *window) : SPElement(parent, window) {}
+  SPBoxElement(SPElement *parent, SPWindow *window);
 	SPBoxElement();
 	~SPBoxElement();
 	void pack();

@@ -14,6 +14,15 @@ namespace spider {
         this->colorAttributes = new map<string, SPColor>();
         this->integerAttributes = new map<string, int>();
     }
+    SPNode::SPNode(SPNode *parent) : SPNode() {
+        if (parent == nullptr) {
+            return;
+        }
+        SPWindow *window = parent->getWindow();
+        if (window != nullptr) {
+            this->setWindow(window);
+        } 
+    }
     SPNode* SPNode::getParent() {
         return this->m_parent;
     }
