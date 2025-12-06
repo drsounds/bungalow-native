@@ -4,6 +4,7 @@
 
 #include "SPGraphicsContext.h"
 
+#include "SPSkin.h"
 #include "SPElement.h"
 #include "MainElement.h"
 #include "../include/Spider.h"
@@ -13,8 +14,9 @@ namespace spider
 {
     class Spider;
 
-    SPWindowElement::SPWindowElement(Spider *spider)
+    SPWindowElement::SPWindowElement(Spider *spider, SPSkin *skin)
     {
+        this->m_skin = skin;
         this->m_spider = spider;
     }
 

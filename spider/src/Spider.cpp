@@ -4,6 +4,7 @@
 
 #include "Spider.h"
 
+#include "SPSkin.h"
 #include "libspider.h"
 #include "SPWindowElement.h"
 
@@ -15,9 +16,9 @@ spider::Spider::Spider(SPGraphicsContext* graphicsContext)
     this->m_events = new queue<SPEvent>();
 }
 
-spider::SPWindowElement* spider::Spider::createWindow()
+spider::SPWindowElement* spider::Spider::createWindow(SPSkin *skin)
 {
-    auto *windowElement = new SPWindowElement(this);
+    auto *windowElement = new SPWindowElement(this, skin);
     return windowElement;
 }
 

@@ -1,4 +1,9 @@
 #include "SPServer.h"
+
+#include <string>
+
+using namespace std;
+
 namespace spider {
 SPServer::SPServer()
 {
@@ -6,8 +11,8 @@ SPServer::SPServer()
 }
 
 void SPServer::request(string method, string uri, void *data, spider_server_reply *reply) {
-    if (strcmp(method.c_str(), "GET") == 0) {
-        if (strcmp(uri.c_str(), "spacify:internal:home") == 0) {
+    if (method == "GET") {
+        if (uri == "spacify:internal:home") {
 
         }
     }

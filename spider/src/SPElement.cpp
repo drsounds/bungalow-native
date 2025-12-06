@@ -22,7 +22,7 @@ namespace spider {
 		{
 			return this->m_skin;
 		}
-		if (this->getWindowElement() == nullptr)
+		if (this->getWindowElement() != nullptr)
 		{
 			return this->getWindowElement()->getSkin();
 		}
@@ -119,9 +119,6 @@ namespace spider {
 	}
 
 	void SPElement::applyColorAttributeFromSkin (string attr, string prop) {
-	    if (this->m_skin == NULL) {
-	        this->m_skin = new SPSkin("skin.png");
-	    }
 	    cout << prop << "\r\n";
 	    cout << this->m_skin->colors << "\r\n";
 	    cout << attr << "\r\n";
@@ -133,9 +130,6 @@ namespace spider {
 	}
 
 	void SPElement::applyImageAttributeFromSkin (string attr, string prop) {
-	    if (this->m_skin == NULL) {
-	        this->m_skin = new SPSkin("skin.png");
-	    }
 	    cout << attr << "\r\n";
 	    cout << m_skin << "\r\n";
 	    cout << this->m_skin->colors << "\r\n";
@@ -327,6 +321,9 @@ namespace spider {
 	        n = stoi(val);
 	        this->setIntegerAttribute(title, n);
 	    } catch (const boost::bad_lexical_cast e) {
+	    } catch (const std::invalid_argument e)
+	    {
+
 	    }
 
 	    if(val.find("#") == 0) {

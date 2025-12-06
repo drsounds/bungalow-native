@@ -20,7 +20,7 @@ vector<int> SPMockTableDataSource::getSelectedIndexes() {
     return indexes;
 }
 bool SPMockTableDataSource::isIndexSelected (int index) {
-    return (std::find(this->selectedIndexes->begin(), this->selectedIndexes->end(), index) != this->selectedIndexes->end());
+    return false; // (std::find(this->selectedIndexes->begin(), this->selectedIndexes->end(), index) != this->selectedIndexes->end());
 
 }
 void SPMockTableDataSource::addIndexesToSelection(int indexes) {

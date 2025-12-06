@@ -1,6 +1,7 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 #include <vector>
+#include <string>
 using namespace std;
 typedef int (*entify_promise_callback)(void *sender, void *data);
 namespace Entify {

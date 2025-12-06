@@ -8,13 +8,14 @@ using namespace std;
 
 namespace spider {
 	class Spider;
+	class SPSkin;
 	struct sp_event;
 	class SPGraphicsContext;
 	class MainElement;
 	class SPWindowElement : public SPVBoxElement {
 	public:
 		void draw(SPGraphicsContext *gc, int width, int height);
-		explicit SPWindowElement(Spider *);
+	  SPWindowElement(Spider *, SPSkin *);
 		virtual void invalidateRegion(sp_rectangle rect) {}
 
 		string getType() override

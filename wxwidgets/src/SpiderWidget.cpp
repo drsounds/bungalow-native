@@ -22,11 +22,9 @@ SpiderWidget::SpiderWidget(wxWindow *parent,
                            const wxSize& size,
                            long style,
                            const wxValidator& val,
-                           const wxString& name )
+                           const wxString& name ) : wxControl(parent, winId)
 {
     this->Init();
-    auto *frame = dynamic_cast<SpiderFrame *>(parent);
-    this->m_frame = frame;
     this->Create(parent, winId, label, pos, size, style, val, name);
 }
 
@@ -132,6 +130,8 @@ void SpiderWidget::OnMouseMove(wxMouseEvent& event)
 
 void SpiderWidget::Init()
 {
+    auto *frame = dynamic_cast<SpiderFrame *>(this->GetParent());
+    this->m_frame = frame;
 }
 
 wxSize SpiderWidget::DoGetBestSize()

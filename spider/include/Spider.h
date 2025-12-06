@@ -9,12 +9,15 @@
 
 #include "SPObservable.h"
 
+#include <queue>
+
 using namespace std;
 
 namespace spider
 {
     class SPWindowElement;
     class SPEvent;
+    class SPSkin;
     class SPGraphicsContext;
     class Spider : public SPObservable
     {
@@ -31,7 +34,7 @@ namespace spider
         }
         explicit Spider(SPGraphicsContext *graphicsContext);
         Spider();
-        SPWindowElement * createWindow();
+        SPWindowElement * createWindow(SPSkin *skin);
         SPMessage dequeueNextMessage();
         void postMessage(const SPMessage& message) const;
         void processEvent(const SPEvent& event) const;

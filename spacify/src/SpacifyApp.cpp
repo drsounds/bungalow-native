@@ -4,6 +4,7 @@
 
 #include "SpacifyApp.h"
 
+#include "SPSkin.h"
 #include "SpiderFrame.h"
 #include "MainElement.h"
 #include "SPWindowElement.h"
@@ -14,25 +15,16 @@
 
 wxIMPLEMENT_APP(SpacifyApp);
 
-SpacifyApp::SpacifyApp()
-{
-}
-
-SpiderFrame *SpacifyApp::createWindow(spider::SPWindowElement *window)
-{
-     auto *frame = new SpiderFrame(this, window);
-     return frame;
-}
-
 bool SpacifyApp::OnInit()
 {
-     auto *window = new spider::SPWindowElement(this->m_spider);
+     if( !wxApp::OnInit() )
+          return false;
+     auto *window = new spider::SPWindowElement(this->m_spider, new spider::SPSkin("/Users/buddhalow/Documents/spacify-client/skin.png"));
      auto *main = new spider::MainElement(window);
      auto *frame = new SpiderFrame(this, window);
      this->m_frame = frame;
-     spider::SPGraphicsContext *gc = new spider::platform::wxwidgets::WxGraphicsContext(this->m_frame);
+     spider::platform::wxwidgets::WxGraphicsContext *gc = new spider::platform::wxwidgets::WxGraphicsContext(this->m_frame);
      this->m_spider = new spider::Spider(gc);
-     SetTopWindow(this->m_frame);
      this->m_frame->Show(true);
      return true;
 }
