@@ -2,6 +2,7 @@
 #define SPIDERWIDGET_H
 #include <wx/wx.h>
 
+#include "SPObject.h"
 #include "Spider.h"
 #include "libspider.h"
 
@@ -19,7 +20,7 @@ namespace spider
     class SPWindowElement;
 }
 class SpiderFrame;
-class SpiderWidget : public wxControl
+class SpiderWidget : public wxControl, SPObject
 {
     spider::Spider *m_spider;
     SpiderFrame* m_frame;
@@ -33,10 +34,7 @@ class SpiderWidget : public wxControl
 
 public:
     wxDECLARE_DYNAMIC_CLASS(SpiderWidget);
-    spider::Spider *getSpider() const
-    {
-        return m_spider;
-    }
+	wxSize DoGetBestSize() const;
     void OnMouseMove(wxMouseEvent& event);
     void Init();
     SpiderWidget()

@@ -8,6 +8,7 @@
 #include "SPTreeItem.h"
 #include "SPViewStackElement.h"
 #include "SPSkin.h"
+#include "SPVBoxElement.h"
 #include "PlayQueueView.h"
 #include "SPTreeViewElement.h"
 
@@ -21,7 +22,7 @@ namespace spider {
         this->infoElement->hide();
     }
     int MainElement::treeview_itemselected(SPObject *sender, SPEventArgs *e) {
-        auto *treeView = (SPTreeViewElement *)sender;
+        auto *treeView = dynamic_cast<SPTreeViewElement>(sender);
         auto *mainWindow = (MainElement *)treeView->getParent();
         auto *args = (TreeViewEventArgs *)e;
         SPTreeItem *selectedItem = args->getItem();
@@ -37,7 +38,7 @@ namespace spider {
         this->viewStack->navigate(uri);
     }
 
-    MainElement::MainElement(SPElement *parent) : SPVBoxElement(parent)
+    MainElement::MainElement(SPElement *parent, SPWindow *window) : SPVBoxElement(parent, window)
     {
         this->viewStack = new SPViewStackElement(this);
         this->treeView = new SPTreeViewElement(this);
@@ -105,7 +106,7 @@ namespace spider {
         treeView->set("height", "920");
         treeView->set("width", "220");
         sidebar->appendChild(treeView);
-        treeView->setWindowElement(this->getWindowElement());
+        treeView->setWindow(this->getWindow());
         // Add sample elements
         auto *item = new SPTreeItem(new SPUri("spacify:internal:start"));
 
@@ -123,7 +124,7 @@ namespace spider {
         viewStack->set("bgcolor", "#373737");
         body->appendChild(viewStack);
         viewStack->set("flex", "1");
-        viewStack->setWindowElement(this->getWindowElement());
+        viewStack->setWindow(this->getWindow());
         viewStack->appendChild(new spider::views::StartView(this));
         viewStack->appendChild(new spider::views::PlayQueueView(this));
         auto *footer = new spider::SPHBoxElement(this);

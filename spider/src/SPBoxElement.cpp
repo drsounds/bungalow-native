@@ -1,6 +1,7 @@
 #include "SPBoxElement.h"
 
 #include "SPElement.h"
+#include "SPWindowElement.h"
 #include "SPNode.h"
 
 namespace spider {
@@ -10,11 +11,6 @@ SPBoxElement::SPBoxElement()
     //ctor
 }
 
-SPBoxElement::SPBoxElement(SPElement *parent)
- : SPElement(parent)
-{
-
-}
 SPBoxElement::~SPBoxElement()
 {
     //dtor

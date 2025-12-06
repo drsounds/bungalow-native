@@ -32,7 +32,7 @@ void SPTreeViewElement::treeview_mousedown(SPObject *sender, SPEventArgs *e) {
 		}
 		top += treeView->getItemHeight();
 	}
-	SPWindowElement * winElement = (SPWindowElement *)treeView->getWindowElement();
+	SPWindow * winElement = (SPWindowElement *)treeView->getWindow();
 	sp_rectangle region;
 	region.x = treeView->getAbsoluteBounds()->x;
 	region.y = treeView->getAbsoluteBounds()->y;
@@ -64,7 +64,7 @@ void SPTreeViewElement::treeview_mouseup(SPObject *sender, SPEventArgs *e) {
 		}
 		top += treeView->getItemHeight();
 	}
-	SPWindowElement * winElement = (SPWindowElement *)treeView->getWindowElement();
+	SPWindow * winElement = (SPWindow *)treeView->getWindow();
 	sp_rectangle region;
 	region.x = treeView->getX();
 	region.y = treeView->getY();
@@ -98,7 +98,7 @@ int SPTreeViewElement::getItemHeight() {
 
 void SPTreeViewElement::draw(int x, int y, SPGraphicsContext *g) {
     spider::SPElement::draw(x, y, g);
-    g->fillRectangle(x, y, this->getWidth(), this->getHeight(), this->getWindowElement()->getSkin()->getColor("treeview.background.color", ""));
+    g->fillRectangle(x, y, this->getWidth(), this->getHeight(), this->getWindow()->getSkin()->getColor("treeview.background.color", ""));
 
 	int itemHeight = this->getItemHeight();
 
@@ -107,20 +107,20 @@ void SPTreeViewElement::draw(int x, int y, SPGraphicsContext *g) {
 		SPTreeItem *item = static_cast<SPTreeItem *>(*it);
 		if (item->isSelected()) {
             #if spacify2009
-            g->fillRectangle(x, y + top , this->getWidth(), itemHeight, this->getWindowElement()->getSkin()->getColor("treeitem::selected.background.color", ""));
+            g->fillRectangle(x, y + top , this->getWidth(), itemHeight, this->getWindow()->getSkin()->getColor("treeitem::selected.background.color", ""));
             #else
             g->fillRectangle(x, y + top, 5, itemHeight, (Color *)this->getAttributeObj("highlight"));
             #endif
 		}
 		if (item->isHighlighted()) {
-            g->fillRectangle(x, y + top , this->getWidth(), itemHeight, this->getWindowElement()->getSkin()->getColor("treeitem::focus.background.color", ""));
+            g->fillRectangle(x, y + top , this->getWidth(), itemHeight, this->getWindow()->getSkin()->getColor("treeitem::focus.background.color", ""));
 		}
-		SPColor color =  this->getWindowElement()->getSkin()->getColor("treeview.foreground.color", "");
+		SPColor color =  this->getWindow()->getSkin()->getColor("treeview.foreground.color", "");
 		if(item->isSelected()) {
             if (false)
                 color = this->getColorAttribute("highlight", SPColor(0, 0, 255, 1));
             else
-                color = this->getWindowElement()->getSkin()->getColor("treeitem::selected.foreground.color", "");
+                color = this->getWindow()->getSkin()->getColor("treeitem::selected.foreground.color", "");
 		}
 
 		sp_rectangle strB = g->measureString(item->getText(), fontStyle);

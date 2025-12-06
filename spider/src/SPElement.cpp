@@ -5,7 +5,7 @@
 
 #include "Spider.h"
 
-#include "SPWindowElement.h"
+#include "SPWindow.h"
 #include "SPObservable.h"
 #include "SPMouseEventArgs.h"
 #include "SPGraphicsContext.h"
@@ -22,9 +22,9 @@ namespace spider {
 		{
 			return this->m_skin;
 		}
-		if (this->getWindowElement() != nullptr)
+		if (this->getWindow() != nullptr)
 		{
-			return this->getWindowElement()->getSkin();
+			return this->getWindow()->getSkin();
 		}
 		return nullptr;
 	}
@@ -141,18 +141,26 @@ namespace spider {
 	    }
 	}
 
-	SPElement::SPElement(Spider *spider, SPWindowElement *window, SPElement *parent) : SPNode(static_cast<SPNode*>(parent)), fontStyle("Tahoma", 13, 1, false, false) {
+	SPElement::SPElement(Spider *spider, SPWindow *window, SPElement *parent) : SPNode(static_cast<SPNode*>(parent)), fontStyle("Tahoma", 13, 1, false, false) {
 	    this->m_classList = new vector<string>;
 	    this->absoluteBounds = NULL;
 		this->setScrollable(false);
 		this->m_spider = spider;
-		this->m_skin = parent->getSkin();
+		if (window == nullptr) {
+			this->setWindow(parent->getWindow());	
+		}
+		if (window != nullptr) {
+			this->m_skin = window->getSkin();
+		}
+		if (parent != nullptr) {
+			this->m_skin = parent->getSkin();
+		}
 		this->visible = true;
 		this->scrollX = 0;
 		this->scrollY = 0;
 	    this->data = "";
 		this->observers = new vector<SPObserver *>();
-		this->m_windowElement = window;
+		this->m_window = window;
 		this->setParent(parent);
 
 	    #if false
@@ -182,7 +190,7 @@ namespace spider {
 	        this->set("size", new string(this->getParent()->get("size")));
 	        #endif
 	        this->fontStyle = parent->fontStyle;
-	        this->m_windowElement = parent->getWindowElement();
+	        this->m_window = parent->getWindow();
 		}
 		this->x = 0;
 		this->y = 0;
@@ -212,7 +220,7 @@ namespace spider {
 	    auto *rect = this->getAbsoluteBounds();
 	    if (rect == nullptr)
 	        return;
-	    auto *we = this->getWindowElement();
+	    auto *we = this->getWindow();
 	    we->invalidateRegion(*rect);
 	}
 	sp_margin *SPElement::getMargins() {
@@ -437,13 +445,13 @@ namespace spider {
 	    cout << "Current scrolling element is " << this->getType() << endl;
 	    bool foundElement = false;
 	    if (this->clipView) {
-	        ((SPWindowElement *)this->getWindowElement())->deepestView = this;
+	        this->getWindow()->setDeepestElement(this);
 	    }
 	    if (string(this->getType()) == string("toplistview")) {
 	        cout << "Test" << endl;
 	    }
 		for(vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
-	        if (((SPWindowElement *)this->getWindowElement())->deepestView == NULL) {
+	        if ((this->getWindow())->getDeepestElement() == NULL) {
 	            break;
 	        }
 			SPElement *elm = static_cast<SPElement *>(*it);

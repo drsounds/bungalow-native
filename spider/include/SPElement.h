@@ -3,6 +3,7 @@
 #include "SPNode.h"
 #include "SPObservable.h"
 #include "SPFontStyle.h"
+#include "SPWindow.h"
 #include <vector>
 
 using namespace std;
@@ -30,7 +31,6 @@ namespace spider {
         string id;
         string data;
         SPElement *deepestView;
-        SPWindowElement *m_windowElement;
         int m_width;
         int m_height;
         int x;
@@ -61,10 +61,6 @@ namespace spider {
         void addClass(string _class);
         void removeClass(string _class);
         sp_rectangle *absoluteBounds;
-        SPWindowElement *geWindowElement() const
-        {
-            return this->m_windowElement;
-        }
         void applyStylesheet(SPStylesheet *style);
         void setName(const string& value) {
             this->name = value;
@@ -88,17 +84,10 @@ namespace spider {
         {
             return this->visible;
         }
-        SPWindowElement *getWindowElement() const
-        {
-             return this->m_windowElement;
-        }
         virtual SPGraphicsContext *createGraphics();
         virtual void show();
         virtual void hide();
 
-        void setWindowElement(SPWindowElement *value) {
-            this->m_windowElement = value;
-        }
         virtual void setVisible(bool value) {
             this->visible = value;
            // ((Element *)this->getParent())->pack();
@@ -129,9 +118,11 @@ namespace spider {
             this->fontStyle = value;
         }
 
-        explicit SPElement(SPElement *parent) : SPElement(parent->getSpider(), parent->getWindowElement(), parent) {}
+        explicit SPElement(SPElement *parent) : SPElement(parent->getSpider(), parent->getWindow(), parent) {}
 
-        explicit SPElement(Spider *spider, SPWindowElement *window, SPElement *parent);
+        explicit SPElement(SPElement *parent, SPWindow *window) : SPElement(parent->getSpider(), window, parent) {}
+
+        explicit SPElement(Spider *spider, SPWindow *window, SPElement *parent);
         ~SPElement() override;
         int getX();
         void processEvent(const SPEvent& event);

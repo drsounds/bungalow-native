@@ -29,6 +29,7 @@ namespace spider {
             {
                 return "window";
             }
+            MainElement::MainElement(SPElement *parent, SPWindow *window);
             explicit MainElement(SPElement *parent);
             int onSearchEntered(SPObject* sender, SPEventArgs* eventArgs) const;
             void layout();

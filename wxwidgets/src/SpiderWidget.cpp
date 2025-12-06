@@ -28,6 +28,23 @@ SpiderWidget::SpiderWidget(wxWindow *parent,
     this->Create(parent, winId, label, pos, size, style, val, name);
 }
 
+
+wxSize SpiderWidget::DoGetBestSize() const
+{
+	// Do not return any arbitrary default value...
+	wxASSERT_MSG( m_widget, wxT("myStaticText::DoGetBestSize called before creation") );
+
+	// There is probably a better way than this, but I don't know it.
+	// So I use the const_cast to grab a dc that is only used for metrics.
+	wxClientDC dc (const_cast<SpiderWidget*> (this));
+
+	wxCoord w = 0;
+	wxCoord h = 0;
+	dc.GetTextExtent( GetLabel (), &w, &h );
+
+	return wxSize( w, h );
+}
+
 bool SpiderWidget::Create(wxWindow *parent,
             wxWindowID winId,
             const wxString& label,
@@ -50,7 +67,7 @@ bool SpiderWidget::Create(wxWindow *parent,
 void SpiderWidget::OnLeftClick(wxCommandEvent& event) {
     auto *args = new spider::SPMouseEventArgs(0, this->m_mouseX, this->m_mouseY);
     const spider::SPEvent evt("click", args, nullptr);
-    this->m_spider->dispatchEvent(
+    this->getSpider()->dispatchEvent(
         "click",
         args,
         this->m_frame->getWindow()
@@ -71,7 +88,7 @@ void SpiderWidget::OnRightClick(wxCommandEvent& event)
 void SpiderWidget::OnLeftUp(wxMouseEvent& event) {
     auto *args = new spider::SPMouseEventArgs(0, event.GetX(), event.GetY());
     const spider::SPEvent evt("mouseup", args, nullptr);
-    this->m_spider->dispatchEvent(
+    this->getSpider()->dispatchEvent(
         "mouseup",
         args,
         this->m_frame->getWindow()
@@ -82,7 +99,7 @@ void SpiderWidget::OnRightDown(wxMouseEvent& event)
 {
     auto *args = new spider::SPMouseEventArgs(1, event.GetX(), event.GetY());
     spider::SPEvent evt("mousedown", args, nullptr);
-    this->m_spider->dispatchEvent(
+    this->getSpider()->dispatchEvent(
         "mousedown",
         args,
         this->m_frame->getWindow()
@@ -97,7 +114,7 @@ void SpiderWidget::OnSize(wxSizeEvent& event)
 void SpiderWidget::OnLeftDown(wxMouseEvent& event) {
     auto *args = new spider::SPMouseEventArgs(0, event.GetX(), event.GetY());
     spider::SPEvent evt("mousedown", args, nullptr);
-    this->m_spider->dispatchEvent(
+    this->getSpider()->dispatchEvent(
         "mousedown",
         args,
         this->m_frame->getWindow()
@@ -108,7 +125,7 @@ void SpiderWidget::OnRightUp(wxMouseEvent& event)
 {
     auto *args = new spider::SPMouseEventArgs(1, event.GetX(), event.GetY());
     spider::SPEvent evt("mouseup", args, nullptr);
-    this->m_spider->dispatchEvent(
+    this->getSpider()->dispatchEvent(
         "mouseup",
         args,
         this->m_frame->getWindow()
@@ -121,7 +138,7 @@ void SpiderWidget::OnMouseMove(wxMouseEvent& event)
     this->m_mouseY = event.GetY();
     auto *args = new spider::SPMouseEventArgs(0, event.GetX(), event.GetY());
     spider::SPEvent evt("mousemove", args, nullptr);
-    this->m_spider->dispatchEvent(
+    this->getSpider()->dispatchEvent(
         "mousemove",
         args,
         this->m_frame->getWindow()
@@ -145,5 +162,9 @@ void SpiderWidget::OnPaint(wxPaintEvent& event) {
     // draw the widget on a wxDC...
     auto* gc = dynamic_cast<spider::platform::wxwidgets::WxGraphicsContext *>(this->m_frame->getWindow()->createGraphics());
     gc->setDC(&dc);
-    this->m_frame->getWindow()->draw(gc, this->GetSize().GetWidth(), this->GetSize().GetHeight());
+    int width = this->GetSize().GetWidth();
+    int height = this->GetSize().GetHeight();
+    cout << width;
+    cout << height;
+    this->m_frame->getWindow()->draw(gc, width, height);
 }

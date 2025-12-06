@@ -9,7 +9,7 @@ namespace spider {
     int SPTabbarViewElement::onTabSelected(SPObject *sender, SPEventArgs *e) {
         TabBarEventArgs *args = (TabBarEventArgs *)e;
         string uri = args->tab->getUri();
-        SPTabBarElement *tabView = (SPTabBarElement *)sender;
+        SPTabBarElement *tabView = dynamic_cast<SPTabBarElement>(sender);
         SPTabbarViewElement *tabbarView = (SPTabbarViewElement *)tabView->getParent();
         tabbarView->navigate(uri);
         return 0;

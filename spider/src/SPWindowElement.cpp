@@ -7,17 +7,18 @@
 #include "SPSkin.h"
 #include "SPElement.h"
 #include "MainElement.h"
-#include "../include/Spider.h"
+#include "Spider.h"
+#include "SPVBoxElement.h"
 #include "SPElement.h"
 
 namespace spider
 {
     class Spider;
 
-    SPWindowElement::SPWindowElement(Spider *spider, SPSkin *skin)
+    SPWindowElement::SPWindowElement(Spider *spider, SPSkin *skin) : SPVBoxElement(nullptr, this)
     {
-        this->m_skin = skin;
-        this->m_spider = spider;
+        this->setSkin(skin);
+        this->setSpider(spider);
     }
 
     void SPWindowElement::draw(SPGraphicsContext *gc, int x, int y) {

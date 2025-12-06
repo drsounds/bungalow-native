@@ -1,6 +1,8 @@
 #include "SpiderFrame.h"
 
 #include "SpiderWidget.h"
+#include "SPObject.h"
+
 
 SpiderFrame::SpiderFrame(wxApp *app, spider::SPWindowElement *window)
     : wxFrame(nullptr, wxID_ANY, "Spider", wxDefaultPosition, wxDefaultSize)
@@ -8,9 +10,8 @@ SpiderFrame::SpiderFrame(wxApp *app, spider::SPWindowElement *window)
     this->m_app = app;
     this->m_window = window;
 
-    auto *spider_widget = new SpiderWidget(dynamic_cast<wxWindow *>(this), wxID_ANY, "Hello World");
-    this->AddChild(spider_widget);
-    spider_widget->Show();
+    this->m_spiderWidget = new SpiderWidget(dynamic_cast<wxWindow *>(this), wxID_ANY, "Hello World");
+    this->AddChild(this->m_spiderWidget);
 }
 
 void SpiderFrame::OnExit(wxCommandEvent& event)

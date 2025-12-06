@@ -8,10 +8,6 @@ using namespace std;
 
 namespace spider {
     SPNode::SPNode() {
-        if(this->m_window == nullptr)
-        {
-            this->m_window = this;
-        }
         this->children = new vector<SPNode *>();
         this->properties = new map<string, void*>();
         this->stringAttributes = new map<string, string>();
@@ -102,20 +98,8 @@ namespace spider {
         }
         nodes->push_back(child);
         child->setParent(this);
-        child->m_window = this->getWindowNode();
     }
     SPNode *getElementById(string *id) {
         return NULL;
     }
-    SPNode *SPNode::getWindowNode() {
-        return this->m_window;
-    }
-
-
-
-
-
-
-
-
 }

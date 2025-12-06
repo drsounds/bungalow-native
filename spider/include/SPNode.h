@@ -2,6 +2,7 @@
 #define NODE_H
 #include "SPObject.h"
 #include "SPColor.h"
+#include "SPWindow.h"
 
 #include <map>
 #include <string>
@@ -10,26 +11,30 @@ using namespace std;
 namespace spider {
     class Spider;
     class SPColor;
-    class SPNode : public SPObject {
+    class SPNode : virtual public SPObject {
     protected:
         map<string, void *> *properties;
         map<string, string> *stringAttributes;
         map<string, SPColor> *colorAttributes;
         map<string, int> *integerAttributes;
         SPNode *m_parent;
-        SPNode *m_window;
-        Spider *m_spider;
+        SPWindow *m_window;
     public:
-        Spider *getSpider() const {
-            return this->m_spider;
-        }
         std::vector<SPNode *> *children;
         SPNode();
+        SPWindow *getWindow() const
+        {
+             return this->m_window;
+        }
+        void setWindow(SPWindow *value) {
+            this->m_window = value;
+        }
         SPNode(Spider *spider, SPNode *parent) : SPNode()
         {
             this->m_parent = parent;
-            this->m_spider = spider;
-            this->m_window = parent->getWindowNode();
+            if (parent != nullptr) {
+                this->m_window = parent->getWindow();
+            }
         }
 
         explicit SPNode(SPNode *parent) : SPNode(parent->getSpider(), parent) {

@@ -2,7 +2,7 @@
 #define EVENTARGS_H
 #include "SPObject.h"
 namespace spider {
-class SPEventArgs : public SPObject
+class SPEventArgs : virtual public SPObject
 {
     public:
         SPEventArgs();

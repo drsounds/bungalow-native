@@ -20,11 +20,16 @@ bool SpacifyApp::OnInit()
      if( !wxApp::OnInit() )
           return false;
      auto *window = new spider::SPWindowElement(this->m_spider, new spider::SPSkin("/Users/buddhalow/Documents/spacify-client/skin.png"));
-     auto *main = new spider::MainElement(window);
+    
      auto *frame = new SpiderFrame(this, window);
      this->m_frame = frame;
      spider::platform::wxwidgets::WxGraphicsContext *gc = new spider::platform::wxwidgets::WxGraphicsContext(this->m_frame);
      this->m_spider = new spider::Spider(gc);
+     this->m_frame->setSpider(m_spider);
+     window->setSpider(m_spider);
+     auto *main = new spider::MainElement(window);
+     window->appendChild(main);
      this->m_frame->Show(true);
+     this->m_frame->getSpiderWidget()->Show();
      return true;
 }

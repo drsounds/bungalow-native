@@ -2,6 +2,8 @@
 #define H_SPIDER_WINDOW_ELEMENT
 #include "SPVBoxElement.h"
 
+#include "SPWindow.h"
+
 #include <string>
 
 using namespace std;
@@ -12,16 +14,16 @@ namespace spider {
 	struct sp_event;
 	class SPGraphicsContext;
 	class MainElement;
-	class SPWindowElement : public SPVBoxElement {
+	class SPWindowElement : public SPVBoxElement, SPWindow {
 	public:
 		void draw(SPGraphicsContext *gc, int width, int height);
-	  SPWindowElement(Spider *, SPSkin *);
-		virtual void invalidateRegion(sp_rectangle rect) {}
+		explicit SPWindowElement(Spider *, SPSkin *);
+		void invalidateRegion(sp_rectangle rect) override {}
 
 		string getType() override
 		{
-            return "window";
-        }
+			return "window";
+		}
 		virtual void navigate(const string& uri);
 		void pack() override;
 	};

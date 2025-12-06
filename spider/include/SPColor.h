@@ -3,7 +3,7 @@
 #include "SPObject.h"
 #include <string>
 namespace spider {
-class SPColor : public SPObject {
+class SPColor : virtual public SPObject {
     short r;
     short g;
     short b;
