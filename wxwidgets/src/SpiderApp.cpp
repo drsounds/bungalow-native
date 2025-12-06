@@ -18,11 +18,6 @@ SpiderApp::SpiderApp(spider::Spider* spider)
     this->m_spider = spider;
 }
 
-bool SpiderApp::OnInit()
-{
-    return true;
-}
-
 SpiderFrame *SpiderApp::createWindow(spider::SPWindowElement *window)
 {
     auto *frame = new SpiderFrame(this, window);

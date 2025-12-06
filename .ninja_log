@@ -112,3 +112,11 @@
 12	987	1765016415633934193	CMakeFiles/spacify-client.dir/wxwidgets/src/SpiderFrame.cpp.o	d51262a84e8912a1
 12	990	1765016415634102983	CMakeFiles/spacify-client.dir/wxwidgets/src/SpiderWidget.cpp.o	fcf5d367a2f12553
 990	1174	1765016416612912940	spacify-client	ee835e01eeafd17e
+10	1142	1765016833447842495	CMakeFiles/spacify-client.dir/spacify/src/SpacifyApp.cpp.o	124bbf06dff384e4
+11	1217	1765016833448856029	CMakeFiles/spacify-client.dir/wxwidgets/src/SpiderApp.cpp.o	19e6a44729a2a275
+1217	1464	1765016834654992376	spacify-client	ee835e01eeafd17e
+11	1209	1765016898460026413	CMakeFiles/spacify-client.dir/wxwidgets/src/main.cpp.o	dec18d13b6193cbd
+10	1238	1765016898458710860	CMakeFiles/spacify-client.dir/spacify/src/SpacifyApp.cpp.o	124bbf06dff384e4
+11	1284	1765016898459687440	CMakeFiles/spacify-client.dir/wxwidgets/src/SpiderApp.cpp.o	19e6a44729a2a275
+11	1371	1765016898459875239	CMakeFiles/spacify-client.dir/wxwidgets/src/WxGraphicsContext.cpp.o	3168c943c8c7a7c4
+10	143	1765016922799743300	CMakeFiles/spacify-client.dir/wxwidgets/src/main.cpp.o	dec18d13b6193cbd

@@ -15,7 +15,7 @@ class SpiderApp : public wxApp
 {
     spider::Spider* m_spider;
 public:
-    bool OnInit() override;
+    virtual bool OnInit();
     SpiderApp();
     explicit SpiderApp(spider::Spider *);
     SpiderFrame *createWindow(spider::SPWindowElement* window);
