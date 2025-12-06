@@ -1,14 +1,14 @@
 #ifndef ARTISTVIEW_H
 #define ARTISTVIEW_H
-#include "../../spider/include/TabbarViewElement.h"
+#include "SPTabbarViewElement.h"
 
 namespace spider {
-    class TabbarViewElement;
-    class Element;
-    class ArtistView : public TabbarViewElement
+    class SPTabbarViewElement;
+    class SPElement;
+    class ArtistView : public SPTabbarViewElement
     {
         public:
-            ArtistView(Element *parent);
+            ArtistView(SPElement *parent);
             virtual ~ArtistView();
             virtual string getType() {
                 return "artistview";

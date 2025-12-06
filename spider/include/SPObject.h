@@ -5,6 +5,8 @@ using namespace std;
 namespace spider {
     class SPObject {
     public:
+        virtual ~SPObject() = default;
+
         virtual string getType() {
             return "Undefined";
         }

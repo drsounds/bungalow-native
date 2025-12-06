@@ -1,12 +1,6 @@
 #ifndef H_LIBSPIDER
 #define H_LIBSPIDER
-#include <map>
 #include <string>
-#include <vector>
-#include <vector>
-#include <string>
-#include <sstream>
-#include <vector>
 #include <iomanip>
 #define DEBUG
 #define CONTROL_INPUT 1
@@ -15,19 +9,19 @@
 #define SP_EVENT_MOUSE_MOVE 3
 #define SP_EVENT_NAVIGATE 4
 
-#include "SPObject.h"
-#include "EventArgs.h"
 using namespace std;
 
-
 namespace spider {
+	class SPElement;
+	class SPObject;
+	class SPEventArgs;
 	class SPEvent
 	{
 	public:
 		string type;
-		EventArgs *args;
+		SPEventArgs *args;
 		SPObject *sender;
-		SPEvent(const string& type, EventArgs *args, SPObject *sender) {
+		SPEvent(const string& type, SPEventArgs *args, SPObject *sender) {
 			this->type = type;
 			this->args = args;
 			this->sender = sender;
@@ -41,18 +35,18 @@ namespace spider {
 		string predicate;
 		string object_uri;
 	};
-	struct margin {
+	struct sp_margin {
 		int left;
 		int top;
 		int bottom;
 		int right;
 	};
 	int htmlToColor(string str);
-	struct position {
+	struct sp_position {
 		int x;
 		int y;
 	};
-	struct rectangle {
+	struct sp_rectangle {
 		int width;
 		int height;
 		int x;
@@ -60,6 +54,6 @@ namespace spider {
 		int z;
 	};
 
-	typedef int(*sp_callback)(const string& action, SPObject *, EventArgs *);
+	typedef int(SPElement::*SPCallback)(SPObject *, SPEventArgs *);
 }
 #endif

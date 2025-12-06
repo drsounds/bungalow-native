@@ -1,12 +1,12 @@
 #include "PlayQueueView.h"
 #include <regex>
-#include "MockTableDataSource.h"
-#include "TableElement.h"
+#include "SPMockTableDataSource.h"
+#include "SPTableElement.h"
 using namespace std;
 namespace spider {
     namespace views {
         PlayQueueView::PlayQueueView()
-         : ContainerViewElement()
+         : SPContainerViewElement()
         {
             //ctor
         }
@@ -15,15 +15,15 @@ namespace spider {
             return "playqueueview";
 
         }
-        PlayQueueView::PlayQueueView(Element *parent)
-            : ContainerViewElement(parent)
+        PlayQueueView::PlayQueueView(SPElement *parent)
+            : SPContainerViewElement(parent)
         {
             this->clipView = true;
             //ctor
             /*HeatherElement *headerElement = new HeaderElement(this);
             headerElement->title->setTitle("Test");
             this->appendChild(headerElement);*/
-            auto *tableView = new TableElement(this, new spider::MockTableDataSource());
+            auto *tableView = new SPTableElement(this, new spider::SPMockTableDataSource());
             this->appendChild(tableView);
             tableView->setHeight(100);
         }

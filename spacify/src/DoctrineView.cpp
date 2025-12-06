@@ -1,24 +1,24 @@
-#include "DoctrineView.h"
+#include "../include/DoctrineView.h"
 
 #include <regex>
 #include <string>
 #include <vector>
 #include <boost/algorithm/string.hpp>
-#include "TextElement.h"
-#include "Element.h"
-#include "GraphicsContext.h"
+#include "SPTextElement.h"
+#include "SPElement.h"
+#include "SPGraphicsContext.h"
 
 using namespace std;
 
 namespace spider {
     namespace views {
-        DoctrineView::DoctrineView(Element *parent)
-         : ContainerViewElement(parent)
+        DoctrineView::DoctrineView(SPElement *parent)
+         : SPContainerViewElement(parent)
         {
             this->getPadding()->top = 20;
             this->getPadding()->left = 20;
             //ctor
-            text = new TextElement(this);
+            text = new SPTextElement(this);
             text->setInnerText("Doctrine");
             text->setStringAttribute("width", "100%");
             this->appendChild(text);

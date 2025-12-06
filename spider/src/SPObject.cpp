@@ -1,3 +1,0 @@
-#include "SPObject.h"
-namespace {
-    }

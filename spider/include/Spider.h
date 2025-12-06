@@ -13,24 +13,24 @@ using namespace std;
 
 namespace spider
 {
-    class WindowElement;
-    class GraphicsContext;
+    class SPWindowElement;
+    class SPGraphicsContext;
     class Spider
     {
     protected:
-        GraphicsContext *m_graphicsContext;
-        vector<WindowElement *> *m_windows;
+        SPGraphicsContext *m_graphicsContext;
+        vector<SPWindowElement *> *m_windows;
         queue<SPEvent> *m_events;
         queue<SPMessage> *m_messages;
 
     public:
-        GraphicsContext *getGraphicsContext()
+        SPGraphicsContext *getGraphicsContext()
         {
             return this->m_graphicsContext;
         }
-        explicit Spider(GraphicsContext *graphicsContext);
+        explicit Spider(SPGraphicsContext *graphicsContext);
         Spider();
-        WindowElement * createWindow();
+        SPWindowElement * createWindow();
         void postMessage(const SPMessage&);
         void processEvent(const SPEvent&);
         SPMessage dequeueNextMessage();

@@ -1,17 +1,13 @@
 #ifndef ARTISTOVERVIEW_H
 #define ARTISTOVERVIEW_H
 
-#include "ViewElement.h"
+#include "SPViewElement.h"
 namespace spider {
-class Element;
-class ViewElement;
-class ImageElement;
-class TextElement;
-class HBoxElement;
-class ArtistOverView : public ViewElement
+class SPElement;
+class ArtistOverView : public SPViewElement
 {
     public:
-        ArtistOverView(Element *parent);
+        ArtistOverView(SPElement *parent);
         virtual ~ArtistOverView();
     protected:
     private:

@@ -8,7 +8,7 @@ wxIMPLEMENT_APP(SpiderApp);
 
 SpiderApp::SpiderApp()
 {
-    spider::GraphicsContext *gc = new spider::platform::wxwidgets::WxWidgetsGraphicsContext(this);
+    spider::SPGraphicsContext *gc = new spider::platform::wxwidgets::WxWidgetsGraphicsContext(this);
     this->m_spider = new spider::Spider(gc);
 }
 
@@ -22,7 +22,7 @@ bool SpiderApp::OnInit()
     return true;
 }
 
-SpiderFrame *SpiderApp::createWindow(spider::WindowElement *window)
+SpiderFrame *SpiderApp::createWindow(spider::SPWindowElement *window)
 {
     auto *frame = new SpiderFrame(this, window);
     return frame;

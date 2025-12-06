@@ -5,19 +5,19 @@
 #include "../include/Spider.h"
 
 #include "libspider.h"
-#include "WindowElement.h"
+#include "SPWindowElement.h"
 
-spider::Spider::Spider(GraphicsContext* graphicsContext)
+spider::Spider::Spider(SPGraphicsContext* graphicsContext)
 {
     this->m_graphicsContext = graphicsContext;
-    this->m_windows = new vector<WindowElement *>();
+    this->m_windows = new vector<SPWindowElement *>();
     this->m_messages = new queue<SPMessage>();
     this->m_events = new queue<SPEvent>();
 }
 
-spider::WindowElement* spider::Spider::createWindow()
+spider::SPWindowElement* spider::Spider::createWindow()
 {
-    auto *windowElement = new WindowElement(this);
+    auto *windowElement = new SPWindowElement(this);
     return windowElement;
 }
 

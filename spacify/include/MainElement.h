@@ -1,36 +1,35 @@
 #ifndef MAINWINDOWELEMENT_H
 #define MAINWINDOWELEMENT_H
-#include "VBoxElement.h"
-#include "MessageType.h"
+#include "SPVBoxElement.h"
+#include "SPMessageType.h"
 namespace spider {
-    class HBoxElement;
-    class ViewStackElement;
-    class TreeViewElement;
-    class InfoElement;
-    class Stylesheet;
-    class MainElement : public VBoxElement
+    class SPViewStackElement;
+    class SPTreeViewElement;
+    class SPInfoElement;
+    class SPStylesheet;
+    class MainElement : public SPVBoxElement
     {
         protected:
 
-            ViewStackElement *viewStack;
-            TreeViewElement *treeView;
-            InfoElement *infoElement;
-            Stylesheet *stylesheet;
+            SPViewStackElement *viewStack;
+            SPTreeViewElement *treeView;
+            SPInfoElement *infoElement;
         public:
-            GraphicsContext *graphicsContext;
-            void navigate(string uri);
+            void navigate(const string& uri) const;
             void hideMessage();
             MainElement();
-            MainElement(Element *parent, Skin *skin);
-            virtual string getType() {
+
+            string getType() override
+            {
                 return "window";
             }
-            MainElement(Element *parent);
+            explicit MainElement(SPElement *parent);
+            int onSearchEntered(SPObject* sender, SPEventArgs* eventArgs) const;
             void layout();
-            virtual ~MainElement();
-            ViewStackElement *getViewStack();
+            ~MainElement() override;
+            SPViewStackElement *getViewStack();
 
-            void showMessage(MessageType msgType, string msg)
+            void showMessage(SPMessageType msgType, string msg)
             {
             }
     };

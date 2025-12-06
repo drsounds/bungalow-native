@@ -1,15 +1,15 @@
 #include "ArtistOverView.h"
 
-#include "HBoxElement.h"
-#include "Element.h"
-#include "ViewElement.h"
+#include "SPHBoxElement.h"
+#include "SPElement.h"
+#include "SPViewElement.h"
 
 namespace spider {
-ArtistOverView::ArtistOverView(Element *parent)
- : ViewElement(parent)
+ArtistOverView::ArtistOverView(SPElement *parent)
+ : SPViewElement(parent)
 {
     //ctor
-    auto *header = new HBoxElement(this);
+    auto *header = new SPHBoxElement(this);
     header->setIntegerAttribute("height", 128);
 
 

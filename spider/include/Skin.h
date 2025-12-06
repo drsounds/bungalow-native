@@ -4,12 +4,12 @@
 #include <string>
 using namespace std;
 namespace spider {
-class Image;
-class Color;
+class SPImage;
+class SPColor;
 class pixel;
 class slice {
 public:
-    Image *image;
+    SPImage *image;
     int x1;
     int y1;
     int x2;
@@ -18,22 +18,22 @@ public:
     int topBorder;
     int rightBorder;
     int bottomBorder;
-    slice(Image *image, int x1, int x2, int y1, int y2, int leftBorder, int topBorder, int rightBorder, int bottomBorder);
+    slice(SPImage *image, int x1, int x2, int y1, int y2, int leftBorder, int topBorder, int rightBorder, int bottomBorder);
 };
 class Skin
 {
     public:
-        map<string, Image *> *images;
+        map<string, SPImage *> *images;
         map<string, pixel *> *colors;
         map<string, slice *> *slices;
-        Image *image;
+        SPImage *image;
         Skin();
         Skin(const string& bitmap);
         virtual ~Skin();
         bool hasColor(string selector);
         bool hasImage(string selector);
-        Color getColor(string selector, string def);
-        Image *getImage(string selector, string def);
+        SPColor getColor(string selector, string def);
+        SPImage *getImage(string selector, string def);
 
     protected:
     private:

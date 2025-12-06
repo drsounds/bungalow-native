@@ -1,15 +1,15 @@
 #include "WhatsNewView.h"
-#include "ButtonElement.h"
-#include "HBoxElement.h"
-#include "TableElement.h"
-#include "Color.h"
+#include "SPButtonElement.h"
+#include "SPHBoxElement.h"
+#include "SPTableElement.h"
+#include "SPColor.h"
 
 #include <regex>
 
 namespace spider {
     namespace views {
         WhatsNewView::WhatsNewView()
-         : ContainerViewElement::ContainerViewElement()
+         : SPContainerViewElement::SPContainerViewElement()
         {
             this->clipView = true;
             //ctor
@@ -18,13 +18,13 @@ namespace spider {
         bool WhatsNewView::acceptsUri(string uri) {
             return std::regex_match(uri.c_str(), std::regex("spacify:internal:start"));
         }
-        WhatsNewView::WhatsNewView(Element *parent)
-         : ContainerViewElement::ContainerViewElement(parent)
+        WhatsNewView::WhatsNewView(SPElement *parent)
+         : SPContainerViewElement::SPContainerViewElement(parent)
         {
 
 
             // Build the view
-            HBoxElement *hbox = new HBoxElement(this);
+            SPHBoxElement *hbox = new SPHBoxElement(this);
             hbox->getPadding()->top = 12;
             hbox->getPadding()->left = 16;
             hbox->getPadding()->bottom = 12;
@@ -37,7 +37,7 @@ namespace spider {
             this->appendChild(hbox);
 
             // Add Header
-            HBoxElement *title = new HBoxElement(hbox);
+            SPHBoxElement *title = new SPHBoxElement(hbox);
             title->set("fgcolor", "#aaffaa");
             title->setInnerText("What's New\0");
             title->set("height", "60");
@@ -46,14 +46,14 @@ namespace spider {
             hbox->appendChild(title);
 
             // Add flex
-            HBoxElement *hspacer = new HBoxElement(hbox);
+            SPHBoxElement *hspacer = new SPHBoxElement(hbox);
             hspacer->set("flex", "1");
             hspacer->set("width", "100%");
             hspacer->set("heigh", "60");
             hbox->appendChild(hspacer);
 
             // Add more button
-            ButtonElement *more = new ButtonElement(hbox);
+            SPButtonElement *more = new SPButtonElement(hbox);
             more->set("width", "150");
             more->set("height", "60");
             more->set("fgcolor", "#000000");
@@ -63,12 +63,12 @@ namespace spider {
             hbox->appendChild(more);
 
 
-            HBoxElement *whatsNew1 = new HBoxElement(this);
+            SPHBoxElement *whatsNew1 = new SPHBoxElement(this);
             whatsNew1->set("height", "500");
             this->appendChild(whatsNew1);
 
             // Create next chapter
-            HBoxElement *hbox2 = new HBoxElement(this);
+            SPHBoxElement *hbox2 = new SPHBoxElement(this);
             hbox2->getPadding()->top = 12;
             hbox2->getPadding()->left = 16;
             hbox2->getPadding()->bottom = 12;
@@ -76,8 +76,8 @@ namespace spider {
             hbox2->set("height", "200");
             this->appendChild(hbox2);
 
-            HBoxElement *title2 = new HBoxElement(hbox);
-            title2->setColorAttribute("fgcolor", Color(255, 127, 255, 1));
+            SPHBoxElement *title2 = new SPHBoxElement(hbox);
+            title2->setColorAttribute("fgcolor", SPColor(255, 127, 255, 1));
             title2->setInnerText("Artists you might like \0");
             title2->setIntegerAttribute("height", 60);
             title2->setIntegerAttribute("width", 620);

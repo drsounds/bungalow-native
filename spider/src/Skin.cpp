@@ -1,7 +1,7 @@
 #include "Skin.h"
 
-#include "Image.h"
-#include "Color.h"
+#include "SPImage.h"
+#include "SPColor.h"
 
 #include <iostream>
 
@@ -10,7 +10,7 @@ Skin::Skin()
 {
     //ctor
 }
-slice::slice(Image *image, int x1, int y1, int x2, int y2, int leftBorder, int topBorder, int rightBorder, int bottomBorder) {
+slice::slice(SPImage *image, int x1, int y1, int x2, int y2, int leftBorder, int topBorder, int rightBorder, int bottomBorder) {
     this->image = image;
     this->x1 = x1;
     this->y1 = y1;
@@ -24,10 +24,10 @@ slice::slice(Image *image, int x1, int y1, int x2, int y2, int leftBorder, int t
     
 Skin::Skin(const string& bitmap) {
     this->colors = new std::map<string, pixel *>;
-    this->images = new std::map<string, Image *>;
+    this->images = new std::map<string, SPImage *>;
     this->slices = new std::map<string, slice *>;
     cout << bitmap << "\r\n";
-    Image *image = new Image(bitmap);
+    SPImage *image = new SPImage(bitmap);
     cout << "Sizeof pixels: " << sizeof(image->pixels) << "\r\n";
     this->image = image;
     cout << "Sizeof pixels: " << sizeof(image->pixels) << "\r\n";
@@ -62,13 +62,13 @@ bool Skin::hasImage(string selector) {
     }
     return false;
 }
-Color Skin::getColor(string selector, string def) {
+SPColor Skin::getColor(string selector, string def) {
     if (!this->hasColor(selector)) {
-        return Color(255, 255, 255, 255);
+        return SPColor(255, 255, 255, 255);
     }
     return *spider_pixel_to_colour((*this->colors)[selector]);
 }
-Image *Skin::getImage(string selector, string def) {
+SPImage *Skin::getImage(string selector, string def) {
     if (!this->hasImage(selector)) {
         return NULL;
     }

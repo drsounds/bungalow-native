@@ -1,22 +1,22 @@
 #ifndef USERVIEW_H
 #define USERVIEW_H
-#include "ViewElement.h"
+#include "SPViewElement.h"
 #include <string>
 using namespace std;
 namespace spider {
-    class HeaderElement;
-    class Element;
+    class SPHeaderElement;
+    class SPElement;
     namespace views {
-        class UserView : public ViewElement
+        class UserView : public SPViewElement
         {
             public:
                 UserView();
-                UserView(Element *parent);
+                UserView(SPElement *parent);
                 virtual ~UserView();
                 bool acceptsUri(string uri);
                 void navigate(string uri);
             protected:
-                HeaderElement *header;
+                SPHeaderElement *header;
             private:
         };
     }

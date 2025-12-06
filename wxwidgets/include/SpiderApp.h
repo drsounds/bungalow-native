@@ -1,4 +1,4 @@
-#include "WindowElement.h"
+#include "SPWindowElement.h"
 #ifndef SPIDER_APP_H
 #ifndef WX_PRECOMP
     #include <wx/wx.h>
@@ -18,7 +18,7 @@ public:
     bool OnInit() override;
     SpiderApp();
     explicit SpiderApp(spider::Spider *);
-    SpiderFrame *createWindow(spider::WindowElement* window);
+    SpiderFrame *createWindow(spider::SPWindowElement* window);
     spider::Spider *getSpider() const { return m_spider; }
 };
 

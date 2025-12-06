@@ -1,7 +1,7 @@
 
 #include <wx/dc.h>
 
-#include "GraphicsContext.h"
+#include "SPGraphicsContext.h"
 
 class SpiderApp;
 class SpiderWidget;
@@ -12,7 +12,7 @@ namespace spider
   {
     namespace wxwidgets
     {
-      class WxWidgetsGraphicsContext : public GraphicsContext
+      class WxWidgetsGraphicsContext : public SPGraphicsContext
       {
         SpiderApp *m_app;
       public:

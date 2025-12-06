@@ -1,0 +1,28 @@
+#ifndef VIEWSTACKELEMENT_H
+#define VIEWSTACKELEMENT_H
+#include "SPVBoxElement.h"
+#include <stack>
+#include <string>
+using namespace std;
+namespace spider {
+    class SPElement;
+    class SPViewElement;
+    class SPViewStackElement : public SPVBoxElement {
+    private:
+        std::stack<string> *history;
+        std::stack<string> *future;
+        SPViewElement *activeView;
+
+    public:
+        virtual void pack();
+        virtual string getType() {
+            return "viewstack";
+        }
+        SPViewStackElement();
+        SPViewStackElement(SPElement *parent);
+        void registerView(SPViewElement *view);
+        void navigate(string uri);
+        virtual void appendChild(SPNode *child);
+    };
+}
+#endif // VIEWSTACKELEMENT_H

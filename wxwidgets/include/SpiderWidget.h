@@ -14,7 +14,7 @@ enum MySpecialWidgetStyles
 namespace spider
 {
     class Spider;
-    class WindowElement;
+    class SPWindowElement;
 }
 class SpiderWidget : public wxControl
 {

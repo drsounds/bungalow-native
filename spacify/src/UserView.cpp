@@ -3,20 +3,20 @@
 #include <string>
 #include <vector>
 #include <regex>
-#include "HeaderElement.h"
-#include "TitleElement.h"
+#include "SPHeaderElement.h"
+#include "SPTitleElement.h"
 
 using namespace std;
 namespace spider {
     namespace views {
 
-        UserView::UserView(Element *parent)
-         : ViewElement(parent)
+        UserView::UserView(SPElement *parent)
+         : SPViewElement(parent)
         {
             this->getPadding()->top = 0;
             this->getPadding()->left = 0;
             //ctor
-            header = new spider::HeaderElement(this);
+            header = new spider::SPHeaderElement(this);
             header->title->setTitle("Title");
             header->title->setEntity("User");
             header->set("width", "100%");

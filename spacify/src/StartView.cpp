@@ -3,15 +3,15 @@
 #include "WhatsNewView.h"
 #include "TopListView.h"
 
-#include "ViewStackElement.h"
-#include "TabBarElement.h"
+#include "SPViewStackElement.h"
+#include "SPTabBarElement.h"
 
 namespace spider {
     namespace views {
-        StartView::StartView() : TabbarViewElement() {
+        StartView::StartView() : SPTabbarViewElement() {
         }
-        StartView::StartView(Element *parent)
-         : TabbarViewElement(parent)
+        StartView::StartView(SPElement *parent)
+         : SPTabbarViewElement(parent)
         {
             this->clipView = false;
             //ctor

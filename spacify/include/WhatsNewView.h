@@ -1,15 +1,15 @@
 #ifndef WHATSNEWVIEW_H
 #define WHATSNEWVIEW_H
-#include "ContainerViewElement.h"
+#include "SPContainerViewElement.h"
 
 namespace spider {
-    class Element;
+    class SPElement;
     namespace views {
-        class WhatsNewView : public ContainerViewElement
+        class WhatsNewView : public SPContainerViewElement
         {
             public:
                 WhatsNewView();
-                WhatsNewView(Element *parent);
+                WhatsNewView(SPElement *parent);
                 virtual ~WhatsNewView();
                 void navigate(string uri);
                 bool acceptsUri(string uri);

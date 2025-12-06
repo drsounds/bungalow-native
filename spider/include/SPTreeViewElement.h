@@ -1,0 +1,44 @@
+#ifndef TREEVIEWELEMENT_H
+#define TREEVIEWELEMENT_H
+#include "SPUri.h"
+#include "SPElement.h"
+#include "SPEventArgs.h"
+#include <string>
+
+using namespace std;
+
+namespace spider {
+    class SPElement;
+    class SPTreeItem;
+    class TreeViewEventArgs : public SPEventArgs {
+    protected:
+
+        SPTreeItem *item;
+    public:
+
+        SPTreeItem *getItem() {
+            return this->item;
+        }
+        void setItem(SPTreeItem *item) {
+            this->item = item;
+        }
+    };
+    class SPTreeViewElement : public SPElement {
+	protected:
+		vector<SPTreeItem *> *mItems;
+		int itemHeight;
+	public:
+		explicit SPTreeViewElement(SPElement *parent);
+        virtual string getType() {
+            return "tree";
+        }
+		void draw(int x, int y, SPGraphicsContext *g);
+        vector<SPTreeItem *> *items() {
+            return this->mItems;
+        }
+		void setItemHeight(int height);
+		int getItemHeight();
+        void addItem(SPTreeItem *item);
+	};
+}
+#endif // TREEVIEWELEMENT_H

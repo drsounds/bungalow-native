@@ -1,0 +1,19 @@
+#ifndef RESOURCEELEMENT_H
+#define RESOURCEELEMENT_H
+
+#include "SPElement.h"
+namespace spider {
+    class SPResource;
+class SPResourceElement : public SPElement
+{
+    public:
+        SPResourceElement(SPResource *resource, SPElement *parent);
+        virtual ~SPResourceElement();
+        void draw(int x, int y, SPGraphicsContext *g);
+    protected:
+        SPResource *resource;
+    private:
+};
+}
+
+#endif // RESOURCEELEMENT_H

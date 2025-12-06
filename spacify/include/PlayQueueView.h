@@ -3,18 +3,18 @@
 
 #include <string>
 
-#include "ContainerViewElement.h"
+#include "SPContainerViewElement.h"
 
 using namespace std;
 
 namespace spider {
-    class Element;
+    class SPElement;
     namespace views {
-        class PlayQueueView : public ContainerViewElement
+        class PlayQueueView : public SPContainerViewElement
         {
             public:
                 PlayQueueView();
-                PlayQueueView(Element *parent);
+                PlayQueueView(SPElement *parent);
                 void navigate(string uri);
                 bool acceptsUri(string uri);
                 virtual ~PlayQueueView();

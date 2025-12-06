@@ -3,9 +3,9 @@
 
 #include "SpiderWidget.h"
 #include "SpiderFrame.h"
-#include "MouseEventArgs.h"
+#include "SPMouseEventArgs.h"
 #include "SpiderApp.h"
-#include "WindowElement.h"
+#include "SPWindowElement.h"
 #include "../../spider/include/Spider.h"
 
 SpiderWidget::SpiderWidget(wxWindow *parent,
@@ -43,7 +43,7 @@ bool SpiderWidget::Create(wxWindow *parent,
 }
 
 void SpiderWidget::OnLeftClick(wxMouseEvent& event) {
-    auto *args = new spider::MouseEventArgs(0, event.GetX(), event.GetY());
+    auto *args = new spider::SPMouseEventArgs(0, event.GetX(), event.GetY());
     const spider::SPEvent evt("click", args, nullptr);
     this->m_spider->dispatchEvent(
         evt
@@ -51,7 +51,7 @@ void SpiderWidget::OnLeftClick(wxMouseEvent& event) {
 }
 
 void SpiderWidget::OnLeftUp(wxMouseEvent& event) {
-    auto *args = new spider::MouseEventArgs(1, event.GetX(), event.GetY());
+    auto *args = new spider::SPMouseEventArgs(1, event.GetX(), event.GetY());
     const spider::SPEvent evt("mouseup", args, nullptr);
     this->m_spider->dispatchEvent(
         evt
@@ -64,7 +64,7 @@ void SpiderWidget::OnSize(wxSizeEvent& event)
 }
 
 void SpiderWidget::OnLeftDown(wxMouseEvent& event) {
-    auto *args = new spider::MouseEventArgs(1, event.GetX(), event.GetY());
+    auto *args = new spider::SPMouseEventArgs(1, event.GetX(), event.GetY());
     spider::SPEvent evt("mousedown", args, nullptr);
     this->m_spider->dispatchEvent(
         evt

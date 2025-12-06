@@ -22,5 +22,5 @@ file(GLOB SOURCES "src/*.cpp")
 file(GLOB HEADERS "include/*.h")
 
 add_library(spider ${SOURCES} ${HEADERS}
-        include/MessageType.cpp
-        include/MessageType.h)
+        src/SPMessageType.cpp
+        include/SPMessageType.h)

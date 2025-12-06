@@ -1,15 +1,15 @@
 #ifndef TOPLISTVIEW_H
 #define TOPLISTVIEW_H
-#include "ContainerViewElement.h"
+#include "SPContainerViewElement.h"
 
 namespace spider {
-    class Element;
+    class SPElement;
     namespace views {
-        class TopListView : public ContainerViewElement
+        class TopListView : public SPContainerViewElement
         {
             public:
                 TopListView();
-                TopListView(Element *parent);
+                TopListView(SPElement *parent);
                 virtual ~TopListView();
                 bool acceptsUri(string uri);
                 void navigate(string uri);

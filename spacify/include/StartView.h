@@ -1,15 +1,15 @@
 #ifndef STARTVIEW_H
 #define STARTVIEW_H
-#include "TabbarViewElement.h"
+#include "SPTabbarViewElement.h"
 #include <string>
 using namespace std;
 namespace spider {
     namespace views {
-        class StartView : public TabbarViewElement
+        class StartView : public SPTabbarViewElement
         {
             public:
                 StartView();
-                StartView(Element *parent);
+                StartView(SPElement *parent);
                 virtual ~StartView();
                 bool acceptsUri(string uri);
                 virtual string getType();

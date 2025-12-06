@@ -1,9 +1,12 @@
 #include "ArtistView.h"
-#include "Element.h"
+#include "SPElement.h"
+#include "Spider.h"
+#include "SPWindowElement.h"
+#include "SPBoxElement.h"
 
 namespace spider {
-ArtistView::ArtistView(Element *parent)
- : TabbarViewElement(parent)
+ArtistView::ArtistView(SPElement *parent)
+ : SPTabbarViewElement(parent)
 {
     //ctor
 
