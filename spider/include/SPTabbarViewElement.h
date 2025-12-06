@@ -14,6 +14,8 @@ namespace spider
         virtual string getType() {
             return "table";
         }
+
+        int onTabSelected(SPObject* sender, SPEventArgs* e);
         SPTabbarViewElement();
         SPTabbarViewElement(SPElement *parent);
         virtual ~SPTabbarViewElement();

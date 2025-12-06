@@ -10,8 +10,8 @@ void read_png_file(char* file_name)
 }
 
 namespace spider {
-Color *spider_pixel_to_colour(pixel *pixel) {
-    return new Color(pixel->r, pixel->g, pixel->b, pixel->a);
+SPColor *spider_pixel_to_colour(pixel *pixel) {
+    return new SPColor(pixel->r, pixel->g, pixel->b, pixel->a);
 }
 string spider_pixel_to_hex(pixel *pixel) {
 	string result;

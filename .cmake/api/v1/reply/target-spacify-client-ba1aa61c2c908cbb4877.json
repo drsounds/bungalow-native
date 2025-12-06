@@ -73,7 +73,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics"
+					"fragment" : "-I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics"
 				}
 			],
 			"includes" : 
@@ -118,7 +118,7 @@
 				[
 					1
 				],
-				"standard" : "14"
+				"standard" : "17"
 			},
 			"sourceIndexes" : 
 			[
@@ -193,10 +193,7 @@
 				68,
 				69,
 				70,
-				71,
-				72,
-				73,
-				74
+				71
 			]
 		}
 	],
@@ -380,16 +377,16 @@
 				68,
 				69,
 				70,
-				71,
-				72,
-				73,
-				74
+				71
 			]
 		},
 		{
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
+				72,
+				73,
+				74,
 				75,
 				76,
 				77,
@@ -462,12 +459,7 @@
 				144,
 				145,
 				146,
-				147,
-				148,
-				149,
-				150,
-				151,
-				152
+				147
 			]
 		}
 	],
@@ -536,19 +528,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "spider/src/DOMViewElement.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
 			"path" : "spider/src/ISPRequestHandler.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "spider/src/ImageLibrary.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -734,6 +714,12 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
+			"path" : "spider/src/SPSkin.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
 			"path" : "spider/src/SPSpiderServer.cpp",
 			"sourceGroupIndex" : 0
 		},
@@ -872,19 +858,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "spider/src/Skin.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
 			"path" : "spider/src/Spider.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "spider/src/boxmodel.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -914,7 +888,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "wxwidgets/src/WxWidgetsGraphicsContext.cpp",
+			"path" : "wxwidgets/src/WxGraphicsContext.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -1005,11 +979,6 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "spider/include/SPDOMViewElement.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
 			"path" : "spider/include/SPElement.h",
 			"sourceGroupIndex" : 1
 		},
@@ -1061,11 +1030,6 @@
 		{
 			"backtrace" : 1,
 			"path" : "spider/include/SPImageElement.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"path" : "spider/include/SPImageLibrary.h",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -1146,6 +1110,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "spider/include/SPServer.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "spider/include/SPSkin.h",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -1275,11 +1244,6 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "spider/include/Skin.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
 			"path" : "spider/include/Spider.h",
 			"sourceGroupIndex" : 1
 		},
@@ -1310,7 +1274,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "wxwidgets/include/WxWidgetsGraphicsContext.h",
+			"path" : "wxwidgets/include/WxGraphicsContext.h",
 			"sourceGroupIndex" : 1
 		}
 	],

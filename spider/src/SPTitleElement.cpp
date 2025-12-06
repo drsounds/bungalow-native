@@ -1,6 +1,6 @@
 #include "SPTitleElement.h"
 
-#include "Color.h"
+#include "SPColor.h"
 
 namespace spider {
 SPTitleElement::SPTitleElement()
@@ -25,20 +25,20 @@ void SPTitleElement::setEntity(string entity) {
 }
 string SPTitleElement::getEntity() {
 }
-SPTitleElement::SPTitleElement(Element *parent)
+SPTitleElement::SPTitleElement(SPElement *parent)
  : SPVBoxElement(parent){
-    entity = new TextElement(this);
+    entity = new SPTextElement(this);
     entity->setInnerText("Object");
     entity->setIntegerAttribute("height", 180);
-    entity->setColorAttribute("fgcolor", Color(10, 10, 10, 1));
+    entity->setColorAttribute("fgcolor", SPColor(10, 10, 10, 1));
     entity->setIntegerAttribute("size", 15);
     entity->set("width", "100%");
     this->appendChild(entity);
 
-    title = new TextElement(this);
+    title = new SPTextElement(this);
     title->setInnerText("Title");
     title->setIntegerAttribute("height", 160);
-    title->setColorAttribute("fgcolor", Color(255, 255, 255, 1));
+    title->setColorAttribute("fgcolor", SPColor(255, 255, 255, 1));
     title->setIntegerAttribute("size", 25);
     title->set("width", "100%");
     this->appendChild(title);

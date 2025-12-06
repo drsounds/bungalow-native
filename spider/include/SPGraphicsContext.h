@@ -5,6 +5,12 @@
 #include "SPColor.h"
 #include "SPFontStyle.h"
 
+#include <map>
+
+#include "Spider.h"
+
+using namespace std;
+
 namespace spider {  
 	class SPWindowElement;
 	class SPColor;
@@ -12,13 +18,18 @@ namespace spider {
 	class SPElement;
 	class SPImage;
 	class slice;
-	class Skin;
+	class SPSkin;
+	class Spider;
     class SPGraphicsContext {
 	protected:
-		SPFontStyle *fontStyle;
+		SPFontStyle *fontStyle{};
+    	Spider *m_spider;
 	public:
-		SPGraphicsContext();
-		Skin *skin;
+		virtual ~SPGraphicsContext() = default;
+    	SPGraphicsContext();
+		explicit SPGraphicsContext(Spider *spider);
+		SPSkin *skin{};
+    	[[nodiscard]] Spider *getSpider() const { return this->m_spider; }
 		virtual void drawImagePart(SPImage *image, int x, int y, int width, int height, int x1, int y1, int x2, int y2) {}
 		virtual void drawSkinImage(const string& resourceId, int x, int y, int w, int h) {}
 		virtual void restoreOrigo() {}
@@ -28,23 +39,23 @@ namespace spider {
 		virtual void drawRectangle(int x, int y, int w, int h, SPColor color) {}
 		virtual void fillRectangle(int x, int y, int w, int h, SPColor color) {}
 		virtual void drawImage(SPImage *image, int x, int y, int w, int h) {}
-		virtual void drawControl(int x, int y, int w, int h, const string& name) { return;}
-		virtual void drawString(const string& text, SPFontStyle fs, SPColor color, int x, int y, int w, int h) { return; }
+		virtual void drawControl(int x, int y, int w, int h, const string& name) {}
+		virtual void drawString(const string& text, SPFontStyle fs, SPColor color, int x, int y, int w, int h) { }
 		virtual void invalidateRegion(sp_rectangle region) {}
-		virtual void drawHTMLText(const string& html, SPFontStyle fs, SPColor color, int x, int y, int w, int h) { return; }
+		virtual void drawHTMLText(const string& html, SPFontStyle fs, SPColor color, int x, int y, int w, int h) { }
 		virtual SPImage *loadImage(const string& bitmap) { return NULL; }
 		virtual sp_rectangle measureString(const string& text, SPFontStyle font) { return sp_rectangle(); }
 		virtual int getWidth() { return 0; }
     	virtual int getHeight() { return 0; }
-    	virtual void declipRect() { return; }
+    	virtual void declipRect() { }
 		void setFontStyle(spider::SPFontStyle *fs) {
 			this->fontStyle = fs;
 		}
-		SPFontStyle *getFontStyle() {
+		SPFontStyle *getFontStyle() const {
 			return this->fontStyle;
 		}
-		virtual void drawControl(const string& control, SPElement *srcElement, int x, int y, int w, int h) { 	return; }
-		virtual void drawInputElement(SPElement *srcElement, int x, int y, int w, int h) { return; }
+		virtual void drawControl(const string& control, SPElement *srcElement, int x, int y, int w, int h) { }
+		virtual void drawInputElement(SPElement *srcElement, int x, int y, int w, int h) { }
 		virtual void setOrigo(const int& x, const int& y);
 	};
 

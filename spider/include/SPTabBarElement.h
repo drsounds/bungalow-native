@@ -13,7 +13,7 @@ class SPElement;
 class SPGraphicsContext;
 class SPImage;
 class SPTabBarElement;
-class Tab {
+class SPTab {
 protected:
 public:
     string id;
@@ -32,21 +32,22 @@ public:
     string getUri() {
         return this->uri;
     }
-    Tab(SPTabBarElement *tabBar, string name, string id, string uri);
-    ~Tab();
+    SPTab(SPTabBarElement *tabBar, string name, string id, string uri);
+    ~SPTab();
 };
 class SPEventArgs;
 
 class TabBarEventArgs : public SPEventArgs {
 public:
-    TabBarEventArgs(Tab *tab);
-    Tab *tab;
+    explicit TabBarEventArgs(SPTab *tab);
+    SPTab *tab;
 };
 class SPTabBarElement : public SPElement
 {
     public:
         SPImage *tabBackgroundImage;
         SPImage *activeTabBackgroundImage;
+        int tabbar_mousedown(SPObject* sender, SPEventArgs* e);
         virtual string getType();
         SPTabBarElement();
         SPTabBarElement(SPElement *parent);
@@ -54,11 +55,11 @@ class SPTabBarElement : public SPElement
         virtual ~SPTabBarElement();
         void mouseDown(int mouseButton, int x, int y);
         void draw(int x, int y, SPGraphicsContext *g);
-        vector<Tab *> *getTabs() {
+        vector<SPTab *> *getTabs() {
             return this->tabs;
         }
-        Tab *activeTab;
-        vector<Tab *> *tabs;
+        SPTab *activeTab;
+        vector<SPTab *> *tabs;
     protected:
     private:
 };

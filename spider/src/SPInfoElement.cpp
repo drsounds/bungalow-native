@@ -30,12 +30,10 @@ namespace spider {
         this->setMessageType(type);
         this->textElement->setInnerText(text);
         SPElement::show();
-        this->mainWindowElement->pack();
 
     }
     void SPInfoElement::hide() {
         SPElement::hide();
-        this->mainWindowElement->pack();
     }
     void SPInfoElement::setMessageType(SPMessageType type) {
         this->type = type;

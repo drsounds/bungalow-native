@@ -1,5 +1,8 @@
 #include "libspider.h"
 
+#include <sstream>
+#include <string>
+
 namespace spider {
 
     int htmlToColor(string str) {

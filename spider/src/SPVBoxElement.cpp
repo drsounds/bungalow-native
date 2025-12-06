@@ -4,7 +4,7 @@ namespace spider {
     {
     }
 
-    SPVBoxElement::SPVBoxElement(SPWindowElement* parent) : SPBoxElement(parent)
+    SPVBoxElement::SPVBoxElement(SPWindowElement* parent) : SPBoxElement((SPElement *)parent)
     {
     }
 

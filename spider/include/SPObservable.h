@@ -7,7 +7,7 @@
 #include <string>
 using namespace std;
 namespace spider {
-    class SPNode;
+    class SPElement;
     class SPEventArgs;
     class SPObserver;
     class SPObject;
@@ -17,7 +17,7 @@ namespace spider {
             SPObservable();
             void dispatchEvent(const string& event, SPEventArgs *data, SPObject *sender);
             void notify(const string& event, SPObject *sender, SPEventArgs *data) const;
-            void addEventListener(const string& event, const SPCallback& callback) const;
+            void addEventListener(const string& event, const SPCallback& callback, SPElement *node) const;
             virtual ~SPObservable();
         protected:
             list<SPObserver *> *observers;

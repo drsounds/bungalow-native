@@ -1,7 +1,7 @@
 #include <wx/wx.h>
 
 #include "SpiderFrame.h"
-#include "WxWidgetsGraphicsContext.h"
+#include "WxGraphicsContext.h"
 
 enum MySpecialWidgetStyles
 {
@@ -21,6 +21,9 @@ class SpiderWidget : public wxControl
 private:
     spider::Spider *m_spider;
     SpiderFrame* m_frame;
+
+    int m_mouseX = 0;
+    int m_mouseY = 0;
 
     virtual wxSize DoGetBestSize();
 
@@ -54,10 +57,13 @@ public:
         const wxValidator& val = wxDefaultValidator,
         const wxString& name = "Spider"
     );
-    void OnLeftClick(wxMouseEvent& event);
+    void OnLeftClick(wxCommandEvent& event);
+    void OnRightClick(wxCommandEvent& event);
     void OnLeftUp(wxMouseEvent& event);
-    void OnSize(wxSizeEvent& event);
     void OnLeftDown(wxMouseEvent& event);
+    void OnRightUp(wxMouseEvent& event);
+    void OnRightDown(wxMouseEvent& event);
+    void OnSize(wxSizeEvent& event);
 
     // accessors...
     wxDECLARE_DYNAMIC_CLASS(SpiderWidget);

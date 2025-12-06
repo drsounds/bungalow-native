@@ -1,20 +1,22 @@
 #include "SPElement.h"
 #include <iostream>
 #include <cstdio>
+#include <boost/lexical_cast/bad_lexical_cast.hpp>
 
-#include "../include/Spider.h"
+#include "Spider.h"
+
 #include "SPWindowElement.h"
 #include "SPObservable.h"
 #include "SPMouseEventArgs.h"
 #include "SPGraphicsContext.h"
-#include "Skin.h"
+#include "SPSkin.h"
 #include "SPImage.h"
 #include "SPObserver.h"
 #include "SPStylesheet.h"
 #include "SPFontStyle.h"
 
 namespace spider {
-	Skin *SPElement::getSkin() const
+	SPSkin *SPElement::getSkin() const
 	{
 		if (this->m_skin)
 		{
@@ -44,29 +46,6 @@ namespace spider {
 	void SPElement::mouseClick(int mouseButton, int x, int y) {
 
 	}
-	SPGraphicsContext *SPElement::createGraphics() {
-	    return this->m_windowElement->createGraphics();
-	}
-
-	void SPElement::processMessage(const sp_message& message)
-	{
-		if (message.predicate == "spacify:device:mouse:event:move")
-		{
-			auto *pos = (sp_rectangle *)message.data;
-			this->mouseMove(pos->x, pos->y);
-		}
-		if (message.predicate == "spacify:device:mouse:event:up")
-		{
-			auto *pos = (sp_rectangle *)message.data;
-			this->mouseUp(1, pos->x, pos->y);
-		}
-		if (message.predicate == "spacify:device:mouse:event:down")
-		{
-			auto *pos = (sp_rectangle *)message.data;
-			this->mouseDown(1, pos->x, pos->y);
-		}
-	}
-
 
 	void SPElement::click(int mouseButton, int x, int y) {
 		int xx = this->getAbsoluteBounds() != NULL ? x - this->getAbsoluteBounds()->y : x;
@@ -140,7 +119,7 @@ namespace spider {
 
 	void SPElement::applyColorAttributeFromSkin (string attr, string prop) {
 	    if (this->m_skin == NULL) {
-	        this->m_skin = new Skin("skin.png");
+	        this->m_skin = new SPSkin("skin.png");
 	    }
 	    cout << prop << "\r\n";
 	    cout << this->m_skin->colors << "\r\n";
@@ -154,7 +133,7 @@ namespace spider {
 
 	void SPElement::applyImageAttributeFromSkin (string attr, string prop) {
 	    if (this->m_skin == NULL) {
-	        this->m_skin = new Skin("skin.png");
+	        this->m_skin = new SPSkin("skin.png");
 	    }
 	    cout << attr << "\r\n";
 	    cout << m_skin << "\r\n";
@@ -167,7 +146,7 @@ namespace spider {
 	    }
 	}
 
-	SPElement::SPElement(Spider *spider, SPWindowElement *window, SPElement *parent) : SPNode(static_cast<SPNode*>(parent)) {
+	SPElement::SPElement(Spider *spider, SPWindowElement *window, SPElement *parent) : SPNode(static_cast<SPNode*>(parent)), fontStyle("Tahoma", 13, 1, false, false) {
 	    this->m_classList = new vector<string>;
 	    this->absoluteBounds = NULL;
 		this->setScrollable(false);
@@ -180,7 +159,6 @@ namespace spider {
 		this->observers = new vector<SPObserver *>();
 		this->m_windowElement = window;
 		this->setParent(parent);
-		this->fontStyle = SPFontStyle("Tahoma", 13, 1, false, false);
 
 	    #if false
 	    this->set("fgcolor", new string("#ffffff"));
@@ -214,8 +192,8 @@ namespace spider {
 		this->x = 0;
 		this->y = 0;
 		this->z = 0;
-		this->width = 0;
-		this->height = 0;
+		this->m_width = 0;
+		this->m_height = 0;
 		this->margins = new sp_margin();
 		this->margins->left = 0;
 		this->margins->top = 0;
@@ -252,10 +230,10 @@ namespace spider {
 
 	}
 	int SPElement::getHeight() {
-		return this->height;
+		return this->m_height;
 	};
 	int SPElement::getWidth() {
-		return this->width;
+		return this->m_width;
 	}
 	int SPElement::getX() {
 		return this->x;
@@ -263,48 +241,43 @@ namespace spider {
 
 	void SPElement::processEvent(const SPEvent& event)
 	{
-		switch (event.type)
+		if (event.type == "mousedown")
 		{
-		case SP_EVENT_MOUSE_DOWN:
+			auto *mouseEventArgs = dynamic_cast<SPMouseEventArgs *>(event.args);
+			if (mouseEventArgs != nullptr)
 			{
-				auto *mouseEventArgs = dynamic_cast<SPMouseEventArgs *>(event.args);
-				if (mouseEventArgs != nullptr)
+				if (mouseEventArgs->getX() > this->getAbsoluteBounds()->x && mouseEventArgs->getX() < this->getAbsoluteBounds()->y + this->getWidth() &&
+					mouseEventArgs->getY() >this->getAbsoluteBounds()->y && mouseEventArgs->getY() < this->getAbsoluteBounds()->y + this->getHeight())
 				{
-					if (mouseEventArgs->getX() > this->getAbsoluteBounds()->x && mouseEventArgs->getX() < this->getAbsoluteBounds()->y + this->getWidth() &&
-						mouseEventArgs->getY() >this->getAbsoluteBounds()->y && mouseEventArgs->getY() < this->getAbsoluteBounds()->y + this->getHeight())
-					{
-						this->dispatchEvent("mousedown", mouseEventArgs, this);
-					}
+					this->dispatchEvent("mousedown", mouseEventArgs, this);
+				}
 
-				}
 			}
-		case SP_EVENT_MOUSE_UP:
+		}
+		if (event.type == "mouseup")
+		{
+			auto *mouseEventArgs = dynamic_cast<SPMouseEventArgs *>(event.args);
+			if (mouseEventArgs != nullptr)
 			{
-				auto *mouseEventArgs = dynamic_cast<SPMouseEventArgs *>(event.args);
-				if (mouseEventArgs != nullptr)
+				if (mouseEventArgs->getX() > this->getAbsoluteBounds()->x && mouseEventArgs->getX() < this->getAbsoluteBounds()->y + this->getWidth() &&
+					mouseEventArgs->getY() >this->getAbsoluteBounds()->y && mouseEventArgs->getY() < this->getAbsoluteBounds()->y + this->getHeight())
 				{
-					if (mouseEventArgs->getX() > this->getAbsoluteBounds()->x && mouseEventArgs->getX() < this->getAbsoluteBounds()->y + this->getWidth() &&
-						mouseEventArgs->getY() >this->getAbsoluteBounds()->y && mouseEventArgs->getY() < this->getAbsoluteBounds()->y + this->getHeight())
-					{
-						this->dispatchEvent("mouseup", mouseEventArgs, this);
-					}
+					this->dispatchEvent("mouseup", mouseEventArgs, this);
+				}
 
-				}
 			}
-		case SP_EVENT_MOUSE_MOVE:
+		}
+		if (event.type == "mousemove")
+		{
+			auto *mouseEventArgs = dynamic_cast<SPMouseEventArgs *>(event.args);
+			if (mouseEventArgs != nullptr)
 			{
-				auto *mouseEventArgs = dynamic_cast<SPMouseEventArgs *>(event.args);
-				if (mouseEventArgs != nullptr)
+				if (mouseEventArgs->getX() > this->getX() && mouseEventArgs->getX() < this->getX() + this->getWidth() &&
+					mouseEventArgs->getY() > this->getY() && mouseEventArgs->getY() < this->getY() + this->getHeight())
 				{
-					if (mouseEventArgs->getX() > this->getX() && mouseEventArgs->getX() < this->getX() + this->getWidth() &&
-						mouseEventArgs->getY() > this->getY() && mouseEventArgs->getY() < this->getY() + this->getHeight())
-					{
-						this->dispatchEvent("mousemove", mouseEventArgs, this);
-					}
+					this->dispatchEvent("mousemove", mouseEventArgs, this);
 				}
 			}
-		default:
-			break;
 		}
 		for (auto & it : *this->children)
 		{
@@ -330,10 +303,10 @@ namespace spider {
 		return this->z;
 	}
 	void SPElement::setWidth(int w) {
-		this->width = w;
+		this->m_width = w;
 	}
 	void SPElement::setHeight(int h) {
-		this->height = h;
+		this->m_height = h;
 
 	}
 	void SPElement::setX(int x) {
@@ -450,6 +423,14 @@ namespace spider {
 		if (clipView) {
 	        c->declipRect();
 		}
+	}
+
+	void SPElement::resize(int width, int height)
+	{
+		this->m_width = width;
+		this->m_height = height;
+		this->invalidate();
+		this->pack();
 	}
 
 	void SPElement::scroll(int scrollX, int scrollY, int x, int y) {

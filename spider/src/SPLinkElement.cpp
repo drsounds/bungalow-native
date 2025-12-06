@@ -1,6 +1,6 @@
 #include "SPLinkElement.h"
 namespace spider {
-SPLinkElement::SPLinkElement(Element *parent)
+SPLinkElement::SPLinkElement(SPElement *parent)
  : SPTextElement(parent)
 {
     //ctor

@@ -2,23 +2,21 @@
 
 #include <map>
 
-#include "Spider.h"
 #include "SPColor.h"
 
 using namespace std;
 
 namespace spider {
-
-
-
     SPNode::SPNode() {
-        if(this->m_window == NULL)
+        if(this->m_window == nullptr)
+        {
             this->m_window = this;
-            this->children = new vector<SPNode *>();
-            this->properties = new map<string, void*>();
-            this->stringAttributes = new map<string, string>();
-            this->colorAttributes = new map<string, SPColor>();
-            this->integerAttributes = new map<string, int>();
+        }
+        this->children = new vector<SPNode *>();
+        this->properties = new map<string, void*>();
+        this->stringAttributes = new map<string, string>();
+        this->colorAttributes = new map<string, SPColor>();
+        this->integerAttributes = new map<string, int>();
     }
     SPNode* SPNode::getParent() {
         return this->m_parent;
@@ -60,6 +58,11 @@ namespace spider {
     }
     void* SPNode::getObject(const std::string& title) {
         return (*this->properties)[title];
+    }
+
+    void SPNode::setObject(const string& attrib, void* value)
+    {
+        (*this->properties)[attrib] = value;
     }
 
     string SPNode::getValue(const string& attrib)

@@ -1,4 +1,4 @@
-#include "Skin.h"
+#include "SPSkin.h"
 
 #include "SPImage.h"
 #include "SPColor.h"
@@ -6,7 +6,7 @@
 #include <iostream>
 
 namespace spider {
-Skin::Skin()
+SPSkin::SPSkin()
 {
     //ctor
 }
@@ -22,7 +22,7 @@ slice::slice(SPImage *image, int x1, int y1, int x2, int y2, int leftBorder, int
     this->bottomBorder = bottomBorder;
 }
     
-Skin::Skin(const string& bitmap) {
+SPSkin::SPSkin(const string& bitmap) {
     this->colors = new std::map<string, pixel *>;
     this->images = new std::map<string, SPImage *>;
     this->slices = new std::map<string, slice *>;
@@ -49,32 +49,32 @@ Skin::Skin(const string& bitmap) {
     (*this->colors)["treeview.background.color"] = this->image->getPixelPtr(3, 0);
   //  (*this->images)["button.background.image::active"] = this->image->sliceImage(128, 21, 71, 19, 3, 13, 13, 3);
 }
-bool Skin::hasColor(string selector) {
+bool SPSkin::hasColor(string selector) {
     if(this->colors->find(selector) != this->colors->end()) {
         return true;
     }
     return false;
 }
 
-bool Skin::hasImage(string selector) {
+bool SPSkin::hasImage(string selector) {
     if(this->images->find(selector) != this->images->end()) {
         return true;
     }
     return false;
 }
-SPColor Skin::getColor(string selector, string def) {
+SPColor SPSkin::getColor(string selector, string def) {
     if (!this->hasColor(selector)) {
         return SPColor(255, 255, 255, 255);
     }
     return *spider_pixel_to_colour((*this->colors)[selector]);
 }
-SPImage *Skin::getImage(string selector, string def) {
+SPImage *SPSkin::getImage(string selector, string def) {
     if (!this->hasImage(selector)) {
         return NULL;
     }
     return (*this->images)[selector];
 }
-Skin::~Skin()
+SPSkin::~SPSkin()
 {
     //dtor
 }

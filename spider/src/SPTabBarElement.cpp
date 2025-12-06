@@ -4,27 +4,27 @@
 
 #include "SPMouseEventArgs.h"
 #include "SPColor.h"
-#include "Skin.h"
+#include "SPSkin.h"
 #include "SPGraphicsContext.h"
 
 namespace spider {
 
-Tab::Tab(SPTabBarElement *tabBar, string name, string id, string uri) {
+SPTab::SPTab(SPTabBarElement *tabBar, string name, string id, string uri) {
     this->tabBar = tabBar;
     this->name = name;
     this->id = id;
     this->uri = uri;
 }
 
-int tabbar_mousedown(SPObject *sender, SPEventArgs *e) {
+int SPTabBarElement::tabbar_mousedown(SPObject *sender, SPEventArgs *e) {
     SPTabBarElement *tabBar = (SPTabBarElement *)sender;
     SPMouseEventArgs *me = (SPMouseEventArgs *)e;
     int x = tabBar->getAbsoluteBounds() != NULL ? me->getX() - tabBar->getAbsoluteBounds()->y : me->getX();
     int y = tabBar->getAbsoluteBounds() != NULL ? me->getY() - tabBar->getAbsoluteBounds()->y : me->getY();
     int left = 0;
     ;
-    for(std::vector<Tab *>::iterator it = tabBar->tabs->begin(); it != tabBar->tabs->end(); ++it) {
-        Tab *tab = (Tab *)dynamic_cast<Tab *>(*it);
+    for(std::vector<SPTab *>::iterator it = tabBar->tabs->begin(); it != tabBar->tabs->end(); ++it) {
+        SPTab *tab = (SPTab *)dynamic_cast<SPTab *>(*it);
         string title = tab->getName();
         string id = tab->getId();
         string uri = tab->getUri();
@@ -46,14 +46,14 @@ string SPTabBarElement::getType() {
      return "tabbar";
 }
 void SPTabBarElement::addTab(string id, string name, string uri) {
-    Tab *tab = new Tab(this, id, name, uri);
+    SPTab *tab = new SPTab(this, id, name, uri);
     this->tabs->push_back(tab);
     if (this->tabs->size() == 1) {
         this->activeTab = tab;
     }
 }
 
-TabBarEventArgs::TabBarEventArgs(Tab *tab) {
+TabBarEventArgs::TabBarEventArgs(SPTab *tab) {
     this->tab = tab;
 }
 
@@ -62,10 +62,10 @@ SPTabBarElement::SPTabBarElement()
 {
     this->clipView = false;
     //ctor
-    this->tabs = new std::vector<Tab *>;
+    this->tabs = new std::vector<SPTab *>;
     this->set("active_tab_fgcolor", "#ffffff");
     this->set("active_tab_bgcolor", "#474747");
-    this->addEventListener(string("mousedown"), &tabbar_mousedown);
+    this->addEventListener(string("mousedown"), SPCallback(&SPTabBarElement::tabbar_mousedown), this);
 
 }
 SPTabBarElement::SPTabBarElement(SPElement *parent)
@@ -73,11 +73,11 @@ SPTabBarElement::SPTabBarElement(SPElement *parent)
 {
     this->m_backgroundImage = (SPImage *)this->m_skin->getImage("tabbar.background.image", "");
     //ctor
-    this->tabs = new std::vector<Tab *>;
+    this->tabs = new std::vector<SPTab *>;
     this->set("active_tab_fgcolor", "#ffffff");
     this->set("active_tab_bgcolor", "#474747");
     this->set("bgcolor", "#666666");
-    this->addEventListener(string("mousedown"), (Callback)&tabbar_mousedown);
+    this->addEventListener(string("mousedown"), SPCallback(&SPTabBarElement::tabbar_mousedown), this);
     std::vector<SPObserver *> *observers = this->observers;
     int count = observers->size();
     if (count < 1)
@@ -93,8 +93,8 @@ void SPTabBarElement::mouseDown(int mouseButton, int x, int y) {
     y = tabBar->getAbsoluteBounds() != NULL ? y - tabBar->getAbsoluteBounds()->y : y;
     SPFontStyle font = tabBar->getFontStyle();
     int left = 0;
-    for(std::vector<Tab *>::iterator it = tabBar->getTabs()->begin(); it != tabBar->getTabs()->end(); ++it) {
-        Tab *tab = (Tab *)static_cast<Tab *>(*it);
+    for(std::vector<SPTab *>::iterator it = tabBar->getTabs()->begin(); it != tabBar->getTabs()->end(); ++it) {
+        SPTab *tab = (SPTab *)static_cast<SPTab *>(*it);
         string title = tab->getName();
         string id = tab->getId();
         string uri = tab->getUri();
@@ -131,11 +131,11 @@ void SPTabBarElement::draw(int x, int y, SPGraphicsContext *g) {
     g->drawImageSlices(slices, "tabbar.background.image", x, y-1, this->getWidth(), this->getHeight());
 
     int left = 0;
-    std::vector<Tab *>::iterator it = this->getTabs()->begin();
+    std::vector<SPTab *>::iterator it = this->getTabs()->begin();
     do {
         SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 1));
 
-        Tab *tab = (Tab *)static_cast<Tab *>(*it);
+        SPTab *tab = (SPTab *)static_cast<SPTab *>(*it);
 
         string title = tab->getName();
         string id = tab->getId();

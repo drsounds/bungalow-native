@@ -1,6 +1,6 @@
 #include "SPGraphicsContext.h"
 
-#include "Skin.h"
+#include "SPSkin.h"
 
 namespace spider {
     void SPGraphicsContext::setOrigo(const int& x, const int& y) {
@@ -8,6 +8,12 @@ namespace spider {
 
     SPGraphicsContext::SPGraphicsContext()
     {
+        this->m_spider = nullptr;
+    }
+
+    SPGraphicsContext::SPGraphicsContext(Spider *spider) : SPGraphicsContext()
+    {
+        this->m_spider = spider;
     }
 
     void SPGraphicsContext::drawImageSlices(map<string, slice *> *slices, string selector, int left, int top, int width, int height)

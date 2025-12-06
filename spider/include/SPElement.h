@@ -10,7 +10,7 @@ using namespace std;
 namespace spider {
     class Spider;
     class SPMessage;
-    class Skin;
+    class SPSkin;
     class SPGraphicsContext;
     class SPStylesheet;
     class SPWindowElement;
@@ -20,7 +20,7 @@ namespace spider {
     protected:
         SPImage *m_backgroundImage;
         vector<string> *m_classList;
-        Skin *m_skin;
+        SPSkin *m_skin;
         bool scrollable;
         bool visible;
         sp_margin *margins;
@@ -29,9 +29,10 @@ namespace spider {
         SPFontStyle fontStyle;
         string id;
         string data;
+        SPElement *deepestView;
         SPWindowElement *m_windowElement;
-        int width;
-        int height;
+        int m_width;
+        int m_height;
         int x;
         int y;
         int z;
@@ -40,8 +41,17 @@ namespace spider {
         bool clipView = false;
         string name;
     public:
-        Skin *getSkin() const;
+        SPSkin *getSkin() const;
         SPElement();
+        void setSkin(SPSkin *value)
+        {
+            this->m_skin = value;
+        }
+        SPElement *getDeepestView()
+        {
+            return this->deepestView;
+        }
+        virtual void resize(int width, int height);
         void scroll(int x, int y);
         void scrollTo(int x, int y);
         virtual void scroll(int scrollX, int scrollY, int x, int y);

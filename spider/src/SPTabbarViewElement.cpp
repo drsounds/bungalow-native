@@ -6,11 +6,11 @@
 #include "SPViewStackElement.h"
 
 namespace spider {
-    int tabbar_tabselected(SPObject *sender, SPEventArgs *e) {
+    int SPTabbarViewElement::onTabSelected(SPObject *sender, SPEventArgs *e) {
         TabBarEventArgs *args = (TabBarEventArgs *)e;
         string uri = args->tab->getUri();
         SPTabBarElement *tabView = (SPTabBarElement *)sender;
-        SPTabbarViewElement *tabbarView = (SPTabbarViewElement *)tabView->m_parent;
+        SPTabbarViewElement *tabbarView = (SPTabbarViewElement *)tabView->getParent();
         tabbarView->navigate(uri);
     }
     SPTabbarViewElement::SPTabbarViewElement()
@@ -29,7 +29,7 @@ namespace spider {
         this->appendChild(this->tabBar);
         this->tabBar->setHeight(20);
         this->tabBar->set("height", "20");
-        this->tabBar->addEventListener(string("tabselected"), &tabbar_tabselected);
+        this->tabBar->addEventListener(string("tabselected"), SPCallback(&SPTabbarViewElement::onTabSelected), this);
         this->viewStack->set("flex", "2");
         this->appendChild(this->viewStack);
     }

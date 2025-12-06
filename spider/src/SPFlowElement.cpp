@@ -1,13 +1,13 @@
 #include "SPFlowElement.h"
 namespace spider {
 SPFlowElement::SPFlowElement()
- : Element::Element()
+ : SPElement::SPElement()
 {
     //ctor
 }
 
-SPFlowElement::SPFlowElement(Element *elm)
- : Element::Element(elm)
+SPFlowElement::SPFlowElement(SPElement *elm)
+ : SPElement::SPElement(elm)
 {
     //ctor
 }
@@ -19,8 +19,8 @@ SPFlowElement::~SPFlowElement()
 void SPFlowElement::pack() {
     int top = 0;
     int left = 0;
-    for(std::vector<Node *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
-        Element *child = (Element *)*it;
+    for(std::vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
+        SPElement *child = (SPElement *)*it;
          if (!child->isVisible())
             continue;
         child->setY(top);

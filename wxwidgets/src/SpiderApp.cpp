@@ -8,7 +8,7 @@ wxIMPLEMENT_APP(SpiderApp);
 
 SpiderApp::SpiderApp()
 {
-    spider::SPGraphicsContext *gc = new spider::platform::wxwidgets::WxWidgetsGraphicsContext(this);
+    spider::SPGraphicsContext *gc = new spider::platform::wxwidgets::WxGraphicsContext(this);
     this->m_spider = new spider::Spider(gc);
 }
 

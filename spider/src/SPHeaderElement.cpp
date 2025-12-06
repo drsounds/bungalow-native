@@ -4,8 +4,8 @@
 #include "SPTitleElement.h"
 
 namespace spider {
-SPHeaderElement::SPHeaderElement(Element *parent)
- : HBoxElement(parent)
+SPHeaderElement::SPHeaderElement(SPElement *parent)
+ : SPHBoxElement(parent)
 {
     this->getPadding()->top = 20;
     this->getPadding()->left = 20;

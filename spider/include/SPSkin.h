@@ -20,16 +20,16 @@ public:
     int bottomBorder;
     slice(SPImage *image, int x1, int x2, int y1, int y2, int leftBorder, int topBorder, int rightBorder, int bottomBorder);
 };
-class Skin
+class SPSkin
 {
     public:
         map<string, SPImage *> *images;
         map<string, pixel *> *colors;
         map<string, slice *> *slices;
         SPImage *image;
-        Skin();
-        Skin(const string& bitmap);
-        virtual ~Skin();
+        SPSkin();
+        SPSkin(const string& bitmap);
+        virtual ~SPSkin();
         bool hasColor(string selector);
         bool hasImage(string selector);
         SPColor getColor(string selector, string def);

@@ -9,13 +9,13 @@ SPInputElement::~SPInputElement()
 {
 
 }
-SPInputElement::SPInputElement(Element *parent)
-    : Element(parent) {
+SPInputElement::SPInputElement(SPElement *parent)
+    : SPElement(parent) {
 
 }
 
-void SPInputElement::draw(int x, int y, GraphicsContext *g) {
-    Element::draw(x, y, g);
+void SPInputElement::draw(int x, int y, SPGraphicsContext *g) {
+    SPElement::draw(x, y, g);
     g->drawInputElement(this, x, y, this->getWidth(), this->getHeight());
 }
 }

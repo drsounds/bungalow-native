@@ -1,7 +1,12 @@
 #ifndef MAINWINDOWELEMENT_H
 #define MAINWINDOWELEMENT_H
 #include "SPVBoxElement.h"
+
 #include "SPMessageType.h"
+
+#include "libspider.h"
+
+
 namespace spider {
     class SPViewStackElement;
     class SPTreeViewElement;
@@ -17,6 +22,7 @@ namespace spider {
         public:
             void navigate(const string& uri) const;
             void hideMessage();
+            int treeview_itemselected(SPObject* sender, SPEventArgs* e);
             MainElement();
 
             string getType() override

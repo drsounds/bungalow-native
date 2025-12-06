@@ -46,525 +46,504 @@ build cmake_object_order_depends_target_spacify-client: phony || .
 
 build CMakeFiles/spacify-client.dir/spacify/src/ArtistOverView.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spacify/src/ArtistOverView.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spacify/src/ArtistOverView.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spacify/src
 
 build CMakeFiles/spacify-client.dir/spacify/src/ArtistView.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spacify/src/ArtistView.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spacify/src/ArtistView.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spacify/src
 
 build CMakeFiles/spacify-client.dir/spacify/src/DoctrineView.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spacify/src/DoctrineView.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spacify/src/DoctrineView.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spacify/src
 
 build CMakeFiles/spacify-client.dir/spacify/src/MainElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spacify/src/MainElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spacify/src/MainElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spacify/src
 
 build CMakeFiles/spacify-client.dir/spacify/src/PlayQueueView.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spacify/src/PlayQueueView.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spacify/src/PlayQueueView.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spacify/src
 
 build CMakeFiles/spacify-client.dir/spacify/src/SpacifyApp.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spacify/src/SpacifyApp.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spacify/src/SpacifyApp.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spacify/src
 
 build CMakeFiles/spacify-client.dir/spacify/src/StartView.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spacify/src/StartView.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spacify/src/StartView.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spacify/src
 
 build CMakeFiles/spacify-client.dir/spacify/src/TopListView.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spacify/src/TopListView.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spacify/src/TopListView.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spacify/src
 
 build CMakeFiles/spacify-client.dir/spacify/src/UserView.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spacify/src/UserView.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spacify/src/UserView.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spacify/src
 
 build CMakeFiles/spacify-client.dir/spacify/src/WhatsNewView.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spacify/src/WhatsNewView.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spacify/src/WhatsNewView.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spacify/src
 
-build CMakeFiles/spacify-client.dir/spider/src/DOMViewElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/DOMViewElement.cpp || cmake_object_order_depends_target_spacify-client
-  DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/DOMViewElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
-  INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
-  OBJECT_DIR = CMakeFiles/spacify-client.dir
-  OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
-
 build CMakeFiles/spacify-client.dir/spider/src/ISPRequestHandler.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/ISPRequestHandler.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/ISPRequestHandler.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
-  INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
-  OBJECT_DIR = CMakeFiles/spacify-client.dir
-  OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
-
-build CMakeFiles/spacify-client.dir/spider/src/ImageLibrary.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/ImageLibrary.cpp || cmake_object_order_depends_target_spacify-client
-  DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/ImageLibrary.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPAppHeaderElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPAppHeaderElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPAppHeaderElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPBoxElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPBoxElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPBoxElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPButtonElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPButtonElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPButtonElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPColor.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPColor.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPColor.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPContainerViewElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPContainerViewElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPContainerViewElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPEntity.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPEntity.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPEntity.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPEventArgs.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPEventArgs.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPEventArgs.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPFlowElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPFlowElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPFlowElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPFontStyle.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPFontStyle.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPFontStyle.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPGraphicsContext.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPGraphicsContext.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPGraphicsContext.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPHBoxElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPHBoxElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPHBoxElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPHTML.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPHTML.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPHTML.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPHeaderElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPHeaderElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPHeaderElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPImage.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPImage.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPImage.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPImageElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPImageElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPImageElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPInfoElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPInfoElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPInfoElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPInputElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPInputElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPInputElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPInputEventArgs.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPInputEventArgs.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPInputEventArgs.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPLinkElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPLinkElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPLinkElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPMessageType.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPMessageType.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPMessageType.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPMockTableDataSource.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPMockTableDataSource.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPMockTableDataSource.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPMouseEventArgs.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPMouseEventArgs.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPMouseEventArgs.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPNode.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPNode.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPNode.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPObservable.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPObservable.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPObservable.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPRequest.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPRequest.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPRequest.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPResource.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPResource.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPResource.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPResourceElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPResourceElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPResourceElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPResponse.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPResponse.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPResponse.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPServer.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPServer.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPServer.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
+  INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
+  OBJECT_DIR = CMakeFiles/spacify-client.dir
+  OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
+
+build CMakeFiles/spacify-client.dir/spider/src/SPSkin.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPSkin.cpp || cmake_object_order_depends_target_spacify-client
+  DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPSkin.cpp.o.d
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPSpiderServer.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPSpiderServer.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPSpiderServer.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPSplitterElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPSplitterElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPSplitterElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPStandardTableDataSource.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPStandardTableDataSource.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPStandardTableDataSource.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPStylesheet.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPStylesheet.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPStylesheet.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPTabBarElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPTabBarElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPTabBarElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPTabbarView.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPTabbarView.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPTabbarView.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPTabbarViewElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPTabbarViewElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPTabbarViewElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPTableCell.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPTableCell.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPTableCell.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPTableColumn.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPTableColumn.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPTableColumn.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPTableColumnHeader.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPTableColumnHeader.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPTableColumnHeader.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPTableDataSource.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPTableDataSource.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPTableDataSource.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPTableElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPTableElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPTableElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPTableRow.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPTableRow.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPTableRow.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPTableRowElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPTableRowElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPTableRowElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPTextElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPTextElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPTextElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPTitleElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPTitleElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPTitleElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPTreeItem.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPTreeItem.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPTreeItem.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPTreeViewElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPTreeViewElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPTreeViewElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPUri.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPUri.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPUri.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPVBoxElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPVBoxElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPVBoxElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPViewElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPViewElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPViewElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPViewStackElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPViewStackElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPViewStackElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/SPWindowElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/SPWindowElement.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/SPWindowElement.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
-  INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
-  OBJECT_DIR = CMakeFiles/spacify-client.dir
-  OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
-
-build CMakeFiles/spacify-client.dir/spider/src/Skin.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/Skin.cpp || cmake_object_order_depends_target_spacify-client
-  DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/Skin.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/Spider.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/Spider.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/Spider.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
-  INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
-  OBJECT_DIR = CMakeFiles/spacify-client.dir
-  OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
-
-build CMakeFiles/spacify-client.dir/spider/src/boxmodel.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/boxmodel.cpp || cmake_object_order_depends_target_spacify-client
-  DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/boxmodel.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/spider/src/libspider.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/spider/src/libspider.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/spider/src/libspider.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spider/src
 
 build CMakeFiles/spacify-client.dir/wxwidgets/src/SpiderApp.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/wxwidgets/src/SpiderApp.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/wxwidgets/src/SpiderApp.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/wxwidgets/src
 
 build CMakeFiles/spacify-client.dir/wxwidgets/src/SpiderFrame.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/wxwidgets/src/SpiderFrame.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/wxwidgets/src/SpiderFrame.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/wxwidgets/src
 
 build CMakeFiles/spacify-client.dir/wxwidgets/src/SpiderWidget.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/wxwidgets/src/SpiderWidget.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/wxwidgets/src/SpiderWidget.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/wxwidgets/src
 
-build CMakeFiles/spacify-client.dir/wxwidgets/src/WxWidgetsGraphicsContext.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/wxwidgets/src/WxWidgetsGraphicsContext.cpp || cmake_object_order_depends_target_spacify-client
-  DEP_FILE = CMakeFiles/spacify-client.dir/wxwidgets/src/WxWidgetsGraphicsContext.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+build CMakeFiles/spacify-client.dir/wxwidgets/src/WxGraphicsContext.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/wxwidgets/src/WxGraphicsContext.cpp || cmake_object_order_depends_target_spacify-client
+  DEP_FILE = CMakeFiles/spacify-client.dir/wxwidgets/src/WxGraphicsContext.cpp.o.d
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/wxwidgets/src
 
 build CMakeFiles/spacify-client.dir/wxwidgets/src/main.cpp.o: CXX_COMPILER__spacify-client_unscanned_ /Users/buddhalow/Documents/spacify-client/wxwidgets/src/main.cpp || cmake_object_order_depends_target_spacify-client
   DEP_FILE = CMakeFiles/spacify-client.dir/wxwidgets/src/main.cpp.o.d
-  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++14 -arch arm64 -fcolor-diagnostics
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -std=gnu++17 -arch arm64 -fcolor-diagnostics
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/spider/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/wxwidgets/src
@@ -577,7 +556,7 @@ build CMakeFiles/spacify-client.dir/wxwidgets/src/main.cpp.o: CXX_COMPILER__spac
 #############################################
 # Link the executable spacify-client
 
-build spacify-client: CXX_EXECUTABLE_LINKER__spacify-client_ CMakeFiles/spacify-client.dir/spacify/src/ArtistOverView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/ArtistView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/DoctrineView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/MainElement.cpp.o CMakeFiles/spacify-client.dir/spacify/src/PlayQueueView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/SpacifyApp.cpp.o CMakeFiles/spacify-client.dir/spacify/src/StartView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/TopListView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/UserView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/WhatsNewView.cpp.o CMakeFiles/spacify-client.dir/spider/src/DOMViewElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/ISPRequestHandler.cpp.o CMakeFiles/spacify-client.dir/spider/src/ImageLibrary.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPAppHeaderElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPBoxElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPButtonElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPColor.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPContainerViewElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPEntity.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPEventArgs.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPFlowElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPFontStyle.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPGraphicsContext.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPHBoxElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPHTML.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPHeaderElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPImage.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPImageElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPInfoElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPInputElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPInputEventArgs.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPLinkElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPMessageType.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPMockTableDataSource.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPMouseEventArgs.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPNode.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPObservable.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPRequest.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPResource.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPResourceElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPResponse.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPServer.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPSpiderServer.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPSplitterElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPStandardTableDataSource.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPStylesheet.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTabBarElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTabbarView.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTabbarViewElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTableCell.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTableColumn.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTableColumnHeader.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTableDataSource.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTableElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTableRow.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTableRowElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTextElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTitleElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTreeItem.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTreeViewElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPUri.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPVBoxElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPViewElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPViewStackElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPWindowElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/Skin.cpp.o CMakeFiles/spacify-client.dir/spider/src/Spider.cpp.o CMakeFiles/spacify-client.dir/spider/src/boxmodel.cpp.o CMakeFiles/spacify-client.dir/spider/src/libspider.cpp.o CMakeFiles/spacify-client.dir/wxwidgets/src/SpiderApp.cpp.o CMakeFiles/spacify-client.dir/wxwidgets/src/SpiderFrame.cpp.o CMakeFiles/spacify-client.dir/wxwidgets/src/SpiderWidget.cpp.o CMakeFiles/spacify-client.dir/wxwidgets/src/WxWidgetsGraphicsContext.cpp.o CMakeFiles/spacify-client.dir/wxwidgets/src/main.cpp.o | /opt/homebrew/lib/liblua5.4.dylib
+build spacify-client: CXX_EXECUTABLE_LINKER__spacify-client_ CMakeFiles/spacify-client.dir/spacify/src/ArtistOverView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/ArtistView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/DoctrineView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/MainElement.cpp.o CMakeFiles/spacify-client.dir/spacify/src/PlayQueueView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/SpacifyApp.cpp.o CMakeFiles/spacify-client.dir/spacify/src/StartView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/TopListView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/UserView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/WhatsNewView.cpp.o CMakeFiles/spacify-client.dir/spider/src/ISPRequestHandler.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPAppHeaderElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPBoxElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPButtonElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPColor.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPContainerViewElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPEntity.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPEventArgs.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPFlowElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPFontStyle.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPGraphicsContext.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPHBoxElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPHTML.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPHeaderElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPImage.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPImageElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPInfoElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPInputElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPInputEventArgs.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPLinkElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPMessageType.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPMockTableDataSource.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPMouseEventArgs.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPNode.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPObservable.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPRequest.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPResource.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPResourceElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPResponse.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPServer.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPSkin.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPSpiderServer.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPSplitterElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPStandardTableDataSource.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPStylesheet.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTabBarElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTabbarView.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTabbarViewElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTableCell.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTableColumn.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTableColumnHeader.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTableDataSource.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTableElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTableRow.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTableRowElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTextElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTitleElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTreeItem.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPTreeViewElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPUri.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPVBoxElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPViewElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPViewStackElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/SPWindowElement.cpp.o CMakeFiles/spacify-client.dir/spider/src/Spider.cpp.o CMakeFiles/spacify-client.dir/spider/src/libspider.cpp.o CMakeFiles/spacify-client.dir/wxwidgets/src/SpiderApp.cpp.o CMakeFiles/spacify-client.dir/wxwidgets/src/SpiderFrame.cpp.o CMakeFiles/spacify-client.dir/wxwidgets/src/SpiderWidget.cpp.o CMakeFiles/spacify-client.dir/wxwidgets/src/WxGraphicsContext.cpp.o CMakeFiles/spacify-client.dir/wxwidgets/src/main.cpp.o | /opt/homebrew/lib/liblua5.4.dylib
   FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ -arch arm64
   LINK_FLAGS = -L/usr/local/opt/libffi/lib
   LINK_LIBRARIES = /opt/homebrew/lib/liblua5.4.dylib  -L/opt/homebrew/lib  -framework IOKit  -framework Carbon  -framework Cocoa  -framework QuartzCore  -framework AudioToolbox  -framework System  -framework OpenGL  -lwx_osx_cocoau_xrc-3.3  -lwx_osx_cocoau_html-3.3  -lwx_osx_cocoau_qa-3.3  -lwx_osx_cocoau_core-3.3  -lwx_baseu_xml-3.3  -lwx_baseu_net-3.3  -lwx_baseu-3.3

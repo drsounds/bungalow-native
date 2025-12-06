@@ -1,6 +1,8 @@
 #ifndef NODE_H
 #define NODE_H
 #include "SPObject.h"
+#include "SPColor.h"
+
 #include <map>
 #include <string>
 #include <vector>
@@ -12,7 +14,7 @@ namespace spider {
     protected:
         map<string, void *> *properties;
         map<string, string> *stringAttributes;
-        map<string, SPColor *> *colorAttributes;
+        map<string, SPColor> *colorAttributes;
         map<string, int> *integerAttributes;
         SPNode *m_parent;
         SPNode *m_window;
@@ -22,17 +24,7 @@ namespace spider {
             return this->m_spider;
         }
         std::vector<SPNode *> *children;
-        SPNode()
-        {
-            this->children = new vector<SPNode *>();
-            this->integerAttributes = new map<string, int>();
-            this->stringAttributes = new map<string, string>();
-            this->colorAttributes = new map<string, SPColor *>();
-            this->properties = new map<string, void *>();
-            this->m_parent = nullptr;
-            this->m_window = nullptr;
-            this->m_spider = nullptr;
-        }
+        SPNode();
         SPNode(Spider *spider, SPNode *parent) : SPNode()
         {
             this->m_parent = parent;
@@ -53,13 +45,14 @@ namespace spider {
         virtual void set(const string& attrib, const string& val);
         string get(const string& attrib);
         void *getObject(const string& attrib);
+        void setObject(const string& attrib, void *value);
         string getValue(const string& attrib);
         SPNode *getParent();
 
         map<string, string> *getStringAttributes() {
             return this->stringAttributes;
         }
-        map<string, SPColor *> *getColorAttributes() const
+        map<string, SPColor> *getColorAttributes() const
         {
             return this->colorAttributes;
         }

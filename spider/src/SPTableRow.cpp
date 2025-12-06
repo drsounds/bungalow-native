@@ -1,6 +1,6 @@
 #include "SPTableRow.h"
 namespace spider {
-SPTableRow::SPTableRow(TableElement *tableElement)
+SPTableRow::SPTableRow(SPTableElement *tableElement)
 {
     this->tableElement = tableElement;
     this->children = new vector<SPTableRow *>;

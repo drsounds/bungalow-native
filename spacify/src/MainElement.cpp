@@ -7,7 +7,7 @@
 #include "SPInfoElement.h"
 #include "SPTreeItem.h"
 #include "SPViewStackElement.h"
-#include "Skin.h"
+#include "SPSkin.h"
 #include "PlayQueueView.h"
 #include "SPTreeViewElement.h"
 
@@ -20,7 +20,7 @@ namespace spider {
     void MainElement::hideMessage() {
         this->infoElement->hide();
     }
-    int treeview_itemselected(SPObject *sender, SPEventArgs *e) {
+    int MainElement::treeview_itemselected(SPObject *sender, SPEventArgs *e) {
         auto *treeView = (SPTreeViewElement *)sender;
         auto *mainWindow = (MainElement *)treeView->getParent();
         auto *args = (TreeViewEventArgs *)e;
@@ -73,7 +73,7 @@ namespace spider {
         searchElement->setIntegerAttribute("width", 120);
         searchElement->setName("searchBox");
         searchElement->setColorAttribute("bgcolor", SPColor("#777777"));
-        searchElement->addEventListener("enter", reinterpret_cast<SPCallback>(&MainElement::onSearchEntered));
+        searchElement->addEventListener("enter", reinterpret_cast<SPCallback>(&MainElement::onSearchEntered), this);
         // Add the info element
         this->infoElement = new spider::SPInfoElement(this);
         this->infoElement->setIntegerAttribute("height", 28);
@@ -113,7 +113,7 @@ namespace spider {
         auto *item2 = new SPTreeItem(new SPUri("spacify:internal:history"));
 
         item2->setSelected(false);
-        treeView->addEventListener("itemselected", &treeview_itemselected);
+        treeView->addEventListener("itemselected", SPCallback(&MainElement::treeview_itemselected), this);
         treeView->addItem(item);
         treeView->addItem(item2);
 

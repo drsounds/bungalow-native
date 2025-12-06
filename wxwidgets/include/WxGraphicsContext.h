@@ -12,13 +12,13 @@ namespace spider
   {
     namespace wxwidgets
     {
-      class WxWidgetsGraphicsContext : public SPGraphicsContext
+      class WxGraphicsContext : public SPGraphicsContext
       {
         SpiderApp *m_app;
       public:
-        explicit WxWidgetsGraphicsContext(SpiderApp *app);
-        WxWidgetsGraphicsContext();
-        virtual ~WxWidgetsGraphicsContext();
+        explicit WxGraphicsContext(SpiderApp *app);
+        WxGraphicsContext();
+        virtual ~WxGraphicsContext();
 
         virtual void DrawLine(float x1, float y1, float x2, float y2);
         virtual void DrawRectangle(float x, float y, float width, float height);

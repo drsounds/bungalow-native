@@ -1,6 +1,6 @@
 #include "SPContainerViewElement.h"
 namespace spider {
-    SPContainerViewElement::SPContainerViewElement(Element *parent)
+    SPContainerViewElement::SPContainerViewElement(SPElement *parent)
     : SPViewElement(parent)
     {
         //ctor

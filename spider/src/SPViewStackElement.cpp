@@ -4,8 +4,8 @@
 
 #include "WhatsNewView.h"
 #include <regex>
+#include "SPWindowElement.h"
 #include "PlayQueueView.h"
-#include "MainWindowElement.h"
 #include <vector>
 #include <boost/algorithm/string/predicate.hpp>
 inline bool ends_with(std::string const & value, std::string const & ending)
@@ -14,16 +14,16 @@ inline bool ends_with(std::string const & value, std::string const & ending)
     return std::equal(ending.rbegin(), ending.rend(), value.rbegin());
 }
 namespace spider {
-    void SPViewStackElement::appendChild(Node *child) {
+    void SPViewStackElement::appendChild(SPNode *child) {
 
-        ViewElement *view = (ViewElement *)child;
+        SPViewElement *view = (SPViewElement *)child;
         string type = view->getType();
         if (boost::algorithm::ends_with(type, "view")) {
 
-            Node::appendChild(child);
+            SPNode::appendChild(child);
             cout << "valid view: " << type << endl;
 
-            ((Element *)child)->setVisible(false);
+            ((SPElement *)child)->setVisible(false);
             view->set("flex", "1");
         } else {
             exit(0);
@@ -34,19 +34,19 @@ namespace spider {
          this->future = new std::stack<string>;
     }
 
-    SPViewStackElement::SPViewStackElement(Element *parent)
-     : VBoxElement::VBoxElement(parent) {
+    SPViewStackElement::SPViewStackElement(SPElement *parent)
+     : SPVBoxElement::SPVBoxElement(parent) {
          this->setParent(this);
          this->history = new std::stack<string>;
          this->future = new std::stack<string>;
-         this->activeView = NULL;
-        vector<Node *> *children = this->getChildNodes();
+         this->activeView = nullptr;
+        vector<SPNode *> *children = this->getChildNodes();
     }
     void SPViewStackElement::pack() {
-        VBoxElement::pack();
-         for (std::vector<Node *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
-            Node *node = static_cast<Node *>(*it);
-            Element *view = (Element *)node;
+        SPVBoxElement::pack();
+         for (std::vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
+            SPNode *node = static_cast<SPNode *>(*it);
+            SPElement *view = (SPElement *)node;
             string type = view->getType();
             view->set("flex", "1");
             view->setWidth(this->getWidth() - (view->getMargins()->bottom * 2 + this->getPadding()->bottom * 2));
@@ -65,11 +65,11 @@ namespace spider {
         // Hide all views
         this->pack();
         this->invalidate();
-        ViewElement *newView = NULL;
+        SPViewElement *newView = NULL;
         bool foundView = false;
-        for (std::vector<Node *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
-            Node *node = static_cast<Node *>(*it);
-            ViewElement *view = (ViewElement *)node;
+        for (std::vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
+            SPNode *node = static_cast<SPNode *>(*it);
+            SPViewElement *view = (SPViewElement *)node;
             string type = view->getType();
             std::cout << view->getType() << std::endl;
             if (ends_with(type, "view")) {
@@ -134,7 +134,7 @@ namespace spider {
             // Show error message (The URI could not be found)
             return;
         }
-        vector<Node *> *children = this->getChildNodes();
+        vector<SPNode *> *children = this->getChildNodes();
         if (view != NULL) {
             this->appendChild(view);
             view->navigate(uri);

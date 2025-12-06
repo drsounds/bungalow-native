@@ -1,7 +1,7 @@
 #include "SPInputEventArgs.h"
 namespace spider {
 SPInputEventArgs::SPInputEventArgs(string text)
-    : EventArgs()
+    : SPEventArgs()
 {
     //ctor
     this->text = text;
