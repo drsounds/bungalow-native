@@ -93,3 +93,7 @@
 12	241	1765006609017450939	CMakeFiles/spacify-client.dir/spider/src/AppHeaderElement.cpp.o	36628324e9cf102f
 2992	3278	1765015916085807426	CMakeFiles/spacify-client.dir/spider/src/SPEventArgs.cpp.o	8440f4baedcc5598
 11	761	1765012306666186097	CMakeFiles/spacify-client.dir/spider/src/Skin.cpp.o	bfce30b45ea9b168
+16	1225	1765017681965931812	CMakeFiles/spacify-client.dir/spacify/src/SpacifyApp.cpp.o	124bbf06dff384e4
+1225	1554	1765017683175087640	spacify-client	e3a5b14ae47265e5
+13	1065	1765017697439729680	CMakeFiles/spacify-client.dir/spacify/src/SpacifyApp.cpp.o	124bbf06dff384e4
+1065	1262	1765017698491936448	spacify-client	e3a5b14ae47265e5
