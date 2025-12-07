@@ -57,6 +57,29 @@ void  SPColor::setB(short b){
 void  SPColor::setA(short a){
 	this->a = a;
 }
+
+SPColor SPColor::alpha(short amount) const
+{
+	auto alpha = static_cast<short>(amount * 255);
+	return {this->r, this->g, this->b, alpha};
+}
+
+SPColor SPColor::lighten(float amount) const
+{
+	const float luminance = amount / 100;
+	int red = static_cast<int>(r + (r * luminance));
+	if (red > 255) red = 255;
+	if (red < 0) red = 0;
+	int green = static_cast<int>(g + (g * luminance));
+	if (green > 255) green = 255;
+	if (green < 0) green = 0;
+	int blue = static_cast<int>(b + (b * luminance));
+	if (blue > 255) blue = 255;
+	if (blue < 0) blue = 0;
+
+	return {static_cast<short>(red), static_cast<short>(green), static_cast<short>(blue), a};
+}
+
 SPColor::SPColor(short r, short g, short b, short a){
 	this->r = r;
 	this->g = g;

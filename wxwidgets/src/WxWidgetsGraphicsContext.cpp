@@ -1,10 +1,11 @@
-#include "WxGraphicsContext.h"
+#include "WxWidgetsGraphicsContext.h"
 
 #include "SPImage.h"
 #include "SPInputEventArgs.h"
 #include "SPElement.h"
 #include "SPWindow.h"
 #include "SpiderFrame.h"
+#include "SpiderWidget.h"
 
 namespace spider
 {
@@ -12,14 +13,24 @@ namespace spider
     {
         namespace wxwidgets
         {
-            WxGraphicsContext::WxGraphicsContext(SpiderFrame *frame) : WxGraphicsContext()
+            WxWidgetsGraphicsContext::WxWidgetsGraphicsContext(SpiderFrame *frame) : WxWidgetsGraphicsContext()
             {
                 this->m_frame = frame;
             }
 
-            WxGraphicsContext::WxGraphicsContext() : m_frame(nullptr), m_window(nullptr), elements(nullptr),
+            wxColour WxWidgetsGraphicsContext::toWxColor(SPColor color)
+            {
+                return wxColour(color.getR(), color.getG(), color.getB(), color.getA());
+            }
+
+            SPColor WxWidgetsGraphicsContext::fromWxColor(wxColor color)
+            {
+                return SPColor(color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha());
+            }
+
+            WxWidgetsGraphicsContext::WxWidgetsGraphicsContext() : m_frame(nullptr), m_window(nullptr), elements(nullptr),
                                                      widgets(nullptr),
-                                                     widget(nullptr),
+                                                     m_widget(nullptr),
                                                      m_paintDc(nullptr)
             {
                 this->elements = new map<SPElement*, wxControlBase*>();
@@ -27,7 +38,7 @@ namespace spider
                 this->origo = new wxPoint(0, 0);
             }
 
-            WxGraphicsContext::~WxGraphicsContext()
+            WxWidgetsGraphicsContext::~WxWidgetsGraphicsContext()
             {
             }
 
@@ -36,12 +47,12 @@ namespace spider
             // --------------------------------------------------------------
 
 
-            void WxGraphicsContext::setClip(sp_rectangle rect) const
+            void WxWidgetsGraphicsContext::setClip(sp_rectangle rect) const
             {
                 this->getPaintDC()->SetClippingRegion(rect.x - this->origo->x, rect.y - this->origo->y, rect.width, rect.height);
             }
 
-            void WxGraphicsContext::declipRect()
+            void WxWidgetsGraphicsContext::declipRect()
             {
                 this->getPaintDC()->DestroyClippingRegion();
             }
@@ -50,20 +61,53 @@ namespace spider
             // Transform
             // --------------------------------------------------------------
 
-            void WxGraphicsContext::setOrigo(const int& x, const int& y)
+            void WxWidgetsGraphicsContext::setOrigo(const int& x, const int& y)
             {
-                this->origo->x = x;
-                this->origo->y = y;
+                if (this->getPaintDC()->CanUseTransformMatrix())
+                {
+                    wxAffineMatrix2D matrix{};
+                    matrix.Translate(x, y);
+                    this->getPaintDC()->SetTransformMatrix(matrix);
+                }
+                else
+                {
+                    this->origo->x = x;
+                    this->origo->y = y;
+                }
             }
 
-            void WxGraphicsContext::restoreOrigo()
+            void WxWidgetsGraphicsContext::restoreOrigo()
             {
-                this->origo->x = 0;
-                this->origo->y = 0;
+                if (this->getPaintDC()->CanUseTransformMatrix())
+                {
+                    this->getPaintDC()->ResetTransformMatrix();
+                }
+                else
+                {
+                    this->origo->x = 0;
+                    this->origo->y = 0;
+                }
             }
 
-            void WxGraphicsContext::drawHTMLText(const string& html, SPFontStyle fontSize, SPColor color, int x, int y,
-                                                 int w, int h)
+            int WxWidgetsGraphicsContext::getWidth()
+            {
+                if (m_widget == nullptr)
+                {
+                    return 0;
+                }
+                return this->m_widget->GetClientSize().GetWidth();
+            }
+
+            int WxWidgetsGraphicsContext::getHeight()
+            {
+                if (m_widget == nullptr)
+                {
+                    return 0;
+                }
+                return this->m_widget->GetClientSize().GetHeight();
+            }
+            void WxWidgetsGraphicsContext::drawHTMLText(const string& html, SPFontStyle fontSize, SPColor color, int x, int y,
+                                                        int w, int h)
             {
             }
 
@@ -71,7 +115,7 @@ namespace spider
             // Primitives
             // --------------------------------------------------------------
 
-            void WxGraphicsContext::drawLine(int x1, int y1,
+            void WxWidgetsGraphicsContext::drawLine(int x1, int y1,
                                              int x2, int y2,
                                              SPColor color)
             {
@@ -81,7 +125,7 @@ namespace spider
                 this->getPaintDC()->SetPen(pen);
             }
 
-            void WxGraphicsContext::drawRectangle(int x1, int y1,
+            void WxWidgetsGraphicsContext::drawRectangle(int x1, int y1,
                                                      int x2, int y2,
                                                      SPColor color)
             {
@@ -94,7 +138,7 @@ namespace spider
                 this->getPaintDC()->DrawRectangle(x1 - this->origo->x, y1 - this->origo->y, x2 - x1, y2 - y1);
             }
 
-            void WxGraphicsContext::fillRectangle(int x1, int y1,
+            void WxWidgetsGraphicsContext::fillRectangle(int x1, int y1,
                                                      int x2, int y2,
                                                      SPColor color)
             {
@@ -102,6 +146,7 @@ namespace spider
                                        color.getG(),
                                        color.getB()));
                 this->getPaintDC()->SetBrush(brush);
+                this->getPaintDC()->SetPen(wxPen());
 
                 this->getPaintDC()->DrawRectangle(x1 - this->origo->x, y1 - this->origo->y, x2 - x1, y2 - y1);
             }
@@ -110,7 +155,7 @@ namespace spider
             // Imaging
             // --------------------------------------------------------------
 
-            SPImage* WxGraphicsContext::loadImage(const std::string& file)
+            SPImage* WxWidgetsGraphicsContext::loadImage(const std::string& file)
             {
                 wxBitmap bmp(file, wxBITMAP_TYPE_ANY);
 
@@ -123,7 +168,7 @@ namespace spider
                 return img;
             }
 
-            void WxGraphicsContext::drawImage(SPImage* image,
+            void WxWidgetsGraphicsContext::drawImage(SPImage* image,
                                                 int x, int y,
                                                 int width, int height)
             {
@@ -133,7 +178,7 @@ namespace spider
                 this->getPaintDC()->DrawBitmap(*bmp, wxPoint(x - this->origo->x, y - this->origo->y), true);
             }
 
-            void WxGraphicsContext::drawImagePart(SPImage* image,
+            void WxWidgetsGraphicsContext::drawImagePart(SPImage* image,
                                                     int left, int top,
                                                     int width, int height,
                                                     int sx, int sy,
@@ -147,15 +192,42 @@ namespace spider
                 this->getPaintDC()->DrawBitmap(sub, wxPoint(left - this->origo->x, top - this->origo->y), true);
             }
 
-            void WxGraphicsContext::drawSkinImage(string resourceId, int x, int y, int w, int h)
+            void WxWidgetsGraphicsContext::drawSkinImage(string resourceId, int x, int y, int w, int h)
             {
+            }
+
+            void WxWidgetsGraphicsContext::drawLinearGradient(const sp_rectangle& rect, const SPGradient& gradient)
+            {
+                this->getPaintDC()->SetBrush(
+                    wxBrush(
+                        WxWidgetsGraphicsContext::toWxColor(
+                            gradient.getStart()
+                        ),
+                        wxTRANSPARENT
+                    )
+                );
+                this->getPaintDC()->GradientFillLinear(
+                    wxRect(
+                        rect.x,
+                        rect.y,
+                        rect.width,
+                        rect.height
+                    ),
+                    toWxColor(
+                        gradient.getStart()
+                    ),
+                    toWxColor(
+                        gradient.getEnd()
+                    ),
+                    wxSOUTH
+                );
             }
 
             // --------------------------------------------------------------
             // Text
             // --------------------------------------------------------------
 
-            sp_rectangle WxGraphicsContext::measureString(std::string text,
+            sp_rectangle WxWidgetsGraphicsContext::measureString(std::string text,
                                                           SPFontStyle* fs) const
             {
                 wxFont font(fs->getHeight(),
@@ -168,7 +240,7 @@ namespace spider
                 return { size.GetWidth(), size.GetHeight(), size.x, size.y };
             }
 
-            void WxGraphicsContext::drawString(const std::string& text,
+            void WxWidgetsGraphicsContext::drawString(const std::string& text,
                                                SPFontStyle fs,
                                                SPColor color,
                                                int x, int y,
@@ -190,7 +262,7 @@ namespace spider
             // Invalidation
             // --------------------------------------------------------------
 
-            void WxGraphicsContext::invalidateRegion(spider::sp_rectangle rect)
+            void WxWidgetsGraphicsContext::invalidateRegion(spider::sp_rectangle rect)
             {
                 this->m_window->RefreshRect(wxRect(this->origo->x + rect.x, this->origo->y + rect.y, rect.width, rect.height));
             }
@@ -199,7 +271,7 @@ namespace spider
             // Controls (text input)
             // --------------------------------------------------------------
 
-            void WxGraphicsContext::drawControl(const std::string& control,
+            void WxWidgetsGraphicsContext::drawControl(const std::string& control,
                                                 SPElement* elm,
                                                 int x, int y,
                                                 int w, int h)
@@ -229,14 +301,14 @@ namespace spider
                 }
             }
 
-            void WxGraphicsContext::drawInputElement(SPElement* elm,
+            void WxWidgetsGraphicsContext::drawInputElement(SPElement* elm,
                                                      int x, int y,
                                                      int w, int h)
             {
                 drawControl("EDIT", elm, x - this->origo->x , y - this->origo->y - y, w, h);
             }
 
-            void WxGraphicsContext::setFontStyle(spider::SPFontStyle* fs) const
+            void WxWidgetsGraphicsContext::setFontStyle(spider::SPFontStyle* fs) const
             {
                 this->getPaintDC()->SetFont(wxFont(fs->getHeight(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
             }

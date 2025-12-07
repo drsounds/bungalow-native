@@ -70,10 +70,7 @@ namespace spider {
         int top = columnY + 18;
         // Draw rows
         for (int i = 0; i < 100; i++) {
-            if (i % 2 != 1) {
-                g->fillRectangle(x, top, width, 18, this->getSkin()->getColor("table::nth-child(2n).background.color", ""));
-
-            }
+            this->getSkin()->drawTableRow(g, this, i, x, y, width, 18, i);
             top += 18;
         }
         int columnYY = columnY;
@@ -93,8 +90,7 @@ namespace spider {
             // If columnY is below zero, set it to the position at top
             columnY = ((SPElement *)this->getParent())->absoluteBounds->y + 1;
         }
-        g->drawImageSlices(this->getSkin()->slices, "table::columnheader.background.image", x, columnY, width, 18);
-
+        this->getSkin()->drawTableHeader(g, this, 0, 0, width, 18);
         left =0;
         for (int i = 0; i < dataSource->getColumnCount(); i++) {
             string text = dataSource->getTextForColumn(i);

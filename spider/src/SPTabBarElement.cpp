@@ -85,8 +85,6 @@ SPTabBarElement::SPTabBarElement(SPElement *parent)
         {
         int f = 0;
     }
-
-
 }
 void SPTabBarElement::mouseDown(int mouseButton, int x, int y) {
     SPTabBarElement *tabBar = this;
@@ -124,12 +122,10 @@ void SPTabBarElement::draw(int x, int y, SPGraphicsContext *g) {
     this->absoluteBounds->y = y;
     this->absoluteBounds->width = this->getWidth();
     this->absoluteBounds->height = this->getHeight();
-    //g->fillRectangle(x, y, this->getWidth(), this->getHeight(), (Color *)this->getAttributeObj("bgcolor"));
-    // Draw background image
 
-    map<string, slice *> *slices = this->m_skin->slices;
+    SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(0, 0, 0, 1));
 
-    g->drawImageSlices(slices, "tabbar.background.image", x, y-1, this->getWidth(), this->getHeight());
+    this->getSkin()->drawTabBar(g, this, x, y, this->getWidth(), this->getHeight(), bgColor, g);
 
     int left = 0;
     std::vector<SPTab *>::iterator it = this->getTabs()->begin();
@@ -140,26 +136,10 @@ void SPTabBarElement::draw(int x, int y, SPGraphicsContext *g) {
 
         string title = tab->getName();
         string id = tab->getId();
-        sp_rectangle strSize = g->measureString((string)title.c_str(), this->getFontStyle());
+        sp_rectangle strSize = g->measureString(title.c_str(), this->getFontStyle());
         int width = 100;// 20 + strSize.width + 20;
-        if (this->activeTab == tab) {
-            #if spacify2009
-            fgColor = this->getColorAttribute("active_tab_fgcolor", SPColor(255, 255, 255, 1));
-            SPColor bgColor = this->getColorAttribute("active_tab_bgcolor", SPColor(0, 0, 0, 1));
-            g->fillRectangle(x + left, y, width, this->getHeight(), bgColor);
+        this->getSkin()->drawTabBarTab(this->activeTab == tab, x + left, y, width, this->getHeight(), fgColor, bgColor, g);
 
-
-
-            #else
-            SPColor bgColor = this->getColorAttribute("highlight", SPColor(0, 0, 0, 1));
-            g->fillRectangle(x + left, y + this->getHeight() - 5, width, 5, bgColor);
-            #endif
-        } else {
-            #if spacify2009
-            // Draw line
-            g->drawLine(left + width, y, left + width, this->getHeight() + y, SPColor(0, 0, 0, 1));
-            #endif
-        }
         g->drawString(title.c_str(), this->getFontStyle(), fgColor, left + x + 20, y + (this->getHeight() / 2) - (strSize.height / 2), strSize.width, strSize.height);
         left += width;
         ++it;

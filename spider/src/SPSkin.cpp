@@ -2,14 +2,176 @@
 
 #include "SPImage.h"
 #include "SPColor.h"
+#include "SPElement.h"
 
 #include <iostream>
+
+#include "SPAppHeaderElement.h"
+#include "SPButtonElement.h"
+#include "SPGraphicsContext.h"
+#include "SPTabBarElement.h"
+#include "SPTableElement.h"
 
 namespace spider {
 SPSkin::SPSkin()
 {
     //ctor
 }
+
+void SPSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const string& state, const sp_rectangle& bounds, const SPColor& tint, short mode)
+{
+    SPColor bgColor = mode == SP_MODE_DARK ? SPColor(20, 20, 20, 255) : SPColor(230, 230, 230, 255);
+    SPColor fgColor = mode == SP_MODE_DARK ? SPColor(220, 220, 220, 255) : SPColor(30, 30, 30, 255);
+    if (elm->getType() == "button")
+    {
+        auto *button = dynamic_cast<SPButtonElement *>(elm);
+        bgColor = SPColor(100, 100, 100, 255);
+        fgColor = SPColor(0, 0, 0, 255);
+        SPGradient gradient(
+            bgColor.lighten(-0.8), bgColor.lighten(-0.9),
+            0
+        );
+        if (state == "active")
+        {
+            gradient = SPGradient(SPColor(0, 0, 0, 1), SPColor(10, 10, 10, 0), 0);
+        }
+        g->drawLinearGradient(
+            {
+                0,
+                0,
+                button->getWidth(),
+                button->getHeight()
+            },
+            gradient
+        );
+    }
+    if (elm->getType() == "tabbar")
+    {
+        auto *tabBar = dynamic_cast<SPTabBarElement *>(elm);
+        bgColor = SPColor(100, 100, 100, 255);
+        fgColor = SPColor(0, 0, 0, 255);
+        SPGradient gradient(
+            bgColor.lighten(-0.8), bgColor.lighten(-0.9),
+            0
+        );
+        if (state == "active")
+        {
+            gradient = SPGradient(SPColor(0, 0, 0, 1), SPColor(10, 10, 10, 0), 0);
+        }
+        g->drawLinearGradient(
+            {
+                0,
+                0,
+                elm->getWidth(),
+                elm->getHeight()
+            },
+            gradient
+        );
+    }
+    if (elm->getType() == "table")
+    {
+
+    }
+    if (elm->getType() == "appheader")
+    {
+        auto *appHeader = dynamic_cast<SPAppHeaderElement *>(elm);
+        bgColor = SPColor(100, 100, 100, 255);
+        fgColor = SPColor(0, 0, 0, 255);
+        SPGradient gradient(
+            bgColor.lighten(-0.8), bgColor.lighten(-0.9),
+            0
+        );
+        if (state == "active")
+        {
+            gradient = SPGradient(SPColor(0, 0, 0, 1), SPColor(10, 10, 10, 0), 0);
+        }
+        g->drawLinearGradient(
+            {
+                0,
+                0,
+                appHeader->getWidth(),
+                appHeader->getHeight()
+            },
+            gradient
+        );
+    }
+}
+
+void SPSkin::drawTableRow(SPGraphicsContext *g, SPTableElement *table, int i, int x, int y, int width, int height, int row)
+{
+    if (i % 2 != 1) {
+        g->fillRectangle(x, y, width, 18, this->getColor("table::nth-child(2n).background.color", ""));
+
+    }
+}
+
+void SPSkin::drawTableHeader(SPGraphicsContext* g, SPTableElement *table, int x, int y, int width, int height)
+{
+    SPColor bgColor = table->getBackgroundColor();
+    SPGradient gradient(
+        bgColor.lighten(-0.8),
+        bgColor.lighten(-0.9),
+        0
+    );
+    g->drawLinearGradient(sp_rectangle { x, y, width, height }, gradient);
+}
+
+void SPSkin::drawTabBarTab(bool active, int x, int y, int width, int height, const SPColor& sp_color,
+    const SPColor& bg_color, SPGraphicsContext* sp_graphics_context)
+{
+
+    if (active)
+    {
+        sp_graphics_context->fillRectangle(0, y, width, height, bg_color);
+    }
+    else
+    {
+        SPGradient gradient(bg_color.lighten(-0.8), bg_color.lighten(-0.9), 0);
+        sp_graphics_context->drawLinearGradient({x, y, width, height }, gradient);
+    }
+}
+
+void SPSkin::drawTabBar(SPGraphicsContext* g, SPTabBarElement* tabbar, int x, int y, int,
+    int get_height, const SPColor& sp_color, SPGraphicsContext* sp_graphics_context1)
+{
+    SPColor bgColor = tabbar->getBackgroundColor();
+    SPGradient gradient(
+        bgColor.lighten(-0.8), bgColor.lighten(-0.9),
+        0
+    );
+
+    g->drawLinearGradient(sp_rectangle {x, y, tabbar->getWidth(), tabbar->getHeight()}, SPGradient(SPColor(0, 0, 0, 1), SPColor(10, 10, 10, 0), 0));
+}
+
+void SPSkin::drawTreeItem(SPGraphicsContext* g, int itemHeight, SPTreeViewElement *treeView, SPTreeItem* item, int x, int y, int width, int height)
+{
+    if (item->isSelected()) {
+#if spacify2009
+        g->fillRectangle(x, y, this->getWidth(), itemHeight, this->getColor("treeitem::selected.background.color", ""));
+#else
+        g->fillRectangle(x, y, 5, itemHeight, treeView->getColorAttribute("highlight", SPColor(0, 127, 255, 255)));
+#endif
+    }
+    if (item->isHighlighted()) {
+        g->fillRectangle(x, y , treeView->getWidth(), itemHeight, this->getColor("treeitem::focus.background.color", ""));
+    }
+    SPColor color =  this->getColor("treeview.foreground.color", "");
+    if(item->isSelected())
+    {
+        if (false)
+        {
+            color = treeView->getColorAttribute("highlight", SPColor(0, 0, 255, 1));
+        }
+        else
+        {
+            color = this->getColor("treeitem::selected.foreground.color", "");
+        }
+    }
+
+
+
+}
+
 slice::slice(SPImage *image, int x1, int y1, int x2, int y2, int leftBorder, int topBorder, int rightBorder, int bottomBorder) {
     this->image = image;
     this->x1 = x1;

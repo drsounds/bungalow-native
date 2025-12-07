@@ -1,7 +1,8 @@
 #include "SPAppHeaderElement.h"
 namespace spider {
-SPAppHeaderElement::SPAppHeaderElement()
+SPAppHeaderElement::SPAppHeaderElement(SPElement *parent) : SPHBoxElement(parent)
 {
+   this->generateAndSetDefaultGradient();
     //ctor
 }
 

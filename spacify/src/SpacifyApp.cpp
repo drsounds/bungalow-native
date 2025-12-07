@@ -13,7 +13,7 @@
 #include "SpiderFrame.h"
 #include "Spider.h"
 #include "SpiderWidget.h"
-#include "WxGraphicsContext.h"
+#include "WxWidgetsGraphicsContext.h"
 
 wxIMPLEMENT_APP(SpacifyApp);
 
@@ -22,8 +22,8 @@ bool SpacifyApp::OnInit(){
           return false;
     this->m_spider = new spider::Spider();
     this->m_frame = new SpiderFrame(this, this->m_spider);
-    spider::platform::wxwidgets::WxGraphicsContext *gc = new spider::platform::wxwidgets::WxGraphicsContext(this->m_frame);
-
+    spider::platform::wxwidgets::WxWidgetsGraphicsContext *gc = new spider::platform::wxwidgets::WxWidgetsGraphicsContext(this->m_frame);
+    gc->setWidget(this->m_frame->getSpiderWidget());
     this->m_spider->setGraphicsContext(gc);
      this->m_windowElement = new spider::SPWindowElement(this->m_spider, new spider::SPSkin("/Users/buddhalow/Documents/spacify-client/skin.png"));
      this->m_frame->setWindowElement(this->m_windowElement);

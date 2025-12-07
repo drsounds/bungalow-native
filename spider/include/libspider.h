@@ -2,6 +2,8 @@
 #define H_LIBSPIDER
 #include <string>
 #include <iomanip>
+
+#include "SPColor.h"
 #define DEBUG
 #define CONTROL_INPUT 1
 #define SP_EVENT_MOUSE_DOWN 1
@@ -47,10 +49,10 @@ namespace spider {
 		int y;
 	};
 	struct sp_rectangle {
-		int width;
-		int height;
 		int x;
 		int y;
+		int width;
+		int height;
 		int z;
 	};
 

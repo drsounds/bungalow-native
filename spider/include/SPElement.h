@@ -41,9 +41,25 @@ namespace spider {
         bool clipView = false;
         string name;
         spider::Spider *m_spider;
+        SPGradient *m_gradient;
+        bool m_hasDefaultGradient = false;
     public:
         void setSpider(spider::Spider *spider) {
             this->m_spider = spider;
+        }
+        SPGradient *getGradient() const {
+            return this->m_gradient;
+        }
+        void setGradient(SPGradient *value) {
+            this->m_gradient = value;
+        }
+        bool hasDefaultGradient() const
+        {
+            return m_hasDefaultGradient;
+        }
+        void setHasDefaultGradient(bool value)
+        {
+            m_hasDefaultGradient = value;
         }
         spider::Spider *getSpider() {
             return this->m_spider;
@@ -62,11 +78,21 @@ namespace spider {
         virtual void scroll(int scrollX, int scrollY, int x, int y);
         void applyColorAttributeFromSkin (string attr, string skin);
         void applyImageAttributeFromSkin (string attr, string skin);
+        void generateAndSetDefaultGradient();
+        SPGradient* generateDefaultGradient();
         bool hasClass(string _class);
         void addClass(string _class);
         void removeClass(string _class);
         sp_rectangle *absoluteBounds;
         void applyStylesheet(SPStylesheet *style);
+        SPColor getBackgroundColor()
+        {
+            return this->getColorAttribute("bgcolor", SPColor(0, 0, 0, 1));
+        }
+        SPColor getForegroundColor()
+        {
+            return this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 1));
+        }
         void setName(const string& value) {
             this->name = value;
          }

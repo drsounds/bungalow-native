@@ -17,20 +17,25 @@ class SpiderWidget;
 namespace spider
 {
   class SPImage;
+  class SPColor;
   namespace platform
   {
     namespace wxwidgets
     {
-      class WxGraphicsContext : public SPGraphicsContext
+      class WxWidgetsGraphicsContext : public SPGraphicsContext
       {
         SpiderFrame *m_frame;
         wxWindow *m_window;
         map<SPElement *, wxControlBase *> *elements;
         map<wxControlBase *, SPElement *> *widgets;
         wxPoint *origo = new wxPoint(0, 0);
+        SpiderWidget *m_widget;
+        wxPaintDC* m_paintDc;
       public:
-        WxGraphicsContext();
-        explicit WxGraphicsContext(SpiderFrame*);
+        WxWidgetsGraphicsContext();
+        static wxColor toWxColor(SPColor color);
+        static SPColor fromWxColor(wxColour color);
+        explicit WxWidgetsGraphicsContext(SpiderFrame*);
 
         void setFrame(SpiderFrame *frame)
         {
@@ -49,7 +54,7 @@ namespace spider
         {
           return this->m_window;
         }
-        ~WxGraphicsContext() override;
+        ~WxWidgetsGraphicsContext() override;
         SPImage *loadImage(const string& bitmap) override;
         void drawImagePart(SPImage *image, int x, int y, int width, int height, int x1, int y1, int x2, int y2) override;
         virtual void drawSkinImage(string resourceId, int x, int y, int w, int h);
@@ -66,6 +71,9 @@ namespace spider
         void setFontStyle(spider::SPFontStyle *fs) const;
         void setOrigo(const int& x, const int& y) override;
         void restoreOrigo() override;
+        int getWidth() override;
+        int getHeight() override;
+        void drawLinearGradient(const sp_rectangle& rect, const SPGradient& gradient) override;
         void drawHTMLText(const string& html, SPFontStyle fontSize, SPColor color, int x, int y, int w, int h) override;
         sp_rectangle measureString(string text, spider::SPFontStyle *font) const;
         void setPaintDC(wxPaintDC* dc) {
@@ -75,9 +83,16 @@ namespace spider
         {
             return m_paintDc;
         }
-      private:
-        SpiderWidget *widget;
-        wxPaintDC* m_paintDc;
+
+        SpiderWidget* getWidget() const
+        {
+          return m_widget;
+        }
+        void setWidget(SpiderWidget* value)
+        {
+          this->m_widget = value;
+        }
+
       };
     }
   }

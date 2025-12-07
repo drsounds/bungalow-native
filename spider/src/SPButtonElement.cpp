@@ -15,8 +15,9 @@ void spider::SPButtonElement::draw(int x, int y, SPGraphicsContext *c)
     SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 1));
     int fontSize = this->getIntegerAttribute("size", 12);
     string fontFamily = this->getStringAttribute("font", "MS Sans Serif");
-	c->fillRectangle(this->absoluteBounds->x, this->absoluteBounds->y, m_width, m_height, bgColor);
-
+	SPGradient gradient (bgColor.lighten(0.1), bgColor.lighten(-0.1), 0);
+	c->drawLinearGradient(sp_rectangle { x, y, this->getWidth(), this->getHeight() }, gradient);
+	
     if(!this->getInnerText().empty()) {
         spider::SPFontStyle fontStyle = SPFontStyle(fontFamily, fontSize, false, false, false);
 		string text = this->getInnerText();

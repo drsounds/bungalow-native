@@ -146,6 +146,22 @@ namespace spider {
 	    }
 	}
 
+	void SPElement::generateAndSetDefaultGradient()
+	{
+		SPGradient* gradient = this->generateDefaultGradient();
+		this->setGradient(gradient);
+	}
+
+	SPGradient* SPElement::generateDefaultGradient()
+	{
+		SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(28, 28, 28, 1));
+		SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 1));
+
+		SPColor startColor = bgColor.lighten(0.1);
+		SPColor endColor = bgColor.lighten(-0.1);
+		return new SPGradient(startColor, endColor, 0);
+	}
+
 	SPElement::SPElement(SPElement *parent) : SPNode(static_cast<SPNode*>(parent)), fontStyle("Tahoma", 13, 1, false, false) {
 		this->m_classList = new vector<string>;
 		this->absoluteBounds = NULL;
@@ -406,27 +422,16 @@ namespace spider {
 		if (this->clipView) {
 	        c->setClip(*absoluteBounds);
 		}
-	    SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(0, 0, 0, 1));
+	    SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(28, 28, 28, 1));
 	    SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 1));
 	    int fontSize = this->getIntegerAttribute("size", 12);
 	    string fontFamily = this->getStringAttribute("font", "MS Sans Serif");
 	    c->fillRectangle(x, y, width, height, bgColor);
-	    string sel = "";
-	    sel.append(this->getType());
-	    sel.append(".background.image");
-	    c->drawImageSlices(this->m_skin->slices, sel, x, y, width, height);
-
-	    // Draw background image
-	    if (this->getId() != "" && this->getId().length() > 0) {
-	        string sel2 = "#";
-	        sel2.append(this->getId());
-	        sel2.append(".background.image");
-	        c->drawImageSlices(this->m_skin->slices, sel2, x, y, width, height);
-	       // c->drawImage(this->backgroundImage,  x - scrollX, y - scrollY, width, height);
-	    }
-		//c->drawRectangle(x, y, this->getWidth(), this->getHeight(), (Color *)this->getAttributeObj("bgcolor"));
+		if (this->getGradient() != nullptr)
+		{
+			c->drawLinearGradient(sp_rectangle { x, y, width, height }, *this->getGradient());
+		}
 		SPColor color(255, 0, 0, 255);
-	    //c->drawRectangle(0, 0, this->getWidth(), this->getHeight() , &color);
 	    string text = this->getInnerText();
 	    // draw text
 	    if (!text.empty())

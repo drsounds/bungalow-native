@@ -43,6 +43,7 @@ namespace spider {
 		virtual void drawString(const string& text, SPFontStyle fs, SPColor color, int x, int y, int w, int h) { }
 		virtual void invalidateRegion(sp_rectangle region) {}
 		virtual void drawHTMLText(const string& html, SPFontStyle fs, SPColor color, int x, int y, int w, int h) { }
+		virtual void drawLinearGradient(const sp_rectangle& rect, const SPGradient& gradient) {}
 		virtual SPImage *loadImage(const string& bitmap) { return NULL; }
 		virtual sp_rectangle measureString(const string& text, SPFontStyle font) { return sp_rectangle(); }
 		virtual int getWidth() { return 0; }

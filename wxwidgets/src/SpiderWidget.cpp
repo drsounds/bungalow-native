@@ -5,7 +5,7 @@
 #include "SpiderFrame.h"
 #include "SPMouseEventArgs.h"
 #include "SPWindowElement.h"
-#include "WxGraphicsContext.h"
+#include "WxWidgetsGraphicsContext.h"
 #include "Spider.h"
 
 
@@ -163,7 +163,7 @@ void SpiderWidget::OnPaint(wxPaintEvent& event) {
     int width = this->GetSize().GetWidth();
     int height = this->GetSize().GetHeight();
     // draw the widget on a wxDC...
-    spider::platform::wxwidgets::WxGraphicsContext* gc = dynamic_cast<spider::platform::wxwidgets::WxGraphicsContext *>(this->m_frame->getWindowElement()->createGraphics());
+    spider::platform::wxwidgets::WxWidgetsGraphicsContext* gc = dynamic_cast<spider::platform::wxwidgets::WxWidgetsGraphicsContext *>(this->m_frame->getWindowElement()->createGraphics());
     gc->setFrame(this->m_frame);
     gc->setWindow(this->GetParent());
     gc->setPaintDC(&dc);

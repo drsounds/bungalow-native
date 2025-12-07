@@ -9,6 +9,7 @@
 #include "SPViewStackElement.h"
 #include "SPSkin.h"
 #include "PlayQueueView.h"
+#include "SPAppHeaderElement.h"
 #include "SPTreeViewElement.h"
 
 namespace spider {
@@ -57,14 +58,13 @@ namespace spider {
     void MainElement::layout() {
         this->clipView = false;
         this->set("bgcolor", "#373737");
-        auto *header = new SPHBoxElement(this);
+        auto *header = new SPAppHeaderElement(this);
         header->setColorAttribute("bgcolor", SPColor("#767676"));
         header->setIntegerAttribute("height", 55);
         header->getPadding()->top = 53;
         header->getPadding()->left = 13;
         header->getPadding()->bottom = 13;
         header->getPadding()->right =  13;
-        header->setBackgroundImage(this->getSkin()->getImage("header.background.image", ""));
         this->appendChild(header);
         header->setId("header");
         // add search element
