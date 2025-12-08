@@ -4,8 +4,8 @@
 #include "SPInputEventArgs.h"
 #include "SPElement.h"
 #include "SPWindow.h"
-#include "SpiderFrame.h"
-#include "SpiderWidget.h"
+#include "SpaceFrame.h"
+#include "SpaceWidget.h"
 
 namespace space
 {
@@ -13,7 +13,7 @@ namespace space
     {
         namespace wxwidgets
         {
-            WxWidgetsGraphicsContext::WxWidgetsGraphicsContext(SpiderFrame *frame) : WxWidgetsGraphicsContext()
+            WxWidgetsGraphicsContext::WxWidgetsGraphicsContext(SpaceFrame *frame) : WxWidgetsGraphicsContext()
             {
                 this->m_frame = frame;
             }

@@ -1,10 +1,10 @@
-#ifndef SPIDERWIDGET_H
-#define SPIDERWIDGET_H
+#ifndef SPACEWIDGET_H
+#define SPACEWIDGET_H
 #include <wx/wx.h>
 
 #include "SPObject.h"
-#include "Spider.h"
-#include "libspider.h"
+#include "Space.h"
+#include "libspace.h"
 
 enum MySpecialWidgetStyles
 {
@@ -16,14 +16,14 @@ enum MySpecialWidgetStyles
 };
 namespace space
 {
-    class Spider;
+    class Space;
     class SPWindowElement;
 }
-class SpiderFrame;
-class SpiderWidget : public wxControl
+class SpaceFrame;
+class SpaceWidget : public wxControl
 {
-    space::Spider *m_spider;
-    SpiderFrame* m_frame;
+    space::Space *m_space;
+    SpaceFrame* m_frame;
 
     int m_mouseX = 0;
     int m_mouseY = 0;
@@ -33,22 +33,22 @@ class SpiderWidget : public wxControl
     void OnPaint(wxPaintEvent&);
 
 public:
-    void setSpider(space::Spider *spider) {
-        this->m_spider = spider;
+    void setSpace(space::Space *space) {
+        this->m_space = space;
     }
-    space::Spider *getSpider() {
-        return this->m_spider;
+    space::Space *getSpace() {
+        return this->m_space;
     }
-    wxDECLARE_DYNAMIC_CLASS(SpiderWidget);
+    wxDECLARE_DYNAMIC_CLASS(SpaceWidget);
 	wxSize DoGetBestSize() const;
     void OnMouseMove(wxMouseEvent& event);
     void Init();
-    SpiderWidget()
+    SpaceWidget()
     {
-        this->m_spider = nullptr;
+        this->m_space = nullptr;
         this->m_frame = nullptr;
     }
-    SpiderWidget(
+    SpaceWidget(
         wxWindow *parent,
         wxWindowID winId,
         const wxString& label,
@@ -67,7 +67,7 @@ public:
         const wxSize& size = wxDefaultSize,
         long style = SWS_DEFAULT_STYLE,
         const wxValidator& val = wxDefaultValidator,
-        const wxString& name = "Spider"
+        const wxString& name = "Space"
     );
     void OnLeftClick(wxCommandEvent& event);
     void OnRightClick(wxCommandEvent& event);

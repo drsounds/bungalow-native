@@ -11,8 +11,8 @@
 
 
 class wxControlBase;
-class SpiderFrame;
-class SpiderWidget;
+class SpaceFrame;
+class SpaceWidget;
 
 namespace space
 {
@@ -24,24 +24,24 @@ namespace space
     {
       class WxWidgetsGraphicsContext : public SPGraphicsContext
       {
-        SpiderFrame *m_frame;
+        SpaceFrame *m_frame;
         wxWindow *m_window;
         map<SPElement *, wxControlBase *> *elements;
         map<wxControlBase *, SPElement *> *widgets;
         wxPoint *origo = new wxPoint(0, 0);
-        SpiderWidget *m_widget;
+        SpaceWidget *m_widget;
         wxPaintDC* m_paintDc;
       public:
         WxWidgetsGraphicsContext();
         static wxColor toWxColor(SPColor color);
         static SPColor fromWxColor(wxColour color);
-        explicit WxWidgetsGraphicsContext(SpiderFrame*);
+        explicit WxWidgetsGraphicsContext(SpaceFrame*);
 
-        void setFrame(SpiderFrame *frame)
+        void setFrame(SpaceFrame *frame)
         {
           this->m_frame = frame;
         }
-        SpiderFrame *getFrame() const
+        SpaceFrame *getFrame() const
         {
           return this->m_frame;
         }
@@ -84,11 +84,11 @@ namespace space
             return m_paintDc;
         }
 
-        SpiderWidget* getWidget() const
+        SpaceWidget* getWidget() const
         {
           return m_widget;
         }
-        void setWidget(SpiderWidget* value)
+        void setWidget(SpaceWidget* value)
         {
           this->m_widget = value;
         }

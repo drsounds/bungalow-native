@@ -5,7 +5,7 @@
 #include "SPMessageType.h"
 #include "SPWindow.h"
 
-#include "libspider.h"
+#include "libspace.h"
 
 
 namespace space {
@@ -43,6 +43,6 @@ namespace space {
             }
     };
 }
-#include "../../spider/include/libspider.h"
+#include "../../space/include/libspace.h"
 
 #endif // MAINWINDOWELEMENT_H

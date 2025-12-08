@@ -1,21 +1,21 @@
 //
 // Created by Alexander Forselius on 2025-12-03.
 
-#include "SpiderWidget.h"
-#include "SpiderFrame.h"
+#include "SpaceWidget.h"
+#include "SpaceFrame.h"
 #include "SPMouseEventArgs.h"
 #include "SPWindowElement.h"
 #include "WxWidgetsGraphicsContext.h"
-#include "Spider.h"
+#include "Space.h"
 
 
-BEGIN_EVENT_TABLE(SpiderWidget, wxControl)
-    EVT_PAINT(SpiderWidget::OnPaint)
+BEGIN_EVENT_TABLE(SpaceWidget, wxControl)
+    EVT_PAINT(SpaceWidget::OnPaint)
 END_EVENT_TABLE()
 
-IMPLEMENT_DYNAMIC_CLASS(SpiderWidget, wxControl);
+IMPLEMENT_DYNAMIC_CLASS(SpaceWidget, wxControl);
 
-SpiderWidget::SpiderWidget(wxWindow *parent,
+SpaceWidget::SpaceWidget(wxWindow *parent,
                            wxWindowID winId,
                            const wxString& label,
                            const wxPoint& pos,
@@ -29,14 +29,14 @@ SpiderWidget::SpiderWidget(wxWindow *parent,
 }
 
 
-wxSize SpiderWidget::DoGetBestSize() const
+wxSize SpaceWidget::DoGetBestSize() const
 {
 	// Do not return any arbitrary default value...
 	wxASSERT_MSG( m_widget, wxT("myStaticText::DoGetBestSize called before creation") );
 
 	// There is probably a better way than this, but I don't know it.
 	// So I use the const_cast to grab a dc that is only used for metrics.
-	wxClientDC dc (const_cast<SpiderWidget*> (this));
+	wxClientDC dc (const_cast<SpaceWidget*> (this));
 
 	wxCoord w = 0;
 	wxCoord h = 0;
@@ -45,7 +45,7 @@ wxSize SpiderWidget::DoGetBestSize() const
 	return wxSize( w, h );
 }
 
-bool SpiderWidget::Create(wxWindow *parent,
+bool SpaceWidget::Create(wxWindow *parent,
             wxWindowID winId,
             const wxString& label,
             const wxPoint& pos,
@@ -55,110 +55,110 @@ bool SpiderWidget::Create(wxWindow *parent,
             const wxString& name )
 {
     this->SetBackgroundColour(wxColour(255, 255, 255, 1));
-    Bind(wxEVT_PAINT, &SpiderWidget::OnPaint, this);
-    Bind(wxEVT_SIZE, &SpiderWidget::OnSize, this);
-    Bind(wxEVT_LEFT_DOWN, &SpiderWidget::OnLeftDown, this);
-    Bind(wxEVT_LEFT_UP, &SpiderWidget::OnLeftUp, this);
-    Bind(wxEVT_MOTION, &SpiderWidget::OnMouseMove, this);
-    Bind(wxEVT_COMMAND_LEFT_CLICK, &SpiderWidget::OnLeftClick, this);
+    Bind(wxEVT_PAINT, &SpaceWidget::OnPaint, this);
+    Bind(wxEVT_SIZE, &SpaceWidget::OnSize, this);
+    Bind(wxEVT_LEFT_DOWN, &SpaceWidget::OnLeftDown, this);
+    Bind(wxEVT_LEFT_UP, &SpaceWidget::OnLeftUp, this);
+    Bind(wxEVT_MOTION, &SpaceWidget::OnMouseMove, this);
+    Bind(wxEVT_COMMAND_LEFT_CLICK, &SpaceWidget::OnLeftClick, this);
     return FALSE;
 }
 
-void SpiderWidget::OnLeftClick(wxCommandEvent& event) {
+void SpaceWidget::OnLeftClick(wxCommandEvent& event) {
     auto *args = new space::SPMouseEventArgs(0, this->m_mouseX, this->m_mouseY);
     const space::SPEvent evt("click", args, nullptr);
-    this->getSpider()->dispatchEvent(
+    this->getSpace()->dispatchEvent(
         "click",
         args,
         this->m_frame->getWindowElement()
     );
 }
 
-void SpiderWidget::OnRightClick(wxCommandEvent& event)
+void SpaceWidget::OnRightClick(wxCommandEvent& event)
 {
     auto *args = new space::SPMouseEventArgs(1, this->m_mouseX, this->m_mouseY);
     const space::SPEvent evt("click", args, nullptr);
-    this->m_spider->dispatchEvent(
+    this->m_space->dispatchEvent(
         "click",
         args,
         this->m_frame->getWindowElement()
     );
 }
 
-void SpiderWidget::OnLeftUp(wxMouseEvent& event) {
+void SpaceWidget::OnLeftUp(wxMouseEvent& event) {
     auto *args = new space::SPMouseEventArgs(0, event.GetX(), event.GetY());
     const space::SPEvent evt("mouseup", args, nullptr);
-    this->getSpider()->dispatchEvent(
+    this->getSpace()->dispatchEvent(
         "mouseup",
         args,
         this->m_frame->getWindowElement()
     );
 }
 
-void SpiderWidget::OnRightDown(wxMouseEvent& event)
+void SpaceWidget::OnRightDown(wxMouseEvent& event)
 {
     auto *args = new space::SPMouseEventArgs(1, event.GetX(), event.GetY());
     space::SPEvent evt("mousedown", args, nullptr);
-    this->getSpider()->dispatchEvent(
+    this->getSpace()->dispatchEvent(
         "mousedown",
         args,
         this->m_frame->getWindowElement()
     );
 }
 
-void SpiderWidget::OnSize(wxSizeEvent& event)
+void SpaceWidget::OnSize(wxSizeEvent& event)
 {
     this->m_frame->getWindowElement()->resize(event.GetSize().GetWidth(), event.GetSize().GetHeight());
     this->m_frame->getWindowElement()->pack();
 }
 
-void SpiderWidget::OnLeftDown(wxMouseEvent& event) {
+void SpaceWidget::OnLeftDown(wxMouseEvent& event) {
     auto *args = new space::SPMouseEventArgs(0, event.GetX(), event.GetY());
     space::SPEvent evt("mousedown", args, nullptr);
-    this->getSpider()->dispatchEvent(
+    this->getSpace()->dispatchEvent(
         "mousedown",
         args,
         this->m_frame->getWindowElement()
     );
 }
 
-void SpiderWidget::OnRightUp(wxMouseEvent& event)
+void SpaceWidget::OnRightUp(wxMouseEvent& event)
 {
     auto *args = new space::SPMouseEventArgs(1, event.GetX(), event.GetY());
     space::SPEvent evt("mouseup", args, nullptr);
-    this->getSpider()->dispatchEvent(
+    this->getSpace()->dispatchEvent(
         "mouseup",
         args,
         this->m_frame->getWindowElement()
     );
 }
 
-void SpiderWidget::OnMouseMove(wxMouseEvent& event)
+void SpaceWidget::OnMouseMove(wxMouseEvent& event)
 {
     this->m_mouseX = event.GetX();
     this->m_mouseY = event.GetY();
     auto *args = new space::SPMouseEventArgs(0, event.GetX(), event.GetY());
     space::SPEvent evt("mousemove", args, nullptr);
-    this->getSpider()->dispatchEvent(
+    this->getSpace()->dispatchEvent(
         "mousemove",
         args,
         this->m_frame->getWindowElement()
     );
 }
 
-void SpiderWidget::Init()
+void SpaceWidget::Init()
 {
-    auto *frame = dynamic_cast<SpiderFrame *>(this->GetParent());
+    auto *frame = dynamic_cast<SpaceFrame *>(this->GetParent());
     this->m_frame = frame;
 }
 
-wxSize SpiderWidget::DoGetBestSize()
+wxSize SpaceWidget::DoGetBestSize()
 {
     // we need to calculate and return the best size of the widget...
     return wxSize(100, 100);
 }
 
-void SpiderWidget::OnPaint(wxPaintEvent& event) {
+void SpaceWidget::OnPaint(wxPaintEvent& event) {
     wxPaintDC dc(this);
     int width = this->GetSize().GetWidth();
     int height = this->GetSize().GetHeight();

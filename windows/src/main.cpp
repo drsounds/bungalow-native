@@ -6,7 +6,7 @@
 
 #include <tchar.h>
 #include <windows.h>
-#include "libspider.h"
+#include "libspace.h"
 #include "Win32WindowElement.h"
 #include "Win32GraphicsContext.h"
 #include "main.h"
@@ -15,7 +15,7 @@
 
 /*  Declare Windows procedure  */
 LRESULT CALLBACK WindowProcedure (HWND, UINT, WPARAM, LPARAM);
-using namespace spider;
+using namespace space;
 Win32WindowElement *window  = new Win32WindowElement();
 /*  Make the class name into a global variable  */
 TCHAR szClassName[ ] = _T("CodeBlocksWindowsApp");

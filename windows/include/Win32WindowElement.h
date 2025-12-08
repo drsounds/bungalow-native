@@ -1,12 +1,12 @@
 #pragma once
-#ifndef H_SPIDER
-#define H_SPIDER
+#ifndef H_SPACE
+#define H_SPACE
 #include <Windows.h>
 #include "MainElement.h"
 #include <string>
 #include "WindowElement.h"
 #define MAX_LOADSTRING 100
-namespace spider {
+namespace space {
 	class Win32WindowElement : public WindowElement {
 	private:
 
@@ -26,7 +26,7 @@ namespace spider {
 	    }
 	    void navigate(string uri);
 		HBITMAP bufferBitmap;
-		void draw(spider::GraphicsContext *graphics);
+		void draw(space::GraphicsContext *graphics);
 		void Show();
 		void Hide();
 		Win32WindowElement();
@@ -46,5 +46,5 @@ namespace spider {
 		void pack();
 	};
 }
-#include "libspider.h"
+#include "libspace.h"
 #endif

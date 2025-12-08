@@ -1,6 +1,6 @@
 #include "ArtistView.h"
 #include "SPElement.h"
-#include "Spider.h"
+#include "Space.h"
 #include "SPWindowElement.h"
 #include "SPBoxElement.h"
 

@@ -1,5 +1,5 @@
-#ifndef SPIDER_FRAME_H
-#define SPIDER_FRAME_H
+#ifndef SPACE_FRAME_H
+#define SPACE_FRAME_H
 #include "SPWindowElement.h"
 
 #include "SPWindow.h"
@@ -8,34 +8,34 @@
     #include <wx/wx.h>
 #endif
 
-class SpiderApp;
+class SpaceApp;
 
-class SpiderWidget;
+class SpaceWidget;
 
 namespace space
 {
     class SPObject;
-    class Spider;
+    class Space;
     class SPWindowElement;
 }
 
-class SpiderFrame : public wxFrame
+class SpaceFrame : public wxFrame
 {
 protected:
-    space::Spider *m_spider;
+    space::Space *m_space;
     space::SPWindowElement* m_windowElement;
-    SpiderWidget *m_spiderWidget;
+    SpaceWidget *m_spaceWidget;
     wxApp* m_app;
 
 public:
-    void setSpider(space::Spider *spider) {
-        this->m_spider = spider;
+    void setSpace(space::Space *space) {
+        this->m_space = space;
     }
-    space::Spider *getSpider() {
-        return this->m_spider;
+    space::Space *getSpace() {
+        return this->m_space;
     }
-    SpiderWidget *getSpiderWidget() {
-        return this->m_spiderWidget;
+    SpaceWidget *getSpaceWidget() {
+        return this->m_spaceWidget;
     }
     space::SPWindowElement *getWindowElement() {
         return this->m_windowElement;
@@ -43,7 +43,7 @@ public:
     void setWindowElement(space::SPWindowElement *value) {
         this->m_windowElement = value;
     }
-    SpiderFrame(wxApp *app, space::Spider *spider);
+    SpaceFrame(wxApp *app, space::Space *space);
     void OnSize(wxSizeEvent& event);
     void OnExit(wxCommandEvent& event);
     void OnAbout(wxCommandEvent& event);
