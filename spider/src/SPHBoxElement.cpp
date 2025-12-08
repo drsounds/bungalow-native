@@ -5,7 +5,7 @@
 #include "SPElement.h"
 
 
-namespace spider {
+namespace space {
     void SPHBoxElement::pack() {
         SPElement::pack();
         int flexes = 0;

@@ -2,7 +2,7 @@
 #define ARTISTOVERVIEW_H
 
 #include "SPViewElement.h"
-namespace spider {
+namespace space {
 class SPElement;
 class ArtistOverView : public SPViewElement
 {

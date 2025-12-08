@@ -8,7 +8,7 @@
 
 using namespace std;
 
-namespace spider {
+namespace space {
 class SPTableColumnHeader {
 public:
     SPTableColumnHeader(SPTableElement *tableElement);

@@ -2,7 +2,7 @@
 #define RESOURCE_H
 #include <string>
 using namespace std;
-namespace spider {
+namespace space {
 class SPResource
 {
     public:

@@ -11,7 +11,7 @@
 #include <functional>
 #include <type_traits>
 
-namespace spider {
+namespace space {
 	class SPNode;
 
 	SPObservable::SPObservable()

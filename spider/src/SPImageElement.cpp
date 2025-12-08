@@ -1,5 +1,5 @@
 #include "SPImageElement.h"
-namespace spider {
+namespace space {
 SPImageElement::SPImageElement(SPElement *parent)
  : SPElement(parent)
 {

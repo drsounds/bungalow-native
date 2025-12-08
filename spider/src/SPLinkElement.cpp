@@ -1,5 +1,5 @@
 #include "SPLinkElement.h"
-namespace spider {
+namespace space {
 SPLinkElement::SPLinkElement(SPElement *parent)
  : SPTextElement(parent)
 {

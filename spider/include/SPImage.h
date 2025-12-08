@@ -7,7 +7,7 @@
 using namespace std;
 
 
-namespace spider {
+namespace space {
 
     struct pixel {
         unsigned char r;

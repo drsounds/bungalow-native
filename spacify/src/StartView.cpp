@@ -6,7 +6,7 @@
 #include "SPViewStackElement.h"
 #include "SPTabBarElement.h"
 
-namespace spider {
+namespace space {
     namespace views {
         StartView::StartView() : SPTabbarViewElement() {
         }

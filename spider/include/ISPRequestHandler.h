@@ -5,7 +5,7 @@
 #include "SPResponse.h"
 #include <map>
 using namespace std;
-namespace spider {
+namespace space {
 /**
  * Request handler for Spider
  */

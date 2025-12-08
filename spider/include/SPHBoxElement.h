@@ -1,7 +1,7 @@
 #ifndef HBOXELEMENT_H
 #define HBOXELEMENT_H
 #include "SPElement.h"
-namespace spider {
+namespace space {
     class SPElement;
     class SPHBoxElement : public SPElement {
 

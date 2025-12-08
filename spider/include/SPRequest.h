@@ -9,7 +9,7 @@
 
 using namespace std;
 
-namespace spider {
+namespace space {
 static vector<ISPRequestHandler *> *handlers;
 class SPRequest
 {

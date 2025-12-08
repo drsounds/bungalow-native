@@ -5,7 +5,7 @@
 
 using namespace std;
 
-namespace spider {
+namespace space {
     class SPFontStyle {
         int height;
         int weight;

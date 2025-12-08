@@ -3,7 +3,7 @@
 #include "SPImageElement.h"
 #include "SPTitleElement.h"
 
-namespace spider {
+namespace space {
 SPHeaderElement::SPHeaderElement(SPElement *parent)
  : SPHBoxElement(parent)
 {

@@ -2,7 +2,7 @@
 #include <string>
 #include <sstream>
 using namespace std;
-namespace spider {
+namespace space {
 SPStandardTableDataSource::SPStandardTableDataSource()
 {
     //ctor

@@ -12,7 +12,7 @@ class SpiderApp;
 
 class SpiderWidget;
 
-namespace spider
+namespace space
 {
     class SPObject;
     class Spider;
@@ -22,28 +22,28 @@ namespace spider
 class SpiderFrame : public wxFrame
 {
 protected:
-    spider::Spider *m_spider;
-    spider::SPWindowElement* m_windowElement;
+    space::Spider *m_spider;
+    space::SPWindowElement* m_windowElement;
     SpiderWidget *m_spiderWidget;
     wxApp* m_app;
 
 public:
-    void setSpider(spider::Spider *spider) {
+    void setSpider(space::Spider *spider) {
         this->m_spider = spider;
     }
-    spider::Spider *getSpider() {
+    space::Spider *getSpider() {
         return this->m_spider;
     }
     SpiderWidget *getSpiderWidget() {
         return this->m_spiderWidget;
     }
-    spider::SPWindowElement *getWindowElement() {
+    space::SPWindowElement *getWindowElement() {
         return this->m_windowElement;
     }
-    void setWindowElement(spider::SPWindowElement *value) {
+    void setWindowElement(space::SPWindowElement *value) {
         this->m_windowElement = value;
     }
-    SpiderFrame(wxApp *app, spider::Spider *spider);
+    SpiderFrame(wxApp *app, space::Spider *spider);
     void OnSize(wxSizeEvent& event);
     void OnExit(wxCommandEvent& event);
     void OnAbout(wxCommandEvent& event);

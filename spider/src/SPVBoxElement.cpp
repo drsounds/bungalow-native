@@ -2,9 +2,9 @@
 
 #include <iostream>
 
-namespace spider {
+namespace space {
 
-    void spider::SPVBoxElement::pack() {
+    void space::SPVBoxElement::pack() {
         SPElement::pack();
         int flexes = 0;
         int statics = 0;

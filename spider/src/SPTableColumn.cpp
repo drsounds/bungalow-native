@@ -1,5 +1,5 @@
 #include "SPTableColumn.h"
-namespace spider {
+namespace space {
 SPTableColumn::SPTableColumn()
 {
     //ctor

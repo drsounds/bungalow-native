@@ -6,7 +6,7 @@
 
 #include <string>
 using namespace std;
-namespace spider {
+namespace space {
 	class SPElement;
 	class SPWindow;
 	class SPVBoxElement : public SPElement {

@@ -1,7 +1,7 @@
 #ifndef TEXTELEMENT_H
 #define TEXTELEMENT_H
 #include "SPElement.h"
-namespace spider {
+namespace space {
 class SPGraphicsContext;
 class SPTextElement : public SPElement
 {

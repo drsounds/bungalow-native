@@ -1,5 +1,5 @@
 #include "SPInputEventArgs.h"
-namespace spider {
+namespace space {
 SPInputEventArgs::SPInputEventArgs(string text)
     : SPEventArgs()
 {

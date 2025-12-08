@@ -8,7 +8,7 @@
 
 using namespace std;
 
-namespace spider {
+namespace space {
     class Spider;
     class SPMessage;
     class SPSkin;
@@ -40,11 +40,11 @@ namespace spider {
         int scrollY;
         bool clipView = false;
         string name;
-        spider::Spider *m_spider;
+        space::Spider *m_spider;
         SPGradient *m_gradient;
         bool m_hasDefaultGradient = false;
     public:
-        void setSpider(spider::Spider *spider) {
+        void setSpider(space::Spider *spider) {
             this->m_spider = spider;
         }
         SPGradient *getGradient() const {
@@ -61,7 +61,7 @@ namespace spider {
         {
             m_hasDefaultGradient = value;
         }
-        spider::Spider *getSpider() {
+        space::Spider *getSpider() {
             return this->m_spider;
         }
         SPSkin *getSkin() const;

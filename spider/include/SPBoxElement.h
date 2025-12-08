@@ -6,7 +6,7 @@
 
 using namespace std;
 
-namespace spider {
+namespace space {
 class SPBoxElement : public SPElement {
 public:
 	explicit SPBoxElement(SPElement *parent);

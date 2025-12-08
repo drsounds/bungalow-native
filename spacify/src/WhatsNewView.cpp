@@ -6,7 +6,7 @@
 
 #include <regex>
 
-namespace spider {
+namespace space {
     namespace views {
         WhatsNewView::WhatsNewView()
          : SPContainerViewElement::SPContainerViewElement()

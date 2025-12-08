@@ -11,7 +11,7 @@
 #include "SPVBoxElement.h"
 #include "SPElement.h"
 
-namespace spider
+namespace space
 {
     class Spider;
 

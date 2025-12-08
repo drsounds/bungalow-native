@@ -4,7 +4,7 @@
 #include "SPWindowElement.h"
 #include "SPBoxElement.h"
 
-namespace spider {
+namespace space {
 ArtistView::ArtistView(SPElement *parent)
  : SPTabbarViewElement(parent)
 {

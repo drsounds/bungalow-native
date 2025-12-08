@@ -1,14 +1,14 @@
 #include "SPRequest.h"
-namespace spider {
+namespace space {
 SPRequest::SPRequest()
 {
-    if (spider::handlers == NULL) {
-        spider::handlers = new std::vector<ISPRequestHandler *>;
+    if (space::handlers == NULL) {
+        space::handlers = new std::vector<ISPRequestHandler *>;
     }
     //ctor
 }
 ISPRequestHandler *SPRequest::getMatchingHandlerForUri(string uri) {
-    for (std::vector<ISPRequestHandler *>::iterator it = spider::handlers->begin(); it != spider::handlers->end(); ++it)
+    for (std::vector<ISPRequestHandler *>::iterator it = space::handlers->begin(); it != space::handlers->end(); ++it)
     {
         ISPRequestHandler *handler = (ISPRequestHandler *)*it;
         if (handler->handlesUri(uri)) {

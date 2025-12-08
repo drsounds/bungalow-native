@@ -2,7 +2,7 @@
 
 #include "SPTableRow.h"
 
-namespace spider {
+namespace space {
 SPTableCell::SPTableCell(SPTableRow *tableRow)
 {
     this->tableRow = tableRow;

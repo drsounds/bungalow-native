@@ -3,7 +3,7 @@
 #include <vector>
 #include <string>
 using namespace std;
-namespace spider {
+namespace space {
 class SPTableElement;
 class SPTableRow
 {

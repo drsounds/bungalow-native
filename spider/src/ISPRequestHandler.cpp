@@ -1,5 +1,5 @@
 #include "ISPRequestHandler.h"
-namespace spider {
+namespace space {
 ISPRequestHandler::ISPRequestHandler()
 {
     //ctor

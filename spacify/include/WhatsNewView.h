@@ -2,7 +2,7 @@
 #define WHATSNEWVIEW_H
 #include "SPContainerViewElement.h"
 
-namespace spider {
+namespace space {
     class SPElement;
     namespace views {
         class WhatsNewView : public SPContainerViewElement

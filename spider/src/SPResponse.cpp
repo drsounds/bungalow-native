@@ -1,5 +1,5 @@
 #include "SPResponse.h"
-namespace spider {
+namespace space {
 SPResponse::SPResponse()
 {
     //ctor

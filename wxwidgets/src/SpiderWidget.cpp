@@ -65,8 +65,8 @@ bool SpiderWidget::Create(wxWindow *parent,
 }
 
 void SpiderWidget::OnLeftClick(wxCommandEvent& event) {
-    auto *args = new spider::SPMouseEventArgs(0, this->m_mouseX, this->m_mouseY);
-    const spider::SPEvent evt("click", args, nullptr);
+    auto *args = new space::SPMouseEventArgs(0, this->m_mouseX, this->m_mouseY);
+    const space::SPEvent evt("click", args, nullptr);
     this->getSpider()->dispatchEvent(
         "click",
         args,
@@ -76,8 +76,8 @@ void SpiderWidget::OnLeftClick(wxCommandEvent& event) {
 
 void SpiderWidget::OnRightClick(wxCommandEvent& event)
 {
-    auto *args = new spider::SPMouseEventArgs(1, this->m_mouseX, this->m_mouseY);
-    const spider::SPEvent evt("click", args, nullptr);
+    auto *args = new space::SPMouseEventArgs(1, this->m_mouseX, this->m_mouseY);
+    const space::SPEvent evt("click", args, nullptr);
     this->m_spider->dispatchEvent(
         "click",
         args,
@@ -86,8 +86,8 @@ void SpiderWidget::OnRightClick(wxCommandEvent& event)
 }
 
 void SpiderWidget::OnLeftUp(wxMouseEvent& event) {
-    auto *args = new spider::SPMouseEventArgs(0, event.GetX(), event.GetY());
-    const spider::SPEvent evt("mouseup", args, nullptr);
+    auto *args = new space::SPMouseEventArgs(0, event.GetX(), event.GetY());
+    const space::SPEvent evt("mouseup", args, nullptr);
     this->getSpider()->dispatchEvent(
         "mouseup",
         args,
@@ -97,8 +97,8 @@ void SpiderWidget::OnLeftUp(wxMouseEvent& event) {
 
 void SpiderWidget::OnRightDown(wxMouseEvent& event)
 {
-    auto *args = new spider::SPMouseEventArgs(1, event.GetX(), event.GetY());
-    spider::SPEvent evt("mousedown", args, nullptr);
+    auto *args = new space::SPMouseEventArgs(1, event.GetX(), event.GetY());
+    space::SPEvent evt("mousedown", args, nullptr);
     this->getSpider()->dispatchEvent(
         "mousedown",
         args,
@@ -113,8 +113,8 @@ void SpiderWidget::OnSize(wxSizeEvent& event)
 }
 
 void SpiderWidget::OnLeftDown(wxMouseEvent& event) {
-    auto *args = new spider::SPMouseEventArgs(0, event.GetX(), event.GetY());
-    spider::SPEvent evt("mousedown", args, nullptr);
+    auto *args = new space::SPMouseEventArgs(0, event.GetX(), event.GetY());
+    space::SPEvent evt("mousedown", args, nullptr);
     this->getSpider()->dispatchEvent(
         "mousedown",
         args,
@@ -124,8 +124,8 @@ void SpiderWidget::OnLeftDown(wxMouseEvent& event) {
 
 void SpiderWidget::OnRightUp(wxMouseEvent& event)
 {
-    auto *args = new spider::SPMouseEventArgs(1, event.GetX(), event.GetY());
-    spider::SPEvent evt("mouseup", args, nullptr);
+    auto *args = new space::SPMouseEventArgs(1, event.GetX(), event.GetY());
+    space::SPEvent evt("mouseup", args, nullptr);
     this->getSpider()->dispatchEvent(
         "mouseup",
         args,
@@ -137,8 +137,8 @@ void SpiderWidget::OnMouseMove(wxMouseEvent& event)
 {
     this->m_mouseX = event.GetX();
     this->m_mouseY = event.GetY();
-    auto *args = new spider::SPMouseEventArgs(0, event.GetX(), event.GetY());
-    spider::SPEvent evt("mousemove", args, nullptr);
+    auto *args = new space::SPMouseEventArgs(0, event.GetX(), event.GetY());
+    space::SPEvent evt("mousemove", args, nullptr);
     this->getSpider()->dispatchEvent(
         "mousemove",
         args,
@@ -163,7 +163,7 @@ void SpiderWidget::OnPaint(wxPaintEvent& event) {
     int width = this->GetSize().GetWidth();
     int height = this->GetSize().GetHeight();
     // draw the widget on a wxDC...
-    spider::platform::wxwidgets::WxWidgetsGraphicsContext* gc = dynamic_cast<spider::platform::wxwidgets::WxWidgetsGraphicsContext *>(this->m_frame->getWindowElement()->createGraphics());
+    space::platform::wxwidgets::WxWidgetsGraphicsContext* gc = dynamic_cast<space::platform::wxwidgets::WxWidgetsGraphicsContext *>(this->m_frame->getWindowElement()->createGraphics());
     gc->setFrame(this->m_frame);
     gc->setWindow(this->GetParent());
     gc->setPaintDC(&dc);

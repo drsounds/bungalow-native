@@ -12,7 +12,7 @@
 #include "SPAppHeaderElement.h"
 #include "SPTreeViewElement.h"
 
-namespace spider {
+namespace space {
     MainElement::MainElement()
     {
 
@@ -79,7 +79,7 @@ namespace spider {
         searchElement->addEventListener("enter", reinterpret_cast<SPCallback>(&MainElement::onSearchEntered), this);
         */
         // Add the info element
-        this->infoElement = new spider::SPInfoElement(this);
+        this->infoElement = new space::SPInfoElement(this);
         this->infoElement->setHeight(28);
         this->appendChild((SPNode *)this->infoElement);
         this->infoElement->setId("Info");
@@ -124,16 +124,16 @@ namespace spider {
 
         // Add viewstack
 
-        this->viewStack = new spider::SPViewStackElement(body);
+        this->viewStack = new space::SPViewStackElement(body);
         this->viewStack->setId("viewstack");
         viewStack->set("bgcolor", "#373737");
         body->appendChild(viewStack);
         viewStack->setIntegerAttribute("flex",1);
         viewStack->setWindow(this->getWindow());
-        viewStack->appendChild(new spider::views::StartView(this));
-        viewStack->appendChild(new spider::views::PlayQueueView(this));
+        viewStack->appendChild(new space::views::StartView(this));
+        viewStack->appendChild(new space::views::PlayQueueView(this));
 
-        auto *footer = new spider::SPHBoxElement(this);
+        auto *footer = new space::SPHBoxElement(this);
         footer->set("bgcolor", "#444444");
         footer->set("height", "86");
         footer->setId("footer");

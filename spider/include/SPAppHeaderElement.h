@@ -2,7 +2,7 @@
 #define APPHEADERELEMENT_H
 #include "SPHBoxElement.h"
 
-namespace spider {
+namespace space {
 class SPAppHeaderElement : public SPHBoxElement
 {
     public:

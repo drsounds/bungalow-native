@@ -2,7 +2,7 @@
 
 #include "SPSkin.h"
 
-namespace spider {
+namespace space {
     void SPGraphicsContext::setOrigo(const int& x, const int& y) {
     }
 

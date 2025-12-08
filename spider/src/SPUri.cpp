@@ -1,6 +1,6 @@
 #include "SPUri.h"
 
-namespace spider {
+namespace space {
    SPUri::SPUri(string uri) {
       this->uri = uri;
    }

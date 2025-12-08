@@ -1,7 +1,7 @@
 #ifndef IMAGEELEMENT_H
 #define IMAGEELEMENT_H
 #include "SPElement.h"
-namespace spider {
+namespace space {
 class SPGraphicsContext;
 class SPImageElement : public SPElement
 {

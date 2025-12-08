@@ -1,7 +1,7 @@
 #ifndef DOCTRINEVIEW_H
 #define DOCTRINEVIEW_H
 #include "../../spider/include/SPContainerViewElement.h"
-namespace spider {
+namespace space {
     class SPElement;
     class SPTextElement;
     namespace views {

@@ -1,7 +1,7 @@
 #include "SPTreeItem.h"
 #include "SPUri.h"
 #include <regex>
-namespace spider {
+namespace space {
     SPTreeItem::SPTreeItem(SPUri *uri) {
         this->highlighted = false;
         this->uri = uri;

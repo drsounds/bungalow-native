@@ -2,7 +2,7 @@
 #include "SPButtonElement.h"
 #include "SPTextElement.h"
 #include <list>
-namespace spider {
+namespace space {
     SPInfoElement::SPInfoElement(SPElement *parent)
      : SPHBoxElement(parent)
     {

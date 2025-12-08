@@ -4,7 +4,7 @@
 #include "SPTextElement.h"
 #include <string>
 using namespace std;
-namespace spider {
+namespace space {
 class SPTitleElement : public SPVBoxElement
 {
     public:

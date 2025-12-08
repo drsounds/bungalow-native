@@ -6,7 +6,7 @@
 
 using namespace std;
 
-namespace spider {
+namespace space {
     SPNode::SPNode() {
         this->children = new vector<SPNode *>();
         this->properties = new map<string, void*>();
@@ -100,7 +100,7 @@ namespace spider {
         }
     }
 
-    void SPNode::appendChild(spider::SPNode *child) {
+    void SPNode::appendChild(space::SPNode *child) {
         vector<SPNode *> *nodes = this->children;
         if (nodes == nullptr) {
             nodes = new vector<SPNode *>();

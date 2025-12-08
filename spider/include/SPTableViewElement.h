@@ -3,7 +3,7 @@
 #include "SPElement.h"
 #include <string>
 using namespace std;
-namespace spider {
+namespace space {
 class SPTableDataSource;
 class SPTableElement : public SPElement
 {

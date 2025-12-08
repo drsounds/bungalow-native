@@ -1,5 +1,5 @@
 #include "SPTableRow.h"
-namespace spider {
+namespace space {
 SPTableRow::SPTableRow(SPTableElement *tableElement)
 {
     this->tableElement = tableElement;

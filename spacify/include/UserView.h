@@ -3,7 +3,7 @@
 #include "SPViewElement.h"
 #include <string>
 using namespace std;
-namespace spider {
+namespace space {
     class SPHeaderElement;
     class SPElement;
     namespace views {

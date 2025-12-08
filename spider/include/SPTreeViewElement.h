@@ -7,7 +7,7 @@
 
 using namespace std;
 
-namespace spider {
+namespace space {
     class SPElement;
     class SPTreeItem;
     class TreeViewEventArgs : public SPEventArgs {

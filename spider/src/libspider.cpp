@@ -3,7 +3,7 @@
 #include <sstream>
 #include <string>
 
-namespace spider {
+namespace space {
 
     int htmlToColor(string str) {
         string str2 = str.substr(1, str.length() -1);

@@ -1,7 +1,7 @@
 #ifndef SPLITTERELEMENT_H
 #define SPLITTERELEMENT_H
 #include "SPElement.h"
-namespace spider {
+namespace space {
 class SPSplitterElement : public SPElement
 {
     public:

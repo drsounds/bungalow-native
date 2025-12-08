@@ -3,7 +3,7 @@
 #include <iostream>
 #include <boost/json.hpp>
 #include <boost/property_tree/json_parser.hpp>
-namespace spider {
+namespace space {
 
 Selector::Selector()
  : SPNode() {

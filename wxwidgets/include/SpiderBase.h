@@ -1,15 +1,15 @@
 #ifndef SPIDERBASE_H
 #define SPIDERBASE_H
 
-namespace spider {
+namespace space {
   class SpiderBase {
   protected:
-    spider::Spider *m_spider;
+    space::Spider *m_spider;
   public:
-    void setSpider(spider::Spider *spider) {
+    void setSpider(space::Spider *spider) {
         this->m_spider = spider;
     }
-    spider::Spider *getSpider() {
+    space::Spider *getSpider() {
         return this->m_spider;
     }
   };

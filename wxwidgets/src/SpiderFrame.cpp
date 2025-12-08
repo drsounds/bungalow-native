@@ -4,7 +4,7 @@
 #include "SPObject.h"
 #include "Spider.h"
 
-SpiderFrame::SpiderFrame(wxApp *app, spider::Spider *spider)
+SpiderFrame::SpiderFrame(wxApp *app, space::Spider *spider)
     : wxFrame(nullptr, wxID_ANY, "Spider", wxDefaultPosition, wxDefaultSize)
 {
     this->m_app = app;

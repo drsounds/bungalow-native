@@ -2,7 +2,7 @@
 #define ARTISTVIEW_H
 #include "SPTabbarViewElement.h"
 
-namespace spider {
+namespace space {
     class SPTabbarViewElement;
     class SPElement;
     class ArtistView : public SPTabbarViewElement

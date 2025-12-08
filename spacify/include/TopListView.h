@@ -2,7 +2,7 @@
 #define TOPLISTVIEW_H
 #include "SPContainerViewElement.h"
 
-namespace spider {
+namespace space {
     class SPElement;
     namespace views {
         class TopListView : public SPContainerViewElement

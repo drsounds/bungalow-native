@@ -1,5 +1,5 @@
 #include "SPResource.h"
-namespace spider {
+namespace space {
 SPResource::SPResource(string uri)
 {
     //ctor

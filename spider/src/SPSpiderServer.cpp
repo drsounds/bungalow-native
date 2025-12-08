@@ -1,5 +1,5 @@
 #include "SPSpiderServer.h"
-namespace spider {
+namespace space {
 SPSpiderServer::SPSpiderServer()
 {
     //ctor

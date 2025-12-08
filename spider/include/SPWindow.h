@@ -5,20 +5,20 @@
 
 #include "SPObject.h"
 
-namespace spider {
+namespace space {
   class Spider;
   class SPSkin;
   class SPElement;
   class SPWindow {
   protected:
-    spider::Spider *m_spider;
+    space::Spider *m_spider;
     SPSkin *m_skin;
     SPElement *m_deepestElement;
   public:
-    spider::Spider *getSpider() {
+    space::Spider *getSpider() {
       return this->m_spider;
     }
-    void setSpider(spider::Spider *value) {
+    void setSpider(space::Spider *value) {
       this->m_spider = value;
     }
     virtual void invalidateRegion(sp_rectangle region) {}

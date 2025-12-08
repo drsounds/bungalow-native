@@ -7,7 +7,7 @@
 #include "SpiderFrame.h"
 #include "SpiderWidget.h"
 
-namespace spider
+namespace space
 {
     namespace platform
     {
@@ -262,7 +262,7 @@ namespace spider
             // Invalidation
             // --------------------------------------------------------------
 
-            void WxWidgetsGraphicsContext::invalidateRegion(spider::sp_rectangle rect)
+            void WxWidgetsGraphicsContext::invalidateRegion(space::sp_rectangle rect)
             {
                 this->m_window->RefreshRect(wxRect(this->origo->x + rect.x, this->origo->y + rect.y, rect.width, rect.height));
             }
@@ -308,10 +308,10 @@ namespace spider
                 drawControl("EDIT", elm, x - this->origo->x , y - this->origo->y, w, h);
             }
 
-            void WxWidgetsGraphicsContext::setFontStyle(spider::SPFontStyle* fs) const
+            void WxWidgetsGraphicsContext::setFontStyle(space::SPFontStyle* fs) const
             {
                 this->getPaintDC()->SetFont(wxFont(fs->getHeight(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
             }
         }
     }
-} // namespace spider
+} // namespace space

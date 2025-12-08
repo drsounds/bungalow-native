@@ -8,7 +8,7 @@
 
 using namespace std;
 
-namespace spider {
+namespace space {
 	class Spider;
 	class SPSkin;
 	struct sp_event;

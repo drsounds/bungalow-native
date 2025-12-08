@@ -9,7 +9,7 @@
 
 #include "SPColor.h"
 
-namespace spider {
+namespace space {
 
 void SPTreeViewElement::treeview_mousedown(SPObject *sender, SPEventArgs *e) {
     SPMouseEventArgs *args = (SPMouseEventArgs *)e;

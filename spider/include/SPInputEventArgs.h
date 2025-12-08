@@ -1,7 +1,7 @@
 #ifndef INPUTEVENTARGS_H
 #define INPUTEVENTARGS_H
 #include "SPEventArgs.h"
-namespace spider {
+namespace space {
 class SPInputEventArgs : public SPEventArgs
 {
     public:

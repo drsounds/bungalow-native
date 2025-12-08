@@ -1,7 +1,7 @@
 #ifndef TREEADAPTER_H
 #define TREEADAPTER_H
 #include "libspider.h"
-namespace spider {
+namespace space {
     template <class T>
 	class SPTreeAdapter {
 	public:

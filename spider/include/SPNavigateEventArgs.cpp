@@ -4,6 +4,6 @@
 
 #include "SPNavigateEventArgs.h"
 
-namespace spider
+namespace space
 {
-} // spider
+} // space

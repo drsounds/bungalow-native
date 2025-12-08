@@ -7,7 +7,7 @@
 
 using namespace std;
 
-namespace spider {
+namespace space {
     class SPElement;
     namespace views {
         class PlayQueueView : public SPContainerViewElement

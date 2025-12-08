@@ -12,7 +12,7 @@
 #include "SPTabBarElement.h"
 #include "SPTableElement.h"
 
-namespace spider {
+namespace space {
 SPSkin::SPSkin()
 {
     //ctor

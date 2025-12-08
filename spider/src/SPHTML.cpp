@@ -1,6 +1,6 @@
 #include "SPHTML.h"
 #include <regex>
-namespace spider {
+namespace space {
 SPHTML::SPHTML(string text)
 {
     //ctor

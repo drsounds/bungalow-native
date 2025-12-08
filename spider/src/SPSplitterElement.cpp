@@ -3,7 +3,7 @@
 #include "SPElement.h"
 #include "SPColor.h"
 
-namespace spider {
+namespace space {
 SPSplitterElement::SPSplitterElement(SPElement *parent)
  : SPElement(parent)
 {

@@ -2,7 +2,7 @@
 #define MOCKTABLEDATASOURCE_H
 #include "SPTableDataSource.h"
 #include <vector>
-namespace spider {
+namespace space {
 class SPTableDataSource;
 class SPMockTableDataSource : public SPTableDataSource
 {

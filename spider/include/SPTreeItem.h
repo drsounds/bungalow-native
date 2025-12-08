@@ -3,7 +3,7 @@
 #include "SPObject.h"
 #include <string>
 using namespace std;
-namespace spider {
+namespace space {
 	class SPUri;
     class SPTreeItem : SPObject {
     protected:

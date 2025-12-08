@@ -3,7 +3,7 @@
 #include "SPTabbarViewElement.h"
 #include <string>
 using namespace std;
-namespace spider {
+namespace space {
     namespace views {
         class StartView : public SPTabbarViewElement
         {

@@ -2,7 +2,7 @@
 #define LINKELEMENT_H
 #include "SPTextElement.h"
 
-namespace spider {
+namespace space {
 class SPElement;
 class SPLinkElement : public SPTextElement
 {

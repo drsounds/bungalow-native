@@ -2,7 +2,7 @@
 
 #include "SPColor.h"
 
-namespace spider {
+namespace space {
 SPTitleElement::SPTitleElement()
 {
     //ctor

@@ -4,7 +4,7 @@
 #include "SPTableDataSource.h"
 
 using namespace std;
-namespace spider {
+namespace space {
     class SPTableRow;
     class SPTableColumnHeader;
 class SPStandardTableDataSource : public SPTableDataSource

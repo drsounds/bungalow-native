@@ -6,7 +6,7 @@
 #include "SPWindowElement.h"
 #include "SPNode.h"
 
-namespace spider {
+namespace space {
 SPBoxElement::SPBoxElement()
  : SPElement()
 {
@@ -39,7 +39,7 @@ void SPBoxElement::pack() {
     if (this->getChildNodes()->size() < 1) {
         return;
     }
-	SPNode *elm = (SPNode *)static_cast<spider::SPNode *>(*this->getChildNodes()->begin());
+	SPNode *elm = (SPNode *)static_cast<space::SPNode *>(*this->getChildNodes()->begin());
 	SPElement *child = (SPElement *)elm;
 	child->setX(0);
 	child->setY(0);

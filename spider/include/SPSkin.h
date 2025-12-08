@@ -12,14 +12,14 @@
 #define SP_MODE_DARK 1
 #define SP_MODE_LIGHT 2
 
-namespace spider
+namespace space
 {
     class SPElement;
     class SPGraphicsContext;
 }
 
 using namespace std;
-namespace spider {
+namespace space {
     struct sp_rectangle;
     class SPImage;
 class SPColor;

@@ -2,7 +2,7 @@
 #define SPCOLOR_H
 #include "SPObject.h"
 #include <string>
-namespace spider {
+namespace space {
     class SPColor : public SPObject {
         short r;
         short g;

@@ -15,7 +15,7 @@
 #include "SPStylesheet.h"
 #include "SPFontStyle.h"
 
-namespace spider {
+namespace space {
 	SPSkin *SPElement::getSkin() const
 	{
 		if (this->m_skin)

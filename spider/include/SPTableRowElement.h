@@ -1,7 +1,7 @@
 #ifndef TABLEROWELEMENT_H
 #define TABLEROWELEMENT_H
 
-namespace spider {
+namespace space {
 class SPTableRowElement
 {
     public:

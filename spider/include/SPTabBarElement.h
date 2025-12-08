@@ -8,7 +8,7 @@
 #include "SPElement.h"
 
 using namespace std;
-namespace spider {
+namespace space {
 class SPElement;
 class SPGraphicsContext;
 class SPImage;

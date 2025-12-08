@@ -1,6 +1,6 @@
 #include "Win32GraphicsContext.h"
 
-namespace spider {
+namespace space {
 WNDPROC oldEditProc;
 map<Element *, HWND> *Win32GraphicsContext::controls = new map<Element *, HWND>;
 map<HWND, Element *> *Win32GraphicsContext::hwnds = new map<HWND, Element *>;
@@ -55,7 +55,7 @@ void Win32GraphicsContext::drawHTMLText(stringhtml, FontStyle *fs, Color *color,
 }
 
 
-void Win32GraphicsContext::invalidateRegion(spider::rectangle rect) {
+void Win32GraphicsContext::invalidateRegion(space::rectangle rect) {
     LPRECT rgn;
     rgn->left = rect.x;
     rgn->right = rect.width + rect.x;
@@ -244,14 +244,14 @@ rectangle Win32GraphicsContext::measureString(stringtext, FontStyle *fs) {
     SelectObject(this->hDC, font);
     GetTextExtentPoint32(this->hDC, (string)text, len, &sizeText);
     DeleteObject(font);
-    spider::rectangle rect;
+    space::rectangle rect;
     rect.width = sizeText.cx;
     rect.height = sizeText.cy;
     rect.x = 0;
     rect.y = 0;
     return rect;
 }
-void Win32GraphicsContext::drawString(stringtext, FontStyle *fs, spider::Color *color, int x, int y, int w, int h) {
+void Win32GraphicsContext::drawString(stringtext, FontStyle *fs, space::Color *color, int x, int y, int w, int h) {
 #define CLEARTYPE_QUALITY 0x05
 #define ANTIALIASED_QUALITY 0x04
     if (color == NULL) {

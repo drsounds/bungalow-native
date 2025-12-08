@@ -7,7 +7,7 @@
 #include "SPSkin.h"
 #include "SPGraphicsContext.h"
 
-namespace spider {
+namespace space {
 
 SPTab::SPTab(SPTabBarElement *tabBar, string name, string id, string uri) {
     this->tabBar = tabBar;

@@ -1,5 +1,5 @@
 #include "SPAppHeaderElement.h"
-namespace spider {
+namespace space {
 SPAppHeaderElement::SPAppHeaderElement(SPElement *parent) : SPHBoxElement(parent)
 {
    this->generateAndSetDefaultGradient();

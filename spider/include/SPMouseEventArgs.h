@@ -1,7 +1,7 @@
 #ifndef MOUSEEVENT_H
 #define MOUSEEVENT_H
 #include "SPEventArgs.h"
-namespace spider {
+namespace space {
 class SPMouseEventArgs : public SPEventArgs {
     int button;
     int x;

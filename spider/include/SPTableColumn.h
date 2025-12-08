@@ -1,7 +1,7 @@
 #ifndef TABLEVIEWCOLUMN_H
 #define TABLEVIEWCOLUMN_H
 
-namespace spider {
+namespace space {
 class SPTableColumn
 {
     public:

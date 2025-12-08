@@ -2,7 +2,7 @@
 #define INPUTELEMENT_H
 #include "SPElement.h"
 #include "SPGraphicsContext.h"
-namespace spider {
+namespace space {
 class SPInputElement : public SPElement
 {
 private:

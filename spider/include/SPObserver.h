@@ -2,7 +2,7 @@
 #define OBSERVER_H
 #include "libspider.h"
 
-namespace spider {
+namespace space {
     class SPNode;
     class SPObserver {
         string m_event;

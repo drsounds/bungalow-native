@@ -1,7 +1,7 @@
 #ifndef HEADERELEMENT_H
 #define HEADERELEMENT_H
 #include "SPHBoxElement.h"
-namespace spider {
+namespace space {
     class SPImageElement;
     class SPElement;
     class SPTitleElement;

@@ -1,7 +1,7 @@
 #ifndef FLOWELEMENT_H
 #define FLOWELEMENT_H
 #include "SPElement.h"
-namespace spider {
+namespace space {
 class SPFlowElement : public SPElement
 {
     public:

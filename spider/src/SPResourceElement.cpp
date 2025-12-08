@@ -4,7 +4,7 @@
 #include "SPResource.h"
 #include <regex>
 
-namespace spider {
+namespace space {
     SPResourceElement::SPResourceElement(SPResource *resource, SPElement *parent)
      : SPElement(parent)
     {

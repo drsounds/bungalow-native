@@ -2,7 +2,7 @@
 #define RESOURCEELEMENT_H
 
 #include "SPElement.h"
-namespace spider {
+namespace space {
     class SPResource;
 class SPResourceElement : public SPElement
 {

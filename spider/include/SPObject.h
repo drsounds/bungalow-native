@@ -2,7 +2,7 @@
 #define SPTYPE_H
 #include <string>
 using namespace std;
-namespace spider {
+namespace space {
     class Spider;
     class SPObject {
     public:

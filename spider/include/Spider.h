@@ -13,7 +13,7 @@
 
 using namespace std;
 
-namespace spider
+namespace space
 {
     class SPWindowElement;
     class SPEvent;

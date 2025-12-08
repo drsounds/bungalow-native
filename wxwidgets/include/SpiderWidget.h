@@ -14,7 +14,7 @@ enum MySpecialWidgetStyles
 
     SWS_DEFAULT_STYLE = (SWS_SHOW_BUTTON|SWS_LOOK_SERIOUS)
 };
-namespace spider
+namespace space
 {
     class Spider;
     class SPWindowElement;
@@ -22,7 +22,7 @@ namespace spider
 class SpiderFrame;
 class SpiderWidget : public wxControl
 {
-    spider::Spider *m_spider;
+    space::Spider *m_spider;
     SpiderFrame* m_frame;
 
     int m_mouseX = 0;
@@ -33,10 +33,10 @@ class SpiderWidget : public wxControl
     void OnPaint(wxPaintEvent&);
 
 public:
-    void setSpider(spider::Spider *spider) {
+    void setSpider(space::Spider *spider) {
         this->m_spider = spider;
     }
-    spider::Spider *getSpider() {
+    space::Spider *getSpider() {
         return this->m_spider;
     }
     wxDECLARE_DYNAMIC_CLASS(SpiderWidget);

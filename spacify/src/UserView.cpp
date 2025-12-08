@@ -7,7 +7,7 @@
 #include "SPTitleElement.h"
 
 using namespace std;
-namespace spider {
+namespace space {
     namespace views {
 
         UserView::UserView(SPElement *parent)
@@ -16,7 +16,7 @@ namespace spider {
             this->getPadding()->top = 0;
             this->getPadding()->left = 0;
             //ctor
-            header = new spider::SPHeaderElement(this);
+            header = new space::SPHeaderElement(this);
             header->title->setTitle("Title");
             header->title->setEntity("User");
             header->set("width", "100%");

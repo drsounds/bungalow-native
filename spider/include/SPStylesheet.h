@@ -6,7 +6,7 @@
 #endif
 #include <boost/property_tree/ptree.hpp>
 #include <string>
-namespace spider {
+namespace space {
 class SPStylesheet;
 
 class Selector : SPNode {

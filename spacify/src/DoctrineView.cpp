@@ -10,7 +10,7 @@
 
 using namespace std;
 
-namespace spider {
+namespace space {
     namespace views {
         DoctrineView::DoctrineView(SPElement *parent)
          : SPContainerViewElement(parent)

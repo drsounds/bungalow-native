@@ -2,7 +2,7 @@
 #define TABLECELL_H
 #include <string>
 using namespace std;
-namespace spider {
+namespace space {
     class SPTableRow;
     class SPTableElement;
 class SPTableCell

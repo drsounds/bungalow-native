@@ -5,7 +5,7 @@
 #include "SPTabBarElement.h"
 #include "SPViewStackElement.h"
 
-namespace spider {
+namespace space {
     int SPTabbarViewElement::onTabSelected(SPObject *sender, SPEventArgs *e) {
         TabBarEventArgs *args = (TabBarEventArgs *)e;
         string uri = args->tab->getUri();

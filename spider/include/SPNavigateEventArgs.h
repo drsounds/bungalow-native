@@ -5,11 +5,11 @@
 #ifndef SPACIFYCLIENT_SPNAVIGATEEVENTARGS_H
 #define SPACIFYCLIENT_SPNAVIGATEEVENTARGS_H
 
-namespace spider
+namespace space
 {
     class SPNavigateEventArgs
     {
     };
-} // spider
+} // space
 
 #endif //SPACIFYCLIENT_SPNAVIGATEEVENTARGS_H

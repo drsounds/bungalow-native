@@ -4,7 +4,7 @@
 #include <vector>
 using namespace std;
 
-namespace spider {
+namespace space {
 class SPTableCell;
 class SPTableDataSource
 {

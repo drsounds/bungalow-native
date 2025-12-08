@@ -6,7 +6,7 @@
 
 using namespace std;
 
-namespace spider {
+namespace space {
 class SPTableDataSource;
 class SPTableRow;
 class SPTableColumnHeader;

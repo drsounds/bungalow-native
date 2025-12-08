@@ -5,7 +5,7 @@
 
 class SpiderFrame;
 
-namespace spider
+namespace space
 {
     class Spider;
     class SPWindowElement;
@@ -16,10 +16,10 @@ namespace spider
 class SpacifyApp : public wxApp
 {
 protected:
-    spider::Spider* m_spider;
-    spider::SPWindowElement *m_windowElement;
+    space::Spider* m_spider;
+    space::SPWindowElement *m_windowElement;
     SpiderFrame* m_frame;
-    spider::MainElement* m_main;
+    space::MainElement* m_main;
 public:
     virtual bool OnInit() override;
 };

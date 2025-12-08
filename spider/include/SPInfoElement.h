@@ -3,7 +3,7 @@
 #include "SPHBoxElement.h"
 #include "SPMessageType.h"
 
-namespace spider {
+namespace space {
 class SPTextElement;
 class SPButtonElement;
 class SPInfoElement : public SPHBoxElement

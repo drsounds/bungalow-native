@@ -1,5 +1,5 @@
 #include "SPTableRowElement.h"
-namespace spider {
+namespace space {
 SPTableRowElement::SPTableRowElement()
 {
     //ctor

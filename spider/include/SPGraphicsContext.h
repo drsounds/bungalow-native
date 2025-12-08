@@ -12,7 +12,7 @@
 
 using namespace std;
 
-namespace spider {  
+namespace space {
 	class SPWindowElement;
 	class SPColor;
 	class SPFontStyle;
@@ -49,7 +49,7 @@ namespace spider {
 		virtual int getWidth() { return 0; }
 		virtual int getHeight() { return 0; }
 		virtual void declipRect() { }
-		void setFontStyle(spider::SPFontStyle *fs) {
+		void setFontStyle(space::SPFontStyle *fs) {
 			this->fontStyle = fs;
 		}
 		SPFontStyle *getFontStyle() const {

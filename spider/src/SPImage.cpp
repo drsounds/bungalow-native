@@ -4,7 +4,7 @@
 #include <cstdlib>
 using namespace std;
 
-namespace spider {
+namespace space {
 SPColor *spider_pixel_to_colour(pixel *pixel) {
     return new SPColor(pixel->r, pixel->g, pixel->b, pixel->a);
 }

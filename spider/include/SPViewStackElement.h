@@ -4,7 +4,7 @@
 #include <stack>
 #include <string>
 using namespace std;
-namespace spider {
+namespace space {
     class SPElement;
     class SPViewElement;
     class SPViewStackElement : public SPVBoxElement {

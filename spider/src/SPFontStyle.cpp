@@ -1,5 +1,5 @@
 #include "SPFontStyle.h"
 
-namespace spider {
+namespace space {
 
 }

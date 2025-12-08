@@ -1,5 +1,5 @@
 #include "SPTableColumnHeader.h"
-namespace spider {
+namespace space {
 SPTableColumnHeader::SPTableColumnHeader(SPTableElement *tableElement)
 {
     //ctor

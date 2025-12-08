@@ -4,7 +4,7 @@
 #include "SPGraphicsContext.h"
 #include "SPTableDataSource.h"
 
-namespace spider {
+namespace space {
     SPTableElement::SPTableElement()
     {
         //ctor

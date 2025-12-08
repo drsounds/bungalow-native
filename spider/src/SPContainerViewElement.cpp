@@ -1,5 +1,5 @@
 #include "SPContainerViewElement.h"
-namespace spider {
+namespace space {
     SPContainerViewElement::SPContainerViewElement(SPElement *parent)
     : SPViewElement(parent)
     {

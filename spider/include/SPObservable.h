@@ -6,7 +6,7 @@
 #include <list>
 #include <string>
 using namespace std;
-namespace spider {
+namespace space {
     class SPElement;
     class SPEventArgs;
     class SPObserver;

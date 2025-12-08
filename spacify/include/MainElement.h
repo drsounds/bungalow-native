@@ -8,7 +8,7 @@
 #include "libspider.h"
 
 
-namespace spider {
+namespace space {
     class SPWindow;
     class SPViewStackElement;
     class SPTreeViewElement;

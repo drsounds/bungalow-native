@@ -1,6 +1,6 @@
 #include "SPEventArgs.h"
 
-namespace spider {
+namespace space {
 SPEventArgs::SPEventArgs()
 {
     //ctor

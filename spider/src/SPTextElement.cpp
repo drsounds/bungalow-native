@@ -5,7 +5,7 @@
 #include "SPFontStyle.h"
 #include "SPColor.h"
 
-namespace spider {
+namespace space {
 SPTextElement::SPTextElement(SPElement *parent)
  : SPElement(parent)
 {

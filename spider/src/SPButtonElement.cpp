@@ -1,7 +1,7 @@
 #include "SPButtonElement.h"
 #include "SPGraphicsContext.h"
 #include "SPColor.h"
-void spider::SPButtonElement::draw(int x, int y, SPGraphicsContext *c)
+void space::SPButtonElement::draw(int x, int y, SPGraphicsContext *c)
 {
     if (this->absoluteBounds == nullptr)
     this->absoluteBounds = new sp_rectangle;
@@ -19,9 +19,9 @@ void spider::SPButtonElement::draw(int x, int y, SPGraphicsContext *c)
 	c->drawLinearGradient(sp_rectangle { x, y, this->getWidth(), this->getHeight() }, gradient);
 	
     if(!this->getInnerText().empty()) {
-        spider::SPFontStyle fontStyle = SPFontStyle(fontFamily, fontSize, false, false, false);
+        space::SPFontStyle fontStyle = SPFontStyle(fontFamily, fontSize, false, false, false);
 		string text = this->getInnerText();
-		spider::sp_rectangle tSize = c->measureString(text, fontStyle);
+		space::sp_rectangle tSize = c->measureString(text, fontStyle);
 		int x = (this->getWidth() / 2) - (tSize.width / 2) + this->absoluteBounds->x;
 		int y = (this->getHeight() / 2) - (tSize.height / 2) + this->absoluteBounds->y;
 

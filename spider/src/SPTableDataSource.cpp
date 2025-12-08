@@ -1,6 +1,6 @@
 #include "SPTableDataSource.h"
 
-namespace spider {
+namespace space {
 SPTableDataSource::SPTableDataSource()
 {
     //ctor

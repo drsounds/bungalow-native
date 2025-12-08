@@ -1,5 +1,5 @@
 #include "SPInputElement.h"
-namespace spider {
+namespace space {
 SPInputElement::SPInputElement()
 {
     //ctor

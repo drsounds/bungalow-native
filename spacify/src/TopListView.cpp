@@ -4,7 +4,7 @@
 #include "SPMockTableDataSource.h"
 #include "SPVBoxElement.h"
 #include <regex>
-namespace spider {
+namespace space {
     namespace views {
         TopListView::TopListView() :
             SPContainerViewElement::SPContainerViewElement() {

@@ -4,7 +4,7 @@
 
 string RGBToHex(int rNum, int gNum, int bNum);
 
-namespace spider {
+namespace space {
 	class SPColor;
 	class SPGraphicsContext;
 	class SPButtonElement : public SPElement {

@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-namespace spider {
+namespace space {
    typedef void (*spider_server_reply)(int code, string data);
 class SPServer
 {

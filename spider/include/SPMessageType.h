@@ -5,7 +5,7 @@
 #ifndef LIBSPACIFY_MESSAGETYPE_H
 #define LIBSPACIFY_MESSAGETYPE_H
 
-namespace spider {
+namespace space {
     enum SPMessageType {
         Info, Warning, Error, Message
     };

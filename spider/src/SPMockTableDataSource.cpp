@@ -8,7 +8,7 @@ template < typename T > std::string to_string( const T& n )
     stm << n ;
     return stm.str() ;
 }
-namespace spider {
+namespace space {
 
 
 vector<int> SPMockTableDataSource::getSelectedIndexes() {

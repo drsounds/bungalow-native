@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 using namespace std;
-namespace spider {
+namespace space {
     class Spider;
     class SPColor;
     class SPNode : public SPObject {
@@ -19,12 +19,12 @@ namespace spider {
         map<string, int> *integerAttributes;
         SPNode *m_parent;
         SPWindow *m_window;
-        spider::Spider *m_spider;
+        space::Spider *m_spider;
     public:
-        void setSpider(spider::Spider *spider) {
+        void setSpider(space::Spider *spider) {
             this->m_spider = spider;
         }
-        spider::Spider *getSpider() {
+        space::Spider *getSpider() {
             return this->m_spider;
         }
         std::vector<SPNode *> *children;

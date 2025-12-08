@@ -4,7 +4,7 @@
 #include "SPElement.h"
 #include "SPViewElement.h"
 
-namespace spider {
+namespace space {
 ArtistOverView::ArtistOverView(SPElement *parent)
  : SPViewElement(parent)
 {

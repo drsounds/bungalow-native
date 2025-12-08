@@ -2,7 +2,7 @@
 #define CONTAINERVIEWELEMENT_H
 #include "SPViewElement.h"
 
-namespace spider {
+namespace space {
     class SPElement;
     class SPContainerViewElement : public SPViewElement
     {
