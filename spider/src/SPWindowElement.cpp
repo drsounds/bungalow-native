@@ -33,6 +33,7 @@ namespace spider
         }
     }
     void SPWindowElement::navigate(const string& uri) {
+        SPNavigateEventArgs *args = new SPNavigateEventArgs(uri);
         this->dispatchEvent("navigate", nullptr, this);
     }
     void SPWindowElement::pack() {

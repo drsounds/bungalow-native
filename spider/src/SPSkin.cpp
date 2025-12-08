@@ -107,7 +107,7 @@ bool SPSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const string& sta
         auto *treeView = dynamic_cast<SPTreeViewElement *>(elm);
         auto width = treeView->getWidth();
         auto height = treeView->getHeight();
-        bgColor = SPColor(20, 20, 20, 255);
+        bgColor = SPColor(88, 88, 88, 255);
         fgColor = SPColor(0, 0, 0, 255);
         SPGradient gradient(
             bgColor.lighten(0.5), bgColor.lighten(0),
