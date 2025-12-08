@@ -25,3 +25,12 @@ Instead of apps based on massive JetPack, Swifr or HTML5, it will be defined in 
 </features>
 </app>
 ````
+
+Or in YAML
+
+````yaml
+app:
+  - title: Test
+  features:
+    start:
+````
