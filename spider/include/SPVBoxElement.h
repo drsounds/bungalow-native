@@ -1,6 +1,6 @@
 #ifndef VBOXELEMENT_H
 #define VBOXELEMENT_H
-#include "SPBoxElement.h"
+#include "SPElement.h"
 
 #include "SPWindow.h"
 
@@ -9,13 +9,12 @@ using namespace std;
 namespace spider {
 	class SPElement;
 	class SPWindow;
-	class SPVBoxElement : public SPBoxElement {
+	class SPVBoxElement : public SPElement {
 
 	public:
-		SPVBoxElement(SPElement *parent) : SPBoxElement(parent) {}
-		SPVBoxElement(SPElement *parent, SPWindow *window) : SPBoxElement(parent, window) {}
-		SPVBoxElement();
-		explicit SPVBoxElement(SPWindowElement* parent);
+		explicit SPVBoxElement(SPElement *parent) : SPElement(parent) {}
+		SPVBoxElement(SPElement *parent, SPWindow *window) : SPElement(parent, window) {}
+		SPVBoxElement() {}
 
 		virtual string getType() {
 			return "vbox";

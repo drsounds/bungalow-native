@@ -31,8 +31,8 @@ namespace spider {
         void treeview_mousedown(SPObject* sender, SPEventArgs* e);
         void treeview_mouseup(SPObject* sender, SPEventArgs* e);
         explicit SPTreeViewElement(SPElement *parent);
-        virtual string getType() {
-            return "tree";
+        virtual string getType() override {
+            return "treeview";
         }
 		void paint(int x, int y, int width, int height, SPGraphicsContext *g) override;
         vector<SPTreeItem *> *items() {

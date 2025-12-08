@@ -28,11 +28,11 @@ namespace spider {
         this->tabBar = new SPTabBarElement(parent);
         this->viewStack = new SPViewStackElement(parent);
         this->appendChild(this->tabBar);
-        this->tabBar->setHeight(20);
-        this->tabBar->set("height", "20");
+        this->tabBar->setHeight(35);
         this->tabBar->addEventListener(string("tabselected"), SPCallback(&SPTabbarViewElement::onTabSelected), this);
-        this->viewStack->set("flex", "2");
+        this->viewStack->setIntegerAttribute("flex", 1);
         this->appendChild(this->viewStack);
+        this->pack();
     }
     bool SPTabbarViewElement::acceptsUri(string uri) {
         return false;

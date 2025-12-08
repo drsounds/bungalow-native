@@ -123,6 +123,7 @@ namespace spider
                                    color.getG(),
                                    color.getB()), 1);
                 this->getPaintDC()->SetPen(pen);
+                this->getPaintDC()->DrawLine(x1 - this->origo->x, y1 - this->origo->y, x2 - this->origo->x, y2 - this->origo->y);
             }
 
             void WxWidgetsGraphicsContext::drawRectangle(int x, int y,
@@ -304,7 +305,7 @@ namespace spider
                                                      int x, int y,
                                                      int w, int h)
             {
-                drawControl("EDIT", elm, x - this->origo->x , y - this->origo->y - y, w, h);
+                drawControl("EDIT", elm, x - this->origo->x , y - this->origo->y, w, h);
             }
 
             void WxWidgetsGraphicsContext::setFontStyle(spider::SPFontStyle* fs) const

@@ -2,14 +2,12 @@
 
 #include <iostream>
 
-namespace spider {
-    SPHBoxElement::SPHBoxElement()
-    {
-        //ctor
-    }
+#include "SPElement.h"
 
+
+namespace spider {
     void SPHBoxElement::pack() {
-        int height = this->getHeight();
+        SPElement::pack();
         int flexes = 0;
         int statics = 0;
         int leftWidth = 0;
@@ -35,17 +33,14 @@ namespace spider {
         }
 
         int flexWidth = flexes > 0 ? (this->getWidth() - leftWidth - rightWidth) / flexes : 0;
-        float flex = 1;
         for(std::vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
             SPElement *child = (SPElement *)*it;
-            if(child->getIntegerAttribute("flex", 0 ) > 0) {
-        //		child->setWidth((flex / flexes) * flexWidth);
-            //	flex = (int)child->getAttribute("flex");
-                child->setWidth((1 / flexes) * flexWidth);
+            int flex = child->getIntegerAttribute("flex", 0);
+            if(flex > 0) {
+            	child->setWidth((flex / flexes) * flexWidth);
             } else {
                 statics++;
             }
-            child->setWidth(child->getWidth());
         }
 
         // Now assign elements
@@ -74,8 +69,8 @@ namespace spider {
             child->setY(this->getPadding()->top + child->getMargins()->top);
 
             child->setHeight(this->getHeight() - (this->getPadding()->bottom * 2 + child->getMargins()->bottom * 2));
-            cout << "SPHBoxElement height: " << this->getHeight() << endl;
-            cout << "SPHBoxElement Child: " << child->getType() << " Height: " << this->getHeight() << endl;
+            //cout << "SPHBoxElement height: " << this->getHeight() << endl;
+            //cout << "SPHBoxElement Child: " << child->getType() << " Height: " << this->getHeight() << endl;
             switch(side) {
                 case -1:
                     left += child->getWidth();
@@ -97,7 +92,7 @@ namespace spider {
                 continue;
             child->pack();
         }
-
+        cout << "Element: " << this->getType() << " packed to width: " << this->getWidth() << " height: " << this->getHeight() << " flex: " << this->getIntegerAttribute("flex", 0) << endl;
     };
 
 }

@@ -181,7 +181,7 @@ namespace spider {
         void set(const std::string& title, const std::string& val) override;
         string getId();
         void setId(string id);
-        virtual void pack() {}
+        virtual void pack();
 
     };
 }

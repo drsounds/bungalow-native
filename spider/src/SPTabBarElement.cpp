@@ -113,19 +113,15 @@ void SPTabBarElement::mouseDown(int mouseButton, int x, int y) {
     tabBar->invalidate();
 }
 #define spacify2009 true
-void SPTabBarElement::draw(int x, int y, SPGraphicsContext *g) {
-    SPElement::draw(x, y, g);
-    if (this->absoluteBounds == NULL)
-        this->absoluteBounds = new sp_rectangle;
-
-    this->absoluteBounds->x = x;
-    this->absoluteBounds->y = y;
-    this->absoluteBounds->width = this->getWidth();
-    this->absoluteBounds->height = this->getHeight();
-
+void SPTabBarElement::paint(int x, int y, int width, int height, SPGraphicsContext *g) {
     SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(0, 0, 0, 1));
 
-    this->getSkin()->drawTabBar(g, this, x, y, this->getWidth(), this->getHeight(), bgColor, g);
+    if (width < 1)
+    {
+        throw "width must be greater than 0";
+    }
+
+    this->getSkin()->drawTabBar(g, this, x, y, width, height, bgColor, g);
 
     int left = 0;
     std::vector<SPTab *>::iterator it = this->getTabs()->begin();
@@ -138,9 +134,9 @@ void SPTabBarElement::draw(int x, int y, SPGraphicsContext *g) {
         string id = tab->getId();
         sp_rectangle strSize = g->measureString(title.c_str(), this->getFontStyle());
         int width = 100;// 20 + strSize.width + 20;
-        this->getSkin()->drawTabBarTab(this->activeTab == tab, x + left, y, width, this->getHeight(), fgColor, bgColor, g);
+        this->getSkin()->drawTabBarTab(this->activeTab == tab, x + left, y, width, height, fgColor, bgColor, g);
 
-        g->drawString(title.c_str(), this->getFontStyle(), fgColor, left + x + 20, y + (this->getHeight() / 2) - (strSize.height / 2), strSize.width, strSize.height);
+        g->drawString(title.c_str(), this->getFontStyle(), fgColor, left + x + 20, y + 5, strSize.width, strSize.height);
         left += width;
         ++it;
     } while (it != this->getTabs()->end());

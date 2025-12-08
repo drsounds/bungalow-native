@@ -50,7 +50,7 @@ namespace spider {
             string type = view->getType();
             view->set("flex", "1");
             view->setWidth(this->getWidth() - (view->getMargins()->bottom * 2 + this->getPadding()->bottom * 2));
-            cout << "View of type: " << type << endl;
+            // cout << "View of type: " << type << endl;
             if (view->absoluteBounds != NULL && this->absoluteBounds != NULL) {
                 view->absoluteBounds->height = this->absoluteBounds->height;
                 view->absoluteBounds->width = this->absoluteBounds->width;

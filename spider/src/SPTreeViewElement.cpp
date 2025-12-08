@@ -99,7 +99,7 @@ int SPTreeViewElement::getItemHeight() {
 void SPTreeViewElement::paint(int x, int y, int width, int height, SPGraphicsContext *g)
 {
 	if (!this->getSkin()->drawElement(g, this, "", sp_rectangle { x, y, height, height, 0 }, SPColor(127, 127, 127, 1), 0)) {
-		g->fillRectangle(x, y, this->getWidth(), this->getHeight(), this->getWindow()->getSkin()->getColor("treeview.background.color", ""));
+		g->fillRectangle(x, y, width, height, this->getWindow()->getSkin()->getColor("treeview.background.color", ""));
 	}
 	SPColor color = this->getForegroundColor();
 	int itemHeight = this->getItemHeight();

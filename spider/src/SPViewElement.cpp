@@ -39,12 +39,10 @@ std::string SPViewElement::loadView(std::string view) {
 
 void SPViewElement::pack() {
     SPVBoxElement::pack();
-    /*for(std::vector<Node *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
-        Element *child = (Element *)*it;
+    for(std::vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
+        SPElement *child = (SPElement *)*it;
         child->setWidth(this->getWidth());
-
-        child->setHeight(this->getHeight());
-    }*/
+    }
 }
 
 SPViewElement::SPViewElement(SPElement *parent)

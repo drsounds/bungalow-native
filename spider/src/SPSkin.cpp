@@ -117,7 +117,7 @@ bool SPSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const string& sta
         {
             gradient = SPGradient(SPColor(0, 0, 0, 1), SPColor(10, 10, 10, 0), 0);
         }
-        g->fillRectangle(bounds.x, bounds.y, bounds.width, bounds.height, bgColor);
+        //g->fillRectangle(bounds.x, bounds.y, bounds.width, bounds.height, bgColor);
     }
     return result;
 }
@@ -142,30 +142,35 @@ void SPSkin::drawTableHeader(SPGraphicsContext* g, SPTableElement *table, int x,
 }
 
 void SPSkin::drawTabBarTab(bool active, int x, int y, int width, int height, const SPColor& sp_color,
-    const SPColor& bg_color, SPGraphicsContext* sp_graphics_context)
+    const SPColor& bg_color, SPGraphicsContext* g)
 {
 
     if (active)
     {
-        sp_graphics_context->fillRectangle(0, y, width, height, bg_color);
+        g->fillRectangle(0, y, width, height, bg_color);
     }
     else
     {
-        SPGradient gradient(bg_color.lighten(-0.8), bg_color.lighten(-0.9), 0);
-        sp_graphics_context->drawLinearGradient({x, y, width, height }, gradient);
+        SPGradient gradient(bg_color.lighten(0.5), bg_color, 0);
+        g->drawLinearGradient({x, y, width, height }, gradient);
     }
+    g->drawLine(x, y, x + width, y, SPColor(80, 80, 80, 255));
+    g->drawLine(x + width, y + 1, x + width, y + height, SPColor(128, 128, 128, 255));
+    g->drawLine(x + width - 1, y + 1, x + width - 1, y + height, SPColor(0, 0, 0, 255));
 }
 
-void SPSkin::drawTabBar(SPGraphicsContext* g, SPTabBarElement* tabbar, int x, int y, int,
-    int get_height, const SPColor& sp_color, SPGraphicsContext* sp_graphics_context1)
+void SPSkin::drawTabBar(SPGraphicsContext* g, SPTabBarElement* tabbar, int x, int y, int width,
+    int height, const SPColor& sp_color, SPGraphicsContext* sp_graphics_context1)
 {
-    SPColor bgColor = tabbar->getBackgroundColor();
+    SPColor bgColor = SPColor(127, 127, 127, 255);
     SPGradient gradient(
-        bgColor.lighten(-0.8), bgColor.lighten(-0.9),
+        bgColor.lighten(-0.1), bgColor.lighten(-0.3),
         0
     );
-
-    g->drawLinearGradient(sp_rectangle {x, y, tabbar->getWidth(), tabbar->getHeight()}, SPGradient(SPColor(0, 0, 0, 1), SPColor(10, 10, 10, 0), 0));
+    g->drawLinearGradient(sp_rectangle {x, y, width, height}, gradient);
+    g->drawLine(x, y, x + width, y, SPColor(80, 80, 80, 255));
+    g->drawLine(x, y + 1, x + width, y + 1, SPColor(128, 128, 128, 255));
+    g->drawLine(x, y + height, x + width, y + height, SPColor(0, 0, 0, 255));
 }
 
 void SPSkin::drawTreeItem(SPGraphicsContext* g, int itemHeight, SPTreeViewElement *treeView, SPTreeItem* item, int x, int y, int width, int height)

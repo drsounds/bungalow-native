@@ -459,14 +459,19 @@ namespace spider {
 		SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 1));
 		int fontSize = this->getIntegerAttribute("size", 12);
 		string fontFamily = this->getStringAttribute("font", "MS Sans Serif");
-		c->drawRectangle(x, y, width, height, SPColor(255, 0, 0, 1));
+		/*c->drawRectangle(rect2.x, rect2.y, width, height, SPColor(255, 0, 0, 1));
 		c->drawString(this->getType(), SPFontStyle(fontFamily, fontSize, fontSize / 2, false, false), fgColor, rect2.x, rect2.y, this->getWidth(), this->getHeight());
 		const string strLoc = "type=" + this->getType() + "&x=" + std::to_string(x) + "&y=" + std::to_string(y) + "&width=" + std::to_string(width) + "&height=" + std::to_string(height) + "&flex=" + std::to_string(this->getIntegerAttribute("flex", 0));
 		c->drawString(strLoc, SPFontStyle(fontFamily, fontSize, fontSize / 2, false, false), SPColor(0, 0, 255, 1), rect2.x + (rect2.width / 2), rect2.y + (rect2.height / 2), this->getWidth(), this->getHeight());
-
+*/
 		if (clipView) {
 	        c->declipRect();
 		}
+	}
+
+	void SPElement::pack()
+	{
+		cout << "Element: " << this->getType() << "#" << this->getId() << " packed to width: " << this->getWidth() << " height: " << this->getHeight() << " flex: " << this->getIntegerAttribute("flex", 0) << endl;
 	}
 
 	void SPElement::resize(int width, int height)
@@ -475,6 +480,7 @@ namespace spider {
 		this->m_height = height;
 		this->invalidate();
 		this->pack();
+		cout << "Element: " << this->getType() << "#" << this->getId() << " resized to width: " << width << " height: " << height << " flex: " << this->getIntegerAttribute("flex", 0) << endl;
 	}
 
 	void SPElement::scroll(int scrollX, int scrollY, int x, int y) {

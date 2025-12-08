@@ -3,17 +3,9 @@
 #include <iostream>
 
 namespace spider {
-    SPVBoxElement::SPVBoxElement()
-    {
-    }
-
-    SPVBoxElement::SPVBoxElement(SPWindowElement* parent) : SPBoxElement((SPElement *)parent)
-    {
-    }
-
 
     void spider::SPVBoxElement::pack() {
-        int width = this->getWidth();
+        SPElement::pack();
         int flexes = 0;
         int statics = 0;
         int topHeight = 0;
@@ -47,10 +39,9 @@ namespace spider {
             SPElement *child = (SPElement *)*it;
              if (!child->isVisible())
                 continue;
-            if(child->getIntegerAttribute("flex", 0) > 0) {
-        //		child->setWidth((flex / flexes) * flexWidth);
-            //	flex = (int)child->getAttribute("flex");
-                child->setHeight((1 / flexes) * flexHeight);
+            int flex = child->getIntegerAttribute("flex", 0);
+            if(flex > 0) {
+            	child->setHeight((1 / flexes) * flexHeight);
             } else {
                 statics++;
             }
@@ -82,10 +73,9 @@ namespace spider {
             } else if(side > 0)
                 child->setY(topHeight + flexHeight + bottom + child->getPadding()->top + child->getMargins()->top);
 
-
             child->setWidth(this->getWidth() - (child->getMargins()->bottom * 2 + this->getPadding()->bottom * 2));
-            cout << "SPHBoxElement width: " << this->getHeight() << endl;
-            cout << "VBoxElement Child: " << child->getType() << "Width: " << this->getWidth() << endl;
+            //cout << "SPHBoxElement width: " << this->getHeight() << endl;
+            //cout << "VBoxElement Child: " << child->getType() << "Width: " << this->getWidth() << endl;
 
             switch(side) {
                 case -1:
@@ -102,8 +92,6 @@ namespace spider {
             }
         }
 
-
-
         // Pack child elements
         for(std::vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
             SPElement *child = (SPElement *)*it;
@@ -111,6 +99,7 @@ namespace spider {
                 continue;
             child->pack();
         }
+        cout << "VBoxElement#" << this->getId() << " packed to width: " << this->getWidth() << " height: " << this->getHeight() << endl;
 
     };
 }

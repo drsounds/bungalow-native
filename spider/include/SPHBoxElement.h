@@ -2,16 +2,15 @@
 #define HBOXELEMENT_H
 #include "SPElement.h"
 namespace spider {
+    class SPElement;
     class SPHBoxElement : public SPElement {
 
     public:
-        SPHBoxElement(SPElement *parent) : SPElement(parent) {
-
-        }
+        explicit SPHBoxElement(SPElement *parent): SPElement(parent) {}
         virtual string getType() {
             return "hbox";
         }
-        SPHBoxElement();
+        SPHBoxElement() {}
         void pack();
     };
 }

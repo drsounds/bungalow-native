@@ -52,9 +52,9 @@ class SPTabBarElement : public SPElement
         SPTabBarElement();
         SPTabBarElement(SPElement *parent);
         void addTab(string id, string name, string uri);
+        void paint(int x, int y, int width, int height, SPGraphicsContext* c) override;
         virtual ~SPTabBarElement();
         void mouseDown(int mouseButton, int x, int y);
-        void draw(int x, int y, SPGraphicsContext *g);
         vector<SPTab *> *getTabs() {
             return this->tabs;
         }
