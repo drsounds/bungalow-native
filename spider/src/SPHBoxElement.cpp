@@ -33,6 +33,10 @@ namespace spider {
         }
 
         int flexWidth = flexes > 0 ? (this->getWidth() - leftWidth - rightWidth) / flexes : 0;
+        if (flexWidth < 1)
+        {
+            flexWidth = 1;
+        }
         for(std::vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
             SPElement *child = (SPElement *)*it;
             int flex = child->getIntegerAttribute("flex", 0);
@@ -57,18 +61,18 @@ namespace spider {
                     side = 1;
             }
             if(side < 0)
-                child->setX(left + child->getMargins()->left + this->getPadding()->left	);
+                child->setX(left);
             else if(side == 0) {
-                child->setX(leftWidth + child->getMargins()->left);
+                child->setX(leftWidth);
 
             }
-            else if(side > 0) {
-                child->setX(leftWidth + flexWidth + right -this->getPadding()->right *2 - this->getMargins()->right * 2);
-
+            else
+            {
+                child->setX(leftWidth + flexWidth + right);
             }
-            child->setY(this->getPadding()->top + child->getMargins()->top);
+            child->setY(this->getPadding()->top);
 
-            child->setHeight(this->getHeight() - (this->getPadding()->bottom * 2 + child->getMargins()->bottom * 2));
+            child->setHeight(this->getHeight());
             //cout << "SPHBoxElement height: " << this->getHeight() << endl;
             //cout << "SPHBoxElement Child: " << child->getType() << " Height: " << this->getHeight() << endl;
             switch(side) {

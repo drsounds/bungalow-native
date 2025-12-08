@@ -102,7 +102,7 @@ namespace spider {
 
     void SPNode::appendChild(spider::SPNode *child) {
         vector<SPNode *> *nodes = this->children;
-        if (nodes == NULL) {
+        if (nodes == nullptr) {
             nodes = new vector<SPNode *>();
         }
         nodes->push_back(child);

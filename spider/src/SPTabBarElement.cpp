@@ -120,7 +120,6 @@ void SPTabBarElement::paint(int x, int y, int width, int height, SPGraphicsConte
     {
         throw "width must be greater than 0";
     }
-
     this->getSkin()->drawTabBar(g, this, x, y, width, height, bgColor, g);
 
     int left = 0;

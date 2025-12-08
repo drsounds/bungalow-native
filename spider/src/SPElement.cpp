@@ -348,9 +348,17 @@ namespace spider {
 		return this->z;
 	}
 	void SPElement::setWidth(int w) {
+		if (w < 0)
+		{
+			throw "Width is negative";
+		}
 		this->m_width = w;
 	}
 	void SPElement::setHeight(int h) {
+		if (h < 0)
+		{
+			throw "Height is negative";
+		}
 		this->m_height = h;
 
 	}
@@ -459,11 +467,10 @@ namespace spider {
 		SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 1));
 		int fontSize = this->getIntegerAttribute("size", 12);
 		string fontFamily = this->getStringAttribute("font", "MS Sans Serif");
-		/*c->drawRectangle(rect2.x, rect2.y, width, height, SPColor(255, 0, 0, 1));
+		c->drawRectangle(rect2.x, rect2.y, width, height, SPColor(255, 0, 0, 1));
 		c->drawString(this->getType(), SPFontStyle(fontFamily, fontSize, fontSize / 2, false, false), fgColor, rect2.x, rect2.y, this->getWidth(), this->getHeight());
 		const string strLoc = "type=" + this->getType() + "&x=" + std::to_string(x) + "&y=" + std::to_string(y) + "&width=" + std::to_string(width) + "&height=" + std::to_string(height) + "&flex=" + std::to_string(this->getIntegerAttribute("flex", 0));
 		c->drawString(strLoc, SPFontStyle(fontFamily, fontSize, fontSize / 2, false, false), SPColor(0, 0, 255, 1), rect2.x + (rect2.width / 2), rect2.y + (rect2.height / 2), this->getWidth(), this->getHeight());
-*/
 		if (clipView) {
 	        c->declipRect();
 		}

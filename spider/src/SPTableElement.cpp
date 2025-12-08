@@ -34,6 +34,11 @@ namespace spider {
         if (this->absoluteBounds == NULL)
         this->absoluteBounds = new sp_rectangle;
 
+        if (this->getMargins() == nullptr)
+        {
+            this->margins = new sp_margin;
+        }
+
         this->absoluteBounds->x = x + this->getMargins()->left;
         this->absoluteBounds->y = y + this->getMargins()->bottom;
         this->absoluteBounds->width = this->getWidth() - this->getMargins()->left + this->getMargins()->right;

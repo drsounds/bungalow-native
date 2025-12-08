@@ -11,6 +11,7 @@ namespace spider {
         int topHeight = 0;
         int bottomHeight = 0;
         int side = -1;
+
         // First calculate count of flex
         for(std::vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
 
@@ -34,6 +35,10 @@ namespace spider {
         }
 
         int flexHeight = flexes > 0 ?  (this->getHeight() - topHeight - bottomHeight) / flexes : 0;
+        if (flexHeight < 1)
+        {
+            flexHeight = 1;
+        }
         float flex = 1;
         for(std::vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
             SPElement *child = (SPElement *)*it;
@@ -64,22 +69,24 @@ namespace spider {
             }
             if (side < 0)
             {
-                child->setY(top);
+                child->setY(top + child->getMargins()->top + this->getPadding()->top);
             }
             else if (side == 0) {
                 child->setY(topHeight + (((1 / flexes) * (flexHeight - 1)))*0 + child->getMargins()->top + this->getPadding()->top);
 
                 child->setHeight(flexHeight);
-            } else if(side > 0)
+            }
+            else
+            {
                 child->setY(topHeight + flexHeight + bottom + child->getPadding()->top + child->getMargins()->top);
-
+            }
             child->setWidth(this->getWidth() - (child->getMargins()->bottom * 2 + this->getPadding()->bottom * 2));
             //cout << "SPHBoxElement width: " << this->getHeight() << endl;
             //cout << "VBoxElement Child: " << child->getType() << "Width: " << this->getWidth() << endl;
 
             switch(side) {
                 case -1:
-                    top += child->getHeight() ;
+                    top += child->getHeight();
                     break;
                 case 0:
                     top += child->getHeight();

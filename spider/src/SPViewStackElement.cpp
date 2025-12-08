@@ -48,7 +48,7 @@ namespace spider {
             SPNode *node = static_cast<SPNode *>(*it);
             SPElement *view = (SPElement *)node;
             string type = view->getType();
-            view->set("flex", "1");
+            view->setIntegerAttribute("flex", 1);
             view->setWidth(this->getWidth() - (view->getMargins()->bottom * 2 + this->getPadding()->bottom * 2));
             // cout << "View of type: " << type << endl;
             if (view->absoluteBounds != NULL && this->absoluteBounds != NULL) {

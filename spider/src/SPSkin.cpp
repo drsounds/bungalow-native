@@ -107,7 +107,7 @@ bool SPSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const string& sta
         auto *treeView = dynamic_cast<SPTreeViewElement *>(elm);
         auto width = treeView->getWidth();
         auto height = treeView->getHeight();
-        bgColor = SPColor(100, 100, 100, 255);
+        bgColor = SPColor(20, 20, 20, 255);
         fgColor = SPColor(0, 0, 0, 255);
         SPGradient gradient(
             bgColor.lighten(0.5), bgColor.lighten(0),
@@ -117,7 +117,7 @@ bool SPSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const string& sta
         {
             gradient = SPGradient(SPColor(0, 0, 0, 1), SPColor(10, 10, 10, 0), 0);
         }
-        //g->fillRectangle(bounds.x, bounds.y, bounds.width, bounds.height, bgColor);
+        g->fillRectangle(bounds.x, bounds.y, bounds.width, bounds.height, bgColor);
     }
     return result;
 }
@@ -147,7 +147,7 @@ void SPSkin::drawTabBarTab(bool active, int x, int y, int width, int height, con
 
     if (active)
     {
-        g->fillRectangle(0, y, width, height, bg_color);
+        g->fillRectangle(x, y, width, height + 1, bg_color);
     }
     else
     {
