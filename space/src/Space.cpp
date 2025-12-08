@@ -21,6 +21,19 @@ space::SPWindowElement* space::Space::createWindow(SPSkin *skin)
     return windowElement;
 }
 
+void space::Space::addWindow(SPWindowElement* window)
+{
+    this->m_windows->push_back(window);
+}
+
+void space::Space::notify(const string& event, SPObject* sender, SPEventArgs* data)
+{
+    SPObservable::notify(event, sender, data);
+    for (auto window : *this->m_windows)
+    {
+        window->notify(event, sender, data);
+    }
+}
 space::SPMessage space::Space::dequeueNextMessage() {
     auto message = this->m_messages->front();
     this->m_messages->pop();

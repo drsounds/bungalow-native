@@ -78,7 +78,7 @@ SPTabBarElement::SPTabBarElement(SPElement *parent)
     this->set("active_tab_fgcolor", "#ffffff");
     this->set("active_tab_bgcolor", "#474747");
     this->set("bgcolor", "#666666");
-    this->addEventListener(string("mousedown"), SPCallback(&SPTabBarElement::tabbar_mousedown), this);
+    this->addEventListener(string("mousedown"), SPCallback(&SPTabBarElement::mouseDown), this);
     std::vector<SPObserver *> *observers = this->observers;
     int count = observers->size();
     if (count < 1)
@@ -86,12 +86,15 @@ SPTabBarElement::SPTabBarElement(SPElement *parent)
         throw "No observers";
     }
 }
-void SPTabBarElement::mouseDown(int mouseButton, int x, int y) {
+void SPTabBarElement::mouseDown(SPObject sender, SPEventArgs *e) {
+    SPMouseEventArgs *me = (SPMouseEventArgs *)e;
     SPTabBarElement *tabBar = this;
-    x = tabBar->getAbsoluteBounds() != NULL ? x - tabBar->getAbsoluteBounds()->x : x;
-    y = tabBar->getAbsoluteBounds() != NULL ? y - tabBar->getAbsoluteBounds()->y : y;
+    int x = me->getX();
+    int y = me->getY();
+    //x = tabBar->getAbsoluteBounds() != NULL ? x - tabBar->getAbsoluteBounds()->x : x;
+    //y = tabBar->getAbsoluteBounds() != NULL ? y - tabBar->getAbsoluteBounds()->y : y;
     SPFontStyle font = tabBar->getFontStyle();
-    int left = 0;
+    int left = tabBar->getAbsoluteBounds() != NULL ? tabBar->getAbsoluteBounds()->x : 0;
     for(std::vector<SPTab *>::iterator it = tabBar->getTabs()->begin(); it != tabBar->getTabs()->end(); ++it) {
         SPTab *tab = (SPTab *)static_cast<SPTab *>(*it);
         string title = tab->getName();

@@ -21,7 +21,7 @@ namespace space
         virtual ~SPTabbarViewElement();
         virtual void navigate(string uri);
         virtual bool acceptsUri(string uri);
-        void mouseDown(int mouseButton, int x, int y);
+        void mouseDown(SPObject sender, SPEventArgs* e);
     protected:
         SPViewStackElement *viewStack;
         SPTabBarElement *tabBar;

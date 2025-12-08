@@ -40,9 +40,7 @@ public:
     space::SPWindowElement *getWindowElement() {
         return this->m_windowElement;
     }
-    void setWindowElement(space::SPWindowElement *value) {
-        this->m_windowElement = value;
-    }
+    void setWindowElement(space::SPWindowElement *value);
     SpaceFrame(wxApp *app, space::Space *space);
     void OnSize(wxSizeEvent& event);
     void OnExit(wxCommandEvent& event);

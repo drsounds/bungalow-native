@@ -16,6 +16,10 @@ public:
     int getY() {
         return this->y;
     }
+    string getType() override
+    {
+        return "SPMouseEventArgs";
+    }
     SPMouseEventArgs(int btn, int x, int y) {
         this->button = btn;
         this->x = x;

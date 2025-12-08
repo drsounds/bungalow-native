@@ -26,8 +26,20 @@ namespace space
         vector<SPWindowElement *> *m_windows;
         queue<SPEvent> *m_events;
         queue<SPMessage> *m_messages;
-
     public:
+        vector<SPWindowElement *> *getWindows() {
+            return this->m_windows;
+        }
+        queue<SPEvent> *getEvents() {
+            return this->m_events;
+        }
+        queue<SPMessage> *getMessages() {
+            return this->m_messages;
+        }
+        void setWindows(vector<SPWindowElement *> *value) {
+            this->m_windows = value;
+        }
+        void addWindow(SPWindowElement *window);
         SPGraphicsContext *getGraphicsContext()
         {
             return this->m_graphicsContext;
@@ -35,6 +47,7 @@ namespace space
         void setGraphicsContext(SPGraphicsContext *value) {
             this->m_graphicsContext = value;
         }
+        virtual void notify(const string& event, SPObject* sender, SPEventArgs* data) override;
         Space();
         SPWindowElement * createWindow(SPSkin *skin);
         SPMessage dequeueNextMessage();

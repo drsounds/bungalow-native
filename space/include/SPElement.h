@@ -52,7 +52,7 @@ namespace space {
         void setGradient(SPGradient *value) {
             this->m_gradient = value;
         }
-        void notify(const string& event, SPObject* sender, SPEventArgs* data) const override;
+        void notify(const string& event, SPObject* sender, SPEventArgs* data) override;
         bool hasDefaultGradient() const
         {
             return m_hasDefaultGradient;
@@ -62,6 +62,19 @@ namespace space {
             m_hasDefaultGradient = value;
         }
         space::Space *getSpace() {
+            if (this->m_space == nullptr)
+            {
+                if (this->getWindow() != nullptr)
+                {
+                    if (this->getWindow()->getSpace() != nullptr)
+                    {
+                        return this->getWindow()->getSpace();
+                    }
+                }
+                if (this->getParent() != nullptr) {
+                    return this->getParent()->getSpace();
+                }
+            }
             return this->m_space;
         }
         SPSkin *getSkin() const;
@@ -166,9 +179,9 @@ namespace space {
         void setInnerText(string data);
         virtual void mouseMove(int, int) {}
         virtual void mouseClick(int, int, int);
-        virtual void mouseDown(int, int, int);
+        virtual void mouseDown(SPObject sender, SPEventArgs* e);
         virtual void click(int, int, int);
-        virtual void mouseUp(int, int, int);
+        virtual void mouseUp(SPObject sender, SPEventArgs* e);
         int getY();
         int getWidth();
         int getHeight();

@@ -16,13 +16,34 @@
 #include "SPFontStyle.h"
 
 namespace space {
-	void SPElement::notify(const string& event, SPObject* sender, SPEventArgs* data) const
+	void SPElement::notify(const string& event, SPObject* sender, SPEventArgs* data)
 	{
 		SPObservable::notify(event, sender, data);
 
 		for (auto *child: *this->children) {
-			auto element = dynamic_cast<SPElement *>(child);
-			element->notify(event, sender, data);
+			if (data->getType() == "SPMouseEventArgs")
+			{
+				auto *mouseEventArgs = dynamic_cast<SPMouseEventArgs *>(data);
+				if (
+					this->getAbsoluteBounds() != nullptr &&
+					mouseEventArgs->getX() > this->getAbsoluteBounds()->x &&
+					mouseEventArgs->getX() < this->getAbsoluteBounds()->x + this->getAbsoluteBounds()->width &&
+					mouseEventArgs->getY() > this->getAbsoluteBounds()->y &&
+					mouseEventArgs->getY() < this->getAbsoluteBounds()->y + this->getAbsoluteBounds()->height
+					)
+				{
+					auto element = dynamic_cast<SPElement *>(child);
+					if (event == "mousedown")
+					{
+						if (element->getType() == "tabbar")
+						{
+							cout << "Element: " << this->getType() << "#" << this->getId() << " notified child: " << element->getType() << "#" << element->getId() << " event: " << event << endl;
+						}
+					}
+					element->notify(event, sender, data);
+					cout << "Element: " << this->getType() << "#" << this->getId() << " notified child: " << element->getType() << "#" << element->getId() << " event: " << event << endl;
+				}
+			}
 		}
 	}
 
@@ -82,10 +103,12 @@ namespace space {
 	}
 
 
-	void SPElement::mouseDown(int mouseButton, int x, int y) {
+	void SPElement::mouseDown(SPObject sender, SPEventArgs* e) {
+		SPMouseEventArgs *me = dynamic_cast<SPMouseEventArgs *>(e);
+		int x = me->getX();
+		int y = me->getY();
 		int xx = this->getAbsoluteBounds() != NULL ? x - this->getAbsoluteBounds()->y : x;
 	    int yy = this->getAbsoluteBounds() != NULL ? y - this->getAbsoluteBounds()->y : y;
-		SPMouseEventArgs *me = new SPMouseEventArgs(mouseButton, xx, yy);
 
 		this->notify(string("mousedown"), this, me);
 		for(vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
@@ -93,24 +116,23 @@ namespace space {
 	        if (elm->getAbsoluteBounds() != NULL)
 			if(x > elm->getAbsoluteBounds()->x && x < elm->getAbsoluteBounds()->x + elm->getAbsoluteBounds()->width &&
 				y > elm->getAbsoluteBounds()->y && y < elm->getAbsoluteBounds()->y + elm->getAbsoluteBounds()->height) {
-
-				elm->mouseDown(mouseButton, x, y);
+				elm->mouseDown(sender, me);
 			}
 		}
 	}
-	void SPElement::mouseUp(int mouseButton, int x, int y) {
+	void SPElement::mouseUp(SPObject sender, SPEventArgs* e) {
+		SPMouseEventArgs *me = dynamic_cast<SPMouseEventArgs *>(e);
+		int x = me->getX();
+		int y = me->getY();
 		int xx = this->getAbsoluteBounds() != NULL ? x - this->getAbsoluteBounds()->y : x;
 	    int yy = this->getAbsoluteBounds() != NULL ? y - this->getAbsoluteBounds()->y : y;
-		SPMouseEventArgs *me = new SPMouseEventArgs(mouseButton, xx, yy);
-
 		this->notify(string("mouseup"), this, me);
 		for(vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
 			SPElement *elm = static_cast<SPElement *>(*it);
 	        if (elm->getAbsoluteBounds() != NULL)
 			if(x > elm->getAbsoluteBounds()->x && x < elm->getAbsoluteBounds()->x + elm->getAbsoluteBounds()->width &&
 				y > elm->getAbsoluteBounds()->y && y < elm->getAbsoluteBounds()->y + elm->getAbsoluteBounds()->height) {
-
-				elm->mouseUp(mouseButton, x, y);
+				elm->mouseUp(sender, e);
 			}
 		}
 	}
@@ -174,11 +196,12 @@ namespace space {
 
 	SPElement::SPElement(SPElement *parent) : SPNode(static_cast<SPNode*>(parent)), fontStyle("Tahoma", 13, 1, false, false) {
 		this->m_classList = new vector<string>;
-		this->absoluteBounds = NULL;
+		this->absoluteBounds = new sp_rectangle;
 		this->setScrollable(false);
 		if (parent != nullptr) {
 			this->m_skin = parent->getSkin();
 			this->fontStyle = parent->fontStyle;
+			this->absoluteBounds = new sp_rectangle { parent->getX(), parent->getY(), parent->getWidth(), parent->getHeight() };
 		}
 		this->visible = true;
 		this->scrollX = 0;
@@ -504,6 +527,7 @@ namespace space {
 		this->m_height = height;
 		this->invalidate();
 		this->pack();
+
 		cout << "Element: " << this->getType() << "#" << this->getId() << " resized to width: " << width << " height: " << height << " flex: " << this->getIntegerAttribute("flex", 0) << endl;
 	}
 
