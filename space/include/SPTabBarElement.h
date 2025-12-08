@@ -48,13 +48,13 @@ class SPTabBarElement : public SPElement
         SPImage *tabBackgroundImage;
         SPImage *activeTabBackgroundImage;
         int tabbar_mousedown(SPObject* sender, SPEventArgs* e);
-        virtual string getType();
+        virtual string getType() override;
         SPTabBarElement();
         SPTabBarElement(SPElement *parent);
         void addTab(string id, string name, string uri);
         void paint(int x, int y, int width, int height, SPGraphicsContext* c) override;
         virtual ~SPTabBarElement();
-        void mouseDown(int mouseButton, int x, int y);
+        void mouseDown(int mouseButton, int x, int y) override;
         vector<SPTab *> *getTabs() {
             return this->tabs;
         }

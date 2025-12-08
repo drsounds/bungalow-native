@@ -14,6 +14,7 @@ namespace space {
     class SPTreeViewElement;
     class SPInfoElement;
     class SPStylesheet;
+    class SPEventArgs;
     class MainElement : public SPVBoxElement
     {
         protected:
@@ -32,6 +33,7 @@ namespace space {
                 return "window";
             }
             MainElement(SPElement *parent, SPWindow *window);
+            int onNavigate(SPObject* sender, SPEventArgs* args);
             explicit MainElement(SPElement *parent);
             int onSearchEntered(SPObject* sender, SPEventArgs* eventArgs) const;
             void layout();

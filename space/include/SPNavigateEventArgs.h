@@ -5,10 +5,21 @@
 #ifndef SPACIFYCLIENT_SPNAVIGATEEVENTARGS_H
 #define SPACIFYCLIENT_SPNAVIGATEEVENTARGS_H
 
+#include "SPEventArgs.h"
+
 namespace space
 {
-    class SPNavigateEventArgs
+    class SPObject;
+    class SPNavigateEventArgs : public SPEventArgs
     {
+    public:
+        explicit SPNavigateEventArgs(string url);
+        virtual ~SPNavigateEventArgs();
+        string getUrl() {
+            return this->url;
+        }
+        private:
+        string url;
     };
 } // space
 

@@ -10,6 +10,7 @@
 #include "Space.h"
 #include "SPVBoxElement.h"
 #include "SPElement.h"
+#include "SPNavigateEventArgs.h"
 
 namespace space
 {
@@ -34,7 +35,7 @@ namespace space
     }
     void SPWindowElement::navigate(const string& uri) {
         SPNavigateEventArgs *args = new SPNavigateEventArgs(uri);
-        this->dispatchEvent("navigate", nullptr, this);
+        this->dispatchEvent("navigate", args, this);
     }
     void SPWindowElement::pack() {
 

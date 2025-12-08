@@ -16,6 +16,16 @@
 #include "SPFontStyle.h"
 
 namespace space {
+	void SPElement::notify(const string& event, SPObject* sender, SPEventArgs* data) const
+	{
+		SPObservable::notify(event, sender, data);
+
+		for (auto *child: *this->children) {
+			auto element = dynamic_cast<SPElement *>(child);
+			element->notify(event, sender, data);
+		}
+	}
+
 	SPSkin *SPElement::getSkin() const
 	{
 		if (this->m_skin)
@@ -174,7 +184,6 @@ namespace space {
 		this->scrollX = 0;
 		this->scrollY = 0;
 	    this->data = "";
-		this->observers = new vector<SPObserver *>();
 		this->setParent(parent);
 		if (this->m_skin != nullptr) {
 			this->applySkin();	   

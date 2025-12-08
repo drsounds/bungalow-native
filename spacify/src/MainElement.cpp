@@ -4,12 +4,14 @@
 #include "SPInputEventArgs.h"
 #include "SPWindowElement.h"
 #include "SPSplitterElement.h"
+#include "SPNavigateEventArgs.h"
 #include "SPInfoElement.h"
 #include "SPTreeItem.h"
 #include "SPViewStackElement.h"
 #include "SPSkin.h"
 #include "PlayQueueView.h"
 #include "SPAppHeaderElement.h"
+#include "SPNavigateEventArgs.h"
 #include "SPTreeViewElement.h"
 
 namespace space {
@@ -44,6 +46,14 @@ namespace space {
         this->treeView = new SPTreeViewElement(this);
         this->infoElement = new SPInfoElement(this);
         this->layout();
+        this->addEventListener("navigate", static_cast<SPCallback>(&MainElement::onNavigate), this);
+    }
+
+    int MainElement::onNavigate(SPObject* sender, SPEventArgs* args)
+    {
+        auto *eventArgs = dynamic_cast<SPNavigateEventArgs *>(args);
+        this->navigate(eventArgs->getUrl());
+        return 0;
     }
     int MainElement::onSearchEntered(SPObject *, SPEventArgs *eventArgs) const
     {

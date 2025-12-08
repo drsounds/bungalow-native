@@ -26,7 +26,6 @@ namespace space {
         bool visible;
         sp_margin *margins;
         sp_margin *padding;
-        std::vector<SPObserver *> *observers;
         SPFontStyle fontStyle;
         string id;
         string data;
@@ -53,6 +52,7 @@ namespace space {
         void setGradient(SPGradient *value) {
             this->m_gradient = value;
         }
+        void notify(const string& event, SPObject* sender, SPEventArgs* data) const override;
         bool hasDefaultGradient() const
         {
             return m_hasDefaultGradient;

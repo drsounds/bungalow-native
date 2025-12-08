@@ -82,8 +82,8 @@ SPTabBarElement::SPTabBarElement(SPElement *parent)
     std::vector<SPObserver *> *observers = this->observers;
     int count = observers->size();
     if (count < 1)
-        {
-        int f = 0;
+    {
+        throw "No observers";
     }
 }
 void SPTabBarElement::mouseDown(int mouseButton, int x, int y) {

@@ -17,7 +17,7 @@ namespace space {
 	SPObservable::SPObservable()
 {
 	//ctor
-	this->observers = new list<SPObserver *>;
+	this->observers = new vector<SPObserver *>;
 }
 
 void SPObservable::dispatchEvent(const string& event, SPEventArgs* args, SPObject* sender) const

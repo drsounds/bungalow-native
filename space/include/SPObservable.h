@@ -16,11 +16,11 @@ namespace space {
         public:
             SPObservable();
             void dispatchEvent(const string& event, SPEventArgs *data, SPObject *sender) const;
-            void notify(const string& event, SPObject *sender, SPEventArgs *data) const;
+            virtual void notify(const string& event, SPObject *sender, SPEventArgs *data) const;
             void addEventListener(const string& event, const SPCallback& callback, SPElement *node) const;
             virtual ~SPObservable();
         protected:
-            list<SPObserver *> *observers;
+            vector<SPObserver *> *observers;
         private:
     };
 }
