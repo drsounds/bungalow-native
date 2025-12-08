@@ -1,39 +1,39 @@
-#include "SpiderFrame.h"
+#include "SpaceFrame.h"
 
-#include "SpiderWidget.h"
+#include "SpaceWidget.h"
 #include "SPObject.h"
-#include "Spider.h"
+#include "Space.h"
 
-SpiderFrame::SpiderFrame(wxApp *app, space::Spider *spider)
-    : wxFrame(nullptr, wxID_ANY, "Spider", wxDefaultPosition, wxDefaultSize)
+SpaceFrame::SpaceFrame(wxApp *app, space::Space *space)
+    : wxFrame(nullptr, wxID_ANY, "Space", wxDefaultPosition, wxDefaultSize)
 {
     this->m_app = app;
-    this->m_spider = spider;
+    this->m_space = space;
 
-    this->Bind(wxEVT_SIZE, &SpiderFrame::OnSize, this);
+    this->Bind(wxEVT_SIZE, &SpaceFrame::OnSize, this);
 
-    this->m_spiderWidget = new SpiderWidget(dynamic_cast<wxWindow *>(this), wxID_ANY, "Hello World");
-    this->m_spiderWidget->setSpider(this->m_spider);
-    this->AddChild(this->m_spiderWidget);
+    this->m_spaceWidget = new SpaceWidget(dynamic_cast<wxWindow *>(this), wxID_ANY, "Hello World");
+    this->m_spaceWidget->setSpace(this->m_space);
+    this->AddChild(this->m_spaceWidget);
 }
 
-void SpiderFrame::OnSize(wxSizeEvent& event) {
-    this->m_spiderWidget->SetSize(event.GetSize());
-    this->m_spiderWidget->OnSize(event);
+void SpaceFrame::OnSize(wxSizeEvent& event) {
+    this->m_spaceWidget->SetSize(event.GetSize());
+    this->m_spaceWidget->OnSize(event);
 }
 
-void SpiderFrame::OnExit(wxCommandEvent& event)
+void SpaceFrame::OnExit(wxCommandEvent& event)
 {
     Close(true);
 }
 
-void SpiderFrame::OnAbout(wxCommandEvent& event)
+void SpaceFrame::OnAbout(wxCommandEvent& event)
 {
     wxMessageBox("This is a wxWidgets Hello World example",
                  "About Hello World", wxOK | wxICON_INFORMATION);
 }
 
-void SpiderFrame::OnHello(wxCommandEvent& event)
+void SpaceFrame::OnHello(wxCommandEvent& event)
 {
     wxLogMessage("Hello world from wxWidgets!");
 }

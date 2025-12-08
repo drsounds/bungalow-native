@@ -1,7 +1,7 @@
 #include <Windows.h>
 #include "Win32WindowElement.h"
 #include "Win32GraphicsContext.h"
-namespace spider {
+namespace space {
     void Win32WindowElement::draw(GraphicsContext *graphics) {
         std::vector<Node *> *elements = this->getChildNodes();
         for (std::vector<Node *>::iterator it = elements->begin(); it != elements->end(); ++it) {
@@ -60,7 +60,7 @@ namespace spider {
             this->deepestView = NULL;
         }
     }
-    void sample_click(spider::Element *elm, void *data) {
+    void sample_click(space::Element *elm, void *data) {
         MessageBox(((Win32WindowElement *)elm->getWindowNode())->getHandle(), (LPCSTR)"Test",(LPCSTR)L"A", 0);
     }
     void Win32WindowElement::SampleLayout() {

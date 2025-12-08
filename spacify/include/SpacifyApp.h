@@ -1,13 +1,13 @@
-#ifndef SPIDER_APP_H
+#ifndef SPACE_APP_H
 #ifndef WX_PRECOMP
     #include <wx/wx.h>
 #endif
 
-class SpiderFrame;
+class SpaceFrame;
 
 namespace space
 {
-    class Spider;
+    class Space;
     class SPWindowElement;
     class MainElement;
 }
@@ -16,9 +16,9 @@ namespace space
 class SpacifyApp : public wxApp
 {
 protected:
-    space::Spider* m_spider;
+    space::Space* m_space;
     space::SPWindowElement *m_windowElement;
-    SpiderFrame* m_frame;
+    SpaceFrame* m_frame;
     space::MainElement* m_main;
 public:
     virtual bool OnInit() override;
