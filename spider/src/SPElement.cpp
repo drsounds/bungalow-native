@@ -394,16 +394,42 @@ namespace spider {
 	    return "element";
 	}
 
+	void SPElement::paint(int x, int y, int width, int height, SPGraphicsContext *c)
+	{
+		SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(28, 28, 28, 1));
+		SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 1));
+		int fontSize = this->getIntegerAttribute("size", 12);
+		string fontFamily = this->getStringAttribute("font", "MS Sans Serif");
+
+		if (!this->getSkin()->drawElement(c, this, "", sp_rectangle { x, y, width, height, 0 }, SPColor(127, 127, 127, 1), 0))
+		{
+			if (this->getGradient() != nullptr)
+			{
+				c->drawLinearGradient(sp_rectangle { x, y, width, height }, *this->getGradient());
+			} else
+			{
+				c->fillRectangle(x, y, width, height, bgColor);
+			}
+		}
+		SPColor color(255, 0, 0, 255);
+		string text = this->getInnerText();
+		// draw text
+		if (!text.empty())
+			c->drawString(this->getInnerText(), SPFontStyle(fontFamily, fontSize, fontSize / 2, false, false), fgColor, x - scrollX, y - scrollY, this->getWidth(), this->getHeight());
+		// adjust for scroll
+		x -= this->scrollX;
+		y -= this->scrollY;
+	}
+
 	void SPElement::draw(int x, int y, SPGraphicsContext *c) {
 	    if (!this->isVisible()) {
 	        return;
 	    }
-
 		sp_position pos;
 		std::vector<SPNode *> *children = this->getChildNodes();
-		x += this->getX() ;
+		x += this->getX();
 		y += this->getY();
-		if (this->absoluteBounds == NULL)
+		if (this->absoluteBounds == nullptr)
 	    this->absoluteBounds = new sp_rectangle;
 
 	    this->absoluteBounds->x = x + this->getMargins()->left;
@@ -415,48 +441,29 @@ namespace spider {
 		int height = this->getHeight();
 
 		sp_rectangle rect2;
-		rect2.x = 0;
-		rect2.y = 0;
+		rect2.x = this->absoluteBounds->x;
+		rect2.y = this->absoluteBounds->y;
 		rect2.width = width;
 		rect2.height = height;
 		if (this->clipView) {
 	        c->setClip(*absoluteBounds);
 		}
-	    SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(28, 28, 28, 1));
-	    SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 1));
-	    int fontSize = this->getIntegerAttribute("size", 12);
-	    string fontFamily = this->getStringAttribute("font", "MS Sans Serif");
-	    c->fillRectangle(x, y, width, height, bgColor);
-		if (this->getGradient() != nullptr)
-		{
-			c->drawLinearGradient(sp_rectangle { x, y, width, height }, *this->getGradient());
-		}
-		SPColor color(255, 0, 0, 255);
-	    string text = this->getInnerText();
-	    // draw text
-	    if (!text.empty())
-	        c->drawString(this->getInnerText(), SPFontStyle(fontFamily, fontSize, fontSize / 2, false, false), fgColor, x - scrollX, y - scrollY, this->getWidth(), this->getHeight());
-
-		// adjust for scroll
-	    x -= this->scrollX;
-	    y -= this->scrollY;
+		this->paint(rect2.x, rect2.y, rect2.width, rect2.height, c);
 		for(std::vector<SPNode *>::iterator it = children->begin(); it != children->end(); ++it) {
 			SPElement *elm = static_cast<SPElement *>(*it);
 			if(elm != NULL) {
-				elm->draw(x + this->getPadding()->left - scrollX, y  + this->getPadding()->top - scrollY, c);
+				elm->draw(rect2.x, rect2.y, c);
 			}
 		}
-		sp_rectangle rect;
-		rect.x = x;
-		rect.y = y;
-		rect.width = width;
-		rect.height = height;
+		SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(28, 28, 28, 1));
+		SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 1));
+		int fontSize = this->getIntegerAttribute("size", 12);
+		string fontFamily = this->getStringAttribute("font", "MS Sans Serif");
+		c->drawRectangle(x, y, width, height, SPColor(255, 0, 0, 1));
+		c->drawString(this->getType(), SPFontStyle(fontFamily, fontSize, fontSize / 2, false, false), fgColor, rect2.x, rect2.y, this->getWidth(), this->getHeight());
+		const string strLoc = "type=" + this->getType() + "&x=" + std::to_string(x) + "&y=" + std::to_string(y) + "&width=" + std::to_string(width) + "&height=" + std::to_string(height) + "&flex=" + std::to_string(this->getIntegerAttribute("flex", 0));
+		c->drawString(strLoc, SPFontStyle(fontFamily, fontSize, fontSize / 2, false, false), SPColor(0, 0, 255, 1), rect2.x + (rect2.width / 2), rect2.y + (rect2.height / 2), this->getWidth(), this->getHeight());
 
-		x += this->scrollX;
-	    y += this->scrollY;
-		x -= this->getX();
-		y -= this->getY();
-		//c->setOrigo(-x - getX(), -y - getY());
 		if (clipView) {
 	        c->declipRect();
 		}

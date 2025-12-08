@@ -35,6 +35,7 @@ bool SpacifyApp::OnInit(){
      this->m_windowElement->SPWindow::setSpider(this->m_spider);
      this->m_main = new spider::MainElement(this->m_windowElement, this->m_windowElement);
      this->m_windowElement->appendChild(this->m_main);
+    this->m_windowElement->pack();
      this->m_frame->Show(true);
      this->m_frame->getSpiderWidget()->Show();
      return true;

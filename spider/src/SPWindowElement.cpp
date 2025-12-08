@@ -23,10 +23,13 @@ namespace spider
 
     void SPWindowElement::draw(SPGraphicsContext *gc, int x, int y) {
         std::vector<SPNode *> *elements = this->getChildNodes();
+
         for (auto node : *elements) {
             auto *elm = dynamic_cast<SPElement *>(node);
             if (elm->isVisible())
+            {
                 elm->draw(0, 0, gc);
+            }
         }
     }
     void SPWindowElement::navigate(const string& uri) {

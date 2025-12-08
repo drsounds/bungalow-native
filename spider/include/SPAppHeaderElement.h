@@ -9,6 +9,10 @@ class SPAppHeaderElement : public SPHBoxElement
         explicit SPAppHeaderElement(SPElement *parent);
         SPAppHeaderElement() = default;
         ~SPAppHeaderElement() override;
+        string getType() override
+        {
+            return "appheader";
+        }
     protected:
     private:
 };

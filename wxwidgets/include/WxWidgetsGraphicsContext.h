@@ -62,8 +62,8 @@ namespace spider
         void declipRect() override;
         void drawLine(int x1, int y1, int w, int h, spider::SPColor color) override;
         void drawImage(SPImage *image, int x1, int y1, int w, int h) override;
-        void drawRectangle(int x1, int y1, int w, int h, spider::SPColor color) override;
-        void fillRectangle(int x1, int y1, int w, int h, spider::SPColor color) override;
+        void drawRectangle(int x, int y, int w, int h, spider::SPColor color) override;
+        void fillRectangle(int x, int y, int w, int h, spider::SPColor color) override;
         void drawControl(const string& control, SPElement *elm, int x, int y, int w, int h) override;
         void invalidateRegion(sp_rectangle region) override;
         void drawString(const string& text, spider::SPFontStyle fontStyle, spider::SPColor color,int x, int y, int w, int h) override;

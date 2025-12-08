@@ -102,6 +102,8 @@ namespace spider {
 
         virtual void draw(int x, int y, SPGraphicsContext *c);
         string getType() override;
+        virtual void paint(int x, int y, int width, int height, SPGraphicsContext* c);
+
         sp_rectangle *getAbsoluteBounds() const
         {
             return this->absoluteBounds;

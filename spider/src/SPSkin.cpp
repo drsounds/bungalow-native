@@ -18,12 +18,14 @@ SPSkin::SPSkin()
     //ctor
 }
 
-void SPSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const string& state, const sp_rectangle& bounds, const SPColor& tint, short mode)
+bool SPSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const string& state, const sp_rectangle& bounds, const SPColor& tint, short mode)
 {
+    bool result = false;
     SPColor bgColor = mode == SP_MODE_DARK ? SPColor(20, 20, 20, 255) : SPColor(230, 230, 230, 255);
     SPColor fgColor = mode == SP_MODE_DARK ? SPColor(220, 220, 220, 255) : SPColor(30, 30, 30, 255);
     if (elm->getType() == "button")
     {
+        result = true;
         auto *button = dynamic_cast<SPButtonElement *>(elm);
         bgColor = SPColor(100, 100, 100, 255);
         fgColor = SPColor(0, 0, 0, 255);
@@ -36,17 +38,18 @@ void SPSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const string& sta
             gradient = SPGradient(SPColor(0, 0, 0, 1), SPColor(10, 10, 10, 0), 0);
         }
         g->drawLinearGradient(
-            {
-                0,
-                0,
-                button->getWidth(),
-                button->getHeight()
+    {
+                bounds.x,
+                bounds.y,
+                bounds.width,
+                bounds.height
             },
             gradient
         );
     }
     if (elm->getType() == "tabbar")
     {
+        result = true;
         auto *tabBar = dynamic_cast<SPTabBarElement *>(elm);
         bgColor = SPColor(100, 100, 100, 255);
         fgColor = SPColor(0, 0, 0, 255);
@@ -60,10 +63,10 @@ void SPSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const string& sta
         }
         g->drawLinearGradient(
             {
-                0,
-                0,
-                elm->getWidth(),
-                elm->getHeight()
+                bounds.x,
+                bounds.y,
+                bounds.width,
+                bounds.height
             },
             gradient
         );
@@ -74,11 +77,14 @@ void SPSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const string& sta
     }
     if (elm->getType() == "appheader")
     {
+        result = true;
         auto *appHeader = dynamic_cast<SPAppHeaderElement *>(elm);
+        auto width = appHeader->getWidth();
+        auto height = appHeader->getHeight();
         bgColor = SPColor(100, 100, 100, 255);
         fgColor = SPColor(0, 0, 0, 255);
         SPGradient gradient(
-            bgColor.lighten(-0.8), bgColor.lighten(-0.9),
+            bgColor.lighten(0.5), bgColor.lighten(0),
             0
         );
         if (state == "active")
@@ -86,15 +92,34 @@ void SPSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const string& sta
             gradient = SPGradient(SPColor(0, 0, 0, 1), SPColor(10, 10, 10, 0), 0);
         }
         g->drawLinearGradient(
-            {
-                0,
-                0,
-                appHeader->getWidth(),
-                appHeader->getHeight()
+    {
+                bounds.x,
+                bounds.y,
+                bounds.width,
+                bounds.height
             },
             gradient
         );
     }
+    if (elm->getType() == "treeview")
+    {
+        result = true;
+        auto *treeView = dynamic_cast<SPTreeViewElement *>(elm);
+        auto width = treeView->getWidth();
+        auto height = treeView->getHeight();
+        bgColor = SPColor(100, 100, 100, 255);
+        fgColor = SPColor(0, 0, 0, 255);
+        SPGradient gradient(
+            bgColor.lighten(0.5), bgColor.lighten(0),
+            0
+        );
+        if (state == "active")
+        {
+            gradient = SPGradient(SPColor(0, 0, 0, 1), SPColor(10, 10, 10, 0), 0);
+        }
+        g->fillRectangle(bounds.x, bounds.y, bounds.width, bounds.height, bgColor);
+    }
+    return result;
 }
 
 void SPSkin::drawTableRow(SPGraphicsContext *g, SPTableElement *table, int i, int x, int y, int width, int height, int row)

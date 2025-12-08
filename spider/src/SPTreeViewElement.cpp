@@ -96,9 +96,11 @@ int SPTreeViewElement::getItemHeight() {
 }
 #define spacify2009 true
 
-void SPTreeViewElement::draw(int x, int y, SPGraphicsContext *g) {
-    spider::SPElement::draw(x, y, g);
-    g->fillRectangle(x, y, this->getWidth(), this->getHeight(), this->getWindow()->getSkin()->getColor("treeview.background.color", ""));
+void SPTreeViewElement::paint(int x, int y, int width, int height, SPGraphicsContext *g)
+{
+	if (!this->getSkin()->drawElement(g, this, "", sp_rectangle { x, y, height, height, 0 }, SPColor(127, 127, 127, 1), 0)) {
+		g->fillRectangle(x, y, this->getWidth(), this->getHeight(), this->getWindow()->getSkin()->getColor("treeview.background.color", ""));
+	}
 	SPColor color = this->getForegroundColor();
 	int itemHeight = this->getItemHeight();
 
@@ -119,7 +121,6 @@ void SPTreeViewElement::draw(int x, int y, SPGraphicsContext *g) {
 		sp_rectangle strB = g->measureString(item->getText(), fontStyle);
         int ttop = (top + (itemHeight / 2)) - (strB.height / 2);
 		g->drawString(item->getText(), this->getFontStyle(), color, 20 + x, y + ttop, this->getWidth(), itemHeight);
-
 		top += itemHeight;
 	}
 }

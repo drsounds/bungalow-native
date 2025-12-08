@@ -51,7 +51,7 @@ class SPSkin
         bool hasImage(string selector);
         SPColor getColor(string selector, string def);
         SPImage *getImage(string selector, string def);
-        virtual void drawElement(SPGraphicsContext *gc, SPElement *, const string& state, const sp_rectangle& bounds, const SPColor& tint, short mode);
+        virtual bool drawElement(SPGraphicsContext *gc, SPElement *, const string& state, const sp_rectangle& bounds, const SPColor& tint, short mode);
         void drawTableRow(SPGraphicsContext* g, SPTableElement* table, int i, int x, int y, int width, int height,
                           int row);
         virtual void drawTableHeader(SPGraphicsContext* g, SPTableElement* table, int x, int y, int width, int height);

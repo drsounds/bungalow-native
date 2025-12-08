@@ -64,9 +64,8 @@ SPColor SPColor::alpha(short amount) const
 	return {this->r, this->g, this->b, alpha};
 }
 
-SPColor SPColor::lighten(float amount) const
+SPColor SPColor::lighten(float luminance) const
 {
-	const float luminance = amount / 100;
 	int red = static_cast<int>(r + (r * luminance));
 	if (red > 255) red = 255;
 	if (red < 0) red = 0;

@@ -34,7 +34,7 @@ namespace spider {
         virtual string getType() {
             return "tree";
         }
-		void draw(int x, int y, SPGraphicsContext *g);
+		void paint(int x, int y, int width, int height, SPGraphicsContext *g) override;
         vector<SPTreeItem *> *items() {
             return this->mItems;
         }

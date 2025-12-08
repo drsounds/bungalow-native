@@ -65,6 +65,7 @@ namespace spider {
         header->getPadding()->left = 13;
         header->getPadding()->bottom = 13;
         header->getPadding()->right =  13;
+        header->setHeight(55);
         this->appendChild(header);
         header->setId("header");
         // add search element
@@ -84,15 +85,13 @@ namespace spider {
 
         auto *body = new SPHBoxElement(this);
         body->setColorAttribute("bgcolor", SPColor("#474747"));
-        body->set("flex", "1");
-        body->set("height", "100");
+        body->setIntegerAttribute("flex", 1);
 
         this->appendChild(body);
-
         // Inside body
         auto *sidebar = new SPVBoxElement(body);
         sidebar->set("width", "220");
-        sidebar->set("bgcolor", "#474747");
+        sidebar->setColorAttribute("bgcolor", SPColor(100, 100, 100, 1));
         body->appendChild(sidebar);
 
         body->appendChild(new SPSplitterElement(body));
@@ -101,7 +100,7 @@ namespace spider {
         this->treeView = new SPTreeViewElement(sidebar);
         treeView->set("bgcolor", "#575757");
         treeView->set("fgcolor", "#dddddd");
-        treeView->set("flex", "1");
+        treeView->setIntegerAttribute("flex", 1);
         treeView->set("height", "920");
         treeView->set("width", "220");
         sidebar->appendChild(treeView);
@@ -122,7 +121,7 @@ namespace spider {
         this->viewStack = new spider::SPViewStackElement(body);
         viewStack->set("bgcolor", "#373737");
         body->appendChild(viewStack);
-        viewStack->set("flex", "1");
+        viewStack->setIntegerAttribute("flex",1);
         viewStack->setWindow(this->getWindow());
         viewStack->appendChild(new spider::views::StartView(this));
         viewStack->appendChild(new spider::views::PlayQueueView(this));
@@ -130,9 +129,7 @@ namespace spider {
         footer->set("bgcolor", "#444444");
         footer->set("height", "86");
         this->appendChild(footer);
-
         // Add header buttons
-
         this->pack();
         this->navigate("spacify:internal:start");
     }

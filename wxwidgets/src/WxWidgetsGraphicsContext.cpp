@@ -125,8 +125,8 @@ namespace spider
                 this->getPaintDC()->SetPen(pen);
             }
 
-            void WxWidgetsGraphicsContext::drawRectangle(int x1, int y1,
-                                                     int x2, int y2,
+            void WxWidgetsGraphicsContext::drawRectangle(int x, int y,
+                                                     int width, int height,
                                                      SPColor color)
             {
                 wxPen pen(wxColour(color.getR(),
@@ -135,11 +135,11 @@ namespace spider
                 this->getPaintDC()->SetPen(pen);
                 this->getPaintDC()->SetBrush(*wxTRANSPARENT_BRUSH);
 
-                this->getPaintDC()->DrawRectangle(x1 - this->origo->x, y1 - this->origo->y, x2 - x1, y2 - y1);
+                this->getPaintDC()->DrawRectangle(x - this->origo->x, y - this->origo->y, width - x, height - y);
             }
 
-            void WxWidgetsGraphicsContext::fillRectangle(int x1, int y1,
-                                                     int x2, int y2,
+            void WxWidgetsGraphicsContext::fillRectangle(int x, int y,
+                                                     int width, int height,
                                                      SPColor color)
             {
                 wxBrush brush(wxColour(color.getR(),
@@ -148,7 +148,7 @@ namespace spider
                 this->getPaintDC()->SetBrush(brush);
                 this->getPaintDC()->SetPen(wxPen());
 
-                this->getPaintDC()->DrawRectangle(x1 - this->origo->x, y1 - this->origo->y, x2 - x1, y2 - y1);
+                this->getPaintDC()->DrawRectangle(x - this->origo->x, y - this->origo->y, width, height);
             }
 
             // --------------------------------------------------------------
@@ -253,9 +253,8 @@ namespace spider
                             wxFONTSTYLE_NORMAL,
                             wxFONTWEIGHT_NORMAL);
 
-                this->getPaintDC()->SetFont(font);
                 this->getPaintDC()->SetTextForeground(col);
-                this->getPaintDC()->DrawText(text, this->origo->x - x, this->origo->y - y);
+                this->getPaintDC()->DrawText(wxString(text), x - this->origo->x, y - this->origo->y);
             }
 
             // --------------------------------------------------------------
