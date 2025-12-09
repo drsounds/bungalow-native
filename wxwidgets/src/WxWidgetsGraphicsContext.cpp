@@ -264,7 +264,8 @@ namespace space
 
             void WxWidgetsGraphicsContext::invalidateRegion(space::sp_rectangle rect)
             {
-                this->m_window->RefreshRect(wxRect(this->origo->x + rect.x, this->origo->y + rect.y, rect.width, rect.height));
+                if (this->m_window == nullptr) return;
+                this->m_window->RefreshRect(wxRect(rect.x - this->origo->x, rect.y - this->origo->y, rect.width, rect.height));
             }
 
             // --------------------------------------------------------------

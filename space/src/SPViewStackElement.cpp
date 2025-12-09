@@ -60,7 +60,7 @@ namespace space {
     /**
      * Main navigation handler inside spacify
      **/
-    void SPViewStackElement::navigate(string uri) {
+    void SPViewStackElement::navigate(const string& uri) {
         // TODO add navigation handler
         // Hide all views
         this->pack();

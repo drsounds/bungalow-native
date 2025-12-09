@@ -11,15 +11,16 @@ namespace space
     class SPTabbarViewElement : public SPViewElement
     {
     public:
-        virtual string getType() {
-            return "table";
+        string getType() override
+        {
+            return "tabbarview";
         }
 
         int onTabSelected(SPObject* sender, SPEventArgs* e);
         SPTabbarViewElement();
         SPTabbarViewElement(SPElement *parent);
         virtual ~SPTabbarViewElement();
-        virtual void navigate(string uri);
+        virtual void navigate(const string& uri) override;
         virtual bool acceptsUri(string uri);
         void mouseDown(SPObject sender, SPEventArgs* e);
     protected:

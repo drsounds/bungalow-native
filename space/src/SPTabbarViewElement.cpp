@@ -9,8 +9,7 @@ namespace space {
     int SPTabbarViewElement::onTabSelected(SPObject *sender, SPEventArgs *e) {
         TabBarEventArgs *args = (TabBarEventArgs *)e;
         string uri = args->tab->getUri();
-        SPTabBarElement *tabView = (SPTabBarElement *)sender;
-        SPTabbarViewElement *tabbarView = (SPTabbarViewElement *)tabView->getParent();
+        SPTabbarViewElement *tabbarView = (SPTabbarViewElement *)sender;
         tabbarView->navigate(uri);
         return 0;
     }
@@ -25,18 +24,18 @@ namespace space {
      : SPViewElement::SPViewElement(parent)
     {
         //ctor
-        this->tabBar = new SPTabBarElement(parent);
-        this->viewStack = new SPViewStackElement(parent);
+        this->tabBar = new SPTabBarElement(this);
+        this->viewStack = new SPViewStackElement(this);
         this->viewStack->setIntegerAttribute("flex", 1);
         this->tabBar->setHeight(28);
         this->appendChild(this->tabBar);
-        this->tabBar->addEventListener(string("tabselected"), SPCallback(&SPTabbarViewElement::onTabSelected), this);
+        this->tabBar->addEventListener(string("tabselected"), static_cast<SPCallback>(&SPTabbarViewElement::onTabSelected), this);
         this->appendChild(this->viewStack);
     }
     bool SPTabbarViewElement::acceptsUri(string uri) {
         return false;
     }
-    void SPTabbarViewElement::navigate(string uri) {
+    void SPTabbarViewElement::navigate(const string& uri) {
         this->viewStack->navigate(uri);
     }
     SPTabbarViewElement::~SPTabbarViewElement()

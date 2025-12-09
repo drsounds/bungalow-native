@@ -11,7 +11,7 @@ namespace space {
                 StartView();
                 StartView(SPElement *parent);
                 virtual ~StartView();
-                bool acceptsUri(string uri);
+                bool acceptsUri(const string& uri) override;
                 virtual string getType();
             protected:
             private:

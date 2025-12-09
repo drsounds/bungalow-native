@@ -12,8 +12,8 @@ namespace space {
             SPViewElement();
             SPViewElement(SPElement *parent);
             virtual ~SPViewElement();
-            virtual void navigate(string uri);
-            virtual bool acceptsUri(string uri) {
+            virtual void navigate(const string& uri);
+            virtual bool acceptsUri(const string& uri) {
                 return false;
             }
             virtual void scroll(int scrollX, int scrollY, int mouseX, int mouseY);

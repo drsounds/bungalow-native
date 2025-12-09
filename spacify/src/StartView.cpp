@@ -21,7 +21,7 @@ namespace space {
             this->tabBar->addTab("Top List", "toplist", "spacify:internal:toplist");
         }
 
-        bool StartView::acceptsUri(string uri) {
+        bool StartView::acceptsUri(const string& uri) {
             return std::regex_match(uri.c_str(), std::regex("spacify:internal:(start|toplist)"));
         }
 

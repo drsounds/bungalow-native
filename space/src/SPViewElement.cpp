@@ -47,7 +47,7 @@ SPViewElement::SPViewElement(SPElement *parent)
     this->clipView = true;
     //ctor
 }
-void SPViewElement::navigate(string uri) {
+void SPViewElement::navigate(const string& uri) {
 
 }
 SPViewElement::~SPViewElement()

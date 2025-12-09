@@ -33,6 +33,10 @@ namespace space
             }
         }
     }
+    void SPWindowElement::invalidateRegion(sp_rectangle region)
+    {
+        this->createGraphics()->invalidateRegion(region);
+    }
     void SPWindowElement::navigate(const string& uri) {
         SPNavigateEventArgs *args = new SPNavigateEventArgs(uri);
         this->dispatchEvent("navigate", args, this);

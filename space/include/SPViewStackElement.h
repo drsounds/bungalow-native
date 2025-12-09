@@ -21,7 +21,7 @@ namespace space {
         SPViewStackElement();
         SPViewStackElement(SPElement *parent);
         void registerView(SPViewElement *view);
-        void navigate(string uri);
+        void navigate(const string& uri);
         virtual void appendChild(SPNode *child);
     };
 }

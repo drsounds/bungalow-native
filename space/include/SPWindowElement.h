@@ -18,7 +18,7 @@ namespace space {
 	public:
 		void draw(SPGraphicsContext *gc, int width, int height);
 		explicit SPWindowElement(Space *, SPSkin *);
-		void invalidateRegion(sp_rectangle rect) override {}
+		void invalidateRegion(sp_rectangle rect) override;
 
 		string getType() override
 		{
