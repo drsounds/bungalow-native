@@ -67,9 +67,9 @@ namespace space {
         this->invalidate();
         SPViewElement *newView = NULL;
         bool foundView = false;
-        for (std::vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
-            SPNode *node = static_cast<SPNode *>(*it);
-            SPViewElement *view = (SPViewElement *)node;
+        for (auto & it : *this->getChildNodes()) {
+            auto *node = static_cast<SPNode *>(it);
+            auto view = static_cast<SPViewElement*>(node);
             string type = view->getType();
             std::cout << view->getType() << std::endl;
             if (ends_with(type, "view")) {
@@ -90,55 +90,56 @@ namespace space {
                 cout << "Wrong view: " << view->getType() << endl;
             }
             this->invalidate();
+
+            if (std::regex_match(uri.c_str(), std::regex("spacify:internal:start"))) {
+
+                // Show What's new view
+                view = new views::WhatsNewView((SPElement *)this);
+
+            } /* else if (std::regex_match(uri.c_str(), std::regex("^spacify:internal:playqueue"))) {
+
+                // Show playqueue view and switch to the queue tab
+
+            } else if (std::regex_match(uri.c_str(), std::regex("^spacify:internal:history"))) {
+
+                // Show playqueue view and switch to the history tab
+
+            } else if (std::regex_match(uri.c_str(), std::regex("^spacify:config"))) {
+
+                // Show spacify config page
+
+            } else if (std::regex_match(uri.c_str(), std::regex("^spacify:artist:(.*)"))) {
+
+                // Load artist view and navigate to apporiate artist
+
+            } else if (std::regex_match(uri.c_str(), std::regex("^spacify:album:(.*)"))) {
+
+                // Load album view and navigate to apporiate artist
+
+            } else if (std::regex_match(uri.c_str(), std::regex("^spacify:user:(.*):playvector:(.*)"))) {
+
+                // Load user playvectors view
+
+            } else if (std::regex_match(uri.c_str(), std::regex("^spacify:internal:radio"))) {
+
+                // Load radio view
+
+            } else if (std::regex_match(uri.c_str(), std::regex("^spacify:config2"))) {
+
+                // Show the extended config2 dialog
+
+            } else {
+
+                // Show error message (The URI could not be found)
+                return;
+            }*/
+            vector<SPNode *> *children = this->getChildNodes();
+            if (view != nullptr) {
+                this->appendChild(view);
+                view->navigate(uri);
+            }
         }
 
-       /* if (std::regex_match(uri.c_str(), std::regex("spacify:internal:start"))) {
-
-            // Show What's new view
-            view = new views::WhatsNewView((Element *)this);
-
-        } else if (std::regex_match(uri.c_str(), std::regex("^spoyler:internal:playqueue"))) {
-
-            // Show playqueue view and switch to the queue tab
-
-        } else if (std::regex_match(uri.c_str(), std::regex("^spoyler:internal:history"))) {
-
-            // Show playqueue view and switch to the history tab
-
-        } else if (std::regex_match(uri.c_str(), std::regex("^spoyler:config"))) {
-
-            // Show spacify config page
-
-        } else if (std::regex_match(uri.c_str(), std::regex("^spoyler:artist:(.*)"))) {
-
-            // Load artist view and navigate to apporiate artist
-
-        } else if (std::regex_match(uri.c_str(), std::regex("^spoyler:album:(.*)"))) {
-
-            // Load album view and navigate to apporiate artist
-
-        } else if (std::regex_match(uri.c_str(), std::regex("^spoyler:user:(.*):playvector:(.*)"))) {
-
-            // Load user playvectors view
-
-        } else if (std::regex_match(uri.c_str(), std::regex("^spoyler:internal:radio"))) {
-
-            // Load radio view
-
-        } else if (std::regex_match(uri.c_str(), std::regex("^spoyler:config2"))) {
-
-            // Show the extended config2 dialog
-
-        } else {
-
-            // Show error message (The URI could not be found)
-            return;
-        }
-        vector<SPNode *> *children = this->getChildNodes();
-        if (view != NULL) {
-            this->appendChild(view);
-            view->navigate(uri);
-        }*/
 
 
     }

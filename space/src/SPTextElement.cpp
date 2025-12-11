@@ -12,7 +12,7 @@ SPTextElement::SPTextElement(SPElement *parent)
     //ctor
 }
 void SPTextElement::draw(int x, int y, SPGraphicsContext *g) {
-    SPColor fgcolor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 0));
+    SPColor fgcolor = this->getColorAttribute("fgcolor", this->getForegroundColor());
     SPFontStyle fontStyle = this->getFontStyle();
     g->drawString(this->data, fontStyle, fgcolor, x ,y , this->getWidth(), this->getHeight());
 }

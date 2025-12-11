@@ -18,6 +18,8 @@ namespace space
 
     SPWindowElement::SPWindowElement(Space *space, SPSkin *skin) : SPVBoxElement(nullptr, this)
     {
+        this->SPElement::setSpace(space);
+        this->SPElement::setSkin(skin);
         this->SPWindow::setSkin(skin);
         this->SPWindow::setSpace(space);
     }

@@ -125,12 +125,13 @@ void SPTabBarElement::paint(int x, int y, int width, int height, SPGraphicsConte
     {
         throw "width must be greater than 0";
     }
-    this->getSkin()->drawTabBar(g, this, x, y, width, height, bgColor, g, this->getColorScheme(), this->getTintColor());
+    this->getSkin()->drawTabBar(g, this, x, y, width, height);
 
     int left = 0;
+    int index = 0;
     std::vector<SPTab *>::iterator it = this->getTabs()->begin();
     do {
-        SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 1));
+        SPColor fgColor = this->getForegroundColor();
 
         SPTab *tab = (SPTab *)static_cast<SPTab *>(*it);
 
@@ -138,11 +139,12 @@ void SPTabBarElement::paint(int x, int y, int width, int height, SPGraphicsConte
         string id = tab->getId();
         sp_rectangle strSize = g->measureString(title.c_str(), this->getFontStyle());
         int width = 100;// 20 + strSize.width + 20;
-        this->getSkin()->drawTabBarTab(this->activeTab == tab, x + left, y, width, height, fgColor, bgColor, g, this->getColorScheme(), this->getTintColor());
+        this->getSkin()->drawTabBarTab(g, this, tab, index, this->activeTab == tab, x + left, y, width, height);
 
         g->drawString(title.c_str(), this->getFontStyle(), fgColor, left + x + 20, y + 5, strSize.width, strSize.height);
         left += width;
         ++it;
+        index++;
     } while (it != this->getTabs()->end());
 }
 

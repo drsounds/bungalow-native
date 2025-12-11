@@ -13,7 +13,9 @@ namespace space {
                 virtual ~WhatsNewView();
                 void navigate(string uri);
                 bool acceptsUri(string uri);
-                string getType();
+                string getType() override {
+                    return "whatsnewview";
+                }
         };
     }
 }

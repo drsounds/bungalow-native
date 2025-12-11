@@ -22,7 +22,7 @@ SPStandardTableDataSource::~SPStandardTableDataSource() {
     delete this->columnHeaders;
 }
 string SPStandardTableDataSource::getUriForCell (int column, int row) {
-    return "spoyler:internal:debug";
+    return "spacify:internal:debug";
 }
 string SPStandardTableDataSource::getTextForCell (int column, int row) {
     string t ("Row ");
@@ -38,7 +38,7 @@ string SPStandardTableDataSource::getTextForColumn (int column) {
     return t;
 }
 string SPStandardTableDataSource::getRowUri(int index) {
-    return "spoyler:internal:debug";
+    return "spacify:internal:debug";
 }
 
 bool SPStandardTableDataSource::isRowActive(int index) {

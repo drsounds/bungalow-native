@@ -13,8 +13,8 @@ namespace space {
     }
     void SPResourceElement::draw(int x, int y, SPGraphicsContext *g) {
         SPFontStyle font = this->getFontStyle();
-        SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 1));
-        SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(0, 0, 0, 1));
+        SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 255));
+        SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(0, 0, 0, 255));
         if (this->resource != NULL) {
 
             // draw title

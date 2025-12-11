@@ -3,19 +3,20 @@
 #include "SPHBoxElement.h"
 
 namespace space {
-class SPAppHeaderElement : public SPHBoxElement
-{
-    public:
-        explicit SPAppHeaderElement(SPElement *parent);
-        SPAppHeaderElement() = default;
-        ~SPAppHeaderElement() override;
-        string getType() override
-        {
-            return "appheader";
-        }
-    protected:
-    private:
-};
+    class SPElement;
+    class SPAppHeaderElement : public SPHBoxElement
+    {
+        public:
+            explicit SPAppHeaderElement(SPElement *parent);
+            SPAppHeaderElement() = default;
+            ~SPAppHeaderElement() override;
+            string getType() override
+            {
+                return "appheader";
+            }
+        protected:
+        private:
+    };
 }
 
 #endif // APPHEADERELEMENT_H

@@ -10,8 +10,8 @@
 #include "SPViewStackElement.h"
 #include "SPSkin.h"
 #include "PlayQueueView.h"
+#include "SPAppFooterElement.h"
 #include "SPAppHeaderElement.h"
-#include "SPNavigateEventArgs.h"
 #include "SPTreeViewElement.h"
 
 namespace space {
@@ -67,15 +67,12 @@ namespace space {
     }
     void MainElement::layout() {
         this->clipView = false;
-        this->set("bgcolor", "#373737");
         auto *header = new SPAppHeaderElement(this);
-        header->setColorAttribute("bgcolor", SPColor("#767676"));
         header->setHeight(55);
         header->getPadding()->top = 53;
         header->getPadding()->left = 13;
         header->getPadding()->bottom = 13;
         header->getPadding()->right =  13;
-        header->setHeight(55);
         this->appendChild(header);
         header->setId("header");
         // add search element
@@ -98,28 +95,24 @@ namespace space {
         // Add header children
 
         auto *body = new SPHBoxElement(this);
-        body->setColorAttribute("bgcolor", SPColor("#474747"));
         body->setIntegerAttribute("flex", 1);
         body->setId("body");
         this->appendChild(body);
         // Inside body
-        auto *sidebar = new SPVBoxElement(body);
-        sidebar->setId("sidebar");
-        sidebar->setWidth(220);
-        sidebar->setColorAttribute("bgcolor", SPColor(100, 100, 100, 1));
-        body->appendChild(sidebar);
+        auto *leftSidebar = new SPVBoxElement(body);
+        leftSidebar->setId("sidebar");
+        leftSidebar->setWidth(220);
+        body->appendChild(leftSidebar);
 
         body->appendChild(new SPSplitterElement(body));
 
         // Add TreeView
-        this->treeView = new SPTreeViewElement(sidebar);
+        this->treeView = new SPTreeViewElement(leftSidebar);
         treeView->setId("tree");
-        treeView->set("bgcolor", "#575757");
-        treeView->set("fgcolor", "#dddddd");
         treeView->setIntegerAttribute("flex", 1);
         treeView->setHeight(920);
         treeView->setWidth(220);
-        sidebar->appendChild(treeView);
+        leftSidebar->appendChild(treeView);
         treeView->setWindow(this->getWindow());
         // Add sample elements
         auto *item = new SPTreeItem(new SPUri("spacify:internal:start"));
@@ -136,16 +129,21 @@ namespace space {
 
         this->viewStack = new space::SPViewStackElement(body);
         this->viewStack->setId("viewstack");
-        viewStack->set("bgcolor", "#373737");
-        body->appendChild(viewStack);
         viewStack->setIntegerAttribute("flex",1);
         viewStack->setWindow(this->getWindow());
         viewStack->appendChild(new space::views::StartView(this));
         viewStack->appendChild(new space::views::PlayQueueView(this));
+        body->appendChild(viewStack);
 
-        auto *footer = new space::SPHBoxElement(this);
-        footer->set("bgcolor", "#444444");
-        footer->set("height", "86");
+        body->appendChild(new SPSplitterElement(body));
+
+        auto *rightSidebar = new SPVBoxElement(body);
+        rightSidebar->setId("sidebar");
+        rightSidebar->setWidth(220);
+        body->appendChild(rightSidebar);
+        body->pack();
+        auto *footer = new space::SPAppFooterElement(this);
+        footer->setHeight(86);
         footer->setId("footer");
         this->appendChild(footer);
 

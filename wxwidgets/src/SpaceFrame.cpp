@@ -21,6 +21,12 @@ SpaceFrame::SpaceFrame(wxApp *app, space::Space *space)
 
     this->m_spaceWidget = new SpaceWidget(dynamic_cast<wxWindow *>(this), wxID_ANY, "Hello World");
     this->m_spaceWidget->setSpace(this->m_space);
+    SetWindowStyle(
+        wxFRAME_FLOAT_ON_PARENT |
+        wxNO_BORDER |
+        wxFRAME_NO_TASKBAR |
+        wxCLIP_CHILDREN
+    );
     this->AddChild(this->m_spaceWidget);
 }
 

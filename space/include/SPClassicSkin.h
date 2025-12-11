@@ -11,17 +11,16 @@ namespace space
 {
     class SPClassicSkin : public SPSkin
     {
-        virtual bool drawElement(SPGraphicsContext *gc, SPElement *, const string& state, const sp_rectangle& bounds, SPColor* tintColor, short mode) override;
-        void drawTableRow(SPGraphicsContext* g, SPTableElement* table, int i, int x, int y, int width, int height,
-                          int row, SPColor *tintColor) override;
-        virtual void drawTableHeader(SPGraphicsContext* g, SPTableElement* table, int x, int y, int width, int height, SPColor *tintColor) override;
-        virtual void drawTabBarTab(bool active, int x, int y, int width, int _height, const SPColor& sp_color,
-                          const SPColor& bg_color, SPGraphicsContext* sp_graphics_context, int mode, SPColor *tintColor) override;
-        virtual void drawTabBar(SPGraphicsContext* sp_graphics_context, SPTabBarElement* sp_tab_bar_element, int i, int y, int  , int get_height,
-                       const SPColor&, SPGraphicsContext*, int mode, SPColor *tintColor) override
-        ;
-        virtual void drawTreeItem(SPGraphicsContext* g, int itemHeight, SPTreeViewElement* treeView, SPTreeItem* item, int x, int y, int width, int
-                                  height, int mode, SPColor *tintColor) override;
+    private:
+        SPColor m_lightColor = SPColor(128, 128, 128, 255);
+        SPColor m_shadowColor = SPColor(120, 120, 120, 255);
+    public:
+        bool drawElement(SPGraphicsContext *gc, SPElement *, const string& state, const sp_rectangle& bounds) override;
+        void drawTableRow(SPGraphicsContext* g, SPTableElement* table, int i, int x, int y, int width, int height, int row) override;
+        void drawTableHeader(SPGraphicsContext* g, SPTableElement* table, int x, int y, int width, int height) override;
+        void drawTabBarTab(SPGraphicsContext* g, SPTabBarElement *tabBar, SPTab *tab, int index, bool active, int x, int y, int width, int height) override;
+        void drawTabBar(SPGraphicsContext* g, SPTabBarElement* tabBar, int x, int y, int width, int height) override;
+        void drawTreeItem(SPGraphicsContext* g, SPTreeViewElement *treeView, SPTreeItem* item, int itemHeight, int x, int y, int width, int height) override;
     };
 }
 

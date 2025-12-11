@@ -40,7 +40,6 @@ SPTitleElement::SPTitleElement(SPElement *parent)
     title = new SPTextElement(this);
     title->setInnerText("Title");
     title->setIntegerAttribute("height", 160);
-    title->setColorAttribute("fgcolor", SPColor(255, 255, 255, 1));
     title->setIntegerAttribute("size", 25);
     title->set("width", "100%");
     this->appendChild(title);

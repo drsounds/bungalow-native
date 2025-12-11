@@ -227,10 +227,10 @@ namespace space {
 
 	SPColor SPElement::getBackgroundColor()
 	{
-		SPColor def = SPColor(255, 255, 255, 1);
+		SPColor def = SPColor(220, 220, 220, 255);
 		if (this->getColorScheme() == SP_COLOR_SCHEME_DARK)
 		{
-			def = SPColor(8, 8, 8, 1);
+			def = SPColor(8, 8, 8, 255);
 		}
 		if (this->getTintColor() != nullptr)
 		{
@@ -241,10 +241,10 @@ namespace space {
 
 	SPColor SPElement::getForegroundColor()
 	{
-		SPColor def = SPColor(28, 28, 28, 1);
+		SPColor def = SPColor(28, 28, 28, 255);
 		if (this->getColorScheme() == SP_COLOR_SCHEME_DARK)
 		{
-			def = SPColor(200, 200, 200, 1);
+			def = SPColor(200, 200, 200, 255);
 		}
 		if (this->getTintColor() != nullptr)
 		{
@@ -285,8 +285,8 @@ namespace space {
 
 	SPGradient* SPElement::generateDefaultGradient()
 	{
-		SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(28, 28, 28, 1));
-		SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 1));
+		SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(28, 28, 28, 255));
+		SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 255));
 
 		SPColor startColor = bgColor.lighten(0.1);
 		SPColor endColor = bgColor.lighten(-0.1);
@@ -294,7 +294,7 @@ namespace space {
 	}
 
 	SPElement::SPElement(SPElement *parent) : SPNode(static_cast<SPNode*>(parent)), fontStyle("Tahoma", 13, 1, false, false) {
-		this->setTintColor(new SPColor(0, 127, 255, 97));
+		//this->setTintColor(new SPColor(0, 127, 255, 97));
 		this->m_classList = new vector<string>;
 		this->absoluteBounds = new sp_rectangle;
 		this->setScrollable(false);
@@ -343,14 +343,6 @@ namespace space {
 	}
 
 	void SPElement::applySkin() {
-		#if false
-		this->set("fgcolor", new string("#ffffff"));
-		this->set("bgcolor", new string("#000000"));
-		this->set("font", new string("MS Sans Serif"));
-		this->set("highlight", "#a9d9fe");
-		this->set("size", new string("11"));
-		#endif
-
 		this->applyColorAttributeFromSkin(string("bgcolor"), string("body.background.color"));
 		this->applyColorAttributeFromSkin(string("fgcolor"), string("body.foreground.color"));
 
@@ -360,15 +352,6 @@ namespace space {
 		this->applyColorAttributeFromSkin(string("fgcolor"), string(this->getType()) + "body.foreground.color");
 		if (this->m_skin->hasImage(this->SPElement::getType() + ".background.image")) {
 			this->m_backgroundImage = this->m_skin->getImage(string(this->getType()) + ".background.image", "");
-		}
-		if (this->getParent() != NULL) {
-			#if false
-			this->set("bgcolor", new string(this->getParent()->get("bgcolor")));
-			this->set("fgcolor", new string(this->getParent()->get("fgcolor")));
-			this->set("font", new string(this->getParent()->get("font")));
-			this->set("highlight", new string(this->getParent()->get("highlight")));
-			this->set("size", new string(this->getParent()->get("size")));
-			#endif
 		}
 	}
 
@@ -426,7 +409,7 @@ namespace space {
 		{
 			if (this->m_window != nullptr)
 			{
-				colorScheme = reinterpret_cast<SPElement*>(this->getWindow())->getColorScheme();
+				colorScheme = dynamic_cast<SPElement*>(this->getWindow())->getColorScheme();
 			}
 			if (colorScheme == SP_COLOR_SCHEME_DEFAULT)
 			{
@@ -435,6 +418,10 @@ namespace space {
 					colorScheme = this->getParentElement()->getColorScheme();
 				}
 			}
+		}
+		if (colorScheme < 1 || colorScheme > 2)
+		{
+			throw "Invalid color scheme";
 		}
 		return colorScheme;
 	}
@@ -567,36 +554,18 @@ namespace space {
 
 	void SPElement::paint(int x, int y, int width, int height, SPGraphicsContext *c)
 	{
-		SPColor bgColor = SPColor(28, 28, 28, 255);
-		SPColor fgColor = SPColor(255, 255, 255, 1);
-		if (this->getColorScheme() == SP_COLOR_SCHEME_DARK)
-		{
-			fgColor = SPColor(255, 255, 255, 1);
-			bgColor = SPColor(40, 40, 40, 255);
-		}
-		if (this->getColorScheme() == SP_COLOR_SCHEME_LIGHT)
-		{
-			fgColor = SPColor(0, 0, 0, 1);
-			bgColor = SPColor(230, 230, 230, 255);
-		}
+		SPColor bgColor = this->getBackgroundColor();
+		SPColor fgColor = this->getForegroundColor();
 		if (this->getTintColor() != nullptr)
 		{
 			bgColor = bgColor.tint(*this->getTintColor());
 		}
-		bgColor = this->getColorAttribute("bgcolor", bgColor);
-		fgColor = this->getColorAttribute("fgcolor", fgColor);
 		int fontSize = this->getIntegerAttribute("size", 12);
 		string fontFamily = this->getStringAttribute("font", "MS Sans Serif");
 
-		if (!this->getSkin()->drawElement(c, this, "", sp_rectangle { x, y, width, height, 0 }, this->getTintColor(), 0))
+		if (!this->getSkin()->drawElement(c, this, "", sp_rectangle { x, y, width, height, 0 }))
 		{
-			if (this->getGradient() != nullptr)
-			{
-				c->drawLinearGradient(sp_rectangle { x, y, width, height }, *this->getGradient());
-			} else
-			{
-				c->fillRectangle(x, y, width, height, bgColor);
-			}
+			c->fillRectangle(x, y, width, height, bgColor);
 		}
 		SPColor color(255, 0, 0, 255);
 		string text = this->getInnerText();
@@ -604,8 +573,6 @@ namespace space {
 		if (!text.empty())
 			c->drawString(this->getInnerText(), SPFontStyle(fontFamily, fontSize, fontSize / 2, false, false), fgColor, x - scrollX, y - scrollY, this->getWidth(), this->getHeight());
 		// adjust for scroll
-		x -= this->scrollX;
-		y -= this->scrollY;
 	}
 
 	void SPElement::draw(int x, int y, SPGraphicsContext *c) {
@@ -619,10 +586,10 @@ namespace space {
 		if (this->absoluteBounds == nullptr)
 	    this->absoluteBounds = new sp_rectangle;
 
-	    this->absoluteBounds->x = x + this->getMargins()->left;
-	    this->absoluteBounds->y = y + this->getMargins()->bottom;
-	    this->absoluteBounds->width = this->getWidth() - this->getMargins()->left + this->getMargins()->right;
-	    this->absoluteBounds->height = this->getHeight() - this->getMargins()->top + this->getMargins()->bottom;
+	    this->absoluteBounds->x = x;
+	    this->absoluteBounds->y = y;
+	    this->absoluteBounds->width = this->getWidth();
+	    this->absoluteBounds->height = this->getHeight();
 
 		int width =  this->getWidth();
 		int height = this->getHeight();
@@ -635,21 +602,24 @@ namespace space {
 		if (this->clipView) {
 	        c->setClip(*absoluteBounds);
 		}
+		x -= this->scrollX;
+		y -= this->scrollY;
 		this->paint(rect2.x, rect2.y, rect2.width, rect2.height, c);
 		for(std::vector<SPNode *>::iterator it = children->begin(); it != children->end(); ++it) {
 			SPElement *elm = static_cast<SPElement *>(*it);
-			if(elm != NULL) {
+			if(elm != nullptr) {
 				elm->draw(rect2.x, rect2.y, c);
 			}
 		}
-		SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(28, 28, 28, 1));
-		SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 1));
+		/*SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(28, 28, 28, 255));
+		SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 255));
 		int fontSize = this->getIntegerAttribute("size", 12);
 		string fontFamily = this->getStringAttribute("font", "MS Sans Serif");
-		/*c->drawRectangle(rect2.x, rect2.y, width, height, SPColor(255, 0, 0, 1));
+		c->drawRectangle(rect2.x, rect2.y, width, height, SPColor(255, 0, 0,255));
 		c->drawString(this->getType(), SPFontStyle(fontFamily, fontSize, fontSize / 2, false, false), fgColor, rect2.x, rect2.y, this->getWidth(), this->getHeight());
 		const string strLoc = "type=" + this->getType() + "&x=" + std::to_string(x) + "&y=" + std::to_string(y) + "&width=" + std::to_string(width) + "&height=" + std::to_string(height) + "&flex=" + std::to_string(this->getIntegerAttribute("flex", 0));
-		c->drawString(strLoc, SPFontStyle(fontFamily, fontSize, fontSize / 2, false, false), SPColor(0, 0, 255, 1), rect2.x + (rect2.width / 2), rect2.y + (rect2.height / 2), this->getWidth(), this->getHeight());*/
+		c->drawString(strLoc, SPFontStyle(fontFamily, fontSize, fontSize / 2, false, false), SPColor(0, 0, 255, 255), rect2.x + (rect2.width / 2), rect2.y + (rect2.height / 2), this->getWidth(), this->getHeight());
+		*/
 		if (clipView) {
 	        c->declipRect();
 		}

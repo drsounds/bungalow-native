@@ -8,8 +8,8 @@ SPSplitterElement::SPSplitterElement(SPElement *parent)
  : SPElement(parent)
 {
     //ctor
-    this->setIntegerAttribute("width", 1);
-    this->setColorAttribute("bgcolor", SPColor(255, 255, 255, 1));
+    this->setWidth(1);
+    this->setBackgroundColor(SPColor(127, 127, 127, 255));
 }
 
 SPSplitterElement::~SPSplitterElement()

@@ -118,7 +118,15 @@ namespace space {
         sp_rectangle *absoluteBounds;
         void applyStylesheet(SPStylesheet *style);
         SPColor getBackgroundColor();
+        void setBackgroundColor(const SPColor& value)
+        {
+            this->setColorAttribute("bgcolor", value);
+        }
         SPColor getForegroundColor();
+        void setForegroundColor(const SPColor& value)
+        {
+            this->setColorAttribute("fgcolor", value);
+        }
         void setName(const string& value) {
             this->name = value;
          }

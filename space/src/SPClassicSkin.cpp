@@ -12,11 +12,12 @@
 
 using namespace space;
 
-bool SPClassicSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const string& state, const sp_rectangle& bounds, SPColor *tintColor, short mode)
+bool SPClassicSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const string& state, const sp_rectangle& bounds)
 {
     bool result = false;
     SPColor bgColor = elm->getBackgroundColor();
     SPColor fgColor = elm->getForegroundColor();
+    SPColor *tintColor = elm->getTintColor();
     if (tintColor != nullptr)
     {
         bgColor = bgColor.tint(*tintColor);
@@ -52,10 +53,6 @@ bool SPClassicSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const stri
             bgColor.lighten(-0.8), bgColor.lighten(-0.9),
             0
         );
-        if (state == "active")
-        {
-            gradient = SPGradient(SPColor(0, 0, 0, 1), SPColor(10, 10, 10, 0), 0);
-        }
         g->drawLinearGradient(
             {
                 bounds.x,
@@ -73,17 +70,27 @@ bool SPClassicSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const stri
     if (elm->getType() == "appheader")
     {
         result = true;
-        auto *appHeader = dynamic_cast<SPAppHeaderElement *>(elm);
-        auto width = appHeader->getWidth();
-        auto height = appHeader->getHeight();
         SPGradient gradient(
-            bgColor.lighten(0.5), bgColor.lighten(0),
+            bgColor.lighten(0.2), bgColor.lighten(0.1),
             0
         );
-        if (state == "active")
-        {
-            gradient = SPGradient(SPColor(0, 0, 0, 1), SPColor(10, 10, 10, 0), 0);
-        }
+        g->drawLinearGradient(
+    {
+                bounds.x,
+                bounds.y,
+                bounds.width,
+                bounds.height
+            },
+            gradient
+        );
+    }
+    if (elm->getType() == "appfooter")
+    {
+        result = true;
+        SPGradient gradient(
+            bgColor.lighten(0.2), bgColor.lighten(0.1),
+            0
+        );
         g->drawLinearGradient(
     {
                 bounds.x,
@@ -113,9 +120,10 @@ bool SPClassicSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const stri
     return result;
 }
 
-void SPClassicSkin::drawTableRow(SPGraphicsContext *g, SPTableElement *table, int i, int x, int y, int width, int height, int row, SPColor *tintColor)
+void SPClassicSkin::drawTableRow(SPGraphicsContext *g, SPTableElement *table, int i, int x, int y, int width, int height, int row)
 {
     SPColor color = this->getColor("table::nth-child(2n).background.color", "");
+    SPColor *tintColor = table->getTintColor();
     if (tintColor != nullptr)
     {
         color = color.tint(*tintColor);
@@ -125,9 +133,10 @@ void SPClassicSkin::drawTableRow(SPGraphicsContext *g, SPTableElement *table, in
     }
 }
 
-void SPClassicSkin::drawTableHeader(SPGraphicsContext* g, SPTableElement *table, int x, int y, int width, int height, SPColor *tintColor)
+void SPClassicSkin::drawTableHeader(SPGraphicsContext* g, SPTableElement *table, int x, int y, int width, int height)
 {
     SPColor bgColor = table->getBackgroundColor();
+    SPColor *tintColor = table->getTintColor();
     if (tintColor != nullptr)
     {
         bgColor = bgColor.tint(*tintColor);
@@ -140,13 +149,12 @@ void SPClassicSkin::drawTableHeader(SPGraphicsContext* g, SPTableElement *table,
     g->drawLinearGradient(sp_rectangle { x, y, width, height }, gradient);
 }
 
-void SPClassicSkin::drawTabBarTab(bool active, int x, int y, int width, int height, const SPColor& sp_color,
-    const SPColor& bg_color, SPGraphicsContext* g, int mode, SPColor *tintColor)
+void SPClassicSkin::drawTabBarTab(SPGraphicsContext* g, SPTabBarElement *tabBar, SPTab* tab, int index, bool active, int x, int y, int width, int height)
 {
-    SPColor bgColor = bg_color;
-    SPColor fgColor = sp_color;
-    SPColor shadowColor = SPColor(80, 80, 80, 255);
-    SPColor lColor = SPColor(128, 128, 128, 255);
+    SPColor bgColor = tabBar->getBackgroundColor();
+    SPColor lColor = this->m_lightColor;
+    SPColor shadowColor = this->m_shadowColor;
+    SPColor* tintColor = tabBar->getTintColor();
     if (tintColor != nullptr)
     {
         bgColor = bgColor.tint(*tintColor);
@@ -155,34 +163,32 @@ void SPClassicSkin::drawTabBarTab(bool active, int x, int y, int width, int heig
     }
     if (active)
     {
-        g->fillRectangle(x, y, width, height + 1, bgColor);
+        g->fillRectangle(x, y + 1, width, height + 1, bgColor);
+        if (index > 0)
+        {
+            g->drawLine(x, y, x, y + height,shadowColor);
+        }
     }
     else
     {
         SPGradient gradient(bgColor.lighten(0.5), bgColor, 0);
-        g->drawLinearGradient({x, y, width, height }, gradient);
     }
-    g->drawLine(x, y, x + width, y, shadowColor);
-    g->drawLine(x + width, y + 1, x + width, y + height, lColor);
-    g->drawLine(x + width - 1, y + 1, x + width - 1, y + height, shadowColor);
+    g->drawLine(x + width, y, x + width, y + height,shadowColor);
 }
 
 void SPClassicSkin::drawTabBar(
     SPGraphicsContext* g,
-    SPTabBarElement* tabbar,
+    SPTabBarElement* tabBar,
     int x,
     int y,
     int width,
-    int height,
-    const SPColor& sp_color,
-    SPGraphicsContext* sp_graphics_context1,
-    int mode,
-    SPColor *tintColor
+    int height
 )
 {
-    SPColor shadowColor = SPColor(80, 80, 80, 255);
-    SPColor lColor = SPColor(128, 128, 128, 255);
-    SPColor bgColor = tabbar->getBackgroundColor();
+    SPColor lColor = this->m_lightColor;
+    SPColor shadowColor = this->m_shadowColor;
+    SPColor bgColor = tabBar->getBackgroundColor();
+    SPColor* tintColor = tabBar->getTintColor();
     if (tintColor != nullptr)
     {
         bgColor = bgColor.tint(*tintColor);
@@ -195,11 +201,10 @@ void SPClassicSkin::drawTabBar(
     );
     g->drawLinearGradient(sp_rectangle {x, y, width, height}, gradient);
     g->drawLine(x, y, x + width, y,shadowColor);
-    g->drawLine(x, y + 1, x + width, y + 1, lColor);
-    g->drawLine(x, y + height, x + width, y + height,shadowColor);
+    g->drawLine(x, y + height - 1, x + width, y + height - 1,shadowColor);
 }
 
-void SPClassicSkin::drawTreeItem(SPGraphicsContext* g, int itemHeight, SPTreeViewElement *treeView, SPTreeItem* item, int x, int y, int width, int height, int mode, SPColor *tintColor)
+void SPClassicSkin::drawTreeItem(SPGraphicsContext* g, SPTreeViewElement *treeView, SPTreeItem* item, int itemHeight, int x, int y, int width, int height)
 {
     if (item->isSelected()) {
 #if spacify2009

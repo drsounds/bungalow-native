@@ -199,14 +199,6 @@ namespace space
 
             void WxWidgetsGraphicsContext::drawLinearGradient(const sp_rectangle& rect, const SPGradient& gradient)
             {
-                this->getPaintDC()->SetBrush(
-                    wxBrush(
-                        WxWidgetsGraphicsContext::toWxColor(
-                            gradient.getStart()
-                        ),
-                        wxTRANSPARENT
-                    )
-                );
                 this->getPaintDC()->GradientFillLinear(
                     wxRect(
                         rect.x,

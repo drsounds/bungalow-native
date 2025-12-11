@@ -27,7 +27,7 @@ bool SpacifyApp::OnInit(){
     this->m_space->setGraphicsContext(gc);
     gc->setWidget(this->m_frame->getSpaceWidget());
     this->m_windowElement = new space::SPWindowElement(this->m_space, new space::SPClassicSkin());
-    this->m_windowElement->setColorScheme(SP_COLOR_SCHEME_DARK);
+    this->m_windowElement->setColorScheme(SP_COLOR_SCHEME_LIGHT);
 
     this->m_frame->setWindowElement(this->m_windowElement);
     this->m_frame->setSpace(m_space);

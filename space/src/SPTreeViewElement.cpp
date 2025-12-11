@@ -103,7 +103,7 @@ void SPTreeViewElement::paint(int x, int y, int width, int height, SPGraphicsCon
 	{
 		bgColor = bgColor.tint(*this->getTintColor());
 	}
-	if (!this->getSkin()->drawElement(g, this, "", sp_rectangle { x, y, width, height, 0 }, &bgColor, 0)) {
+	if (!this->getSkin()->drawElement(g, this, "", sp_rectangle { x, y, width, height, 0 })) {
 		g->fillRectangle(x, y, width, height, bgColor);
 	}
 	SPColor color = this->getForegroundColor();
@@ -114,21 +114,20 @@ void SPTreeViewElement::paint(int x, int y, int width, int height, SPGraphicsCon
 		SPTreeItem *item = static_cast<SPTreeItem *>(*it);
 		this->getSkin()->drawTreeItem(
 			g,
-			itemHeight,
 			this,
 			item,
+			itemHeight,
 			x,
 			y + top,
 			this->getWidth(),
-			itemHeight,
-			this->getColorScheme(),
-			this->getTintColor()
+			itemHeight
 		);
 		sp_rectangle strB = g->measureString(item->getText(), fontStyle);
         int ttop = (top + (itemHeight / 2)) - (strB.height / 2);
 		g->drawString(item->getText(), this->getFontStyle(), color, 20 + x, y + ttop, this->getWidth(), itemHeight);
 		top += itemHeight;
 	}
+
 }
 
 }

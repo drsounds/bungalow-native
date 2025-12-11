@@ -51,19 +51,12 @@ class SPSkin
         bool hasImage(string selector);
         SPColor getColor(string selector, string def);
         SPImage *getImage(string selector, string def);
-        virtual bool drawElement(SPGraphicsContext *gc, SPElement *, const string& state, const sp_rectangle& bounds, SPColor* tintColor, short mode);
-        virtual void drawTableRow(SPGraphicsContext* g, SPTableElement* table, int i, int x, int y, int width, int height,
-                          int row, SPColor *tintColor);
-        virtual void drawTableHeader(SPGraphicsContext* g, SPTableElement* table, int x, int y, int width, int height, SPColor *tintColor);
-        virtual void drawTabBarTab(bool active, int x, int y, int width, int height, const SPColor& sp_color,
-                          const SPColor& bg_color, SPGraphicsContext* sp_graphics_context, int mode, SPColor *tintColor);
-        virtual void drawTabBar(SPGraphicsContext* sp_graphics_context, SPTabBarElement* sp_tab_bar_element, int i, int y, int  , int get_height,
-                       const SPColor&, SPGraphicsContext*, int mode, SPColor *tintColor);
-        virtual void drawTreeItem(SPGraphicsContext* g, int itemHeight, SPTreeViewElement* treeView, SPTreeItem* item, int x, int y, int width, int
-                                  height, int mode, SPColor *tintColor);
-
-    protected:
-    private:
+        virtual bool drawElement(SPGraphicsContext *gc, SPElement *, const string& state, const sp_rectangle& bounds) {}
+        virtual void drawTableRow(SPGraphicsContext* g, SPTableElement* table, int i, int x, int y, int width, int height, int row) {}
+        virtual void drawTableHeader(SPGraphicsContext* g, SPTableElement* table, int x, int y, int width, int height) {}
+        virtual void drawTabBarTab(SPGraphicsContext* g, SPTabBarElement *tabBar, SPTab *tab, int index, bool active, int x, int y, int width, int height) {}
+        virtual void drawTabBar(SPGraphicsContext* g, SPTabBarElement* tabBar, int x, int y, int width, int height) {}
+        virtual void drawTreeItem(SPGraphicsContext* g, SPTreeViewElement *treeView, SPTreeItem* item, int itemHeight, int x, int y, int width, int height) {}
 };
 }
 #endif // SKIN_H

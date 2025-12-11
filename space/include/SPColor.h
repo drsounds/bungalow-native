@@ -23,7 +23,7 @@ namespace space {
         SPColor alpha(short amount) const;
         SPColor lighten(float luminance = 0) const;
         SPColor();
-        SPColor(short r, short g, short b, short a);
+        SPColor(short r, short , short b, short a);
         SPColor tint(const SPColor& tint) const;
         explicit SPColor(const string& html);
         string toHTMLColor();

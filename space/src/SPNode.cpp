@@ -38,10 +38,18 @@ namespace space {
         (*this->colorAttributes)[title] = value;
     }
     SPColor SPNode::getColorAttribute(const string& title, SPColor defaultValue) {
+        if (!(this->colorAttributes)->count(title))
+        {
+            return defaultValue;
+        }
         SPColor color = (*this->colorAttributes)[title];
         return color;
     }
     int SPNode::getIntegerAttribute(const string& title, int defaultValue) {
+        if (!(this->integerAttributes)->count(title))
+        {
+            return defaultValue;
+        }
         return (*this->integerAttributes)[title];
     }
     void SPNode::setIntegerAttribute(const string& title, int value) {

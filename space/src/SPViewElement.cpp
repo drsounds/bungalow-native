@@ -23,7 +23,7 @@ void SPViewElement::request(std::string uri) {
 }
 
 std::string SPViewElement::loadView(std::string view) {
-    std::string path = "C:\\Users\\Alecca\\Documents\\Spoyler\\resources\\views\\" + view;
+    std::string path = "C:\\Users\\Alecca\\Documents\\spacify\\resources\\views\\" + view;
     string fileName = (string)path.c_str();
     FILE *fil = fopen(fileName.c_str(), "rb");
     fseek(fil, 0, SEEK_END);

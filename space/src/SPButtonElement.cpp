@@ -11,11 +11,11 @@ void space::SPButtonElement::draw(int x, int y, SPGraphicsContext *c)
     this->absoluteBounds->width = this->getWidth();
     this->absoluteBounds->height = this->getHeight();
 
-    SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(0, 0, 0, 1));
-    SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 1));
+    SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(0, 0, 0, 255));
+    SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 255));
     int fontSize = this->getIntegerAttribute("size", 12);
     string fontFamily = this->getStringAttribute("font", "MS Sans Serif");
-	SPGradient gradient (bgColor.lighten(0.1), bgColor.lighten(-0.1), 0);
+	SPGradient gradient(bgColor.lighten(0.1), bgColor.lighten(-0.1), 0);
 	c->drawLinearGradient(sp_rectangle { x, y, this->getWidth(), this->getHeight() }, gradient);
 	
     if(!this->getInnerText().empty()) {
