@@ -86,6 +86,15 @@ SPColor::SPColor(short r, short g, short b, short a){
 	this->a = a;
 }
 
+SPColor SPColor::tint(const SPColor& tint) const
+{
+	short red = this->r + (((255 - this->r) * (tint.r / 255.0)) * (float(tint.a) / 255.0));
+	short green = this->g + (((255 - this->g) * (tint.g / 255.0)) * (float(tint.a) / 255.0));
+	short blue = this->b + (((255 - this->b) * (tint.b / 255.0)) * (float(tint.a) / 255.0));
+	short alpha = this->a + (((255 - this->a) * (tint.a / 255.0)) * (float(tint.a) / 255.0));
+	return SPColor(red, green, blue, alpha);
+}
+
 SPColor::SPColor() {
 	this->r = 0;
 	this->g = 0;

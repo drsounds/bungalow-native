@@ -78,12 +78,12 @@ namespace space {
         void setParent(SPNode *parent);
         std::vector<SPNode *> *getChildNodes();
         bool hasAttribute(string attrib);
-        SPColor getColorAttribute(string title, SPColor defaultValue);
-        void setColorAttribute(string title, SPColor value);
-        int getIntegerAttribute(string title, int defaultValue);
-        void setIntegerAttribute(string title, int value);
-        void setStringAttribute(string attribute, string value);
-        string getStringAttribute(string attribute, string defaultValue);
+        virtual SPColor getColorAttribute(const string& title, SPColor defaultValue);
+        void setColorAttribute(const string& title, SPColor value);
+        int getIntegerAttribute(const string& title, int defaultValue);
+        void setIntegerAttribute(const string& title, int value);
+        void setStringAttribute(const string& attribute, string value);
+        string getStringAttribute(const string& attribute, string defaultValue);
     };
 }
 #endif // NODE_H

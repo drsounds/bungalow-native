@@ -1,5 +1,10 @@
 #ifndef ELEMENT_H
 #define ELEMENT_H
+
+#define SP_COLOR_SCHEME_DEFAULT 0
+#define SP_COLOR_SCHEME_DARK 1
+#define SP_COLOR_SCHEME_LIGHT 2
+
 #include "SPNode.h"
 #include "SPObservable.h"
 #include "SPFontStyle.h"
@@ -24,6 +29,7 @@ namespace space {
         SPSkin *m_skin;
         bool scrollable;
         bool visible;
+        short m_colorScheme = 0;
         sp_margin *margins;
         sp_margin *padding;
         SPFontStyle fontStyle;
@@ -39,19 +45,32 @@ namespace space {
         int scrollY;
         bool clipView = false;
         string name;
-        space::Space *m_space;
+        Space *m_space;
         SPGradient *m_gradient;
         bool m_hasDefaultGradient = false;
+        SPColor* m_tintColor;
+        SPColor* m_activeColor;
     public:
-        void setSpace(space::Space *space) {
+        SPElement *getParentElement()
+        {
+            return (SPElement *)this->getParent();
+        }
+        void setSpace(Space *space) {
             this->m_space = space;
         }
+        short getColorScheme();
+        void setColorScheme(short value);
         SPGradient *getGradient() const {
             return this->m_gradient;
         }
         void setGradient(SPGradient *value) {
             this->m_gradient = value;
         }
+        SPColor* getActiveColor();
+        void setActiveColor(SPColor* value);
+        SPColor *getTintColor();
+        void setTintColor(SPColor *value);
+        SPColor getColorAttribute(const string& title, SPColor defaultValue) override;
         void notify(const string& event, SPObject* sender, SPEventArgs* data) override;
         bool hasDefaultGradient() const
         {
@@ -98,14 +117,8 @@ namespace space {
         void removeClass(string _class);
         sp_rectangle *absoluteBounds;
         void applyStylesheet(SPStylesheet *style);
-        SPColor getBackgroundColor()
-        {
-            return this->getColorAttribute("bgcolor", SPColor(0, 0, 0, 1));
-        }
-        SPColor getForegroundColor()
-        {
-            return this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 1));
-        }
+        SPColor getBackgroundColor();
+        SPColor getForegroundColor();
         void setName(const string& value) {
             this->name = value;
          }

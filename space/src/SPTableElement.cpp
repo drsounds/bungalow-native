@@ -75,7 +75,7 @@ namespace space {
         int top = columnY + 18;
         // Draw rows
         for (int i = 0; i < 100; i++) {
-            this->getSkin()->drawTableRow(g, this, i, x, y, width, 18, i);
+            this->getSkin()->drawTableRow(g, this, i, x, y, width, 18, i, this->getTintColor());
             top += 18;
         }
         int columnYY = columnY;
@@ -95,7 +95,7 @@ namespace space {
             // If columnY is below zero, set it to the position at top
             columnY = ((SPElement *)this->getParent())->absoluteBounds->y + 1;
         }
-        this->getSkin()->drawTableHeader(g, this, 0, 0, width, 18);
+        this->getSkin()->drawTableHeader(g, this, 0, 0, width, 18, this->getTintColor());
         left =0;
         for (int i = 0; i < dataSource->getColumnCount(); i++) {
             string text = dataSource->getTextForColumn(i);

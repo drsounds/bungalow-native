@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cstdio>
 #include <boost/lexical_cast/bad_lexical_cast.hpp>
+#include <utility>
 
 #include "Space.h"
 
@@ -11,11 +12,80 @@
 #include "SPGraphicsContext.h"
 #include "SPSkin.h"
 #include "SPImage.h"
-#include "SPObserver.h"
 #include "SPStylesheet.h"
 #include "SPFontStyle.h"
 
 namespace space {
+	SPColor* SPElement::getActiveColor()
+	{
+		SPColor* ret = nullptr;
+
+		if (SPColor* activeColor = this->m_tintColor; activeColor != nullptr)
+		{
+			ret = activeColor;
+		}
+		else
+		{
+			if (this->m_window != nullptr && this->getType() != "window")
+			{
+				ret = dynamic_cast<SPElement*>(this->getWindow())->getActiveColor();
+			}
+			if (activeColor == nullptr)
+			{
+				if (this->m_parent != nullptr && this->getType() != "window")
+				{
+					ret = this->getParentElement()->getActiveColor();
+				}
+			}
+		}
+		return ret;
+	}
+
+	void SPElement::setActiveColor(SPColor* value)
+	{
+		this->m_activeColor = value;
+	}
+
+	SPColor* SPElement::getTintColor()
+	{
+		SPColor* ret = nullptr;
+
+		if (SPColor* tintColor = this->m_tintColor; tintColor != nullptr)
+		{
+			ret = tintColor;
+		}
+		else
+		{
+			if (this->m_window != nullptr && this->getType() != "window")
+			{
+				ret = dynamic_cast<SPElement*>(this->getWindow())->getTintColor();
+			}
+			if (tintColor == nullptr)
+			{
+				if (this->m_parent != nullptr && this->getType() != "window")
+				{
+					ret = this->getParentElement()->getTintColor();
+				}
+			}
+		}
+		return ret;
+	}
+
+	void SPElement::setTintColor(SPColor* value)
+	{
+		this->m_tintColor = value;
+	}
+
+	SPColor SPElement::getColorAttribute(const string& title, SPColor defaultValue)
+	{
+		SPColor color = this->SPNode::getColorAttribute(title, std::move(defaultValue));
+		if (this->getTintColor() != nullptr)
+		{
+			color = color.tint(*this->getTintColor());
+		}
+		return color;
+	}
+
 	void SPElement::notify(const string& event, SPObject* sender, SPEventArgs* data)
 	{
 		SPObservable::notify(event, sender, data);
@@ -155,6 +225,35 @@ namespace space {
 
 	}
 
+	SPColor SPElement::getBackgroundColor()
+	{
+		SPColor def = SPColor(255, 255, 255, 1);
+		if (this->getColorScheme() == SP_COLOR_SCHEME_DARK)
+		{
+			def = SPColor(8, 8, 8, 1);
+		}
+		if (this->getTintColor() != nullptr)
+		{
+			def = def.tint(*this->getTintColor());
+		}
+		return this->getColorAttribute("bgcolor",def);
+	}
+
+	SPColor SPElement::getForegroundColor()
+	{
+		SPColor def = SPColor(28, 28, 28, 1);
+		if (this->getColorScheme() == SP_COLOR_SCHEME_DARK)
+		{
+			def = SPColor(200, 200, 200, 1);
+		}
+		if (this->getTintColor() != nullptr)
+		{
+			def = def.tint(*this->getTintColor());
+		}
+		return this->getColorAttribute("fgcolor",def);
+
+	}
+
 	void SPElement::applyColorAttributeFromSkin (string attr, string prop) {
 	    cout << prop << "\r\n";
 	    cout << this->m_skin->colors << "\r\n";
@@ -195,6 +294,7 @@ namespace space {
 	}
 
 	SPElement::SPElement(SPElement *parent) : SPNode(static_cast<SPNode*>(parent)), fontStyle("Tahoma", 13, 1, false, false) {
+		this->setTintColor(new SPColor(0, 127, 255, 97));
 		this->m_classList = new vector<string>;
 		this->absoluteBounds = new sp_rectangle;
 		this->setScrollable(false);
@@ -314,6 +414,29 @@ namespace space {
 	}
 	int SPElement::getX() {
 		return this->x;
+	}
+	void SPElement::setColorScheme(short value)
+	{
+		this->m_colorScheme	= value;
+	}
+
+	short SPElement::getColorScheme() {
+		short colorScheme = this->m_colorScheme;
+		if (colorScheme == SP_COLOR_SCHEME_DEFAULT)
+		{
+			if (this->m_window != nullptr)
+			{
+				colorScheme = reinterpret_cast<SPElement*>(this->getWindow())->getColorScheme();
+			}
+			if (colorScheme == SP_COLOR_SCHEME_DEFAULT)
+			{
+				if (this->m_parent != nullptr)
+				{
+					colorScheme = this->getParentElement()->getColorScheme();
+				}
+			}
+		}
+		return colorScheme;
 	}
 
 	void SPElement::processEvent(const SPEvent& event)
@@ -444,12 +567,28 @@ namespace space {
 
 	void SPElement::paint(int x, int y, int width, int height, SPGraphicsContext *c)
 	{
-		SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(28, 28, 28, 1));
-		SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 1));
+		SPColor bgColor = SPColor(28, 28, 28, 255);
+		SPColor fgColor = SPColor(255, 255, 255, 1);
+		if (this->getColorScheme() == SP_COLOR_SCHEME_DARK)
+		{
+			fgColor = SPColor(255, 255, 255, 1);
+			bgColor = SPColor(40, 40, 40, 255);
+		}
+		if (this->getColorScheme() == SP_COLOR_SCHEME_LIGHT)
+		{
+			fgColor = SPColor(0, 0, 0, 1);
+			bgColor = SPColor(230, 230, 230, 255);
+		}
+		if (this->getTintColor() != nullptr)
+		{
+			bgColor = bgColor.tint(*this->getTintColor());
+		}
+		bgColor = this->getColorAttribute("bgcolor", bgColor);
+		fgColor = this->getColorAttribute("fgcolor", fgColor);
 		int fontSize = this->getIntegerAttribute("size", 12);
 		string fontFamily = this->getStringAttribute("font", "MS Sans Serif");
 
-		if (!this->getSkin()->drawElement(c, this, "", sp_rectangle { x, y, width, height, 0 }, SPColor(127, 127, 127, 1), 0))
+		if (!this->getSkin()->drawElement(c, this, "", sp_rectangle { x, y, width, height, 0 }, this->getTintColor(), 0))
 		{
 			if (this->getGradient() != nullptr)
 			{

@@ -28,22 +28,23 @@ namespace space {
     }
     void SPNode::removeChild(SPNode *child) {
     }
-    string SPNode::getStringAttribute(string title, string defaultValue) {
+    string SPNode::getStringAttribute(const string& title, string defaultValue) {
         return (*this->stringAttributes)[title];
     }
-    void SPNode::setStringAttribute(string title, string value) {
+    void SPNode::setStringAttribute(const string& title, string value) {
         (*this->stringAttributes)[title] = value;
     }
-    void SPNode::setColorAttribute(string title, SPColor value) {
+    void SPNode::setColorAttribute(const string& title, SPColor value) {
         (*this->colorAttributes)[title] = value;
     }
-    SPColor SPNode::getColorAttribute(string title, SPColor defaultValue) {
-        return (*this->colorAttributes)[title];
+    SPColor SPNode::getColorAttribute(const string& title, SPColor defaultValue) {
+        SPColor color = (*this->colorAttributes)[title];
+        return color;
     }
-    int SPNode::getIntegerAttribute(string title, int defaultValue) {
+    int SPNode::getIntegerAttribute(const string& title, int defaultValue) {
         return (*this->integerAttributes)[title];
     }
-    void SPNode::setIntegerAttribute(string title, int value) {
+    void SPNode::setIntegerAttribute(const string& title, int value) {
         (*this->integerAttributes)[title] = value;
     }
     std::vector<SPNode *> *SPNode::getChildNodes() {

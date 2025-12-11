@@ -18,8 +18,6 @@ namespace space {
             }
             virtual void scroll(int scrollX, int scrollY, int mouseX, int mouseY);
             void pack();
-        protected:
-        private:
     };
 }
 #endif // VIEWELEMENT_H

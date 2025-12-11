@@ -75,9 +75,8 @@ SPTabBarElement::SPTabBarElement(SPElement *parent)
     this->m_backgroundImage = (SPImage *)this->m_skin->getImage("tabbar.background.image", "");
     //ctor
     this->tabs = new std::vector<SPTab *>;
-    this->set("active_tab_fgcolor", "#ffffff");
-    this->set("active_tab_bgcolor", "#474747");
-    this->set("bgcolor", "#666666");
+    this->setColorAttribute("active_tab_fgcolor", this->getForegroundColor());
+    this->setColorAttribute("active_tab_bgcolor", this->getBackgroundColor());
     this->addEventListener(string("mousedown"), SPCallback(&SPTabBarElement::mouseDown), this);
     std::vector<SPObserver *> *observers = this->observers;
     int count = observers->size();
@@ -117,13 +116,16 @@ void SPTabBarElement::mouseDown(SPObject sender, SPEventArgs *e) {
 }
 #define spacify2009 true
 void SPTabBarElement::paint(int x, int y, int width, int height, SPGraphicsContext *g) {
-    SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(0, 0, 0, 1));
-
+    SPColor bgColor = this->getBackgroundColor();
+    if (this->getTintColor() != nullptr)
+    {
+        bgColor = bgColor.tint(*this->getTintColor());
+    }
     if (width < 1)
     {
         throw "width must be greater than 0";
     }
-    this->getSkin()->drawTabBar(g, this, x, y, width, height, bgColor, g);
+    this->getSkin()->drawTabBar(g, this, x, y, width, height, bgColor, g, this->getColorScheme(), this->getTintColor());
 
     int left = 0;
     std::vector<SPTab *>::iterator it = this->getTabs()->begin();
@@ -136,7 +138,7 @@ void SPTabBarElement::paint(int x, int y, int width, int height, SPGraphicsConte
         string id = tab->getId();
         sp_rectangle strSize = g->measureString(title.c_str(), this->getFontStyle());
         int width = 100;// 20 + strSize.width + 20;
-        this->getSkin()->drawTabBarTab(this->activeTab == tab, x + left, y, width, height, fgColor, bgColor, g);
+        this->getSkin()->drawTabBarTab(this->activeTab == tab, x + left, y, width, height, fgColor, bgColor, g, this->getColorScheme(), this->getTintColor());
 
         g->drawString(title.c_str(), this->getFontStyle(), fgColor, left + x + 20, y + 5, strSize.width, strSize.height);
         left += width;
