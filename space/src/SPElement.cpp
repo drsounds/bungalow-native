@@ -91,27 +91,28 @@ namespace space {
 		SPObservable::notify(event, sender, data);
 
 		for (auto *child: *this->children) {
-			if (data->getType() == "SPMouseEventArgs")
-			{
+			if (data->getType() == "SPMouseEventArgs") {
 				auto *mouseEventArgs = dynamic_cast<SPMouseEventArgs *>(data);
-				if (
-					this->getAbsoluteBounds() != nullptr &&
-					mouseEventArgs->getX() > this->getAbsoluteBounds()->x &&
-					mouseEventArgs->getX() < this->getAbsoluteBounds()->x + this->getAbsoluteBounds()->width &&
-					mouseEventArgs->getY() > this->getAbsoluteBounds()->y &&
-					mouseEventArgs->getY() < this->getAbsoluteBounds()->y + this->getAbsoluteBounds()->height
+				auto element = dynamic_cast<SPElement *>(child);
+				if (child != nullptr) {
+					if (
+						element->getAbsoluteBounds() != nullptr &&
+						mouseEventArgs->getX() > element->getAbsoluteBounds()->x &&
+						mouseEventArgs->getX() < element->getAbsoluteBounds()->x + element->getAbsoluteBounds()->width &&
+						mouseEventArgs->getY() > element->getAbsoluteBounds()->y &&
+						mouseEventArgs->getY() < element->getAbsoluteBounds()->y + element->getAbsoluteBounds()->height
 					)
-				{
-					auto element = dynamic_cast<SPElement *>(child);
-					if (event == "mousedown")
 					{
-						if (element->getType() == "tabbar")
+						if (event == "mousedown")
 						{
-							cout << "Element: " << this->getType() << "#" << this->getId() << " notified child: " << element->getType() << "#" << element->getId() << " event: " << event << endl;
+							if (element->getType() == "tabbar")
+							{
+								cout << "Element: " << this->getType() << "#" << this->getId() << " notified child: " << element->getType() << "#" << element->getId() << " event: " << event << endl;
+							}
 						}
+						element->notify(event, sender, data);
+						cout << "Element: " << this->getType() << "#" << this->getId() << " notified child: " << element->getType() << "#" << element->getId() << " event: " << event << endl;
 					}
-					element->notify(event, sender, data);
-					cout << "Element: " << this->getType() << "#" << this->getId() << " notified child: " << element->getType() << "#" << element->getId() << " event: " << event << endl;
 				}
 			}
 		}

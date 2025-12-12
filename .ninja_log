@@ -80,3 +80,16 @@
 10	561	1765558397023887073	CMakeFiles/spacify-client.dir/spacify/src/WhatsNewView.cpp.o	bb7b94c088fe4cb7
 1631	2124	1765556865742488811	CMakeFiles/spacify-client.dir/space/src/SPObservable.cpp.o	cc26b4332c4b555b
 11	1125	1765229707864669583	CMakeFiles/spacify-client.dir/spacify/src/main.cpp.o	b7cd16207fbaa2c5
+17	1257	1765558757327643228	CMakeFiles/spacify-client.dir/space/src/SPElement.cpp.o	30579b1395c73d8a
+1258	1560	1765558758568799959	spacify-client	eb06ecca6596e5fe
+15	561	1765558793005250161	CMakeFiles/spacify-client.dir/space/src/SPTabbarViewElement.cpp.o	a579e795b52e76fd
+15	982	1765558793004912911	CMakeFiles/spacify-client.dir/space/src/SPElement.cpp.o	30579b1395c73d8a
+982	1190	1765558793971870979	spacify-client	eb06ecca6596e5fe
+16	543	1765558822523174204	CMakeFiles/spacify-client.dir/space/src/SPTabbarViewElement.cpp.o	a579e795b52e76fd
+543	755	1765558823050232627	spacify-client	eb06ecca6596e5fe
+16	992	1765558949846125016	CMakeFiles/spacify-client.dir/space/src/SPElement.cpp.o	30579b1395c73d8a
+992	1249	1765558950822152620	spacify-client	eb06ecca6596e5fe
+16	1011	1765559044301031278	CMakeFiles/spacify-client.dir/space/src/SPElement.cpp.o	30579b1395c73d8a
+1011	1266	1765559045295319662	spacify-client	eb06ecca6596e5fe
+25	1062	1765559073748051032	CMakeFiles/spacify-client.dir/space/src/SPElement.cpp.o	30579b1395c73d8a
+1062	1303	1765559074784824806	spacify-client	eb06ecca6596e5fe
