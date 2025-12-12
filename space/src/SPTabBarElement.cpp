@@ -64,8 +64,6 @@ SPTabBarElement::SPTabBarElement()
     this->clipView = false;
     //ctor
     this->tabs = new std::vector<SPTab *>;
-    this->set("active_tab_fgcolor", "#ffffff");
-    this->set("active_tab_bgcolor", "#474747");
     this->addEventListener(string("mousedown"), SPCallback(&SPTabBarElement::tabbar_mousedown), this);
 
 }
@@ -75,23 +73,13 @@ SPTabBarElement::SPTabBarElement(SPElement *parent)
     this->m_backgroundImage = (SPImage *)this->m_skin->getImage("tabbar.background.image", "");
     //ctor
     this->tabs = new std::vector<SPTab *>;
-    this->setColorAttribute("active_tab_fgcolor", this->getForegroundColor());
-    this->setColorAttribute("active_tab_bgcolor", this->getBackgroundColor());
     this->addEventListener(string("mousedown"), SPCallback(&SPTabBarElement::mouseDown), this);
     std::vector<SPObserver *> *observers = this->observers;
-    int count = observers->size();
-    if (count < 1)
-    {
-        throw "No observers";
-    }
 }
-void SPTabBarElement::mouseDown(SPObject sender, SPEventArgs *e) {
+void SPTabBarElement::mouseDown(SPObject* sender, SPEventArgs *e) {
     SPMouseEventArgs *me = (SPMouseEventArgs *)e;
     SPTabBarElement *tabBar = this;
     int x = me->getX();
-    int y = me->getY();
-    //x = tabBar->getAbsoluteBounds() != NULL ? x - tabBar->getAbsoluteBounds()->x : x;
-    //y = tabBar->getAbsoluteBounds() != NULL ? y - tabBar->getAbsoluteBounds()->y : y;
     SPFontStyle font = tabBar->getFontStyle();
     int left = tabBar->getAbsoluteBounds() != NULL ? tabBar->getAbsoluteBounds()->x : 0;
     for(std::vector<SPTab *>::iterator it = tabBar->getTabs()->begin(); it != tabBar->getTabs()->end(); ++it) {
@@ -116,15 +104,7 @@ void SPTabBarElement::mouseDown(SPObject sender, SPEventArgs *e) {
 }
 #define spacify2009 true
 void SPTabBarElement::paint(int x, int y, int width, int height, SPGraphicsContext *g) {
-    SPColor bgColor = this->getBackgroundColor();
-    if (this->getTintColor() != nullptr)
-    {
-        bgColor = bgColor.tint(*this->getTintColor());
-    }
-    if (width < 1)
-    {
-        throw "width must be greater than 0";
-    }
+    
     this->getSkin()->drawTabBar(g, this, x, y, width, height);
 
     int left = 0;
@@ -136,12 +116,12 @@ void SPTabBarElement::paint(int x, int y, int width, int height, SPGraphicsConte
 
         string title = tab->getName();
         string id = tab->getId();
-        sp_rectangle strSize = g->measureString(title.c_str(), this->getFontStyle());
-        int width = 100;// 20 + strSize.width + 20;
-        this->getSkin()->drawTabBarTab(g, this, tab, index, this->activeTab == tab, x + left, y, width, height);
+        sp_rectangle strSize = g->measureString(title, this->getFontStyle());
+        int tabWidth = 20 + strSize.width + 20;
+        this->getSkin()->drawTabBarTab(g, this, tab, index, this->activeTab == tab, x + left, y, tabWidth, height);
 
-        g->drawString(title.c_str(), this->getFontStyle(), fgColor, left + x + 20, y + 5, strSize.width, strSize.height);
-        left += width;
+        g->drawString(title, this->getFontStyle(), fgColor, left + x + (tabWidth / 2) - (strSize.width / 2), y + (height / 2) - (strSize.height / 2), strSize.width, strSize.height);
+        left += tabWidth;
         index++;
     }
 }

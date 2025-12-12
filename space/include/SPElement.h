@@ -5,6 +5,10 @@
 #define SP_COLOR_SCHEME_DARK 1
 #define SP_COLOR_SCHEME_LIGHT 2
 
+#define SP_STATE_NORMAL 0
+#define SP_STATE_HOVER 1
+#define SP_STATE_ACTIVE 2
+
 #include "SPNode.h"
 #include "SPObservable.h"
 #include "SPFontStyle.h"
@@ -30,6 +34,7 @@ namespace space {
         bool scrollable;
         bool visible;
         short m_colorScheme = 0;
+    	int m_state = 0;
         sp_margin *margins;
         sp_margin *padding;
         SPFontStyle fontStyle;
@@ -50,7 +55,16 @@ namespace space {
         bool m_hasDefaultGradient = false;
         SPColor* m_tintColor;
         SPColor* m_activeColor;
+        bool drawBorder = false;
+
     public:
+    	void setState(int value) {
+    		this->m_state = value;
+    		this->invalidate();
+    	}
+    	int getState() const {
+    		return this->m_state;
+    	}
         SPElement *getParentElement()
         {
             return (SPElement *)this->getParent();
@@ -145,6 +159,8 @@ namespace space {
         virtual void draw(int x, int y, SPGraphicsContext *c);
         string getType() override;
         virtual void paint(int x, int y, int width, int height, SPGraphicsContext* c);
+        void resizeToText(bool width, bool height);
+        sp_rectangle getTextBounds();
 
         sp_rectangle *getAbsoluteBounds() const
         {
@@ -208,9 +224,9 @@ namespace space {
         void setInnerText(string data);
         virtual void mouseMove(int, int) {}
         virtual void mouseClick(int, int, int);
-        virtual void mouseDown(SPObject sender, SPEventArgs* e);
+        virtual void mouseDown(SPObject* sender, SPEventArgs* e);
         virtual void click(int, int, int);
-        virtual void mouseUp(SPObject sender, SPEventArgs* e);
+        virtual void mouseUp(SPObject* sender, SPEventArgs* e);
         int getY();
         int getWidth();
         int getHeight();

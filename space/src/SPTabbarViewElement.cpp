@@ -17,7 +17,7 @@ namespace space {
      : SPViewElement() {
 
     }
-    void SPTabbarViewElement::mouseDown(SPObject sender, SPEventArgs* e) {
+    void SPTabbarViewElement::mouseDown(SPObject* sender, SPEventArgs* e) {
         SPElement::mouseDown(sender, e);
     }
     SPTabbarViewElement::SPTabbarViewElement(SPElement *parent)

@@ -75,7 +75,10 @@ namespace space
         int getHeight() override;
         void drawLinearGradient(const sp_rectangle& rect, const SPGradient& gradient) override;
         void drawHTMLText(const string& html, SPFontStyle fontSize, SPColor color, int x, int y, int w, int h) override;
-        sp_rectangle measureString(string text, space::SPFontStyle *font) const;
+      	void fillRoundedRectangle(int x, int y, int w, int h, int r, SPColor color) override;
+      	void drawRoundedRectangle(int x, int y, int w, int h, int r, SPColor color) override;
+      	void fillRoundedLinearGradientRectangle(int x, int y, int w, int h, int r, int dir, const SPGradient& gradient) override;
+      	sp_rectangle measureString(const string& text, const SPFontStyle& font) override;
         void setPaintDC(wxPaintDC* dc) {
             m_paintDc = dc;
         }

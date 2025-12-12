@@ -38,6 +38,9 @@ namespace space {
 		virtual void drawLine(int x, int y, int x2, int y2, SPColor color) {}
 		virtual void drawRectangle(int x, int y, int w, int h, SPColor color) {}
 		virtual void fillRectangle(int x, int y, int w, int h, SPColor color) {}
+		virtual void fillRoundedRectangle(int x, int y, int w, int h, int r, SPColor color) {}
+		virtual void drawRoundedRectangle(int x, int y, int w, int h, int r, SPColor color) {}
+		virtual void fillRoundedLinearGradientRectangle(int x, int y, int w, int h, int r, int dir, const SPGradient& gradient) {}
 		virtual void drawImage(SPImage *image, int x, int y, int w, int h) {}
 		virtual void drawControl(const string& name, SPElement *elm, int x, int y, int w, int h) {}
 		virtual void drawString(const string& text, SPFontStyle fs, SPColor color, int x, int y, int w, int h) { }
@@ -45,7 +48,7 @@ namespace space {
 		virtual void drawHTMLText(const string& html, SPFontStyle fs, SPColor color, int x, int y, int w, int h) { }
 		virtual void drawLinearGradient(const sp_rectangle& rect, const SPGradient& gradient) {}
 		virtual SPImage *loadImage(const string& bitmap) { return NULL; }
-		virtual sp_rectangle measureString(const string& text, SPFontStyle font) { return sp_rectangle(); }
+		virtual sp_rectangle measureString(const string& text, const SPFontStyle& font) { return sp_rectangle(); }
 		virtual int getWidth() { return 0; }
 		virtual int getHeight() { return 0; }
 		virtual void declipRect() { }

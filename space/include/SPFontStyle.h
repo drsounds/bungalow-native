@@ -7,12 +7,12 @@ using namespace std;
 
 namespace space {
     class SPFontStyle {
+    public:
         int height;
         int weight;
         bool italic;
         bool underline;
         string family;
-    public:
         SPFontStyle(string family, int height, int weight, bool italic, bool underline) {
             this->family = family;
             this->height = height;

@@ -104,12 +104,18 @@ namespace space {
 						mouseEventArgs->getY() < element->getAbsoluteBounds()->y + element->getAbsoluteBounds()->height
 					)
 					{
-						if (event == "mousedown")
+						element->setState(SP_STATE_NORMAL);
+						if (event == "mousemove") {
+							element->setState(SP_STATE_HOVER);
+						}
+ 						if (event == "mousedown")
 						{
 							if (element->getType() == "tabbar")
 							{
 								cout << "Element: " << this->getType() << "#" << this->getId() << " notified child: " << element->getType() << "#" << element->getId() << " event: " << event << endl;
 							}
+							element->setState(SP_STATE_ACTIVE);
+ 							element->mouseDown((SPNode *)element, data);
 						}
 						element->notify(event, sender, data);
 						cout << "Element: " << this->getType() << "#" << this->getId() << " notified child: " << element->getType() << "#" << element->getId() << " event: " << event << endl;
@@ -133,8 +139,7 @@ namespace space {
 	}
 
 	SPElement::SPElement() : SPNode(), fontStyle(SPFontStyle("Tahoma", 13, 1, false, false))
-	{
-	}
+	{}
 
 	SPGraphicsContext* SPElement::createGraphics()
 	{
@@ -175,13 +180,15 @@ namespace space {
 	}
 
 
-	void SPElement::mouseDown(SPObject sender, SPEventArgs* e) {
+	void SPElement::mouseDown(SPObject* sender, SPEventArgs* e) {
 		SPMouseEventArgs *me = dynamic_cast<SPMouseEventArgs *>(e);
 		int x = me->getX();
 		int y = me->getY();
 		int xx = this->getAbsoluteBounds() != NULL ? x - this->getAbsoluteBounds()->y : x;
 	    int yy = this->getAbsoluteBounds() != NULL ? y - this->getAbsoluteBounds()->y : y;
 
+
+		this->setState(SP_STATE_ACTIVE);
 		this->notify(string("mousedown"), this, me);
 		for(vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
 			SPElement *elm = static_cast<SPElement *>(*it);
@@ -192,13 +199,13 @@ namespace space {
 			}
 		}
 	}
-	void SPElement::mouseUp(SPObject sender, SPEventArgs* e) {
+	void SPElement::mouseUp(SPObject* sender, SPEventArgs* e) {
 		SPMouseEventArgs *me = dynamic_cast<SPMouseEventArgs *>(e);
 		int x = me->getX();
 		int y = me->getY();
-		int xx = this->getAbsoluteBounds() != NULL ? x - this->getAbsoluteBounds()->y : x;
-	    int yy = this->getAbsoluteBounds() != NULL ? y - this->getAbsoluteBounds()->y : y;
+
 		this->notify(string("mouseup"), this, me);
+		this->setState(SP_STATE_NORMAL);
 		for(vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
 			SPElement *elm = static_cast<SPElement *>(*it);
 	        if (elm->getAbsoluteBounds() != NULL)
@@ -296,7 +303,7 @@ namespace space {
 	}
 
 	SPElement::SPElement(SPElement *parent) : SPNode(static_cast<SPNode*>(parent)), fontStyle("Tahoma", 13, 1, false, false) {
-		//this->setTintColor(new SPColor(0, 127, 255, 97));
+		this->setTintColor(new SPColor(0, 127, 255, 56));
 		this->m_classList = new vector<string>;
 		this->absoluteBounds = new sp_rectangle;
 		this->setScrollable(false);
@@ -572,9 +579,20 @@ namespace space {
 		int fontSize = this->getIntegerAttribute("size", 12);
 		string fontFamily = this->getStringAttribute("font", "MS Sans Serif");
 
-		if (!this->getSkin()->drawElement(c, this, "", sp_rectangle { x, y, width, height, 0 }))
+		string stateClass;
+		switch (this->getState()) {
+		case SP_STATE_ACTIVE:
+			stateClass = "active";
+			break;
+		case SP_STATE_HOVER:
+			stateClass = "hover";
+		default:
+			stateClass = "";
+		}
+
+		if (!this->getSkin()->drawElement(c, this, stateClass, sp_rectangle { x, y, width, height, 0 }))
 		{
-			c->fillRectangle(x + 1, y, width, height, bgColor);
+		//	c->fillRectangle(x + 1, y, width, height, bgColor);
 		}
 		SPColor color(255, 0, 0, 255);
 		string text = this->getInnerText();
@@ -582,6 +600,23 @@ namespace space {
 		if (!text.empty())
 			c->drawString(this->getInnerText(), SPFontStyle(fontFamily, fontSize, fontSize / 2, false, false), fgColor, x - scrollX, y - scrollY, this->getWidth(), this->getHeight());
 		// adjust for scroll
+	}
+
+    void SPElement::resizeToText(bool width, bool height) {
+		sp_rectangle bounds = this->getTextBounds();
+		if (width) {
+			this->setWidth(bounds.width);
+		}
+		if (height) {
+			this->setHeight(bounds.height * 2);
+		}
+	}
+
+	sp_rectangle SPElement::getTextBounds() {
+		SPGraphicsContext *c = this->createGraphics();
+		string text = this->getInnerText();
+	    sp_rectangle tSize = c->measureString(text, fontStyle);
+		return tSize;
 	}
 
 	void SPElement::draw(int x, int y, SPGraphicsContext *c) {
@@ -615,7 +650,7 @@ namespace space {
 		y -= this->scrollY;
 		this->paint(rect2.x, rect2.y, rect2.width, rect2.height, c);
 		SPColor borderColor = this->getBorderColor();
-		if (!borderColor.empty()) {
+		if (!borderColor.empty() && this->drawBorder) {
 			c->drawRectangle(x, y, width, height, borderColor);
 		}
 		for(std::vector<SPNode *>::iterator it = children->begin(); it != children->end(); ++it) {

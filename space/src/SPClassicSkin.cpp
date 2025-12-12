@@ -26,24 +26,67 @@ bool SPClassicSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const stri
     if (elm->getType() == "button")
     {
         result = true;
-        auto *button = dynamic_cast<SPButtonElement *>(elm);
+    	SPColor bgColor = elm->getBackgroundColor();
+    	if (tintColor != nullptr) {
+    		bgColor = bgColor.tint(*tintColor);
+    	}
         SPGradient gradient(
-            bgColor.lighten(-0.8), bgColor.lighten(-0.9),
+            bgColor.lighten(0.1), bgColor.lighten(-0.2),
             0
         );
         if (state == "active")
         {
-            gradient = SPGradient(SPColor(0, 0, 0, 1), SPColor(10, 10, 10, 0), 0);
+            gradient = SPGradient(gradient.getEnd(), gradient.getStart(), 0);
         }
-        g->drawLinearGradient(
-    {
-                bounds.x,
-                bounds.y,
-                bounds.width,
-                bounds.height
-            },
+    	if (state == "hover")
+    	{
+    		gradient = SPGradient(gradient.getStart().lighten(0.01), gradient.getEnd().lighten(0.01), 0);
+    	}
+        g->fillRoundedLinearGradientRectangle(
+            bounds.x,
+            bounds.y,
+            bounds.width,
+            bounds.height,
+            25,
+            0,
             gradient
-        );
+            );
+    	if (this->glossy && state != "active") {
+    		SPGradient gradient2(
+				bgColor.lighten(0.2), bgColor.lighten(0.3),
+				0
+				);
+    		g->fillRoundedLinearGradientRectangle(
+				bounds.x + 5,
+				bounds.y + 2,
+				bounds.width - 10,
+				bounds.height / 2,
+				25,
+				0,
+				gradient2
+			);
+    		SPGradient gradient3(
+				bgColor.lighten(-0.2).alpha(0), bgColor.lighten(0),
+				0
+				);
+    		g->fillRoundedLinearGradientRectangle(
+				bounds.x + 10,
+				bounds.y + bounds.height / 2 - 2,
+				bounds.width - 20,
+				bounds.height / 2,
+				25,
+				0,
+				gradient3
+			);
+    	}
+    	g->drawRoundedRectangle(
+			bounds.x,
+			bounds.y,
+			bounds.width,
+			bounds.height,
+			25,
+			bgColor.lighten(-0.2)
+    	);
     }
     if (elm->getType() == "tabbar")
     {
@@ -83,6 +126,34 @@ bool SPClassicSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const stri
             },
             gradient
         );
+    	if (this->glossy && state != "active") {
+    		SPGradient gradient2(
+				bgColor.lighten(0.2), bgColor.lighten(0.3),
+				0
+				);
+    		g->drawLinearGradient(
+    			{
+					bounds.x,
+					bounds.y + 2,
+					bounds.width,
+					bounds.height / 2,
+				},
+				gradient2
+			);
+    		SPGradient gradient3(
+				bgColor.lighten(-0.2).alpha(0), bgColor.lighten(0),
+				0
+			);
+    		g->drawLinearGradient(
+    			{
+				bounds.x,
+				bounds.y + bounds.height / 2 - 2,
+				bounds.width,
+				bounds.height / 2,
+				},
+				gradient3
+			);
+    	}
     }
     if (elm->getType() == "appfooter")
     {
@@ -100,6 +171,34 @@ bool SPClassicSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const stri
             },
             gradient
         );
+    	if (this->glossy && state != "active") {
+    		SPGradient gradient2(
+				bgColor.lighten(0.2), bgColor.lighten(0.3),
+				0
+				);
+    		g->drawLinearGradient(
+				{
+					bounds.x,
+					bounds.y + 2,
+					bounds.width,
+					bounds.height / 2,
+				},
+				gradient2
+			);
+    		SPGradient gradient3(
+				bgColor.lighten(-0.2).alpha(0), bgColor.lighten(0),
+				0
+			);
+    		g->drawLinearGradient(
+				{
+				bounds.x,
+				bounds.y + bounds.height / 2 - 2,
+				bounds.width,
+				bounds.height / 2,
+				},
+				gradient3
+			);
+    	}
     }
     if (elm->getType() == "treeview")
     {
@@ -196,10 +295,17 @@ void SPClassicSkin::drawTabBar(
         shadowColor = shadowColor.tint(*tintColor);
     }
     SPGradient gradient(
-        bgColor.lighten(-0.1), bgColor.lighten(-0.3),
+        bgColor.lighten(0.1), bgColor.lighten(-0.1),
         0
-    );
+        );
     g->drawLinearGradient(sp_rectangle {x, y, width, height}, gradient);
+    if (this->glossy) {
+    	SPGradient gradient2(
+			bgColor.lighten(0.2), bgColor.lighten(0),
+			0
+		);
+    	g->drawLinearGradient(sp_rectangle {x, y + 1, width, height / 2}, gradient2);
+    }
     //g->drawLine(x, y, x + width, y,shadowColor);
     g->drawLine(x, y + height - 1, x + width, y + height - 1,shadowColor);
 }

@@ -1,5 +1,6 @@
 #ifndef WHATSNEWVIEW_H
 #define WHATSNEWVIEW_H
+#include "SPButtonElement.h"
 #include "SPContainerViewElement.h"
 
 namespace space {
@@ -16,6 +17,8 @@ namespace space {
                 string getType() override {
                     return "whatsnewview";
                 }
+
+                SPButtonElement * button;
         };
     }
 }

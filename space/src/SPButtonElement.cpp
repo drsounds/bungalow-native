@@ -1,6 +1,14 @@
 #include "SPButtonElement.h"
 #include "SPGraphicsContext.h"
 #include "SPColor.h"
+#include "SPSkin.h"
+
+void space::SPButtonElement::pack() {
+	SPElement::pack();
+	this->resizeToText(false, true);
+
+}
+
 void space::SPButtonElement::draw(int x, int y, SPGraphicsContext *c)
 {
     if (this->absoluteBounds == nullptr)
@@ -11,20 +19,24 @@ void space::SPButtonElement::draw(int x, int y, SPGraphicsContext *c)
     this->absoluteBounds->width = this->getWidth();
     this->absoluteBounds->height = this->getHeight();
 
-    SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(0, 0, 0, 255));
-    SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 255));
-    int fontSize = this->getIntegerAttribute("size", 12);
-    string fontFamily = this->getStringAttribute("font", "MS Sans Serif");
-	SPGradient gradient(bgColor.lighten(0.1), bgColor.lighten(-0.1), 0);
-	c->drawLinearGradient(sp_rectangle { x, y, this->getWidth(), this->getHeight() }, gradient);
-	
+	string strClass;
+	switch (this->getState()) {
+	case SP_STATE_ACTIVE:
+		strClass = "active";
+		break;
+	case SP_STATE_HOVER:
+		strClass = "hover";
+	}
+
+	this->getSkin()->drawElement(c, this, strClass, *this->absoluteBounds);
+
     if(!this->getInnerText().empty()) {
-        space::SPFontStyle fontStyle = SPFontStyle(fontFamily, fontSize, false, false, false);
+        space::SPFontStyle fontStyle = this->getFontStyle();
 		string text = this->getInnerText();
 		space::sp_rectangle tSize = c->measureString(text, fontStyle);
 		int x = (this->getWidth() / 2) - (tSize.width / 2) + this->absoluteBounds->x;
 		int y = (this->getHeight() / 2) - (tSize.height / 2) + this->absoluteBounds->y;
 
-		c->drawString(text,fontStyle, fgColor, x, y, this->getWidth(), tSize.height);
+		c->drawString(text,fontStyle, getForegroundColor(), x, y, tSize.width, tSize.height);
 	}
 }

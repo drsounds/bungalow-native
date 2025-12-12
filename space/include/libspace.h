@@ -1,12 +1,10 @@
 #ifndef H_LIBSPACE
 #define H_LIBSPACE
 #include <string>
-#include <iomanip>
 
 #include "SPColor.h"
 
 #include <map>
-#include <boost/json/value.hpp>
 #define DEBUG
 #define CONTROL_INPUT 1
 #define SP_EVENT_MOUSE_DOWN 1
@@ -41,10 +39,6 @@ namespace space {
 		string object_uri;
 		string attribute;
 		string value;
-		boost::json::object data;
-		SPMessage();
-		boost::json::value toJson() const;
-		explicit SPMessage(const string& json);
 	};
 	struct sp_margin {
 		int left;

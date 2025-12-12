@@ -13,8 +13,9 @@ namespace space {
 
 	    }
 		SPButtonElement();
+        void pack() override;
 		void draw(int x, int y, SPGraphicsContext *c);
-		virtual string getType() {
+		string getType() override {
             return "button";
 		}
 	};

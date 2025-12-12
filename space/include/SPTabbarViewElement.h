@@ -22,7 +22,7 @@ namespace space
         virtual ~SPTabbarViewElement();
         virtual void navigate(const string& uri) override;
         virtual bool acceptsUri(string uri);
-        void mouseDown(SPObject sender, SPEventArgs* e);
+        void mouseDown(SPObject* sender, SPEventArgs* e) override;
     protected:
         SPViewStackElement *viewStack;
         SPTabBarElement *tabBar;

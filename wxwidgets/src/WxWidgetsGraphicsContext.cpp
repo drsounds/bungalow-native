@@ -111,6 +111,40 @@ namespace space
             {
             }
 
+            void WxWidgetsGraphicsContext::fillRoundedRectangle(int x, int y,
+	            int width, int height, int r, SPColor color) {
+
+            	wxBrush brush(wxColour(color.getR(),
+									   color.getG(),
+									   color.getB()));
+            	this->getPaintDC()->SetBrush(brush);
+            	this->getPaintDC()->SetPen(wxPen());
+
+            	this->getPaintDC()->DrawRoundedRectangle(x - this->origo->x, y - this->origo->y, width, height, r);
+            }
+
+            void WxWidgetsGraphicsContext::drawRoundedRectangle(int x, int y,
+	            int width, int height, int r, SPColor color) {
+            	this->getPaintDC()->SetBrush(wxBrush());
+                this->getPaintDC()->DrawRoundedRectangle(x - this->origo->x, y - this->origo->y, width, height, r);
+            }
+
+            void WxWidgetsGraphicsContext::fillRoundedLinearGradientRectangle(
+	            int x,
+				int y,
+				int width,
+				int height,
+				int r,
+				int dir,
+	            const SPGradient &gradient
+	        ) {
+            	const std::unique_ptr<wxGraphicsContext> gc(wxGraphicsContext::Create(wxPaintDC(this->getWidget())));
+            	wxGraphicsBrush gradientBrush = gc->CreateLinearGradientBrush(
+            		x, y, x, y + height, toWxColor(gradient.getStart()), toWxColor(gradient.getEnd()));
+            	gc->SetBrush(gradientBrush);
+				gc->DrawRoundedRectangle(x - this->origo->x, y - this->origo->y, width, height, r);
+            }
+
             // --------------------------------------------------------------
             // Primitives
             // --------------------------------------------------------------
@@ -220,16 +254,16 @@ namespace space
             // Text
             // --------------------------------------------------------------
 
-            sp_rectangle WxWidgetsGraphicsContext::measureString(std::string text,
-                                                          SPFontStyle* fs) const
+            sp_rectangle WxWidgetsGraphicsContext::measureString(const std::string& text,
+                                                          const SPFontStyle& fs)
             {
-                wxFont font(fs->getHeight(),
+                wxFont font(fs.height,
                             wxFONTFAMILY_DEFAULT,
                             wxFONTSTYLE_NORMAL,
                             wxFONTWEIGHT_NORMAL);
-
-                this->getPaintDC()->SetFont(font);
-                wxSize size = this->getPaintDC()->GetTextExtent(text);
+            	wxClientDC dc(this->getWidget());
+                dc.SetFont(font);
+                wxSize size = dc.GetTextExtent(text);
                 return { size.GetWidth(), size.GetHeight(), size.x, size.y };
             }
 

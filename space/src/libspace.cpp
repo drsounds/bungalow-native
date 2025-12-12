@@ -5,10 +5,11 @@
 #include <boost/json.hpp>
 
 namespace space {
-
+/*
 	SPMessage::SPMessage() {
 	}
-	boost::json::value SPMessage::toJson() const {
+
+	boost::json::value SPMessage::toJson() {
 		boost::json::object obj;
 		obj["predicate"] = this->predicate;
 		obj["object_uri"] = this->object_uri;
@@ -25,7 +26,7 @@ namespace space {
 		this->value = v.at("value").as_string().c_str();
 		this->data = v.at("data").as_object();
 	}
-
+*/
     int htmlToColor(string str) {
         string str2 = str.substr(1, str.length() -1);
         stringstream c(str2);
