@@ -124,7 +124,11 @@ namespace space
             }
 
             void WxWidgetsGraphicsContext::drawRoundedRectangle(int x, int y,
-	            int width, int height, int r, SPColor color) {
+            int width, int height, int r, SPColor color) {
+            	wxPen pen(wxColour(color.getR(),
+								   color.getG(),
+								   color.getB()), 1);
+            	this->getPaintDC()->SetPen(pen);
             	this->getPaintDC()->SetBrush(wxBrush());
                 this->getPaintDC()->DrawRoundedRectangle(x - this->origo->x, y - this->origo->y, width, height, r);
             }

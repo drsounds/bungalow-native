@@ -14,7 +14,7 @@ namespace space
     private:
         SPColor m_lightColor = SPColor(128, 128, 128, 255);
         SPColor m_shadowColor = SPColor(120, 120, 120, 255);
-    	bool glossy = true;
+    	bool m_glossy = true;
     public:
         bool drawElement(SPGraphicsContext *gc, SPElement *, const string& state, const sp_rectangle& bounds) override;
         void drawTableRow(SPGraphicsContext* g, SPTableElement* table, int i, int x, int y, int width, int height, int row) override;
@@ -23,6 +23,7 @@ namespace space
         void drawTabBar(SPGraphicsContext* g, SPTabBarElement* tabBar, int x, int y, int width, int height) override;
         void drawTreeItem(SPGraphicsContext* g, SPTreeViewElement *treeView, SPTreeItem* item, int itemHeight, int x, int y, int width, int height) override;
 
+    	SPClassicSkin();
 
     };
 }

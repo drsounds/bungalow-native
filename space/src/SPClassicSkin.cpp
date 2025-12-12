@@ -28,7 +28,11 @@ bool SPClassicSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const stri
         result = true;
     	SPColor bgColor = elm->getBackgroundColor();
     	if (tintColor != nullptr) {
-    		bgColor = bgColor.tint(*tintColor);
+    		if (elm->getStringAttribute("variant", "default") == "primary") {
+    			bgColor = (*tintColor).alpha(1);
+    		} else {
+    			bgColor = bgColor.tint(*tintColor);
+    		}
     	}
         SPGradient gradient(
             bgColor.lighten(0.1), bgColor.lighten(-0.2),
@@ -51,7 +55,7 @@ bool SPClassicSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const stri
             0,
             gradient
             );
-    	if (this->glossy && state != "active") {
+    	if (this->m_glossy && state != "active") {
     		SPGradient gradient2(
 				bgColor.lighten(0.2), bgColor.lighten(0.3),
 				0
@@ -85,7 +89,7 @@ bool SPClassicSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const stri
 			bounds.width,
 			bounds.height,
 			25,
-			bgColor.lighten(-0.2)
+			bgColor.lighten(-0.5)
     	);
     }
     if (elm->getType() == "tabbar")
@@ -113,6 +117,9 @@ bool SPClassicSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const stri
     if (elm->getType() == "appheader")
     {
         result = true;
+    	if (elm->getTintColor() != nullptr) {
+    		bgColor = *elm->getTintColor();
+    	}
         SPGradient gradient(
             bgColor.lighten(0.2), bgColor.lighten(0.1),
             0
@@ -126,22 +133,9 @@ bool SPClassicSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const stri
             },
             gradient
         );
-    	if (this->glossy && state != "active") {
-    		SPGradient gradient2(
-				bgColor.lighten(0.2), bgColor.lighten(0.3),
-				0
-				);
-    		g->drawLinearGradient(
-    			{
-					bounds.x,
-					bounds.y + 2,
-					bounds.width,
-					bounds.height / 2,
-				},
-				gradient2
-			);
+    	if (this->m_glossy && state != "active") {
     		SPGradient gradient3(
-				bgColor.lighten(-0.2).alpha(0), bgColor.lighten(0),
+				bgColor.lighten(0), bgColor.lighten(0.25).alpha(0),
 				0
 			);
     		g->drawLinearGradient(
@@ -171,7 +165,7 @@ bool SPClassicSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const stri
             },
             gradient
         );
-    	if (this->glossy && state != "active") {
+    	if (this->m_glossy && state != "active") {
     		SPGradient gradient2(
 				bgColor.lighten(0.2), bgColor.lighten(0.3),
 				0
@@ -257,7 +251,7 @@ void SPClassicSkin::drawTabBarTab(SPGraphicsContext* g, SPTabBarElement *tabBar,
     if (tintColor != nullptr)
     {
         bgColor = bgColor.tint(*tintColor);
-        shadowColor = shadowColor.tint(*tintColor);
+        shadowColor = tintColor->lighten(-0.8);
         lColor = lColor.tint(*tintColor);
     }
     if (active)
@@ -292,14 +286,14 @@ void SPClassicSkin::drawTabBar(
     {
         bgColor = bgColor.tint(*tintColor);
         lColor = lColor.tint(*tintColor);
-        shadowColor = shadowColor.tint(*tintColor);
+        shadowColor = tintColor->lighten(-0.8);
     }
     SPGradient gradient(
         bgColor.lighten(0.1), bgColor.lighten(-0.1),
         0
         );
     g->drawLinearGradient(sp_rectangle {x, y, width, height}, gradient);
-    if (this->glossy) {
+    if (this->m_glossy) {
     	SPGradient gradient2(
 			bgColor.lighten(0.2), bgColor.lighten(0),
 			0
@@ -323,4 +317,8 @@ void SPClassicSkin::drawTreeItem(SPGraphicsContext* g, SPTreeViewElement *treeVi
         g->fillRectangle(x, y , treeView->getWidth(), itemHeight, this->getColor("treeitem::focus.background.color", ""));
 
     }
+}
+
+SPClassicSkin::SPClassicSkin() {
+	this->m_glossy = false;
 }

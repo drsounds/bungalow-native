@@ -24,6 +24,7 @@ namespace space {
         {
             // Build the view
 			this->button = new SPButtonElement(this);
+        	this->button->setStringAttribute("variant", "primary");
         	this->appendChild(button);
         	this->button->setInnerText("Start");
         	this->button->setWidth(20);

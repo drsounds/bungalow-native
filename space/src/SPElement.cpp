@@ -80,10 +80,6 @@ namespace space {
 	SPColor SPElement::getColorAttribute(const string& title, SPColor defaultValue)
 	{
 		SPColor color = this->SPNode::getColorAttribute(title, std::move(defaultValue));
-		if (this->getTintColor() != nullptr)
-		{
-			color = color.tint(*this->getTintColor());
-		}
 		return color;
 	}
 
@@ -237,13 +233,22 @@ namespace space {
 	SPColor SPElement::getBackgroundColor()
 	{
 		SPColor def = SPColor(220, 220, 220, 255);
-		if (this->getColorScheme() == SP_COLOR_SCHEME_DARK)
-		{
-			def = SPColor(8, 8, 8, 255);
-		}
 		if (this->getTintColor() != nullptr)
 		{
-			def = def.tint(*this->getTintColor());
+			if (this->getColorScheme() == SP_COLOR_SCHEME_DARK) {
+				def = *this->getTintColor();
+			} else {
+				def = def.tint(*this->getTintColor());
+			}
+			def = def.alpha(1);
+		}
+		switch (this->getColorScheme())
+		{
+		case SP_COLOR_SCHEME_LIGHT:
+			break;
+		case SP_COLOR_SCHEME_DARK:
+			def = def.lighten(-0.8);
+		default:
 		}
 		return this->getColorAttribute("bgcolor",def);
 	}
@@ -570,12 +575,8 @@ namespace space {
 
 	void SPElement::paint(int x, int y, int width, int height, SPGraphicsContext *c)
 	{
-		SPColor bgColor = this->getBackgroundColor();
 		SPColor fgColor = this->getForegroundColor();
-		if (this->getTintColor() != nullptr)
-		{
-			bgColor = bgColor.tint(*this->getTintColor());
-		}
+		SPColor bgColor = this->getBackgroundColor();
 		int fontSize = this->getIntegerAttribute("size", 12);
 		string fontFamily = this->getStringAttribute("font", "MS Sans Serif");
 
@@ -592,7 +593,7 @@ namespace space {
 
 		if (!this->getSkin()->drawElement(c, this, stateClass, sp_rectangle { x, y, width, height, 0 }))
 		{
-		//	c->fillRectangle(x + 1, y, width, height, bgColor);
+			c->fillRectangle(x + 1, y, width, height, bgColor);
 		}
 		SPColor color(255, 0, 0, 255);
 		string text = this->getInnerText();

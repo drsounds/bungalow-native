@@ -10,7 +10,6 @@ SPSplitterElement::SPSplitterElement(SPElement *parent)
 {
     //ctor
     this->setWidth(1);
-    this->setBackgroundColor(SPColor(127, 127, 127, 255));
 }
 void SPSplitterElement::paint(int x, int y, int width, int height, SPGraphicsContext *c) {
 	SPColor borderColor = this->getBackgroundColor();
