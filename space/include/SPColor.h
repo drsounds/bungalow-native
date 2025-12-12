@@ -20,6 +20,9 @@ namespace space {
         void setG(short g);
         void setB(short b);
         void setA(short a);
+    	bool isTransparent() const { return this->a == 0; }
+    	bool isOpaque() const { return this->a == 255; }
+    	bool empty();
         SPColor alpha(short amount) const;
         SPColor lighten(float luminance = 0) const;
         SPColor();

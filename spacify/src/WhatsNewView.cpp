@@ -15,27 +15,26 @@ namespace space {
             //ctor
         }
 
-        bool WhatsNewView::acceptsUri(string uri) {
-            return std::regex_match(uri.c_str(), std::regex("spacify:internal:start"));
+        bool WhatsNewView::acceptsUri(const string& uri) {
+            bool ret = std::regex_match(uri.c_str(), std::regex("spacify:internal:start"));
+        	return ret;
         }
         WhatsNewView::WhatsNewView(SPElement *parent)
          : SPContainerViewElement::SPContainerViewElement(parent)
         {
             // Build the view
-            SPHBoxElement *hbox = new SPHBoxElement(this);
+            auto *hbox = new SPHBoxElement(this);
             hbox->getPadding()->top = 12;
             hbox->getPadding()->left = 16;
             hbox->getPadding()->bottom = 12;
             hbox->getPadding()->right =  16;
-
-
 
             hbox->set("height", "60");
 
             this->appendChild(hbox);
 
             // Add Header
-            SPHBoxElement *title = new SPHBoxElement(hbox);
+            auto title = new SPHBoxElement(hbox);
             title->set("fgcolor", "#aaffaa");
             title->setInnerText("What's New");
             title->setHeight(60);
@@ -44,20 +43,20 @@ namespace space {
             hbox->appendChild(title);
 
             // Add flex
-            SPHBoxElement *hspacer = new SPHBoxElement(hbox);
+            auto hspacer = new SPHBoxElement(hbox);
             hspacer->setIntegerAttribute("flex", 1);
             hspacer->setHeight(60);
             hbox->appendChild(hspacer);
 
             // Add more button
-            SPButtonElement *more = new SPButtonElement(hbox);
+            auto more = new SPButtonElement(hbox);
             more->setWidth(150);
             more->setHeight(60);
             more->setInnerText("More");
             more->setIntegerAttribute("size", 11);
             hbox->appendChild(more);
 
-            SPHBoxElement *whatsNew1 = new SPHBoxElement(this);
+            auto whatsNew1 = new SPHBoxElement(this);
             whatsNew1->setHeight(500);
             this->appendChild(whatsNew1);
 
@@ -78,7 +77,7 @@ namespace space {
             hbox2->appendChild(title2);
 
         }
-        void WhatsNewView::navigate(string uri) {
+        void WhatsNewView::navigate(const string& uri) {
 
         }
         WhatsNewView::~WhatsNewView()

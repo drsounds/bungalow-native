@@ -34,7 +34,7 @@ namespace space {
         {
             //dtor
         }
-        void UserView::navigate(string uri) {
+        void UserView::navigate(const string& uri) {
             std::vector<std::string> strs;
             boost::split(strs, uri, boost::is_any_of(":"));
             string id = strs.at(2);
@@ -43,7 +43,7 @@ namespace space {
             buffer[length] = '\0';
             this->header->title->setTitle(string(buffer));
         }
-        bool UserView::acceptsUri(string uri) {
+        bool UserView::acceptsUri(const string& uri) {
             string uri2 = (string)uri.c_str();
             bool a = std::regex_match(uri2, std::regex("spacify:user:(.*)"));
             return a;

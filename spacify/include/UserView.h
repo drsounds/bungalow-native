@@ -13,8 +13,8 @@ namespace space {
                 UserView();
                 UserView(SPElement *parent);
                 virtual ~UserView();
-                bool acceptsUri(string uri);
-                void navigate(string uri);
+                bool acceptsUri(const string& uri) override;
+                void navigate(const string& uri) override;
             protected:
                 SPHeaderElement *header;
             private:

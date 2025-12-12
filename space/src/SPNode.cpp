@@ -38,11 +38,19 @@ namespace space {
         (*this->colorAttributes)[title] = value;
     }
     SPColor SPNode::getColorAttribute(const string& title, SPColor defaultValue) {
-        if (!(this->colorAttributes)->count(title))
-        {
-            return defaultValue;
+    	SPColor color = SPColor(0, 0, 0, 0);
+
+        if ((this->colorAttributes)->count(title)) {
+	        color = (*this->colorAttributes)[title];
         }
-        SPColor color = (*this->colorAttributes)[title];
+		if (color.empty()) {
+    		if (this->getParent() != nullptr) {
+		        color = this->getParent()->getColorAttribute(title, defaultValue);
+	        }
+        }
+    	if (color.empty()) {
+    		return defaultValue;
+    	}
         return color;
     }
     int SPNode::getIntegerAttribute(const string& title, int defaultValue) {

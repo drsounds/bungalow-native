@@ -8,7 +8,7 @@
 
 namespace space {
     namespace views {
-        StartView::StartView() : SPTabbarViewElement() {
+        StartView::StartView() {
         }
         StartView::StartView(SPElement *parent)
          : SPTabbarViewElement(parent)
@@ -19,10 +19,12 @@ namespace space {
             this->viewStack->appendChild(new views::TopListView(this->viewStack));
             this->tabBar->addTab("Overview", "overview", "spacify:internal:start");
             this->tabBar->addTab("Top List", "toplist", "spacify:internal:toplist");
+			this->viewStack->navigate("spacify:internal:start");
         }
 
         bool StartView::acceptsUri(const string& uri) {
-            return std::regex_match(uri.c_str(), std::regex("spacify:internal:(start|toplist)"));
+            bool ret = std::regex_match(uri.c_str(), std::regex("spacify:internal:(start|toplist)"));
+        	return ret;
         }
 
         string StartView::getType() {

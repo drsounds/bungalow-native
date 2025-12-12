@@ -41,7 +41,7 @@ namespace space {
             SPElement *child = (SPElement *)*it;
             int flex = child->getIntegerAttribute("flex", 0);
             if(flex > 0) {
-            	child->setWidth((flex / flexes) * flexWidth);
+            	child->setWidth((flex / flexes) * flexWidth - 1);
             } else {
                 statics++;
             }

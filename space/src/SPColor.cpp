@@ -54,6 +54,12 @@ void  SPColor::setG(short g) {
 void  SPColor::setB(short b){
 	this->b = b;
 }
+
+bool SPColor::empty() {
+	bool ret = this->a == 0 && this->r == 0 && this->g == 0 && this->b == 0;
+	return ret;
+}
+
 void  SPColor::setA(short a){
 	this->a = a;
 }

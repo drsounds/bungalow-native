@@ -11,8 +11,8 @@ namespace space {
                 TopListView();
                 TopListView(SPElement *parent);
                 virtual ~TopListView();
-                bool acceptsUri(string uri);
-                void navigate(string uri);
+                bool acceptsUri(const string& uri) override;
+                void navigate(const string& uri) override;
                 string getType();
                 virtual void scroll(int scrollX, int scrollY, int x, int y);
         };

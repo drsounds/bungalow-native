@@ -490,16 +490,16 @@ namespace space {
 		return this->z;
 	}
 	void SPElement::setWidth(int w) {
-		if (w < 0)
+		if (w < 1)
 		{
-			throw "Width is negative";
+			w = 1;
 		}
 		this->m_width = w;
 	}
 	void SPElement::setHeight(int h) {
-		if (h < 0)
+		if (h < 1)
 		{
-			throw "Height is negative";
+			h = 1;
 		}
 		this->m_height = h;
 
@@ -507,14 +507,14 @@ namespace space {
 	void SPElement::setX(int x) {
 		if (x < 0)
 		{
-			throw "X is negative";
+			x = 0;
 		}
 		this->x = x;
 	}
 	void SPElement::setY(int y) {
 		if (y < 0)
 		{
-			throw "Y is negative";
+			y = 0;
 		}
 		this->y = y;
 	}
@@ -565,7 +565,7 @@ namespace space {
 
 		if (!this->getSkin()->drawElement(c, this, "", sp_rectangle { x, y, width, height, 0 }))
 		{
-			c->fillRectangle(x, y, width, height, bgColor);
+			c->fillRectangle(x + 1, y, width, height, bgColor);
 		}
 		SPColor color(255, 0, 0, 255);
 		string text = this->getInnerText();
@@ -605,6 +605,10 @@ namespace space {
 		x -= this->scrollX;
 		y -= this->scrollY;
 		this->paint(rect2.x, rect2.y, rect2.width, rect2.height, c);
+		SPColor borderColor = this->getBorderColor();
+		if (!borderColor.empty()) {
+			c->drawRectangle(x, y, width, height, borderColor);
+		}
 		for(std::vector<SPNode *>::iterator it = children->begin(); it != children->end(); ++it) {
 			SPElement *elm = static_cast<SPElement *>(*it);
 			if(elm != nullptr) {
@@ -652,32 +656,24 @@ namespace space {
 	        cout << "Test" << endl;
 	    }
 		for(vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
-	        if ((this->getWindow())->getDeepestElement() == NULL) {
+	        if ((this->getWindow())->getDeepestElement() == nullptr) {
 	            break;
 	        }
-			SPElement *elm = static_cast<SPElement *>(*it);
+			SPElement *elm = dynamic_cast<SPElement *>(*it);
 			string type = elm->getType();
 			cout << type << endl;
 	        if (elm->isVisible()) {
-	            if (elm->getAbsoluteBounds() != NULL) {
+	            if (elm->getAbsoluteBounds() != nullptr) {
 
 	                if(x > elm->getAbsoluteBounds()->x && x < elm->getAbsoluteBounds()->x + elm->getAbsoluteBounds()->width &&
 	                    y > elm->getAbsoluteBounds()->y && y < elm->getAbsoluteBounds()->y + elm->getAbsoluteBounds()->height) {
 	                    foundElement = true;
 	                    cout << elm->getType() << endl;
 	                    elm->scroll(scrollX, scrollY, x, y);
-
 	                }
-	                else {
-
-	                }
-	            } else {
 	            }
 	        }
-
 		}
-
-
 	}
 
 	void SPElement::scroll(int x, int y) {

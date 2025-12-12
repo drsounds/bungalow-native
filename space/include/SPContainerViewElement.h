@@ -10,6 +10,8 @@ namespace space {
             SPContainerViewElement(SPElement *parent);
             SPContainerViewElement();
             virtual ~SPContainerViewElement();
+    		void navigate(const string &uri) override;
+    		bool acceptsUri(const string& uri) override;
         protected:
         private:
     };

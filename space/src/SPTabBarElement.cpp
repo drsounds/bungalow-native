@@ -129,8 +129,7 @@ void SPTabBarElement::paint(int x, int y, int width, int height, SPGraphicsConte
 
     int left = 0;
     int index = 0;
-    std::vector<SPTab *>::iterator it = this->getTabs()->begin();
-    do {
+    for (std::vector<SPTab *>::iterator it = this->getTabs()->begin(); it != this->getTabs()->end(); ++it) {
         SPColor fgColor = this->getForegroundColor();
 
         SPTab *tab = (SPTab *)static_cast<SPTab *>(*it);
@@ -143,9 +142,8 @@ void SPTabBarElement::paint(int x, int y, int width, int height, SPGraphicsConte
 
         g->drawString(title.c_str(), this->getFontStyle(), fgColor, left + x + 20, y + 5, strSize.width, strSize.height);
         left += width;
-        ++it;
         index++;
-    } while (it != this->getTabs()->end());
+    }
 }
 
 

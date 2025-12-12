@@ -20,10 +20,10 @@ namespace space {
         void TopListView::scroll(int scrollX, int scrollY, int x, int y) {
             SPElement::scroll(scrollX, scrollY, x, y);
         }
-        void TopListView::navigate(string uri) {
+        void TopListView::navigate(const string& uri) {
 
         }
-        bool TopListView::acceptsUri(string uri) {
+        bool TopListView::acceptsUri(const string& uri) {
             return std::regex_match(uri.c_str(), std::regex("spacify:internal:toplist"));
         }
         TopListView::~TopListView()

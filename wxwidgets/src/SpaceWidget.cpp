@@ -42,7 +42,7 @@ wxSize SpaceWidget::DoGetBestSize() const
 	wxCoord h = 0;
 	dc.GetTextExtent( GetLabel (), &w, &h );
 
-	return wxSize( w, h );
+	return { w, h };
 }
 
 bool SpaceWidget::Create(wxWindow *parent,
@@ -108,7 +108,7 @@ void SpaceWidget::OnRightDown(wxMouseEvent& event)
 
 void SpaceWidget::OnSize(wxSizeEvent& event)
 {
-    this->m_frame->getWindowElement()->resize(event.GetSize().GetWidth(), event.GetSize().GetHeight());
+    this->m_frame->getWindowElement()->resize(event.GetSize().GetWidth() + 1, event.GetSize().GetHeight() + 1);
     this->m_frame->getWindowElement()->pack();
     this->m_frame->getWindowElement()->setAbsoluteBounds(new space::sp_rectangle { 0, 0, event.GetSize().GetWidth(), event.GetSize().GetHeight() });
 }

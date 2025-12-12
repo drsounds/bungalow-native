@@ -101,18 +101,22 @@ namespace space {
         // Inside body
         auto *leftSidebar = new SPVBoxElement(body);
         leftSidebar->setId("sidebar");
-        leftSidebar->setWidth(220);
+    	leftSidebar->setWidth(220);
+    	auto *tabBar = new SPTabBarElement(leftSidebar);
+    	tabBar->setId("tabbar");
+    	tabBar->setHeight(28);
+    	leftSidebar->appendChild(tabBar);
+    	this->treeView = new SPTreeViewElement(leftSidebar);
+    	treeView->setId("tree");
+    	treeView->setIntegerAttribute("flex", 1);
+    	treeView->setHeight(920);
+    	treeView->setWidth(220);
+    	leftSidebar->appendChild(treeView);
         body->appendChild(leftSidebar);
 
         body->appendChild(new SPSplitterElement(body));
 
         // Add TreeView
-        this->treeView = new SPTreeViewElement(leftSidebar);
-        treeView->setId("tree");
-        treeView->setIntegerAttribute("flex", 1);
-        treeView->setHeight(920);
-        treeView->setWidth(220);
-        leftSidebar->appendChild(treeView);
         treeView->setWindow(this->getWindow());
         // Add sample elements
         auto *item = new SPTreeItem(new SPUri("spacify:internal:start"));
@@ -126,13 +130,12 @@ namespace space {
         treeView->addItem(item2);
 
         // Add viewstack
-
         this->viewStack = new space::SPViewStackElement(body);
         this->viewStack->setId("viewstack");
         viewStack->setIntegerAttribute("flex",1);
         viewStack->setWindow(this->getWindow());
-        viewStack->appendChild(new space::views::StartView(this));
-        viewStack->appendChild(new space::views::PlayQueueView(this));
+        viewStack->appendChild(new views::StartView(this));
+        viewStack->appendChild(new views::PlayQueueView(this));
         body->appendChild(viewStack);
 
         body->appendChild(new SPSplitterElement(body));
@@ -143,7 +146,7 @@ namespace space {
         body->appendChild(rightSidebar);
         body->pack();
         auto *footer = new space::SPAppFooterElement(this);
-        footer->setHeight(86);
+        footer->setHeight(32);
         footer->setId("footer");
         this->appendChild(footer);
 

@@ -11,8 +11,8 @@ namespace space {
                 WhatsNewView();
                 WhatsNewView(SPElement *parent);
                 virtual ~WhatsNewView();
-                void navigate(string uri);
-                bool acceptsUri(string uri);
+                void navigate(const string& uri);
+                bool acceptsUri(const string& uri) override;
                 string getType() override {
                     return "whatsnewview";
                 }

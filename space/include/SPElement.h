@@ -55,6 +55,7 @@ namespace space {
         {
             return (SPElement *)this->getParent();
         }
+
         void setSpace(Space *space) {
             this->m_space = space;
         }
@@ -117,7 +118,14 @@ namespace space {
         void removeClass(string _class);
         sp_rectangle *absoluteBounds;
         void applyStylesheet(SPStylesheet *style);
-        SPColor getBackgroundColor();
+    	SPColor getBackgroundColor();
+    	void setBorderColor(const SPColor& value)
+    	{
+    		this->setColorAttribute("border-color", value);
+    	}
+    	SPColor getBorderColor() {
+    		return this->getColorAttribute("border-color", SPColor(0, 0, 0, 0));
+    	}
         void setBackgroundColor(const SPColor& value)
         {
             this->setColorAttribute("bgcolor", value);

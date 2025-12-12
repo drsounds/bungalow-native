@@ -12,7 +12,7 @@ void SpaceFrame::setWindowElement(space::SPWindowElement* value)
 }
 
 SpaceFrame::SpaceFrame(wxApp *app, space::Space *space)
-    : wxFrame(nullptr, wxID_ANY, "Space", wxDefaultPosition, wxDefaultSize)
+    : wxFrame(nullptr, wxID_ANY, "Space", wxDefaultPosition, wxDefaultSize, wxFRAME_EX_METAL)
 {
     this->m_app = app;
     this->m_space = space;

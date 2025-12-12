@@ -18,4 +18,12 @@ namespace space {
     {
         //dtor
     }
+
+    void SPContainerViewElement::navigate(const string &uri) {
+	    SPViewElement::navigate(uri);
+    }
+
+    bool SPContainerViewElement::acceptsUri(const string &uri) {
+	    return SPViewElement::acceptsUri(uri);
+    }
 }

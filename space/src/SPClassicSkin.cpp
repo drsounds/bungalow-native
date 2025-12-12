@@ -163,17 +163,17 @@ void SPClassicSkin::drawTabBarTab(SPGraphicsContext* g, SPTabBarElement *tabBar,
     }
     if (active)
     {
-        g->fillRectangle(x, y + 1, width, height + 1, bgColor);
+        g->fillRectangle(x, y + 1, width, height - 1, bgColor);
         if (index > 0)
         {
-            g->drawLine(x, y, x, y + height,shadowColor);
+            g->drawLine(x, y, x, y + height - 1,shadowColor);
         }
     }
     else
     {
         SPGradient gradient(bgColor.lighten(0.5), bgColor, 0);
     }
-    g->drawLine(x + width, y, x + width, y + height,shadowColor);
+    g->drawLine(x + width, y, x + width, y + height - 1,shadowColor);
 }
 
 void SPClassicSkin::drawTabBar(
@@ -200,7 +200,7 @@ void SPClassicSkin::drawTabBar(
         0
     );
     g->drawLinearGradient(sp_rectangle {x, y, width, height}, gradient);
-    g->drawLine(x, y, x + width, y,shadowColor);
+    //g->drawLine(x, y, x + width, y,shadowColor);
     g->drawLine(x, y + height - 1, x + width, y + height - 1,shadowColor);
 }
 
