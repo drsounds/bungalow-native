@@ -14,6 +14,7 @@
 #include "SPImage.h"
 #include "SPStylesheet.h"
 #include "SPFontStyle.h"
+#include <boost/json.hpp>
 
 namespace space {
 	SPColor* SPElement::getActiveColor()
@@ -479,6 +480,13 @@ namespace space {
 		for (auto & it : *this->children)
 		{
 			auto *elm = dynamic_cast<SPElement *>(it);
+
+			if (message.type == "event") {
+				if (message.predicate == "mousedown" || message.predicate == "mouseup" || message.predicate == "mousemove") {
+					//SPMouseEventArgs *args = new SPMouseEventArgs(0, message.data.at("x").as_double(), message.data.at("y").as_double(), this);
+					//this->dispatchEvent(message.predicate, args, this);
+				}
+			}
 
 			elm->processMessage(message);
 		}
