@@ -26,7 +26,7 @@ namespace space {
 			this->button = new SPButtonElement(this);
         	this->button->setStringAttribute("variant", "primary");
         	this->appendChild(button);
-        	this->button->setInnerText("Start");
+        	this->button->setInnerText("Test");
         	this->button->setWidth(20);
         	this->button->setHeight(48);
         }

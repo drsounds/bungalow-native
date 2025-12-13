@@ -10,7 +10,6 @@
 #define SP_STATE_ACTIVE 2
 
 #include "SPNode.h"
-#include "SPObservable.h"
 #include "SPFontStyle.h"
 #include "SPWindow.h"
 #include <vector>
@@ -27,13 +26,13 @@ namespace space {
     class SPWindowElement;
     class SPImage;
     class SPFontStyle;
-    class SPElement : public SPNode, public SPObservable {
+    class SPElement : public SPNode {
     protected:
         SPImage *m_backgroundImage;
         vector<string> *m_classList;
         SPSkin *m_skin;
         bool scrollable;
-        bool visible;
+        bool visible = true;
         short m_colorScheme = 0;
     	int m_state = 0;
         sp_margin *margins;
@@ -51,7 +50,6 @@ namespace space {
         int scrollY;
         bool clipView = false;
         string name;
-        Space *m_space;
         SPGradient *m_gradient;
         bool m_hasDefaultGradient = false;
         SPColor* m_tintColor;
@@ -67,14 +65,14 @@ namespace space {
     	int getState() const {
     		return this->m_state;
     	}
+
+    	string getSrc();
+    	void setSrc(const string& value);
         SPElement *getParentElement()
         {
-            return (SPElement *)this->getParent();
+            return static_cast<SPElement *>(this->getParentNode());
         }
 
-        void setSpace(Space *space) {
-            this->m_space = space;
-        }
         short getColorScheme();
         void setColorScheme(short value);
         SPGradient *getGradient() const {
@@ -97,23 +95,7 @@ namespace space {
         {
             m_hasDefaultGradient = value;
         }
-        space::Space *getSpace() {
-            if (this->m_space == nullptr)
-            {
-                if (this->getWindow() != nullptr)
-                {
-                    if (this->getWindow()->getSpace() != nullptr)
-                    {
-                        return this->getWindow()->getSpace();
-                    }
-                }
-                if (this->getParent() != nullptr) {
-                    return this->getParent()->getSpace();
-                }
-            }
-            return this->m_space;
-        }
-        SPSkin *getSkin() const;
+        SPSkin *getSkin();
         void increaseParsingDepth();
     	void decreaseParsingDepth();
     	int getParsingDepth() const {
@@ -204,7 +186,7 @@ namespace space {
 
         virtual void setVisible(bool value) {
             this->visible = value;
-           // ((Element *)this->getParent())->pack();
+           // ((Element *)this->getParentNode())->pack();
         }
         bool isScrollable() const
         {
@@ -234,9 +216,8 @@ namespace space {
 
         explicit SPElement(SPElement *parent);
 
-        explicit SPElement(SPElement *parent, SPWindow *window);
+        explicit SPElement(SPElement *parent, SPWindow *window, SPSkin *skin);
 
-        explicit SPElement(SPWindow *window, SPElement *parent);
         ~SPElement() override;
         int getX();
         void processEvent(const SPEvent& event);
@@ -244,7 +225,8 @@ namespace space {
         sp_margin *getMargins();
         sp_margin *getPadding();
         string getInnerText();
-        void setInnerText(string data);
+        SPElement *parseElement(wxXmlNode *xmlNode, SPElement *parent,
+                                SPNode *document);
         SPElement *createElement(const string& tagName, SPElement* parent);
         SPElement *getElementById(const string &id) const;
         SPElement *parseElement(wxXmlNode *xmlNode, SPElement *parent,

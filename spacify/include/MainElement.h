@@ -32,7 +32,6 @@ namespace space {
             {
                 return "window";
             }
-            MainElement(SPElement *parent, SPWindow *window);
             int onNavigate(SPObject* sender, SPEventArgs* args);
             explicit MainElement(SPElement *parent);
             int onSearchEntered(SPObject* sender, SPEventArgs* eventArgs) const;

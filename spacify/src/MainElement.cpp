@@ -25,7 +25,7 @@ namespace space {
     }
     int MainElement::treeview_itemselected(SPObject *sender, SPEventArgs *e) {
         auto *treeView = (SPTreeViewElement *)sender;
-        auto *mainWindow = (MainElement *)treeView->getParent();
+        auto *mainWindow = (MainElement *)treeView->getParentNode();
         auto *args = (TreeViewEventArgs *)e;
         SPTreeItem *selectedItem = args->getItem();
         SPUri *uri = selectedItem->getUri();
@@ -40,7 +40,7 @@ namespace space {
         this->viewStack->navigate(uri);
     }
 
-    MainElement::MainElement(SPElement *parent, SPWindow *window) : SPVBoxElement(parent, window)
+    MainElement::MainElement(SPElement *parent) : SPVBoxElement(parent)
     {
         this->viewStack = new SPViewStackElement(this);
         this->treeView = new SPTreeViewElement(this);

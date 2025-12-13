@@ -7,10 +7,11 @@
 using namespace std;
 
 namespace space {
+class SPSkin;
 class SPBoxElement : public SPElement {
 public:
 	explicit SPBoxElement(SPElement *parent);
-  SPBoxElement(SPElement *parent, SPWindow *window);
+  SPBoxElement(SPElement *parent, SPWindow *window, SPSkin *skin);
 	SPBoxElement();
 	~SPBoxElement();
 	void pack();

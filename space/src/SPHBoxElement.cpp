@@ -6,6 +6,9 @@
 
 
 namespace space {
+	SPHBoxElement::SPHBoxElement(SPElement *parent) {
+		this->setTagName("hbox");
+	}
     void SPHBoxElement::pack() {
         SPElement::pack();
         int flexes = 0;

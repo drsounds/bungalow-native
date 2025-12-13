@@ -34,7 +34,8 @@ namespace space {
 
     SPViewStackElement::SPViewStackElement(SPElement *parent)
      : SPVBoxElement::SPVBoxElement(parent) {
-        this->setParent(this);
+    	this->setTagName("viewstack");
+        this->setParentNode(this);
         this->history = new std::stack<string>;
         this->future = new std::stack<string>;
         this->activeView = nullptr;

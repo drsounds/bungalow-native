@@ -14,7 +14,7 @@ SPTitleElement::~SPTitleElement()
 }
 void SPTitleElement::setTitle(string title) {
 
-    this->title->setInnerText((string)title.c_str());
+    this->title->setInnerText(title);
 }
 string SPTitleElement::getTitle() {
     return this->title->getInnerText();
@@ -22,15 +22,16 @@ string SPTitleElement::getTitle() {
 
 void SPTitleElement::setEntity(string entity) {
 
-    this->title->setInnerText((string)entity.c_str());
+    this->title->setInnerText(entity);
 }
 string SPTitleElement::getEntity() {
     return this->entity->getInnerText();
 }
 SPTitleElement::SPTitleElement(SPElement *parent)
  : SPVBoxElement(parent){
+	this->setTagName("title");
     entity = new SPTextElement(this);
-    entity->setInnerText("Object");
+    entity->setInnerText(this->getEntity());
     entity->setIntegerAttribute("height", 180);
     entity->setColorAttribute("fgcolor", SPColor(10, 10, 10, 1));
     entity->setIntegerAttribute("size", 15);
@@ -38,7 +39,7 @@ SPTitleElement::SPTitleElement(SPElement *parent)
     this->appendChild(entity);
 
     title = new SPTextElement(this);
-    title->setInnerText("Title");
+    title->setInnerText(this->getTitle());
     title->setIntegerAttribute("height", 160);
     title->setIntegerAttribute("size", 25);
     title->set("width", "100%");

@@ -75,7 +75,8 @@ void SPTreeViewElement::treeview_mouseup(SPObject *sender, SPEventArgs *e) {
 }
 SPTreeViewElement::SPTreeViewElement(SPElement *parent)
 : SPElement(parent) {
-	this->setParent(parent);
+	this->setTagName("treeview");
+	this->setParentNode(parent);
 	this->mItems = new vector<SPTreeItem *>;
 	this->itemHeight = 18;
 	this->addEventListener(string("mouseup"), SPCallback(&SPTreeViewElement::treeview_mouseup), this);

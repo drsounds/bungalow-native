@@ -8,7 +8,6 @@
 #include <utility>
 
 #include "Space.h"
-#include <expat.h>
 
 #include "wx/xml/xml.h"
 
@@ -92,10 +91,8 @@ namespace space {
 		return color;
 	}
 
-	void SPElement::notify(const string& event, SPObject* sender, SPEventArgs* data)
-	{
-		SPObservable::notify(event, sender, data);
-
+	void SPElement::notify(const string &event, SPObject *sender, SPEventArgs *data) {
+		SPNode::notify(event, sender, data);
 		for (auto *child: *this->children) {
 			if (data->getType() == "SPMouseEventArgs") {
 				auto *mouseEventArgs = dynamic_cast<SPMouseEventArgs *>(data);
@@ -113,14 +110,14 @@ namespace space {
 						if (event == "mousemove") {
 							element->setState(SP_STATE_HOVER);
 						}
- 						if (event == "mousedown")
+						if (event == "mousedown")
 						{
 							if (element->getType() == "tabbar")
 							{
 								cout << "Element: " << this->getType() << "#" << this->getId() << " notified child: " << element->getType() << "#" << element->getId() << " event: " << event << endl;
 							}
 							element->setState(SP_STATE_ACTIVE);
- 							element->mouseDown((SPNode *)element, data);
+							element->mouseDown((SPNode *)element, data);
 						}
 						element->notify(event, sender, data);
 						cout << "Element: " << this->getType() << "#" << this->getId() << " notified child: " << element->getType() << "#" << element->getId() << " event: " << event << endl;
@@ -130,11 +127,17 @@ namespace space {
 		}
 	}
 
-	SPSkin *SPElement::getSkin() const
+	SPSkin *SPElement::getSkin()
 	{
 		if (this->m_skin)
 		{
 			return this->m_skin;
+		}
+		if (this->getParentElement() != nullptr) {
+			SPSkin *skin = this->getParentElement()->getSkin();
+			if (skin != nullptr) {
+				return skin;
+			}
 		}
 		if (this->getWindow() != nullptr)
 		{
@@ -152,8 +155,12 @@ namespace space {
 		this->m_parsingDepth++;
 	}
 
-	SPElement::SPElement() : SPNode(), fontStyle(SPFontStyle("Tahoma", 13, 1, false, false))
-	{}
+	SPElement::SPElement() : SPNode(), fontStyle(SPFontStyle("Tahoma", 13, 1, false, false)) {
+
+		this->padding = new sp_margin();
+		this->margins = new sp_margin();
+
+	}
 
 	SPGraphicsContext* SPElement::createGraphics()
 	{
@@ -163,7 +170,7 @@ namespace space {
 	void SPElement::show() {
 	    this->setVisible(true);
 	}
-	void	 SPElement::hide() {
+	void SPElement::hide() {
 	    this->setVisible(false);
 	}
 	void SPElement::mouseClick(int mouseButton, int x, int y) {
@@ -339,7 +346,7 @@ namespace space {
 		this->scrollX = 0;
 		this->scrollY = 0;
 	    this->data = "";
-		this->setParent(parent);
+		this->setParentNode(parent);
 		if (this->m_skin != nullptr) {
 			this->applySkin();	   
 		}
@@ -360,11 +367,15 @@ namespace space {
 		this->padding->bottom = 0;
 
 		if (parent != nullptr) {
-			SPWindow *window = parent->getWindow();
-			if (window != nullptr) {
-				this->m_window = window;
-				if (window->getSkin() != nullptr) {
-					this->m_skin = window->getSkin();
+			if (parent->getType() == "window") {
+				this->m_window = (SPWindow *)parent;
+			} else {
+				SPWindow *window = parent->getWindow();
+				if (window != nullptr) {
+					this->m_window = window;
+					if (window->getSkin() != nullptr) {
+						this->m_skin = window->getSkin();
+					}
 				}
 			}
 			SPSkin *skin = parent->getSkin();
@@ -387,16 +398,18 @@ namespace space {
 		}
 	}
 
-	SPElement::SPElement(SPElement *parent, SPWindow *window) : SPElement(parent) {
+	SPElement::SPElement(SPElement *parent, SPWindow *window, SPSkin *skin) : SPElement(parent) {
 		if (window == nullptr) {
-			this->setWindow(parent->getWindow());	
+			throw "Window is null";
 		}
-		if (window != nullptr && window->getSpace() != nullptr) {
-			this->m_space = window->getSpace();
+		if (skin == nullptr) {
+			throw "Skin is null";
 		}
-		if (window != nullptr) {
-			this->m_skin = window->getSkin();
+		if (window->getSkin() == nullptr) {
+			window->setSkin(skin);
 		}
+		this->m_window = window;
+		this->m_skin = skin;
 	}
 
 	void SPElement::setBackgroundImage(SPImage* value)
@@ -419,7 +432,6 @@ namespace space {
 		return this->padding;
 	}
 	SPElement::~SPElement() {
-
 	}
 	int SPElement::getHeight() {
 		return this->m_height;
@@ -634,9 +646,22 @@ namespace space {
 	sp_rectangle SPElement::getTextBounds() {
 		SPGraphicsContext *c = this->createGraphics();
 		string text = this->getInnerText();
+		if (text.empty()) {
+			return sp_rectangle { 0, 0, 0, 0 };
+		}
 	    sp_rectangle tSize = c->measureString(text, fontStyle);
 		return tSize;
 	}
+
+	string SPElement::getSrc() {
+		return this->getStringAttribute("src", "");
+	}
+
+
+	void SPElement::setSrc(const string &value) {
+		this->setStringAttribute("src", value);
+	}
+
 
 	void SPElement::draw(int x, int y, SPGraphicsContext *c) {
 	    if (!this->isVisible()) {
@@ -678,7 +703,7 @@ namespace space {
 				elm->draw(rect2.x, rect2.y, c);
 			}
 		}
-		/*SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(28, 28, 28, 255));
+		SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(28, 28, 28, 255));
 		SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 255));
 		int fontSize = this->getIntegerAttribute("size", 12);
 		string fontFamily = this->getStringAttribute("font", "MS Sans Serif");
@@ -686,7 +711,7 @@ namespace space {
 		c->drawString(this->getType(), SPFontStyle(fontFamily, fontSize, fontSize / 2, false, false), fgColor, rect2.x, rect2.y, this->getWidth(), this->getHeight());
 		const string strLoc = "type=" + this->getType() + "&x=" + std::to_string(x) + "&y=" + std::to_string(y) + "&width=" + std::to_string(width) + "&height=" + std::to_string(height) + "&flex=" + std::to_string(this->getIntegerAttribute("flex", 0));
 		c->drawString(strLoc, SPFontStyle(fontFamily, fontSize, fontSize / 2, false, false), SPColor(0, 0, 255, 255), rect2.x + (rect2.width / 2), rect2.y + (rect2.height / 2), this->getWidth(), this->getHeight());
-		*/
+
 		if (clipView) {
 	        c->declipRect();
 		}
@@ -694,7 +719,7 @@ namespace space {
 
 	void SPElement::pack()
 	{
-		cout << "Element: " << this->getType() << "#" << this->getId() << " packed to width: " << this->getWidth() << " height: " << this->getHeight() << " flex: " << this->getIntegerAttribute("flex", 0) << endl;
+		//cout << "Element: " << this->getType() << "#" << this->getId() << " packed to width: " << this->getWidth() << " height: " << this->getHeight() << " flex: " << this->getIntegerAttribute("flex", 0) << endl;
 	}
 
 	void SPElement::resize(int width, int height)
@@ -704,7 +729,7 @@ namespace space {
 		this->invalidate();
 		this->pack();
 
-		cout << "Element: " << this->getType() << "#" << this->getId() << " resized to width: " << width << " height: " << height << " flex: " << this->getIntegerAttribute("flex", 0) << endl;
+		//cout << "Element: " << this->getType() << "#" << this->getId() << " resized to width: " << width << " height: " << height << " flex: " << this->getIntegerAttribute("flex", 0) << endl;
 	}
 
 	void SPElement::scroll(int scrollX, int scrollY, int x, int y) {
@@ -767,8 +792,23 @@ namespace space {
 	string SPElement::getInnerText() {
 	    return this->data;
 	}
-	void SPElement::setInnerText(string value) {
-		 this->data = value;
+
+	SPElement *SPElement::parseElement(wxXmlNode *xmlNode, SPElement *parent,
+							   SPElement *document) {
+		SPElement *elm = nullptr;
+		elm = document->getElementById(string(xmlNode->GetAttribute("id")));
+		if (elm == nullptr) {
+			elm = createElement(xmlNode->GetName().ToStdString(), parent);
+		}
+		for (int i = 0; i < sizeof(xmlNode->GetAttributes()); i++) {
+			auto attribute = xmlNode->GetAttributes()[i];
+			elm->set(attribute.GetName().ToStdString(), attribute.GetValue().ToStdString());
+		}
+		elm->setInnerText(this->getInnerText());
+		for (wxXmlNode *child = xmlNode->GetChildren(); child; child = child->GetNext()) {
+			parseElement(child, elm, document);
+		}
+		return elm;
 	}
 
 	SPElement * SPElement::createElement(const string& tagName, SPElement *parent) {
@@ -800,75 +840,6 @@ namespace space {
 		return nullptr;
 	}
 
-	SPElement *SPElement::parseElement(wxXmlNode *xmlNode, SPElement *parent,
-	                                   SPElement *document) {
-		SPElement *elm = nullptr;
-		elm = document->getElementById(string(xmlNode->GetAttribute("id")));
-		if (elm == nullptr) {
-			elm = createElement(xmlNode->GetName().ToStdString(), parent);
-		}
-		for (int i = 0; i < sizeof(xmlNode->GetAttributes()); i++) {
-			auto attribute = xmlNode->GetAttributes()[i];
-			elm->set(attribute.GetName().ToStdString(), attribute.GetValue().ToStdString());
-		}
-		for (wxXmlNode *child = xmlNode->GetChildren(); child; child = child->GetNext()) {
-			parseElement(child, elm, document);
-		}
-		return elm;
-	}
-
-	void SPElement::setInnerXUL(const string& value) {
-		wxXmlDocument doc;
-		// start processing the XML file
-		wxXmlNode *prolog = doc.GetDocumentNode()->GetChildren();
-		wxXmlNode *child = doc.GetRoot()->GetChildren();
-		SPElement *parsingElement = this;
-
-	}
 }
-/*
-void XMLCALL start(void *data, const char *tagName, const char **attr) {
-	int i;
-
-	space::SPElement *_this = (space::SPElement *)data;
-
-	for (i = 0; i < _this->getParsingDepth(); i++) {
-		printf("  ");
-	}
-
-	printf("%s", tagName);
-
-	space::SPElement *parent = _this->getParsingElement();
-	if (parent == nullptr) {
-		parent = _this;
-	}
-
-	space::SPElement *elm = _this->createElement(tagName, parent);
-	parent->appendChild(elm);
-
-	for (i = 0; attr[i]; i += 2) {
-		printf(" %s='%s'", attr[i], attr[i + 1]);
-		string attrName = attr[i];
-		string attrValue = attr[i + 1];
-		elm->set(attrName, attrValue);
-	}
-	printf("\n");
-	_this->increaseParsingDepth();
-	_this->setParsingElement(elm);
-}
-void XMLCALL end(void *data, const char *el) {
-	space::SPElement *_this = (space::SPElement *)data;
-
-	_this->decreaseParsingDepth();
-
-	if (!_this->getSkipElement()) {
-		end(_this, el);
-
-	}
-
-	if (_this->getSkipElement() == _this->getParsingDepth())
-		_this->setSkipElement(false);
-}
-*/
 
 

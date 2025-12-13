@@ -11,7 +11,7 @@ SPInputElement::~SPInputElement()
 }
 SPInputElement::SPInputElement(SPElement *parent)
     : SPElement(parent) {
-
+	this->tagName = "input";
 }
 
 void SPInputElement::draw(int x, int y, SPGraphicsContext *g) {

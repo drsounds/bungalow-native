@@ -31,13 +31,13 @@ public:
     void setSpace(space::Space *space) {
         this->m_space = space;
     }
-    space::Space *getSpace() {
+    space::Space *getSpace() const {
         return this->m_space;
     }
-    SpaceWidget *getSpaceWidget() {
+    SpaceWidget *getSpaceWidget() const {
         return this->m_spaceWidget;
     }
-    space::SPWindowElement *getWindowElement() {
+    space::SPWindowElement *getWindowElement() const {
         return this->m_windowElement;
     }
     void setWindowElement(space::SPWindowElement *value);

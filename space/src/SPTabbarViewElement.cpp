@@ -23,6 +23,7 @@ namespace space {
     SPTabbarViewElement::SPTabbarViewElement(SPElement *parent)
      : SPViewElement::SPViewElement(parent)
     {
+    	this->setTagName("tabbarview");
         //ctor
         this->tabBar = new SPTabBarElement(this);
         this->viewStack = new SPViewStackElement(this);

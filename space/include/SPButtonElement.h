@@ -9,9 +9,7 @@ namespace space {
 	class SPGraphicsContext;
 	class SPButtonElement : public SPElement {
 	public:
-        SPButtonElement(SPElement *parent) : SPElement(parent) {
-
-	    }
+        SPButtonElement(SPElement *parent);
 		SPButtonElement();
         void pack() override;
 		void draw(int x, int y, SPGraphicsContext *c);

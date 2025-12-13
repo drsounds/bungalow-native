@@ -8,32 +8,22 @@
 namespace space {
   class Space;
   class SPSkin;
-  class SPElement;
+  class SPNode;
   class SPWindow {
   protected:
-    space::Space *m_space;
-    SPSkin *m_skin;
-    SPElement *m_deepestElement;
+    SPNode *m_deepestElement = nullptr;
   public:
-    space::Space *getSpace() {
-      return this->m_space;
-    }
-    void setSpace(space::Space *value) {
-      this->m_space = value;
-    }
+    virtual space::Space *getSpace() { return nullptr; }
+	virtual void setSpace(space::Space *value) {}
     virtual void invalidateRegion(sp_rectangle region) {}
-    SPElement *getDeepestElement() {
+    SPNode *getDeepestElement() const {
       return this->m_deepestElement;
     }
-    void setDeepestElement(SPElement *value) {
+    void setDeepestElement(SPNode *value) {
       this->m_deepestElement = value;
     }
-    SPSkin *getSkin() {
-      return this->m_skin;
-    }
-    void setSkin(SPSkin *skin) {
-      this->m_skin = skin;
-    }
+    virtual SPSkin *getSkin() { return nullptr; }
+    virtual void setSkin(SPSkin *) {}
   };
 }
 #endif

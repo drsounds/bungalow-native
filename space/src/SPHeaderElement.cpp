@@ -7,6 +7,7 @@ namespace space {
 SPHeaderElement::SPHeaderElement(SPElement *parent)
  : SPHBoxElement(parent)
 {
+	this->setTagName("header");
     this->getPadding()->top = 20;
     this->getPadding()->left = 20;
 

@@ -108,7 +108,7 @@ void SpaceWidget::OnRightDown(wxMouseEvent& event)
 
 void SpaceWidget::OnSize(wxSizeEvent& event)
 {
-    this->m_frame->getWindowElement()->resize(event.GetSize().GetWidth() + 1, event.GetSize().GetHeight() + 1);
+    //this->m_frame->getWindowElement()->resize(event.GetSize().GetWidth() + 1, event.GetSize().GetHeight() + 1);
     this->m_frame->getWindowElement()->pack();
     this->m_frame->getWindowElement()->setAbsoluteBounds(new space::sp_rectangle { 0, 0, event.GetSize().GetWidth(), event.GetSize().GetHeight() });
 }

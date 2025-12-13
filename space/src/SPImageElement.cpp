@@ -3,6 +3,7 @@ namespace space {
 SPImageElement::SPImageElement(SPElement *parent)
  : SPElement(parent)
 {
+	this->setTagName("img");
     //ctor
 }
 void SPImageElement::draw(int x, int y, SPGraphicsContext *g) {

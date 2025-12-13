@@ -8,6 +8,7 @@ namespace space {
 SPSplitterElement::SPSplitterElement(SPElement *parent)
  : SPElement(parent)
 {
+	this->setTagName("splitter");
     //ctor
     this->setWidth(1);
 }

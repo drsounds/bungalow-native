@@ -9,6 +9,7 @@ namespace space {
 SPTextElement::SPTextElement(SPElement *parent)
  : SPElement(parent)
 {
+	this->setTagName("text");
     //ctor
 }
 void SPTextElement::draw(int x, int y, SPGraphicsContext *g) {

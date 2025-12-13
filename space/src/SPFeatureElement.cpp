@@ -13,6 +13,7 @@ void SPFeatureElement::registerView(SPViewElement* view) {
 }
 
 SPFeatureElement::SPFeatureElement(SPElement *parent) : SPViewStackElement(parent) {
+	this->setTagName("feature");
 	this->m_views = new std::vector<SPViewElement*>();
 }
 

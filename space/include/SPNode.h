@@ -2,16 +2,19 @@
 #define NODE_H
 #include "SPObject.h"
 #include "SPColor.h"
+#include "SPEventArgs.h"
 #include "SPWindow.h"
+#include "SPObservable.h"
 
 #include <map>
 #include <string>
 #include <vector>
+#include <wx/xml/xml.h>
 using namespace std;
 namespace space {
     class Space;
     class SPColor;
-    class SPNode : public SPObject {
+    class SPNode : public SPObject, public SPObservable {
     protected:
         map<string, void *> *properties;
         map<string, string> *stringAttributes;
@@ -19,14 +22,37 @@ namespace space {
         map<string, int> *integerAttributes;
         SPNode *m_parent;
         SPWindow *m_window;
-        space::Space *m_space;
+    	string tagName = "node";
+    	string m_innerText;
     public:
-        void setSpace(space::Space *space) {
-            this->m_space = space;
+    	string getTagName() const {
+	        return this->tagName;
         }
-        space::Space *getSpace() {
-            return this->m_space;
+    	void setTagName(const string& value) {
+        	this->tagName = value;
         }
+    	string getInnerText() {
+	        return this->m_innerText;
+        }
+        void setInnerText(const string& value);
+        SPNode *parseNode(wxXmlNode *xmlNode, SPNode *parent, SPNode *document);
+
+    	space::Space *getSpace() {
+    		if (this->m_space == nullptr)
+    		{
+    			if (this->getWindow() != nullptr)
+    			{
+    				if (this->getWindow()->getSpace() != nullptr)
+    				{
+    					return this->getWindow()->getSpace();
+    				}
+    			}
+    			if (this->getParentNode() != nullptr) {
+    				return this->getParentNode()->getSpace();
+    			}
+    		}
+    		return this->m_space;
+    	}
         std::vector<SPNode *> *children;
         SPNode();
         SPWindow *getWindow() const
@@ -36,28 +62,32 @@ namespace space {
         void setWindow(SPWindow *value) {
             this->m_window = value;
         }
-        SPNode(Space *space, SPNode *parent) : SPNode()
-        {
-            this->m_parent = parent;
-            if (parent != nullptr) {
-                this->m_window = parent->getWindow();
-            }
+        SPNode(Space *space, SPNode *parent) : SPNode() {
+	        this->m_parent = parent;
+        	if (parent != nullptr) {
+        		this->m_window = parent->getWindow();
+        	}
         }
-
+        SPNode(const string &tagName);
         explicit SPNode(SPNode *parent);
         void removeChild(SPNode *child);
         virtual void appendChild(SPNode *child);
+        void setInnerXml(const string &value);
+        SPNode *createNode(const string &tagName, SPNode *parent);
+
         void setChildren(std::vector<SPNode *> *value) {
             this->children = value;
         }
 
         SPNode *getNodeById(const string& id) const;
+        void setAttribute(const std::string &attrName,
+                          const std::string &value);
         virtual void set(const string& attrib, const string& val);
         string get(const string& attrib);
         void *getObject(const string& attrib);
         void setObject(const string& attrib, void *value);
         string getValue(const string& attrib);
-        SPNode *getParent();
+        SPNode *getParentNode();
 
         map<string, string> *getStringAttributes() {
             return this->stringAttributes;
@@ -75,11 +105,12 @@ namespace space {
 
         SPNode *getWindowNode();
 
-        void setParent(SPNode *parent);
+        void setParentNode(SPNode *parent);
         std::vector<SPNode *> *getChildNodes();
         bool hasAttribute(string attrib);
         virtual SPColor getColorAttribute(const string& title, SPColor defaultValue);
-        void setColorAttribute(const string& title, SPColor value);
+        void setColorAttribute(const string& attrName, SPColor value);
+        void notify(const string &event, SPObject *sender, SPEventArgs *data);
         int getIntegerAttribute(const string& title, int defaultValue);
         void setIntegerAttribute(const string& title, int value);
         void setStringAttribute(const string& attribute, string value);

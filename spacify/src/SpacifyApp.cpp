@@ -26,8 +26,9 @@ bool SpacifyApp::OnInit(){
     space::platform::wxwidgets::WxWidgetsGraphicsContext *gc = new space::platform::wxwidgets::WxWidgetsGraphicsContext(this->m_frame);
     this->m_space->setGraphicsContext(gc);
     gc->setWidget(this->m_frame->getSpaceWidget());
-    this->m_windowElement = new space::SPWindowElement(this->m_space, new space::SPClassicSkin());
-    this->m_windowElement->setColorScheme(SP_COLOR_SCHEME_DARK);
+    space::SPSkin *skin = new space::SPClassicSkin();
+    this->m_windowElement = new space::SPWindowElement(this->m_space, skin);
+    this->m_windowElement->setColorScheme(SP_COLOR_SCHEME_LIGHT);
 
     this->m_frame->setWindowElement(this->m_windowElement);
     this->m_frame->setSpace(m_space);
@@ -37,7 +38,7 @@ bool SpacifyApp::OnInit(){
     this->m_windowElement->setWindow(this->m_windowElement);
     this->m_windowElement->SPWindow::setSpace(this->m_space);
     this->m_space->addWindow(this->m_windowElement);
-    this->m_main = new space::MainElement(this->m_windowElement, this->m_windowElement);
+    this->m_main = new space::MainElement(this->m_windowElement);
     this->m_main->setId("main");
     this->m_windowElement->appendChild(this->m_main);
     this->m_windowElement->pack();

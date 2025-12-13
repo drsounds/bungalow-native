@@ -16,12 +16,11 @@ namespace space
 {
     class Space;
 
-    SPWindowElement::SPWindowElement(Space *space, SPSkin *skin) : SPVBoxElement(nullptr, this)
+    SPWindowElement::SPWindowElement(Space *space, SPSkin *skin) : SPVBoxElement(nullptr, this, skin)
     {
+    	this->setTagName("window");
         this->SPElement::setSpace(space);
         this->SPElement::setSkin(skin);
-        this->SPWindow::setSkin(skin);
-        this->SPWindow::setSpace(space);
     }
 
     void SPWindowElement::draw(SPGraphicsContext *gc, int x, int y) {

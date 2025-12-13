@@ -6,6 +6,7 @@
 namespace space {
 SPAppHeaderElement::SPAppHeaderElement(SPElement *parent) : SPHBoxElement(parent)
 {
+	this->setTagName("appheader");
     this->setColorAttribute("bgcolor", SPColor(127, 127, 127, 255));
     //ctor
 }

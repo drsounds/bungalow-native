@@ -8,6 +8,7 @@ namespace space {
     SPResourceElement::SPResourceElement(SPResource *resource, SPElement *parent)
      : SPElement(parent)
     {
+    	this->setTagName("resource");
         //ctor
         this->resource = resource;
     }

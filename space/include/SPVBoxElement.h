@@ -9,11 +9,12 @@ using namespace std;
 namespace space {
 	class SPElement;
 	class SPWindow;
+	class SPSkin;
 	class SPVBoxElement : public SPElement {
 
 	public:
-		explicit SPVBoxElement(SPElement *parent) : SPElement(parent) {}
-		SPVBoxElement(SPElement *parent, SPWindow *window) : SPElement(parent, window) {}
+		explicit SPVBoxElement(SPElement *parent);
+		SPVBoxElement(SPElement *parent, SPWindow *window, SPSkin *skin);
 		SPVBoxElement() {}
 
 		virtual string getType() {

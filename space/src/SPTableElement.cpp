@@ -14,6 +14,7 @@ namespace space {
     }
     SPTableElement::SPTableElement(SPElement *parent, SPTableDataSource *dataSource)
     {
+    	this->setTagName("table");
         //ctor
         this->dataSource = dataSource;
         this->columns = new vector<SPTableColumnHeader *>;
@@ -58,9 +59,9 @@ namespace space {
         sp_rectangle *absoluteBounds = this->absoluteBounds;
 
         // Draw table data here
-        width = ((SPElement *)this)->getWidth();
+        width = this->getWidth();
         if (width < 1) {
-            width = ((SPElement *)this->getParent()->getParent())->getWidth();
+            width = (this->getParentElement())->getWidth();
         }
         int columnY = y;
 
@@ -68,7 +69,7 @@ namespace space {
         clipRect.x = x;
         clipRect.y = y;
         clipRect.width = width;
-        clipRect.height = ((SPElement *)this->getParent()->getParent())->getHeight();
+        clipRect.height = this->getParentElement()->getHeight();
         int left = 0;
         int padding = 10;
         int columnWidth = width / dataSource->getColumnCount();
@@ -93,7 +94,7 @@ namespace space {
         // Draw column headers
         if (columnY < 60) {
             // If columnY is below zero, set it to the position at top
-            columnY = ((SPElement *)this->getParent())->absoluteBounds->y + 1;
+            columnY = this->getParentElement()->absoluteBounds->y + 1;
         }
         this->getSkin()->drawTableHeader(g, this, 0, 0, width, 18);
         left =0;

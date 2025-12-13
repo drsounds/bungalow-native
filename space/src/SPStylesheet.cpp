@@ -13,7 +13,6 @@ Selector::~Selector() {
 }
 
 SPStylesheet::SPStylesheet()
-
 {
 
     try

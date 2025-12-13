@@ -3,18 +3,30 @@
 #include <map>
 
 #include "SPColor.h"
+#include "SPMouseEventArgs.h"
+#include "SpaceFrame.h"
+
+#include <regex>
+#include <wx/string.h>
+#include <wx/stream.h>
+#include <wx/xml/xml.h>
+#include <wx/mstream.h> // For wxMemoryInputStream
+#include <wx/txtstrm.h>
 
 using namespace std;
 
 namespace space {
-    SPNode::SPNode() {
-        this->children = new vector<SPNode *>();
-        this->properties = new map<string, void*>();
-        this->stringAttributes = new map<string, string>();
-        this->colorAttributes = new map<string, SPColor>();
-        this->integerAttributes = new map<string, int>();
+	SPNode::SPNode() {
+		this->children = new vector<SPNode *>();
+		this->properties = new map<string, void*>();
+		this->stringAttributes = new map<string, string>();
+		this->colorAttributes = new map<string, SPColor>();
+		this->integerAttributes = new map<string, int>();
+	}
+    SPNode::SPNode(const string& tagName) : SPNode() {
+    	this->tagName = tagName;
     }
-    SPNode::SPNode(SPNode *parent) : SPNode() {
+    SPNode::SPNode(SPNode *parent) : SPNode("node") {
         if (parent == nullptr) {
             return;
         }
@@ -23,20 +35,32 @@ namespace space {
             this->setWindow(window);
         } 
     }
-    SPNode* SPNode::getParent() {
+    SPNode* SPNode::getParentNode() {
         return this->m_parent;
     }
     void SPNode::removeChild(SPNode *child) {
     }
-    string SPNode::getStringAttribute(const string& title, string defaultValue) {
-        return (*this->stringAttributes)[title];
+    string SPNode::getStringAttribute(const string& attrName, string defaultValue) {
+        return (*this->stringAttributes)[attrName];
     }
-    void SPNode::setStringAttribute(const string& title, string value) {
-        (*this->stringAttributes)[title] = value;
+    void SPNode::setStringAttribute(const string& attrName, string value) {
+    	string oldValue = (*this->stringAttributes)[attrName];
+    	(*this->stringAttributes)[attrName] = value;
+    	auto *args = new SPAttributeChangedEventArgs(attrName, value, oldValue, "string");
+    	this->notify("attributechanged", this, args);
     }
-    void SPNode::setColorAttribute(const string& title, SPColor value) {
-        (*this->colorAttributes)[title] = value;
+    void SPNode::setColorAttribute(const string& attrName, SPColor value) {
+    	SPColor oldValue = SPColor(0, 0, 0, 0);
+    	(*this->colorAttributes)[attrName] = value;
+    	auto args = new SPAttributeChangedEventArgs(attrName, value.toHTMLColor(), oldValue.toHTMLColor(), "color");
+    	this->notify("attributechanged", this, args);
     }
+	void SPNode::notify(const string& event, SPObject* sender, SPEventArgs* data)
+    {
+    	SPObservable::notify(event, sender, data);
+
+    }
+
     SPColor SPNode::getColorAttribute(const string& title, SPColor defaultValue) {
     	SPColor color = SPColor(0, 0, 0, 0);
 
@@ -44,8 +68,8 @@ namespace space {
 	        color = (*this->colorAttributes)[title];
         }
 		if (color.empty()) {
-    		if (this->getParent() != nullptr) {
-		        color = this->getParent()->getColorAttribute(title, defaultValue);
+    		if (this->getParentNode() != nullptr) {
+		        color = this->getParentNode()->getColorAttribute(title, defaultValue);
 	        }
         }
     	if (color.empty()) {
@@ -60,8 +84,11 @@ namespace space {
         }
         return (*this->integerAttributes)[title];
     }
-    void SPNode::setIntegerAttribute(const string& title, int value) {
-        (*this->integerAttributes)[title] = value;
+    void SPNode::setIntegerAttribute(const string& attrName, int value) {
+    	int oldValue = 0;
+    	(*this->integerAttributes)[attrName] = value;
+    	auto args = new SPAttributeChangedEventArgs(attrName, std::to_string(value), std::to_string(oldValue), "integer");
+    	this->notify("attributechanged", this, args);
     }
     std::vector<SPNode *> *SPNode::getChildNodes() {
         return (this->children);
@@ -71,8 +98,8 @@ namespace space {
         return it != this->properties->end();
     }
 
-    void SPNode::setParent(SPNode *elm) {
-        this->m_parent = (elm);
+    void SPNode::setParentNode(SPNode *elm) {
+        this->m_parent = dynamic_cast<SPNode *>(elm);
     }
     std::string SPNode::get(const std::string& title) {
         std::string val = (*this->stringAttributes)[title];
@@ -105,22 +132,23 @@ namespace space {
     	return nullptr;
     }
 
-    void SPNode::set(const std::string& title, const std::string& val) {
+	void SPNode::set(const string& title, const string& value) {
+		setAttribute(title, value);
+	}
+
+    void SPNode::setAttribute(const std::string& attrName, const std::string& value) {
         int n = 0;
-        (*this->stringAttributes)[title] = val;
+        this->setStringAttribute(attrName, value);
         try {
-            n = atoi(val.c_str());
-
-
-
-            (*this->integerAttributes)[title] = n;
-        } catch (exception e) {
+            n = atoi(value.c_str());
+            setIntegerAttribute(attrName, n);
+        } catch (exception& e) {
             
         }
 
-        if(val.find("#") == 0) {
-            SPColor c = SPColor(val);
-            (*this->colorAttributes)[title] = c;
+        if(regex_match(value, std::regex("^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$"))) {
+            SPColor c = SPColor(value);
+            this->setColorAttribute(attrName, c);
         }
     }
 
@@ -130,9 +158,48 @@ namespace space {
             nodes = new vector<SPNode *>();
         }
         nodes->push_back(child);
-        child->setParent(this);
+        child->setParentNode(this);
     }
-    SPNode *getElementById(string *id) {
-        return NULL;
+
+	void SPNode::setInnerText(const string& value) {
+		this->m_innerText = value;
+	}
+
+	SPNode *SPNode::parseNode(wxXmlNode *xmlNode, SPNode *parent,
+								   SPNode *document) {
+		SPNode *elm = nullptr;
+		elm = document->getNodeById(string(xmlNode->GetAttribute("id")));
+		if (elm == nullptr) {
+			elm = createNode(xmlNode->GetName().ToStdString(), parent);
+		}
+		for (int i = 0; i < sizeof(xmlNode->GetAttributes()); i++) {
+			auto attribute = xmlNode->GetAttributes()[i];
+			elm->set(attribute.GetName().ToStdString(), attribute.GetValue().ToStdString());
+		}
+		elm->setInnerText(xmlNode->GetContent().ToStdString());
+		for (wxXmlNode *child = xmlNode->GetChildren(); child; child = child->GetNext()) {
+			parseNode(child, elm, document);
+		}
+		return elm;
+	}
+	void SPNode::setInnerXml(const string& value) {
+		wxMemoryInputStream wmis(value.data(), value.size());
+    	wxXmlDocument doc;
+		doc.Load(wmis);
+    	// start processing the XML file
+    	wxXmlNode *child = doc.GetRoot()->GetChildren();
+    	SPNode *parsingNode = this;
+    	for (; child; child = child->GetNext()) {
+    		parsingNode = parseNode(child, parsingNode, this);
+    	}
     }
+
+	SPNode * SPNode::createNode(const string& tagName, SPNode *parent) {
+    	if (parent == nullptr) {
+    		parent = this;
+    	}
+    	auto *elm = new SPNode(parent);
+    	return elm;
+    }
+
 }

@@ -5,10 +5,14 @@
 using namespace std;
 
 namespace space {
-SPViewElement::SPViewElement()
- : SPVBoxElement::SPVBoxElement()
+SPViewElement::SPViewElement() : SPVBoxElement() {
+	this->setTagName("view");
+}
+SPViewElement::SPViewElement(SPElement *parent)
+ : SPVBoxElement::SPVBoxElement(parent)
 {
-
+	this->setTagName("view");
+    this->clipView = true;
     //ctor
 }
 void SPViewElement::scroll(int scrollX, int scrollY, int mouseX, int mouseY) {
@@ -22,19 +26,8 @@ void SPViewElement::request(std::string uri) {
 
 }
 
-std::string SPViewElement::loadXml(const std::string& view) {
-
-}
-
 void SPViewElement::pack() {
     SPVBoxElement::pack();
-}
-
-SPViewElement::SPViewElement(SPElement *parent)
- : SPVBoxElement::SPVBoxElement(parent)
-{
-    this->clipView = true;
-    //ctor
 }
 void SPViewElement::navigate(const string& uri) {
 

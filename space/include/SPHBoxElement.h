@@ -6,7 +6,7 @@ namespace space {
     class SPHBoxElement : public SPElement {
 
     public:
-        explicit SPHBoxElement(SPElement *parent): SPElement(parent) {}
+        explicit SPHBoxElement(SPElement *parent);
         virtual string getType() {
             return "hbox";
         }

@@ -3,7 +3,13 @@
 #include <iostream>
 
 namespace space {
+	SPVBoxElement::SPVBoxElement(SPElement *parent) : SPElement(parent) {
+		this->setTagName("vbox");
+	}
 
+	SPVBoxElement::SPVBoxElement(SPElement *parent, SPWindow *window, SPSkin *skin) : SPElement(parent, window, skin) {
+		this->setTagName("vbox");
+	}
     void space::SPVBoxElement::pack() {
         SPElement::pack();
         int flexes = 0;

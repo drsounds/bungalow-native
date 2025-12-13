@@ -6,6 +6,7 @@
 namespace space {
     SPAppFooterElement::SPAppFooterElement(SPElement *parent) : SPHBoxElement(parent)
     {
+    	this->setTagName("footer");
         this->setColorAttribute("bgcolor", SPColor(57, 57, 57, 255));
         //ctor
     }

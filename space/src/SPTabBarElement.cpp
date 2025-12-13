@@ -70,7 +70,7 @@ SPTabBarElement::SPTabBarElement()
 SPTabBarElement::SPTabBarElement(SPElement *parent)
  : SPElement(parent)
 {
-    this->m_backgroundImage = (SPImage *)this->m_skin->getImage("tabbar.background.image", "");
+	this->setTagName("tabbar");
     //ctor
     this->tabs = new std::vector<SPTab *>;
     this->addEventListener(string("mousedown"), SPCallback(&SPTabBarElement::mouseDown), this);

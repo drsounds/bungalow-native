@@ -19,7 +19,6 @@ namespace space {
             this->getPadding()->left = 20;
             //ctor
             text = new SPTextElement(this);
-            text->setInnerText("Doctrine");
             text->setStringAttribute("width", "100%");
             this->appendChild(text);
         }
@@ -34,7 +33,7 @@ namespace space {
 
             vector<string> strs;
             boost::split(strs, uri, boost::is_any_of(":")); 
-            this->text->setInnerText(strs.at(2));
+
         }
 
         DoctrineView::~DoctrineView()

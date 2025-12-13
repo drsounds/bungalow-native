@@ -2,6 +2,16 @@
 #include "SPGraphicsContext.h"
 #include "SPColor.h"
 #include "SPSkin.h"
+#include "SPTextElement.h"
+
+/**
+ *
+ * @param parent
+ */
+space::SPButtonElement::SPButtonElement(SPElement *parent) : SPElement(parent) {
+	 this->tagName = "button";
+}
+
 
 void space::SPButtonElement::pack() {
 	SPElement::pack();

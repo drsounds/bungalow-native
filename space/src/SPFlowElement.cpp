@@ -9,6 +9,7 @@ SPFlowElement::SPFlowElement()
 SPFlowElement::SPFlowElement(SPElement *elm)
  : SPElement::SPElement(elm)
 {
+	this->setTagName("flow");
     //ctor
 }
 

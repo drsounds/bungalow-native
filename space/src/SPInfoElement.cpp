@@ -6,6 +6,7 @@ namespace space {
     SPInfoElement::SPInfoElement(SPElement *parent)
      : SPHBoxElement(parent)
     {
+    	this->setTagName("info");
         //ctor
         this->set("height", "32");
         this->getPadding()->top = 5;
@@ -22,13 +23,13 @@ namespace space {
 
         this->btnElement = new SPButtonElement(this);
         this->btnElement->set("width", "64");
-        this->btnElement->setInnerText("X");
+        this->btnElement->setInnerText("");
         this->appendChild(this->btnElement);
 
     }
     void SPInfoElement::show(SPMessageType type, string text) {
         this->setMessageType(type);
-        this->textElement->setInnerText(text);
+        this->textElement->setInnerText("");
         SPElement::show();
 
     }
