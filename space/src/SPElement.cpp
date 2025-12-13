@@ -361,6 +361,21 @@ namespace space {
 		this->padding->top = 0;
 		this->padding->right = 0;
 		this->padding->bottom = 0;
+		this->addEventListener("attributechanged", SPCallback(&SPElement::onAttributeChanged), this);
+	}
+
+	void SPElement::loadSrc(const string &string) {
+
+	}
+
+	void SPElement::onAttributeChanged(SPObject* sender, SPEventArgs* e) {
+		SPAttributeChangedEventArgs *args = dynamic_cast<SPAttributeChangedEventArgs *>(e);
+		if (args->getAttributeName() == "bgcolor" || args->getAttributeName() == "fgcolor") {
+			this->invalidate();
+		}
+		if (args->getAttributeName() == "src") {
+			this->loadSrc(args->getNewValue());
+		}
 	}
 
 	void SPElement::applySkin() {
@@ -687,7 +702,7 @@ namespace space {
 				elm->draw(rect2.x, rect2.y, c);
 			}
 		}
-		SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(28, 28, 28, 255));
+		/*SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(28, 28, 28, 255));
 		SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 255));
 		int fontSize = this->getIntegerAttribute("size", 12);
 		string fontFamily = this->getStringAttribute("font", "MS Sans Serif");
@@ -695,7 +710,7 @@ namespace space {
 		c->drawString(this->getType(), SPFontStyle(fontFamily, fontSize, fontSize / 2, false, false), fgColor, rect2.x, rect2.y, this->getWidth(), this->getHeight());
 		const string strLoc = "type=" + this->getType() + "&x=" + std::to_string(x) + "&y=" + std::to_string(y) + "&width=" + std::to_string(width) + "&height=" + std::to_string(height) + "&flex=" + std::to_string(this->getIntegerAttribute("flex", 0));
 		c->drawString(strLoc, SPFontStyle(fontFamily, fontSize, fontSize / 2, false, false), SPColor(0, 0, 255, 255), rect2.x + (rect2.width / 2), rect2.y + (rect2.height / 2), this->getWidth(), this->getHeight());
-
+		*/
 		if (clipView) {
 	        c->declipRect();
 		}

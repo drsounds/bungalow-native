@@ -212,6 +212,8 @@ namespace space {
         }
 
         explicit SPElement(SPElement *parent);
+        void loadSrc(const string & string);
+        void onAttributeChanged(SPObject *sender, SPEventArgs *e);
 
         ~SPElement() override;
         int getX();
