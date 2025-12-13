@@ -138,12 +138,19 @@ namespace space {
     	return nullptr;
     }
 
+	void SPNode::setId(const string& id) {
+		this->set("id", id);
+	}
+
 	void SPNode::set(const string& title, const string& value) {
 		setAttribute(title, value);
 	}
 
     void SPNode::setAttribute(const std::string& attrName, const std::string& value) {
         int n = 0;
+		if (attrName == "id") {
+			this->m_id = value;
+		}
         this->setStringAttribute(attrName, value);
         try {
             n = atoi(value.c_str());

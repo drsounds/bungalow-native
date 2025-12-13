@@ -6,7 +6,7 @@
 #include <cstdio>
 #include <boost/lexical_cast/bad_lexical_cast.hpp>
 #include <utility>
-
+#include <boost/algorithm/string.hpp>
 #include "Space.h"
 
 #include "wx/xml/xml.h"
@@ -21,9 +21,15 @@
 #include "SPFontStyle.h"
 #include "SPImageElement.h"
 #include "SPTextElement.h"
+#include "SPViewElement.h"
+#include "WxWidgetsGraphicsContext.h"
+#include "wx/wx.h"
+
+#include "SpaceWidget.h"
 
 #include <boost/json.hpp>
-
+#include <wx/mstream.h>
+#include <wx/webrequest.h>
 namespace space {
 	SPColor* SPElement::getActiveColor()
 	{
@@ -330,7 +336,7 @@ namespace space {
 	}
 
 	SPElement::SPElement(SPElement *parent) : SPNode(static_cast<SPNode*>(parent)), fontStyle("Tahoma", 13, 1, false, false) {
-		this->setTintColor(new SPColor(0, 127, 255, 56));
+		//this->setTintColor(new SPColor(0, 127, 255, 56));
 		this->m_classList = new vector<string>;
 		this->absoluteBounds = new sp_rectangle;
 		this->setScrollable(false);
@@ -364,8 +370,57 @@ namespace space {
 		this->addEventListener("attributechanged", SPCallback(&SPElement::onAttributeChanged), this);
 	}
 
-	void SPElement::loadSrc(const string &string) {
+	void SPElement::request(const string& method, const string &uri, const string &data) {
+		platform::wxwidgets::WxWidgetsGraphicsContext *gc = static_cast<platform::wxwidgets::WxWidgetsGraphicsContext *>(this->createGraphics());
+		wxWindow *window = gc->getWidget()->GetParent();
+		string url = "http://127.0.0.1:2855/" + boost::algorithm::replace_all_copy(uri, ":", "/").substr(strlen("spacify:"));
+		wxWebRequest request = wxWebSession::GetDefault().CreateRequest(
+			window,
+			url
+		);
+		if (!request.IsOk()) {
+			throw "Failed to create wxWebRequest";
+		}
+		window->Bind(wxEVT_WEBREQUEST_STATE, [&](wxWebRequestEvent& event) {
+			// Request completed
+			// Request completed
+			switch (event.GetState())
+			{
+			case wxWebRequest::State_Failed: {
+				cout << "Failed to load " << uri << "\r\n";
+				break;
+			}
+			case wxWebRequest::State_Completed: {
+				wxString res = event.GetResponse().AsString();
+				this->setInnerXUL(res.ToStdString());
+				break;
+			}
+			default:;
+			}
+		});
+		request.Start();
+	}
 
+	void SPElement::setInnerXUL(const string &string) {
+		wxMemoryInputStream stream(string.data(), string.size());
+		wxXmlDocument doc;
+		if (doc.Load(stream, wxS("UTF-8"))) {
+			wxXmlNode *root = doc.GetRoot();
+			SPElement *elm = this->parseElement(root, this, this);
+			elm->setIntegerAttribute("flex", 1);
+			this->appendChild(elm);
+			this->pack();
+			cout << elm->getWidth();
+		}
+		this->pack();
+		this->invalidate();
+
+	}
+
+	void SPElement::loadSrc(const string &string) {
+		// Create the request object
+
+		this->request("GET", string, "");
 	}
 
 	void SPElement::onAttributeChanged(SPObject* sender, SPEventArgs* e) {
@@ -572,32 +627,6 @@ namespace space {
 		this->z = z;
 	}
 
-	void SPElement::set(const std::string& title, const std::string& val) {
-	    int n = 0;
-			(*this->getStringAttributes())[title] = val;
-	    try {
-	        n = stoi(val);
-	        this->setIntegerAttribute(title, n);
-	    } catch (const boost::bad_lexical_cast e) {
-	    } catch (const std::invalid_argument e)
-	    {
-
-	    }
-
-	    if(val.find("#") == 0) {
-	        SPColor c = SPColor(val);
-	        this->setColorAttribute(title, c);
-	    }
-	}
-
-	void SPElement::setId(std::string id) {
-		this->id = id;
-	}
-	std::string SPElement::getId() {
-		return this->id;
-	}
-
-
 	std::string SPElement::getType() {
 	    return "element";
 	}
@@ -702,7 +731,8 @@ namespace space {
 				elm->draw(rect2.x, rect2.y, c);
 			}
 		}
-		/*SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(28, 28, 28, 255));
+		/*
+		SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(28, 28, 28, 255));
 		SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 255));
 		int fontSize = this->getIntegerAttribute("size", 12);
 		string fontFamily = this->getStringAttribute("font", "MS Sans Serif");
@@ -718,7 +748,7 @@ namespace space {
 
 	void SPElement::pack()
 	{
-		//cout << "Element: " << this->getType() << "#" << this->getId() << " packed to width: " << this->getWidth() << " height: " << this->getHeight() << " flex: " << this->getIntegerAttribute("flex", 0) << endl;
+		cout << "Element: " << this->getType() << "#" << this->getId() << " packed to width: " << this->getWidth() << " height: " << this->getHeight() << " flex: " << this->getIntegerAttribute("flex", 0) << endl;
 	}
 
 	void SPElement::resize(int width, int height)
@@ -785,10 +815,6 @@ namespace space {
 
 	}
 
-	string SPElement::getInnerText() {
-	    return this->data;
-	}
-
 	SPElement *SPElement::parseElement(wxXmlNode *xmlNode, SPElement *parent,
 							   SPElement *document) {
 		SPElement *elm = nullptr;
@@ -796,14 +822,25 @@ namespace space {
 		if (elm == nullptr) {
 			elm = createElement(xmlNode->GetName().ToStdString(), parent);
 		}
-		for (int i = 0; i < sizeof(xmlNode->GetAttributes()); i++) {
-			auto attribute = xmlNode->GetAttributes()[i];
-			elm->set(attribute.GetName().ToStdString(), attribute.GetValue().ToStdString());
+		elm->setVisible(true);
+		for (const wxXmlAttribute *attribute = xmlNode->GetAttributes(); attribute != nullptr; attribute = attribute->GetNext()) {
+			elm->set(attribute->GetName().ToStdString(), attribute->GetValue().ToStdString());
+			if (attribute->GetName().ToStdString() == "hidden") {
+				elm->setVisible(false);
+			}
 		}
-		elm->setInnerText(this->getInnerText());
 		for (wxXmlNode *child = xmlNode->GetChildren(); child; child = child->GetNext()) {
-			parseElement(child, elm, document);
+			if (child->GetType() == wxXML_TEXT_NODE) {
+				elm->setInnerText(child->GetContent().ToStdString());
+			} else if (child->GetType() == wxXML_ELEMENT_NODE) {
+				SPElement *childElement = parseElement(child, elm, document);
+				elm->appendChild(childElement);
+				this->pack();
+				cout << "Packed";
+			}
 		}
+
+		elm->pack();
 		return elm;
 	}
 
@@ -818,8 +855,8 @@ namespace space {
 			elm = new SPImageElement(parent);
 		} else if (tagName == "button") {
 			elm = new SPButtonElement(parent);
-		} else {
-			elm = new SPElement(parent);
+		} else if (tagName == "view") {
+			elm = new SPViewElement(parent);
 		}
 		return elm;
 	}

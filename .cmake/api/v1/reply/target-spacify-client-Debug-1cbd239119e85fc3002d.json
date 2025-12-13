@@ -485,8 +485,7 @@
 				155,
 				156,
 				157,
-				158,
-				159
+				158
 			]
 		}
 	],
@@ -1267,11 +1266,6 @@
 		{
 			"backtrace" : 1,
 			"path" : "space/include/SPViewStackElement.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"path" : "space/include/SPWindow.h",
 			"sourceGroupIndex" : 1
 		},
 		{

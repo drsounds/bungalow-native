@@ -23,12 +23,7 @@ namespace space {
          : SPContainerViewElement::SPContainerViewElement(parent)
         {
             // Build the view
-			this->button = new SPButtonElement(this);
-        	this->button->setStringAttribute("variant", "primary");
-        	this->appendChild(button);
-        	this->button->setInnerText("Test");
-        	this->button->setWidth(20);
-        	this->button->setHeight(48);
+        	this->setAttribute("src", "spacify:whatsnew");
         }
         void WhatsNewView::navigate(const string& uri) {
 

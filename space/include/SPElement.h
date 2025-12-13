@@ -212,6 +212,8 @@ namespace space {
         }
 
         explicit SPElement(SPElement *parent);
+        void request(const string &method, const string &uri,
+                     const string &data);
         void loadSrc(const string & string);
         void onAttributeChanged(SPObject *sender, SPEventArgs *e);
 
@@ -221,7 +223,6 @@ namespace space {
         virtual void processMessage(const SPMessage&);
         sp_margin *getMargins();
         sp_margin *getPadding();
-        string getInnerText();
         SPElement *parseElement(wxXmlNode *xmlNode, SPElement *parent,
                                 SPNode *document);
         SPElement *createElement(const string& tagName, SPElement* parent);
@@ -245,9 +246,6 @@ namespace space {
         void setWidth(int width);
         void setHeight(int height);
         void setZ(int z);
-        void set(const std::string& title, const std::string& val) override;
-        string getId();
-        void setId(string id);
         virtual void pack();
 
     };

@@ -10,6 +10,8 @@
 #include "SPButtonElement.h"
 #include "SPColor.h"
 
+#include <iostream>
+
 using namespace space;
 
 bool SPClassicSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const string& state, const sp_rectangle& bounds)
@@ -25,6 +27,7 @@ bool SPClassicSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const stri
     }
     if (elm->getType() == "button")
     {
+    	cout << "Element id:" << elm->getId();
         result = true;
     	SPColor bgColor = elm->getBackgroundColor();
     	if (tintColor != nullptr) {
@@ -33,6 +36,9 @@ bool SPClassicSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const stri
     		} else {
     			bgColor = bgColor.tint(*tintColor);
     		}
+    	}
+    	if (elm->getColorScheme() == SP_COLOR_SCHEME_DARK) {
+    		bgColor = bgColor.lighten(2);
     	}
         SPGradient gradient(
             bgColor.lighten(0.1), bgColor.lighten(-0.2),
@@ -288,6 +294,9 @@ void SPClassicSkin::drawTabBar(
         lColor = lColor.tint(*tintColor);
         shadowColor = tintColor->lighten(-0.8);
     }
+	if (tabBar->getColorScheme() == SP_COLOR_SCHEME_DARK) {
+		bgColor = bgColor.lighten(2);
+	}
     SPGradient gradient(
         bgColor.lighten(0.1), bgColor.lighten(-0.1),
         0

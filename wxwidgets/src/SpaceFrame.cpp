@@ -12,7 +12,7 @@ void SpaceFrame::setWindowElement(space::SPWindowElement* value)
 }
 
 SpaceFrame::SpaceFrame(wxApp *app, space::Space *space)
-    : wxFrame(nullptr, wxID_ANY, "Space", wxDefaultPosition, wxDefaultSize, wxFRAME_EX_METAL)
+    : wxFrame(nullptr, wxID_ANY, "Space", wxDefaultPosition, wxSize(1280, 720), wxFRAME_EX_METAL)
 {
     this->m_app = app;
     this->m_space = space;
@@ -22,7 +22,6 @@ SpaceFrame::SpaceFrame(wxApp *app, space::Space *space)
     this->m_spaceWidget = new SpaceWidget(dynamic_cast<wxWindow *>(this), wxID_ANY, "Hello World");
     this->m_spaceWidget->setSpace(this->m_space);
     SetWindowStyle(
-        wxFRAME_FLOAT_ON_PARENT |
         wxNO_BORDER |
         wxFRAME_NO_TASKBAR |
         wxCLIP_CHILDREN

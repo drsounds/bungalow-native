@@ -166,7 +166,7 @@
 					"value" : "CXX compiler"
 				}
 			],
-			"type" : "STRING",
+			"type" : "FILEPATH",
 			"value" : "/usr/bin/c++"
 		},
 		{
@@ -183,7 +183,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "-D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__"
+			"value" : ""
 		},
 		{
 			"name" : "CMAKE_CXX_FLAGS_DEBUG",
@@ -262,7 +262,7 @@
 					"value" : "C compiler"
 				}
 			],
-			"type" : "STRING",
+			"type" : "FILEPATH",
 			"value" : "/usr/bin/cc"
 		},
 		{
@@ -360,18 +360,6 @@
 			],
 			"type" : "FILEPATH",
 			"value" : "CMAKE_DLLTOOL-NOTFOUND"
-		},
-		{
-			"name" : "CMAKE_EDIT_COMMAND",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Path to cache edit program executable."
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "/opt/homebrew/bin/ccmake"
 		},
 		{
 			"name" : "CMAKE_EXECUTABLE_FORMAT",
@@ -838,18 +826,6 @@
 			"value" : "1"
 		},
 		{
-			"name" : "CMAKE_PROJECT_COMPAT_VERSION",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : ""
-		},
-		{
 			"name" : "CMAKE_PROJECT_DESCRIPTION",
 			"properties" : 
 			[
@@ -884,18 +860,6 @@
 			],
 			"type" : "STATIC",
 			"value" : "SpacifyClient"
-		},
-		{
-			"name" : "CMAKE_PROJECT_SPDX_LICENSE",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : ""
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1316,18 +1280,6 @@
 			],
 			"type" : "INTERNAL",
 			"value" : "[-L/opt/homebrew/lib;;;-framework IOKit;-framework Carbon;-framework Cocoa;-framework QuartzCore;-framework AudioToolbox;-framework System;-framework OpenGL;-lwx_osx_cocoau_xrc-3.3;-lwx_osx_cocoau_html-3.3;-lwx_osx_cocoau_qa-3.3;-lwx_osx_cocoau_core-3.3;-lwx_baseu_xml-3.3;-lwx_baseu_net-3.3;-lwx_baseu-3.3][/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3;/opt/homebrew/include/wx-3.3][v3.3.1()]"
-		},
-		{
-			"name" : "Ffi_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "The directory containing a CMake configuration file for Ffi."
-				}
-			],
-			"type" : "PATH",
-			"value" : "Ffi_DIR-NOTFOUND"
 		},
 		{
 			"name" : "LUA_INCLUDE_DIR",
@@ -1862,6 +1814,30 @@
 			"value" : "/opt/homebrew/include"
 		},
 		{
+			"name" : "Python3_EXECUTABLE",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "No help, variable specified on the command line."
+				}
+			],
+			"type" : "UNINITIALIZED",
+			"value" : "/Users/buddhalow/Documents/spacify-client/resources/app/.venv/bin/python"
+		},
+		{
+			"name" : "Python_EXECUTABLE",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "No help, variable specified on the command line."
+				}
+			],
+			"type" : "UNINITIALIZED",
+			"value" : "/Users/buddhalow/Documents/spacify-client/resources/app/.venv/bin/python"
+		},
+		{
 			"name" : "SpacifyClient_BINARY_DIR",
 			"properties" : 
 			[
@@ -1984,30 +1960,6 @@
 			],
 			"type" : "PATH",
 			"value" : "/opt/homebrew/lib/cmake/boost_headers-1.89.0"
-		},
-		{
-			"name" : "ffi_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "The directory containing a CMake configuration file for ffi."
-				}
-			],
-			"type" : "PATH",
-			"value" : "ffi_DIR-NOTFOUND"
-		},
-		{
-			"name" : "libpng_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "The directory containing a CMake configuration file for libpng."
-				}
-			],
-			"type" : "PATH",
-			"value" : "libpng_DIR-NOTFOUND"
 		},
 		{
 			"name" : "pkgcfg_lib_PC_EXPAT_expat",

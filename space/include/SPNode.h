@@ -22,15 +22,20 @@ namespace space {
         map<string, int> *integerAttributes;
         SPNode *m_parent;
         string tagName = "node";
+    	string m_id;
     	string m_innerText;
     public:
+    	string getId() const {
+    		return this->m_id;
+    	}
+    	void setId(const string& value);
     	string getTagName() const {
 	        return this->tagName;
         }
     	void setTagName(const string& value) {
         	this->tagName = value;
         }
-    	string getInnerText() {
+    	string getInnerText() const {
 	        return this->m_innerText;
         }
         void setInnerText(const string& value);
@@ -85,8 +90,6 @@ namespace space {
         map<string, void *> *getProperties() {
             return this->properties;
         }
-
-        SPNode *getWindowNode();
 
         void setParentNode(SPNode *parent);
         std::vector<SPNode *> *getChildNodes();
