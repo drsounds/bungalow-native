@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<view>
+    <text id="testtext">Test text</text>
+    <button width="300" height="500" id="test_button">Test</button>
+</view>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<view bgcolor="white" fgcolor="black">
+    <text italic="true" fgcolor="#ff0000">Error in template application</text>
+    <text>An error occurred during the request</text>
+</view>
