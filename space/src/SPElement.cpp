@@ -686,6 +686,10 @@ namespace space {
 	}
 
 
+	void SPElement::refresh() {
+		this->loadSrc(this->getSrc());
+	}
+
 	void SPElement::setSrc(const string &value) {
 		this->setStringAttribute("src", value);
 	}

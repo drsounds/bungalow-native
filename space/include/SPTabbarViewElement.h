@@ -19,6 +19,7 @@ namespace space
         int onTabSelected(SPObject* sender, SPEventArgs* e);
         SPTabbarViewElement();
         SPTabbarViewElement(SPElement *parent);
+        void onClick(SPObject *sender, SPEventArgs *e);
         void onUnload(SPObject *sender, SPEventArgs *e);
         void onTreeChanged(SPObject *sender, SPEventArgs *e);
         virtual ~SPTabbarViewElement();

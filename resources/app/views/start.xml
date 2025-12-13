@@ -2,6 +2,7 @@
 <view>
     <section title="Overview" id="overview">
         <text id="testtext">First view</text>
+        <text id="time">Current time is ${now} </text>
         <button width="300" height="500" id="test_button">Test</button>
     </section>
     <section title="Test" id="test">

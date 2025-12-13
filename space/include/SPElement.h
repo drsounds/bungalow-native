@@ -68,7 +68,8 @@ namespace space {
 
     	SPWindowElement *getWindowElement();
     	string getSrc();
-    	void setSrc(const string& value);
+        void refresh();
+        void setSrc(const string& value);
         SPElement *getParentElement()
         {
             return static_cast<SPElement *>(this->getParentNode());

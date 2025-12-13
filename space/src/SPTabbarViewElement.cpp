@@ -34,6 +34,10 @@ namespace space {
         this->appendChild(this->viewStack);
     	this->addEventListener("treechanged", SPCallback(&SPTabbarViewElement::onTreeChanged), this);
 		this->addEventListener("unload", SPCallback(&SPTabbarViewElement::onUnload), this);
+		this->addEventListener("mousedown", SPCallback(&SPTabbarViewElement::onClick), this);
+    }
+	void SPTabbarViewElement::onClick(SPObject *sender, SPEventArgs *e) {
+		this->refresh();
     }
 	void SPTabbarViewElement::onUnload(SPObject *sender, SPEventArgs *e) {
 	    this->tabBar->clear();

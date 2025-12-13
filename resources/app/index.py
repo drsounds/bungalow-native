@@ -1,5 +1,6 @@
 import json
 import os
+from datetime import datetime
 from flask import Flask
 from werkzeug.exceptions import HTTPException
 
@@ -10,7 +11,7 @@ from mako.template import Template
 
 @app.route("/start")
 def start():
-    return Template(filename=os.path.join('views', 'start.xml')).render(data={})
+    return Template(filename=os.path.join('views', 'start.xml')).render(now=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
 
 @app.errorhandler(HTTPException)
