@@ -1,10 +1,16 @@
 #include "SPElement.h"
+
+#include "SPButtonElement.h"
+
 #include <iostream>
 #include <cstdio>
 #include <boost/lexical_cast/bad_lexical_cast.hpp>
 #include <utility>
 
 #include "Space.h"
+#include <expat.h>
+
+#include "wx/xml/xml.h"
 
 #include "SPWindow.h"
 #include "SPObservable.h"
@@ -14,6 +20,9 @@
 #include "SPImage.h"
 #include "SPStylesheet.h"
 #include "SPFontStyle.h"
+#include "SPImageElement.h"
+#include "SPTextElement.h"
+
 #include <boost/json.hpp>
 
 namespace space {
@@ -134,6 +143,15 @@ namespace space {
 		return nullptr;
 	}
 
+	void SPElement::decreaseParsingDepth() {
+		this->m_parsingDepth--;
+	}
+
+
+	void SPElement::increaseParsingDepth() {
+		this->m_parsingDepth++;
+	}
+
 	SPElement::SPElement() : SPNode(), fontStyle(SPFontStyle("Tahoma", 13, 1, false, false))
 	{}
 
@@ -145,7 +163,7 @@ namespace space {
 	void SPElement::show() {
 	    this->setVisible(true);
 	}
-	void SPElement::hide() {
+	void	 SPElement::hide() {
 	    this->setVisible(false);
 	}
 	void SPElement::mouseClick(int mouseButton, int x, int y) {
@@ -752,6 +770,105 @@ namespace space {
 	void SPElement::setInnerText(string value) {
 		 this->data = value;
 	}
+
+	SPElement * SPElement::createElement(const string& tagName, SPElement *parent) {
+		if (parent == nullptr) {
+			parent = this;
+		}
+		SPElement *elm = nullptr;
+		if (tagName == "text") {
+			elm = new SPTextElement(parent);
+		} else if (tagName == "img") {
+			elm = new SPImageElement(parent);
+		} else if (tagName == "button") {
+			elm = new SPButtonElement(parent);
+		} else {
+			elm = new SPElement(parent);
+		}
+		return elm;
+	}
+
+	SPElement* SPElement::getElementById(const string& id) const {
+		for (const auto child : *this->children) {
+			if (child->getStringAttribute("id", "") == id) {
+				return (SPElement *)child;
+			}
+			for (const auto grandChild : *child->getChildNodes()) {
+				return (SPElement *)grandChild->getNodeById(id);
+			}
+		}
+		return nullptr;
+	}
+
+	SPElement *SPElement::parseElement(wxXmlNode *xmlNode, SPElement *parent,
+	                                   SPElement *document) {
+		SPElement *elm = nullptr;
+		elm = document->getElementById(string(xmlNode->GetAttribute("id")));
+		if (elm == nullptr) {
+			elm = createElement(xmlNode->GetName().ToStdString(), parent);
+		}
+		for (int i = 0; i < sizeof(xmlNode->GetAttributes()); i++) {
+			auto attribute = xmlNode->GetAttributes()[i];
+			elm->set(attribute.GetName().ToStdString(), attribute.GetValue().ToStdString());
+		}
+		for (wxXmlNode *child = xmlNode->GetChildren(); child; child = child->GetNext()) {
+			parseElement(child, elm, document);
+		}
+		return elm;
+	}
+
+	void SPElement::setInnerXUL(const string& value) {
+		wxXmlDocument doc;
+		// start processing the XML file
+		wxXmlNode *prolog = doc.GetDocumentNode()->GetChildren();
+		wxXmlNode *child = doc.GetRoot()->GetChildren();
+		SPElement *parsingElement = this;
+
+	}
 }
+/*
+void XMLCALL start(void *data, const char *tagName, const char **attr) {
+	int i;
+
+	space::SPElement *_this = (space::SPElement *)data;
+
+	for (i = 0; i < _this->getParsingDepth(); i++) {
+		printf("  ");
+	}
+
+	printf("%s", tagName);
+
+	space::SPElement *parent = _this->getParsingElement();
+	if (parent == nullptr) {
+		parent = _this;
+	}
+
+	space::SPElement *elm = _this->createElement(tagName, parent);
+	parent->appendChild(elm);
+
+	for (i = 0; attr[i]; i += 2) {
+		printf(" %s='%s'", attr[i], attr[i + 1]);
+		string attrName = attr[i];
+		string attrValue = attr[i + 1];
+		elm->set(attrName, attrValue);
+	}
+	printf("\n");
+	_this->increaseParsingDepth();
+	_this->setParsingElement(elm);
+}
+void XMLCALL end(void *data, const char *el) {
+	space::SPElement *_this = (space::SPElement *)data;
+
+	_this->decreaseParsingDepth();
+
+	if (!_this->getSkipElement()) {
+		end(_this, el);
+
+	}
+
+	if (_this->getSkipElement() == _this->getParsingDepth())
+		_this->setSkipElement(false);
+}
+*/
 
 

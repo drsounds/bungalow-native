@@ -9,6 +9,7 @@ namespace space {
         public:
             string loadView(string view);
             void request(string uri);
+            std::string loadXml(const std::string& view);
             SPViewElement();
             SPViewElement(SPElement *parent);
             virtual ~SPViewElement();

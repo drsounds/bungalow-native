@@ -15,6 +15,8 @@ find_package(Lua REQUIRED)
 find_package(wxWidgets REQUIRED)
 find_package(PNG REQUIRED)
 
+find_package(EXPAT 2.2.8 MODULE REQUIRED)
+
 # Include directories
 include_directories(${Boost_INCLUDE_DIRS})
 include_directories(${LUA_INCLUDE_DIR})
@@ -35,11 +37,13 @@ endif()
 # Executable
 add_executable(spacify-client ${SOURCES} ${HEADERS})
 
-
-set(CMAKE_CXX_FLAGS "-I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__")
+set(CMAKE_PREFIX_PATH ="/opt/homebrew/opt/expat")
+set(CMAKE_PKG_CONFIG_PC_PATH "/opt/homebrew/opt/expat/lib/pkgconfig")
+set(CMAKE_LINK_DEF_FILE_FLAG "-L/opt/homebrew/opt/expat/lib")
+set(CMAKE_CXX_FLAGS "-I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/opt/homebrew/opt/expat/include -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ ")
 
 # Link libraries
-target_link_libraries(spacify-client ${LUA_LIBRARIES} ${wxWidgets_LIBRARIES} ${PNG_LIBRARY})
+target_link_libraries(spacify-client ${EXPAT_LIBRARIES} ${LUA_LIBRARIES} ${wxWidgets_LIBRARIES} ${PNG_LIBRARY})
 
 # Platform specific configuration
 if(WIN32)

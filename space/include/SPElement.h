@@ -14,6 +14,7 @@
 #include "SPFontStyle.h"
 #include "SPWindow.h"
 #include <vector>
+#include <wx/xml/xml.h>
 
 using namespace std;
 
@@ -56,7 +57,8 @@ namespace space {
         SPColor* m_tintColor;
         SPColor* m_activeColor;
         bool drawBorder = false;
-
+    	SPElement *m_parsingElement;
+    	int m_parsingDepth = 0;
     public:
     	void setState(int value) {
     		this->m_state = value;
@@ -112,6 +114,27 @@ namespace space {
             return this->m_space;
         }
         SPSkin *getSkin() const;
+        void increaseParsingDepth();
+    	void decreaseParsingDepth();
+    	int getParsingDepth() const {
+    		return this->m_parsingDepth;
+    	}
+    	SPElement *getParsingElement() const {
+    		return this->m_parsingElement;
+    	}
+    	void setParsingElement(SPElement *value) {
+    		this->m_parsingElement = value;
+    	}
+
+        void setSkipElement(bool value) {
+    		this->m_skipElement = value;
+    	}
+
+        bool m_skipElement = false;
+
+        bool getSkipElement() const {
+    		return this->m_skipElement;
+    	}
         SPElement();
         void setSkin(SPSkin *value);
         SPElement *getDeepestView()
@@ -222,6 +245,13 @@ namespace space {
         sp_margin *getPadding();
         string getInnerText();
         void setInnerText(string data);
+        SPElement *createElement(const string& tagName, SPElement* parent);
+        SPElement *getElementById(const string &id) const;
+        SPElement *parseElement(wxXmlNode *xmlNode, SPElement *parent,
+                                SPElement *document);
+        void endParseElement(void *data, const char *el);
+        void startParseElement(void *data, const char *el, const char **attr);
+        void setInnerXUL(const string &value);
         virtual void mouseMove(int, int) {}
         virtual void mouseClick(int, int, int);
         virtual void mouseDown(SPObject* sender, SPEventArgs* e);

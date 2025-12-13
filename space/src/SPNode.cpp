@@ -93,9 +93,16 @@ namespace space {
     }
 
 
-    SPNode* SPNode::getElementById(string id)
-    {
-        return nullptr;
+    SPNode* SPNode::getNodeById(const string& id) const {
+        for (const auto child : *this->children) {
+	        if (child->getStringAttribute("id", "") == id) {
+		        return child;
+	        }
+        	for (const auto grandChild : *child->getChildNodes()) {
+        		return grandChild->getNodeById(id);
+        	}
+        }
+    	return nullptr;
     }
 
     void SPNode::set(const std::string& title, const std::string& val) {

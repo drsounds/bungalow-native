@@ -22,19 +22,8 @@ void SPViewElement::request(std::string uri) {
 
 }
 
-std::string SPViewElement::loadView(std::string view) {
-    std::string path = "C:\\Users\\Alecca\\Documents\\spacify\\resources\\views\\" + view;
-    string fileName = (string)path.c_str();
-    FILE *fil = fopen(fileName.c_str(), "rb");
-    fseek(fil, 0, SEEK_END);
-    size_t fsize = ftell(fil);
-    rewind(fil);
-    char *buffer = (char *)malloc(sizeof(char) * fsize);
-    fread(buffer, sizeof(char), fsize, fil);
-    fclose(fil);
-    std::string output (buffer);
-    delete buffer;
-    return output;
+std::string SPViewElement::loadXml(const std::string& view) {
+
 }
 
 void SPViewElement::pack() {

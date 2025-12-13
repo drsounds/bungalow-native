@@ -51,7 +51,7 @@ namespace space {
             this->children = value;
         }
 
-        SPNode *getElementById(string id);
+        SPNode *getNodeById(const string& id) const;
         virtual void set(const string& attrib, const string& val);
         string get(const string& attrib);
         void *getObject(const string& attrib);
