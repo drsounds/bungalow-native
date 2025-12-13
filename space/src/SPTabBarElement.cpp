@@ -94,7 +94,6 @@ void SPTabBarElement::mouseDown(SPObject* sender, SPEventArgs *e) {
             tabBar->activeTab = tab;
             TabBarEventArgs *args = new TabBarEventArgs(tab);
             tabBar->notify(string("tabselected"), (SPObject *)tabBar, (SPEventArgs *)args);
-            cout << title.c_str();
             break;
         }
 

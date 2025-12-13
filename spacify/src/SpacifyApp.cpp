@@ -32,11 +32,7 @@ bool SpacifyApp::OnInit(){
 
     this->m_frame->setWindowElement(this->m_windowElement);
     this->m_frame->setSpace(m_space);
-    this->m_windowElement->SPWindow::setSpace(m_space);
-    this->m_windowElement->SPElement::setSpace(m_space);
-    this->m_windowElement->SPNode::setSpace(m_space);
-    this->m_windowElement->setWindow(this->m_windowElement);
-    this->m_windowElement->SPWindow::setSpace(this->m_space);
+    this->m_windowElement->setSpace(m_space);
     this->m_space->addWindow(this->m_windowElement);
     this->m_main = new space::MainElement(this->m_windowElement);
     this->m_main->setId("main");

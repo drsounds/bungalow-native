@@ -1,7 +1,6 @@
 #ifndef BOXELEMENT_H
 #define BOXELEMENT_H
 #include "SPElement.h"
-#include "SPWindow.h"
 #include <string>
 
 using namespace std;
@@ -11,7 +10,6 @@ class SPSkin;
 class SPBoxElement : public SPElement {
 public:
 	explicit SPBoxElement(SPElement *parent);
-  SPBoxElement(SPElement *parent, SPWindow *window, SPSkin *skin);
 	SPBoxElement();
 	~SPBoxElement();
 	void pack();

@@ -1,8 +1,6 @@
 #ifndef H_SPACE_WINDOW_ELEMENT
 #define H_SPACE_WINDOW_ELEMENT
-#include "SPVBoxElement.h"
-
-#include "SPWindow.h"
+#include "SPElement.h"
 
 #include <string>
 
@@ -14,11 +12,11 @@ namespace space {
 	struct sp_event;
 	class SPGraphicsContext;
 	class MainElement;
-	class SPWindowElement : public SPVBoxElement, public SPWindow {
+	class SPWindowElement : public SPElement {
 	public:
 		void draw(SPGraphicsContext *gc, int width, int height);
 		explicit SPWindowElement(Space *, SPSkin *);
-		void invalidateRegion(sp_rectangle rect) override;
+		void invalidateRegion(sp_rectangle rect);
 
 		string getType() override
 		{

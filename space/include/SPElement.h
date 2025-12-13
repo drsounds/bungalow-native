@@ -11,7 +11,6 @@
 
 #include "SPNode.h"
 #include "SPFontStyle.h"
-#include "SPWindow.h"
 #include <vector>
 #include <wx/xml/xml.h>
 
@@ -40,7 +39,6 @@ namespace space {
         SPFontStyle fontStyle;
         string id;
         string data;
-        SPElement *deepestView;
         int m_width;
         int m_height;
         int x;
@@ -66,6 +64,9 @@ namespace space {
     		return this->m_state;
     	}
 
+		SPElement *getDeepestElement(int level = 0);
+
+    	SPWindowElement *getWindowElement();
     	string getSrc();
     	void setSrc(const string& value);
         SPElement *getParentElement()
@@ -119,14 +120,10 @@ namespace space {
     	}
         SPElement();
         void setSkin(SPSkin *value);
-        SPElement *getDeepestView()
-        {
-            return this->deepestView;
-        }
         virtual void resize(int width, int height);
         void scroll(int x, int y);
         void scrollTo(int x, int y);
-        void applySkin();
+    	void applySkin();
         virtual void scroll(int scrollX, int scrollY, int x, int y);
         void applyColorAttributeFromSkin (string attr, string skin);
         void applyImageAttributeFromSkin (string attr, string skin);
@@ -172,7 +169,7 @@ namespace space {
             return this->absoluteBounds;
         }
         void setBackgroundImage(SPImage *value);
-        void invalidate() const;
+        void invalidate();
         void setAbsoluteBounds(sp_rectangle *value) {
             this->absoluteBounds = value;
         }
@@ -215,8 +212,6 @@ namespace space {
         }
 
         explicit SPElement(SPElement *parent);
-
-        explicit SPElement(SPElement *parent, SPWindow *window, SPSkin *skin);
 
         ~SPElement() override;
         int getX();

@@ -2,8 +2,6 @@
 #define SPACE_FRAME_H
 #include "SPWindowElement.h"
 
-#include "SPWindow.h"
-
 #ifndef WX_PRECOMP
     #include <wx/wx.h>
 #endif

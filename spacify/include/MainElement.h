@@ -3,13 +3,11 @@
 #include "SPVBoxElement.h"
 
 #include "SPMessageType.h"
-#include "SPWindow.h"
 
 #include "libspace.h"
 
 
 namespace space {
-    class SPWindow;
     class SPViewStackElement;
     class SPTreeViewElement;
     class SPInfoElement;

@@ -30,11 +30,14 @@ namespace space {
         if (parent == nullptr) {
             return;
         }
-        SPWindow *window = parent->getWindow();
-        if (window != nullptr) {
-            this->setWindow(window);
-        } 
     }
+	SPNode *SPNode::getDeepestNode(const int level) {
+		for (const auto child : *this->children) {
+			return child->getDeepestNode(level + 1);
+		}
+		return this;
+	}
+
     SPNode* SPNode::getParentNode() {
         return this->m_parent;
     }
@@ -99,7 +102,10 @@ namespace space {
     }
 
     void SPNode::setParentNode(SPNode *elm) {
-        this->m_parent = dynamic_cast<SPNode *>(elm);
+		if (elm == this) {
+			throw "Cannot set parent to self";
+		}
+        this->m_parent = elm;
     }
     std::string SPNode::get(const std::string& title) {
         std::string val = (*this->stringAttributes)[title];

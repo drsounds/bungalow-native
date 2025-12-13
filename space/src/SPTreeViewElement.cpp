@@ -32,7 +32,7 @@ void SPTreeViewElement::treeview_mousedown(SPObject *sender, SPEventArgs *e) {
 		}
 		top += treeView->getItemHeight();
 	}
-	SPWindow * winElement = (SPWindow *)treeView->getWindow();
+	SPWindowElement * winElement = treeView->getWindowElement();
 	sp_rectangle region;
 	region.x = treeView->getAbsoluteBounds()->x;
 	region.y = treeView->getAbsoluteBounds()->y;
@@ -64,7 +64,7 @@ void SPTreeViewElement::treeview_mouseup(SPObject *sender, SPEventArgs *e) {
 		}
 		top += treeView->getItemHeight();
 	}
-	SPWindow * winElement = (SPWindow *)treeView->getWindow();
+	SPWindowElement * winElement = treeView->getWindowElement();
 	sp_rectangle region;
 	region.x = treeView->getX();
 	region.y = treeView->getY();
@@ -80,7 +80,6 @@ SPTreeViewElement::SPTreeViewElement(SPElement *parent)
 	this->mItems = new vector<SPTreeItem *>;
 	this->itemHeight = 18;
 	this->addEventListener(string("mouseup"), SPCallback(&SPTreeViewElement::treeview_mouseup), this);
-	this->setWindow(nullptr);
 }
 
 void SPTreeViewElement::addItem(SPTreeItem *item) {

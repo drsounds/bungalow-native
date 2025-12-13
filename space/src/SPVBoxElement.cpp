@@ -7,9 +7,6 @@ namespace space {
 		this->setTagName("vbox");
 	}
 
-	SPVBoxElement::SPVBoxElement(SPElement *parent, SPWindow *window, SPSkin *skin) : SPElement(parent, window, skin) {
-		this->setTagName("vbox");
-	}
     void space::SPVBoxElement::pack() {
         SPElement::pack();
         int flexes = 0;

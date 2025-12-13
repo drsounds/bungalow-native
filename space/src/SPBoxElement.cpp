@@ -13,16 +13,10 @@ SPBoxElement::SPBoxElement()
     //ctor
 }
 
-SPBoxElement::SPBoxElement(SPElement *parent, SPWindow *window, SPSkin *skin)
- : SPElement(parent, window, skin)
-{
-	this->setTagName("box");
-
-}
-
 SPBoxElement::SPBoxElement(SPElement *parent)
  : SPElement(parent)
 {
+	this->setTagName("box");
 
 }
 

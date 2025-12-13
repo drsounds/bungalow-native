@@ -2,8 +2,6 @@
 #define VBOXELEMENT_H
 #include "SPElement.h"
 
-#include "SPWindow.h"
-
 #include <string>
 using namespace std;
 namespace space {
@@ -14,7 +12,6 @@ namespace space {
 
 	public:
 		explicit SPVBoxElement(SPElement *parent);
-		SPVBoxElement(SPElement *parent, SPWindow *window, SPSkin *skin);
 		SPVBoxElement() {}
 
 		virtual string getType() {

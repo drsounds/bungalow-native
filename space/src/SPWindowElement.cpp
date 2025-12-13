@@ -8,7 +8,6 @@
 #include "SPElement.h"
 #include "MainElement.h"
 #include "Space.h"
-#include "SPVBoxElement.h"
 #include "SPElement.h"
 #include "SPNavigateEventArgs.h"
 
@@ -16,11 +15,11 @@ namespace space
 {
     class Space;
 
-    SPWindowElement::SPWindowElement(Space *space, SPSkin *skin) : SPVBoxElement(nullptr, this, skin)
+    SPWindowElement::SPWindowElement(Space *space, SPSkin *skin) : SPElement(nullptr)
     {
     	this->setTagName("window");
-        this->SPElement::setSpace(space);
-        this->SPElement::setSkin(skin);
+        this->setSpace(space);
+        this->setSkin(skin);
     }
 
     void SPWindowElement::draw(SPGraphicsContext *gc, int x, int y) {

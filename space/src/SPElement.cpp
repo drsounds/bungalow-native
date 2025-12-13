@@ -11,7 +11,7 @@
 
 #include "wx/xml/xml.h"
 
-#include "SPWindow.h"
+#include "SPWindowElement.h"
 #include "SPObservable.h"
 #include "SPMouseEventArgs.h"
 #include "SPGraphicsContext.h"
@@ -35,13 +35,13 @@ namespace space {
 		}
 		else
 		{
-			if (this->m_window != nullptr && this->getType() != "window")
+			if (this->getWindowElement() != nullptr && this->getType() != "window")
 			{
-				ret = dynamic_cast<SPElement*>(this->getWindow())->getActiveColor();
+				ret = this->getWindowElement()->getActiveColor();
 			}
 			if (activeColor == nullptr)
 			{
-				if (this->m_parent != nullptr && this->getType() != "window")
+				if (this->getParentElement() != nullptr && this->getType() != "window")
 				{
 					ret = this->getParentElement()->getActiveColor();
 				}
@@ -65,13 +65,13 @@ namespace space {
 		}
 		else
 		{
-			if (this->m_window != nullptr && this->getType() != "window")
+			if (this->getWindowElement() != nullptr && this->getType() != "window")
 			{
-				ret = dynamic_cast<SPElement*>(this->getWindow())->getTintColor();
+				ret = this->getWindowElement()->getTintColor();
 			}
 			if (tintColor == nullptr)
 			{
-				if (this->m_parent != nullptr && this->getType() != "window")
+				if (this->getParentElement() != nullptr && this->getType() != "window")
 				{
 					ret = this->getParentElement()->getTintColor();
 				}
@@ -139,9 +139,9 @@ namespace space {
 				return skin;
 			}
 		}
-		if (this->getWindow() != nullptr)
+		if (this->getWindowElement() != nullptr)
 		{
-			return this->getWindow()->getSkin();
+			return this->getWindowElement()->getSkin();
 		}
 		return nullptr;
 	}
@@ -294,9 +294,6 @@ namespace space {
 	}
 
 	void SPElement::applyColorAttributeFromSkin (string attr, string prop) {
-	    cout << prop << "\r\n";
-	    cout << this->m_skin->colors << "\r\n";
-	    cout << attr << "\r\n";
 	    if (this->m_skin->colors->find(prop) != this->m_skin->colors->end()) {
 	        pixel *color = (*this->m_skin->colors)[prop];
 
@@ -338,7 +335,7 @@ namespace space {
 		this->absoluteBounds = new sp_rectangle;
 		this->setScrollable(false);
 		if (parent != nullptr) {
-			this->m_skin = parent->getSkin();
+			this->setParentNode(parent);
 			this->fontStyle = parent->fontStyle;
 			this->absoluteBounds = new sp_rectangle { parent->getX(), parent->getY(), parent->getWidth(), parent->getHeight() };
 		}
@@ -346,7 +343,6 @@ namespace space {
 		this->scrollX = 0;
 		this->scrollY = 0;
 	    this->data = "";
-		this->setParentNode(parent);
 		if (this->m_skin != nullptr) {
 			this->applySkin();	   
 		}
@@ -365,24 +361,6 @@ namespace space {
 		this->padding->top = 0;
 		this->padding->right = 0;
 		this->padding->bottom = 0;
-
-		if (parent != nullptr) {
-			if (parent->getType() == "window") {
-				this->m_window = (SPWindow *)parent;
-			} else {
-				SPWindow *window = parent->getWindow();
-				if (window != nullptr) {
-					this->m_window = window;
-					if (window->getSkin() != nullptr) {
-						this->m_skin = window->getSkin();
-					}
-				}
-			}
-			SPSkin *skin = parent->getSkin();
-			if (skin != nullptr) {
-				this->m_skin = skin;
-			}
-		}
 	}
 
 	void SPElement::applySkin() {
@@ -398,31 +376,37 @@ namespace space {
 		}
 	}
 
-	SPElement::SPElement(SPElement *parent, SPWindow *window, SPSkin *skin) : SPElement(parent) {
-		if (window == nullptr) {
-			throw "Window is null";
-		}
-		if (skin == nullptr) {
-			throw "Skin is null";
-		}
-		if (window->getSkin() == nullptr) {
-			window->setSkin(skin);
-		}
-		this->m_window = window;
-		this->m_skin = skin;
-	}
-
 	void SPElement::setBackgroundImage(SPImage* value)
 	{
 		this->m_backgroundImage = value;
 	}
 
-	void SPElement::invalidate() const
+	SPElement * SPElement::getDeepestElement(const int level) {
+		for (const auto child : *this->children) {
+			return static_cast<SPElement *>(child)->getDeepestElement(level + 1);
+		}
+		return this;
+	}
+
+	SPWindowElement *SPElement::getWindowElement() {
+		SPElement *parent = this->getParentElement();
+		while (parent != nullptr) {
+			cout << "Parent type: " << parent->getType() << "\r\n";
+			if (parent->getType() == "window") {
+				return (SPWindowElement *)parent;
+			}
+			parent = parent->getParentElement();
+
+		}
+		return nullptr;
+	}
+
+	void SPElement::invalidate()
 	{
 	    auto *rect = this->getAbsoluteBounds();
 	    if (rect == nullptr)
 	        return;
-	    auto *we = this->getWindow();
+	    auto *we = this->getWindowElement();
 	    we->invalidateRegion(*rect);
 	}
 	sp_margin *SPElement::getMargins() {
@@ -451,16 +435,16 @@ namespace space {
 		short colorScheme = this->m_colorScheme;
 		if (colorScheme == SP_COLOR_SCHEME_DEFAULT)
 		{
-			if (this->m_window != nullptr)
+			if (this->getParentElement() != nullptr)
 			{
-				colorScheme = dynamic_cast<SPElement*>(this->getWindow())->getColorScheme();
-			}
-			if (colorScheme == SP_COLOR_SCHEME_DEFAULT)
-			{
-				if (this->m_parent != nullptr)
-				{
-					colorScheme = this->getParentElement()->getColorScheme();
+				colorScheme = this->getParentElement()->getColorScheme();
+				if (colorScheme != SP_COLOR_SCHEME_DEFAULT) {
+					return colorScheme;
 				}
+			}
+			else if (this->getWindowElement() != nullptr)
+			{
+				colorScheme = this->getWindowElement()->getColorScheme();
 			}
 		}
 		if (colorScheme < 1 || colorScheme > 2)
@@ -737,14 +721,11 @@ namespace space {
 	    int yy = this->getAbsoluteBounds() != NULL ? y - this->getAbsoluteBounds()->y : y;
 	    cout << "Current scrolling element is " << this->getType() << endl;
 	    bool foundElement = false;
-	    if (this->clipView) {
-	        this->getWindow()->setDeepestElement(this);
-	    }
 	    if (string(this->getType()) == string("toplistview")) {
 	        cout << "Test" << endl;
 	    }
 		for(vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
-	        if ((this->getWindow())->getDeepestElement() == nullptr) {
+	        if ((this->getWindowElement())->getDeepestElement() == nullptr) {
 	            break;
 	        }
 			SPElement *elm = dynamic_cast<SPElement *>(*it);

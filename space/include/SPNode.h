@@ -3,7 +3,6 @@
 #include "SPObject.h"
 #include "SPColor.h"
 #include "SPEventArgs.h"
-#include "SPWindow.h"
 #include "SPObservable.h"
 
 #include <map>
@@ -13,6 +12,7 @@
 using namespace std;
 namespace space {
     class Space;
+	class SPWindowElement;
     class SPColor;
     class SPNode : public SPObject, public SPObservable {
     protected:
@@ -21,8 +21,7 @@ namespace space {
         map<string, SPColor> *colorAttributes;
         map<string, int> *integerAttributes;
         SPNode *m_parent;
-        SPWindow *m_window;
-    	string tagName = "node";
+        string tagName = "node";
     	string m_innerText;
     public:
     	string getTagName() const {
@@ -38,35 +37,19 @@ namespace space {
         SPNode *parseNode(wxXmlNode *xmlNode, SPNode *parent, SPNode *document);
 
     	space::Space *getSpace() {
-    		if (this->m_space == nullptr)
-    		{
-    			if (this->getWindow() != nullptr)
-    			{
-    				if (this->getWindow()->getSpace() != nullptr)
-    				{
-    					return this->getWindow()->getSpace();
-    				}
-    			}
+    		if (this->m_space == nullptr) {
     			if (this->getParentNode() != nullptr) {
     				return this->getParentNode()->getSpace();
     			}
     		}
     		return this->m_space;
     	}
+    	SPNode *getDeepestNode(const int level);
+
         std::vector<SPNode *> *children;
         SPNode();
-        SPWindow *getWindow() const
-        {
-             return this->m_window;
-        }
-        void setWindow(SPWindow *value) {
-            this->m_window = value;
-        }
         SPNode(Space *space, SPNode *parent) : SPNode() {
 	        this->m_parent = parent;
-        	if (parent != nullptr) {
-        		this->m_window = parent->getWindow();
-        	}
         }
         SPNode(const string &tagName);
         explicit SPNode(SPNode *parent);

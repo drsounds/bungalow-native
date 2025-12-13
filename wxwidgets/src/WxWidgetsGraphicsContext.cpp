@@ -3,7 +3,6 @@
 #include "SPImage.h"
 #include "SPInputEventArgs.h"
 #include "SPElement.h"
-#include "SPWindow.h"
 #include "SpaceFrame.h"
 #include "SpaceWidget.h"
 
@@ -23,7 +22,7 @@ namespace space
                 return wxColour(color.getR(), color.getG(), color.getB(), color.getA());
             }
 
-            SPColor WxWidgetsGraphicsContext::fromWxColor(wxColor color)
+            SPColor WxWidgetsGraphicsContext::fromWxColor(wxColour color)
             {
                 return SPColor(color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha());
             }

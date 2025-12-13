@@ -116,8 +116,6 @@ namespace space {
 
         body->appendChild(new SPSplitterElement(body));
 
-        // Add TreeView
-        treeView->setWindow(this->getWindow());
         // Add sample elements
         auto *item = new SPTreeItem(new SPUri("spacify:internal:start"));
 
@@ -133,9 +131,8 @@ namespace space {
         this->viewStack = new space::SPViewStackElement(body);
         this->viewStack->setId("viewstack");
         viewStack->setIntegerAttribute("flex",1);
-        viewStack->setWindow(this->getWindow());
-        viewStack->appendChild(new views::StartView(this));
-        viewStack->appendChild(new views::PlayQueueView(this));
+        viewStack->appendChild(new views::StartView(viewStack));
+        viewStack->appendChild(new views::PlayQueueView(viewStack));
         body->appendChild(viewStack);
 
         body->appendChild(new SPSplitterElement(body));
