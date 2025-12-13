@@ -98,24 +98,6 @@ bool SPClassicSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const stri
 			bgColor.lighten(-0.5)
     	);
     }
-    if (elm->getType() == "tabbar")
-    {
-        result = true;
-        auto *tabBar = dynamic_cast<SPTabBarElement *>(elm);
-        SPGradient gradient(
-            bgColor.lighten(-0.8), bgColor.lighten(-0.9),
-            0
-        );
-        g->drawLinearGradient(
-            {
-                bounds.x,
-                bounds.y,
-                bounds.width,
-                bounds.height
-            },
-            gradient
-        );
-    }
     if (elm->getType() == "table")
     {
 
@@ -260,6 +242,9 @@ void SPClassicSkin::drawTabBarTab(SPGraphicsContext* g, SPTabBarElement *tabBar,
         shadowColor = tintColor->lighten(-0.8);
         lColor = lColor.tint(*tintColor);
     }
+	if (tabBar->getColorScheme() == SP_COLOR_SCHEME_DARK) {
+		shadowColor = shadowColor.lighten(-0.2);
+	}
     if (active)
     {
         g->fillRectangle(x, y + 1, width, height - 1, bgColor);
@@ -296,6 +281,7 @@ void SPClassicSkin::drawTabBar(
     }
 	if (tabBar->getColorScheme() == SP_COLOR_SCHEME_DARK) {
 		bgColor = bgColor.lighten(2);
+		shadowColor = shadowColor.lighten(-0.2);
 	}
     SPGradient gradient(
         bgColor.lighten(0.1), bgColor.lighten(-0.1),
@@ -309,7 +295,7 @@ void SPClassicSkin::drawTabBar(
 		);
     	g->drawLinearGradient(sp_rectangle {x, y + 1, width, height / 2}, gradient2);
     }
-    //g->drawLine(x, y, x + width, y,shadowColor);
+    g->drawLine(x, y, x + width, y,shadowColor);
     g->drawLine(x, y + height - 1, x + width, y + height - 1,shadowColor);
 }
 

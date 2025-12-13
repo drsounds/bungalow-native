@@ -27,7 +27,7 @@ namespace space {
     string SPTableElement::getType() {
         return "table";
     }
-    void SPTableElement::draw(int x, int y, SPGraphicsContext *g) {
+    void SPTableElement::paint(int x, int y, SPGraphicsContext *g) {
         sp_position pos;
         std::vector<SPNode *> *children = this->getChildNodes();
         x += this->getX() ;

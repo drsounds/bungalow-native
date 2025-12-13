@@ -9,7 +9,7 @@ class SPResourceElement : public SPElement
     public:
         SPResourceElement(SPResource *resource, SPElement *parent);
         virtual ~SPResourceElement();
-        void draw(int x, int y, SPGraphicsContext *g);
+        void paint(int x, int y, SPGraphicsContext *g);
     protected:
         SPResource *resource;
     private:

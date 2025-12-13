@@ -7,16 +7,11 @@ namespace space {
     class SPViewElement : public SPVBoxElement
     {
         public:
-            string loadView(string view);
-            void request(string uri);
-            std::string loadXml(const std::string& view);
             SPViewElement();
             SPViewElement(SPElement *parent);
             virtual ~SPViewElement();
             virtual void navigate(const string& uri);
-            virtual bool acceptsUri(const string& uri) {
-                return false;
-            }
+            virtual bool acceptsUri(const string& uri);
             virtual void scroll(int scrollX, int scrollY, int mouseX, int mouseY);
             void pack();
     };

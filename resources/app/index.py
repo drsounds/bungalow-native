@@ -8,9 +8,10 @@ app = Flask(__name__)
 from mako.template import Template
 
 
-@app.route("/whatsnew")
+@app.route("/start")
 def start():
     return Template(filename=os.path.join('views', 'start.xml')).render(data={})
+
 
 @app.errorhandler(HTTPException)
 def handle_exception(e):

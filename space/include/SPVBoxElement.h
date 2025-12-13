@@ -14,7 +14,7 @@ namespace space {
 		explicit SPVBoxElement(SPElement *parent);
 		SPVBoxElement() {}
 
-		virtual string getType() {
+		virtual string getType() override {
 			return "vbox";
 		}
 		void pack();

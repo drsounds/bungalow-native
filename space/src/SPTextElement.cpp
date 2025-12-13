@@ -12,10 +12,14 @@ SPTextElement::SPTextElement(SPElement *parent)
 	this->setTagName("text");
     //ctor
 }
-void SPTextElement::draw(int x, int y, SPGraphicsContext *g) {
+void SPTextElement::pack() {
+    SPElement::pack();
+	this->resizeToText(false, true);
+}
+void SPTextElement::paint(int x, int y, SPGraphicsContext *c)  {
     SPColor fgcolor = this->getColorAttribute("fgcolor", this->getForegroundColor());
     SPFontStyle fontStyle = this->getFontStyle();
-    g->drawString(this->data, fontStyle, fgcolor, x ,y , this->getWidth(), this->getHeight());
+    c->drawString(this->m_innerText, fontStyle, fgcolor, x ,y , this->getWidth(), this->getHeight());
 }
 SPTextElement::~SPTextElement()
 {

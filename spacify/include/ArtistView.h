@@ -10,7 +10,7 @@ namespace space {
         public:
             ArtistView(SPElement *parent);
             virtual ~ArtistView();
-            virtual string getType() {
+            virtual string getType() override {
                 return "artistview";
             }
         protected:

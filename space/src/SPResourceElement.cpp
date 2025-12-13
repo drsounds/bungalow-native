@@ -12,7 +12,7 @@ namespace space {
         //ctor
         this->resource = resource;
     }
-    void SPResourceElement::draw(int x, int y, SPGraphicsContext *g) {
+    void SPResourceElement::paint(int x, int y, SPGraphicsContext *g) {
         SPFontStyle font = this->getFontStyle();
         SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 255));
         SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(0, 0, 0, 255));

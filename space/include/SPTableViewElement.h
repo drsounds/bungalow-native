@@ -13,7 +13,7 @@ class SPTableElement : public SPElement
         SPTableElement(SPElement *parent, SPTableDataSource *dataSource);
         virtual ~SPTableElement();
         virtual string getType();
-        virtual void draw(int x, int y, SPGraphicsContext *g);
+        virtual void paint(int x, int y, SPGraphicsContext *g);
 };
 }
 #endif // TABLEVIEWELEMENT_H

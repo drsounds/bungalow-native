@@ -29,7 +29,7 @@ namespace space
             auto *elm = dynamic_cast<SPElement *>(node);
             if (elm->isVisible())
             {
-                elm->draw(0, 0, gc);
+                elm->paint(0, 0, gc);
             }
         }
     }

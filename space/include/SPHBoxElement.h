@@ -7,7 +7,7 @@ namespace space {
 
     public:
         explicit SPHBoxElement(SPElement *parent);
-        virtual string getType() {
+        virtual string getType() override {
             return "hbox";
         }
         SPHBoxElement() {}

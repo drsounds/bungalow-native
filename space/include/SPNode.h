@@ -16,6 +16,7 @@ namespace space {
     class SPColor;
     class SPNode : public SPObject, public SPObservable {
     protected:
+    	string uri;
         map<string, void *> *properties;
         map<string, string> *stringAttributes;
         map<string, SPColor> *colorAttributes;
@@ -25,6 +26,8 @@ namespace space {
     	string m_id;
     	string m_innerText;
     public:
+    	string getUri();
+    	void setUri(const string& value);
     	string getId() const {
     		return this->m_id;
     	}

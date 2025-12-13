@@ -9,7 +9,7 @@ class SPFlowElement : public SPElement
         SPFlowElement(SPElement *parent);
         virtual ~SPFlowElement();
         void pack();
-        virtual string getType() {
+        virtual string getType() override {
             return "flow";
         }
     protected:

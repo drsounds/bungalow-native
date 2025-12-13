@@ -15,7 +15,7 @@ namespace space {
 
     public:
         virtual void pack();
-        virtual string getType() {
+        virtual string getType() override {
             return "viewstack";
         }
         SPViewStackElement();

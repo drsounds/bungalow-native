@@ -32,9 +32,30 @@ namespace space {
         this->appendChild(this->tabBar);
         this->tabBar->addEventListener(string("tabselected"), static_cast<SPCallback>(&SPTabbarViewElement::onTabSelected), this);
         this->appendChild(this->viewStack);
+    	this->addEventListener("treechanged", SPCallback(&SPTabbarViewElement::onTreeChanged), this);
+		this->addEventListener("unload", SPCallback(&SPTabbarViewElement::onUnload), this);
     }
-    bool SPTabbarViewElement::acceptsUri(string uri) {
-        return false;
+	void SPTabbarViewElement::onUnload(SPObject *sender, SPEventArgs *e) {
+	    this->tabBar->clear();
+    }
+	void SPTabbarViewElement::onTreeChanged(SPObject *sender, SPEventArgs *e) {
+	    SPNodeTreeEventArgs *args = (SPNodeTreeEventArgs *)e;
+    	if (args->getAction() == "remove") {
+    		SPElement *elm = dynamic_cast<SPElement *>(args->getNode());
+    		if (elm->getTagName() == "section") {
+    			SPViewElement *view = dynamic_cast<SPViewElement *>(elm);
+    			this->tabBar->remove(view->getUri());
+    		}
+    	} else if (args->getAction() == "append") {
+		    SPElement *elm = dynamic_cast<SPElement *>(args->getNode());
+	    	if (elm->getTagName() == "section") {
+	    		SPViewElement *view = dynamic_cast<SPViewElement *>(elm);
+	    		view->setUri(this->getUri() + ":" + view->getId());
+	    		this->tabBar->addTab(elm->getId(), view->getStringAttribute("title", elm->getId()), elm->getUri());
+	    		this->removeChild(elm);
+ 	    		this->viewStack->appendChild(view);
+	    	}
+	    }
     }
     void SPTabbarViewElement::navigate(const string& uri) {
         this->viewStack->navigate(uri);

@@ -18,7 +18,7 @@ namespace space {
                 void navigate(string uri);
                 bool acceptsUri(string uri);
                 virtual ~PlayQueueView();
-                string getType();
+                string getType() override;
             protected:
             private:
         };

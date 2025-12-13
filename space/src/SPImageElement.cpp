@@ -6,7 +6,7 @@ SPImageElement::SPImageElement(SPElement *parent)
 	this->setTagName("img");
     //ctor
 }
-void SPImageElement::draw(int x, int y, SPGraphicsContext *g) {
+void SPImageElement::paint(int x, int y, SPGraphicsContext *g) {
     //g->drawImage(NULL, x, y, this->getWidth(), this->getHeight());
 }
 SPImageElement::~SPImageElement()

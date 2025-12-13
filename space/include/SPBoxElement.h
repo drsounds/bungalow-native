@@ -13,7 +13,7 @@ public:
 	SPBoxElement();
 	~SPBoxElement();
 	void pack();
-	virtual string gettype() {
+	virtual string getType() override {
 		return "box";
 	}
 

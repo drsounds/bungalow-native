@@ -15,7 +15,7 @@ class SPTitleElement : public SPVBoxElement
         void setTitle(string);
         string getEntity();
         void setEntity(string);
-        virtual string getType() {
+        virtual string getType() override {
             return "title";
         }
     protected:

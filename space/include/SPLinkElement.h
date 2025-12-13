@@ -9,7 +9,7 @@ class SPLinkElement : public SPTextElement
     public:
         SPLinkElement(SPElement *parent);
         virtual ~SPLinkElement();
-        virtual string getType() {
+        virtual string getType() override {
             return "link";
         }
     protected:

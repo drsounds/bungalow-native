@@ -45,14 +45,17 @@ public:
 class SPTabBarElement : public SPElement
 {
     public:
+		void clear();
         SPImage *tabBackgroundImage;
         SPImage *activeTabBackgroundImage;
         int tabbar_mousedown(SPObject* sender, SPEventArgs* e);
         virtual string getType() override;
         SPTabBarElement();
         SPTabBarElement(SPElement *parent);
-        void addTab(string id, string name, string uri);
-        void paint(int x, int y, int width, int height, SPGraphicsContext* c) override;
+        void addTab(const string& id, const string& name, const string& uri);
+		void remove(SPTab *tab);
+		void remove(const string &uri);
+		void paint(int x, int y, int width, int height, SPGraphicsContext* c) override;
         virtual ~SPTabBarElement();
         void mouseDown(SPObject* sender, SPEventArgs* e) override;
         vector<SPTab *> *getTabs() {

@@ -1,13 +1,18 @@
 #ifndef EVENTARGS_H
 #define EVENTARGS_H
+#include "SPNode.h"
 #include "SPObject.h"
 namespace space {
 class SPObject;
+class SPNode;
 class SPEventArgs : public SPObject
 {
 protected:
 	SPObject *sender;
 public:
+	explicit SPEventArgs(SPObject *sender) {
+		this->sender = sender;
+	}
     SPEventArgs();
     ~SPEventArgs() override;
 	SPObject *getSender() const {
@@ -15,6 +20,25 @@ public:
 	}
 	void setSender(SPObject *value) {
 		this->sender = value;
+	}
+};
+class SPNodeTreeEventArgs : public SPEventArgs {
+	SPNode *node;
+	SPNode *parent;
+	string action;
+public:
+	SPNodeTreeEventArgs(SPNode *node, SPNode *parent, const string& action);
+	SPNode *getNode() const {
+		return node;
+	}
+	SPNode *getParent() const {
+		return parent;
+	}
+	void setAction(const string& value) {
+		this->action = value;
+	}
+	string getAction() {
+		return action;
 	}
 };
 class SPAttributeChangedEventArgs : public SPEventArgs {

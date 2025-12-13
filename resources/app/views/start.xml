@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <view>
-    <text id="testtext">Test text</text>
-    <button width="300" height="500" id="test_button">Test</button>
+    <section title="Overview" id="overview">
+        <text id="testtext">First view</text>
+        <button width="300" height="500" id="test_button">Test</button>
+    </section>
+    <section title="Test" id="test">
+        <text>Second view</text>
+    </section>
 </view>

@@ -158,7 +158,7 @@ namespace space {
             return name;
         }
 
-        virtual void draw(int x, int y, SPGraphicsContext *c);
+        virtual void paint(int x, int y, SPGraphicsContext *c);
         string getType() override;
         virtual void paint(int x, int y, int width, int height, SPGraphicsContext* c);
         void resizeToText(bool width, bool height);

@@ -19,9 +19,10 @@ namespace space
         int onTabSelected(SPObject* sender, SPEventArgs* e);
         SPTabbarViewElement();
         SPTabbarViewElement(SPElement *parent);
+        void onUnload(SPObject *sender, SPEventArgs *e);
+        void onTreeChanged(SPObject *sender, SPEventArgs *e);
         virtual ~SPTabbarViewElement();
         virtual void navigate(const string& uri) override;
-        virtual bool acceptsUri(string uri);
         void mouseDown(SPObject* sender, SPEventArgs* e) override;
     protected:
         SPViewStackElement *viewStack;

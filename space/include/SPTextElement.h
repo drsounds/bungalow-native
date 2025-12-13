@@ -7,9 +7,10 @@ class SPTextElement : public SPElement
 {
     public:
         SPTextElement(SPElement *parent);
-        void draw(int x, int y, SPGraphicsContext *g);
+        void pack() override;
+        void paint(int x, int y, SPGraphicsContext *g) override;
         virtual ~SPTextElement();
-        virtual string getType() {
+        virtual string getType() override {
             return "text";
         }
 };

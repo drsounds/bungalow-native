@@ -13,7 +13,7 @@ namespace space {
                 virtual ~TopListView();
                 bool acceptsUri(const string& uri) override;
                 void navigate(const string& uri) override;
-                string getType();
+                string getType() override;
                 virtual void scroll(int scrollX, int scrollY, int x, int y);
         };
     }

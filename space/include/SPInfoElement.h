@@ -15,7 +15,7 @@ class SPInfoElement : public SPHBoxElement
         SPButtonElement *btnElement;
 
     public:
-        virtual string getType() {
+        virtual string getType() override {
             return "info";
         }
         SPMessageType getMessageType() {

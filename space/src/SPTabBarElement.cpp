@@ -46,7 +46,7 @@ int SPTabBarElement::tabbar_mousedown(SPObject *sender, SPEventArgs *e) {
 string SPTabBarElement::getType() {
      return "tabbar";
 }
-void SPTabBarElement::addTab(string id, string name, string uri) {
+void SPTabBarElement::addTab(const string& id, const string& name, const string& uri) {
     SPTab *tab = new SPTab(this, id, name, uri);
     this->tabs->push_back(tab);
     if (this->tabs->size() == 1) {
@@ -54,8 +54,26 @@ void SPTabBarElement::addTab(string id, string name, string uri) {
     }
 }
 
+void SPTabBarElement::remove(SPTab *tab) {
+    this->tabs->erase(std::remove(this->tabs->begin(), this->tabs->end(), tab), this->tabs->end());
+}
+
+void SPTabBarElement::remove(const string& uri) {
+	for (std::vector<SPTab *>::iterator it = this->tabs->begin(); it != this->tabs->end(); ++it) {
+		SPTab *tab = (SPTab *)static_cast<SPTab *>(*it);
+		if (tab->getUri() == uri) {
+			this->remove(tab);
+			break;
+		}
+	}
+}
+
 TabBarEventArgs::TabBarEventArgs(SPTab *tab) {
     this->tab = tab;
+}
+
+void SPTabBarElement::clear() {
+	this->tabs->clear();
 }
 
 SPTabBarElement::SPTabBarElement()
@@ -103,23 +121,25 @@ void SPTabBarElement::mouseDown(SPObject* sender, SPEventArgs *e) {
 }
 #define spacify2009 true
 void SPTabBarElement::paint(int x, int y, int width, int height, SPGraphicsContext *g) {
-    
+
     this->getSkin()->drawTabBar(g, this, x, y, width, height);
 
     int left = 0;
     int index = 0;
     for (std::vector<SPTab *>::iterator it = this->getTabs()->begin(); it != this->getTabs()->end(); ++it) {
         SPColor fgColor = this->getForegroundColor();
-
         SPTab *tab = (SPTab *)static_cast<SPTab *>(*it);
 
+    	if (activeTab != tab) {
+    		fgColor = fgColor.lighten(-2);
+    	}
         string title = tab->getName();
         string id = tab->getId();
         sp_rectangle strSize = g->measureString(title, this->getFontStyle());
         int tabWidth = 20 + strSize.width + 20;
         this->getSkin()->drawTabBarTab(g, this, tab, index, this->activeTab == tab, x + left, y, tabWidth, height);
 
-        g->drawString(title, this->getFontStyle(), fgColor, left + x + (tabWidth / 2) - (strSize.width / 2), y + (height / 2) - (strSize.height / 2), strSize.width, strSize.height);
+        g->drawString(title, this->getFontStyle(), fgColor, left + x + (tabWidth / 2) - (strSize.width / 2), y + (height / 2) - (strSize.height / 2) - 2, strSize.width, strSize.height);
         left += tabWidth;
         index++;
     }

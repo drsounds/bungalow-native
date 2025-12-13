@@ -1,25 +1,17 @@
 #include "StartView.h"
 #include <regex>
-#include "WhatsNewView.h"
-#include "TopListView.h"
 
-#include "SPViewStackElement.h"
-#include "SPTabBarElement.h"
 
 namespace space {
     namespace views {
         StartView::StartView() {
         }
         StartView::StartView(SPElement *parent)
-         : SPTabbarViewElement(parent)
+         : SPViewElement(parent)
         {
             this->clipView = false;
-            //ctor
-            this->viewStack->appendChild(new views::WhatsNewView(this->viewStack));
-            this->viewStack->appendChild(new views::TopListView(this->viewStack));
-            this->tabBar->addTab("Overview", "overview", "spacify:internal:start");
-            this->tabBar->addTab("Top List", "toplist", "spacify:internal:toplist");
-			this->viewStack->navigate("spacify:internal:start");
+        	this->setUri("spacify:start");
+        	this->setAttribute("src", "spacify:start");
         }
 
         bool StartView::acceptsUri(const string& uri) {

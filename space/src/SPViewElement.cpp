@@ -1,7 +1,7 @@
 #include "SPViewElement.h"
 #include <string>
 #include <iostream>
-
+#include <boost/algorithm/string.hpp>
 using namespace std;
 
 namespace space {
@@ -22,16 +22,18 @@ void SPViewElement::scroll(int scrollX, int scrollY, int mouseX, int mouseY) {
         this->invalidate();
     }
 }
-void SPViewElement::request(std::string uri) {
-
-}
-
 void SPViewElement::pack() {
     SPVBoxElement::pack();
 }
 void SPViewElement::navigate(const string& uri) {
 
 }
+
+bool SPViewElement::acceptsUri(const string &uri) {
+	string this_uri = this->getUri();
+	return boost::algorithm::starts_with(this_uri, uri);
+}
+
 SPViewElement::~SPViewElement()
 {
     //dtor

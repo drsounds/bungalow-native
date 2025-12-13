@@ -20,6 +20,7 @@
 #include "SPStylesheet.h"
 #include "SPFontStyle.h"
 #include "SPImageElement.h"
+#include "SPTabbarViewElement.h"
 #include "SPTextElement.h"
 #include "SPViewElement.h"
 #include "WxWidgetsGraphicsContext.h"
@@ -308,10 +309,6 @@ namespace space {
 	}
 
 	void SPElement::applyImageAttributeFromSkin (string attr, string prop) {
-	    cout << attr << "\r\n";
-	    cout << m_skin << "\r\n";
-	    cout << this->m_skin->colors << "\r\n";
-	    cout << attr << "\r\n";
 	    if (this->m_skin->images->find(prop) != this->m_skin->images->end()) {
 	        SPImage *img = (*this->m_skin->images)[prop];
 
@@ -410,7 +407,6 @@ namespace space {
 			elm->setIntegerAttribute("flex", 1);
 			this->appendChild(elm);
 			this->pack();
-			cout << elm->getWidth();
 		}
 		this->pack();
 		this->invalidate();
@@ -419,8 +415,9 @@ namespace space {
 
 	void SPElement::loadSrc(const string &string) {
 		// Create the request object
-
+		this->notify("unload", this, new SPEventArgs(this));
 		this->request("GET", string, "");
+		this->notify("load", this, new SPEventArgs(this));
 	}
 
 	void SPElement::onAttributeChanged(SPObject* sender, SPEventArgs* e) {
@@ -464,6 +461,9 @@ namespace space {
 			cout << "Parent type: " << parent->getType() << "\r\n";
 			if (parent->getType() == "window") {
 				return (SPWindowElement *)parent;
+			}
+			if (parent == parent->getParentElement()) {
+				throw "Parent cant be this";
 			}
 			parent = parent->getParentElement();
 
@@ -657,7 +657,7 @@ namespace space {
 		string text = this->getInnerText();
 		// draw text
 		if (!text.empty())
-			c->drawString(this->getInnerText(), SPFontStyle(fontFamily, fontSize, fontSize / 2, false, false), fgColor, x - scrollX, y - scrollY, this->getWidth(), this->getHeight());
+			c->drawString(text, SPFontStyle(fontFamily, fontSize, fontSize / 2, false, false), fgColor, x - scrollX, y - scrollY, this->getWidth(), this->getHeight());
 		// adjust for scroll
 	}
 
@@ -691,7 +691,7 @@ namespace space {
 	}
 
 
-	void SPElement::draw(int x, int y, SPGraphicsContext *c) {
+	void SPElement::paint(int x, int y, SPGraphicsContext *c) {
 	    if (!this->isVisible()) {
 	        return;
 	    }
@@ -728,7 +728,7 @@ namespace space {
 		for(std::vector<SPNode *>::iterator it = children->begin(); it != children->end(); ++it) {
 			SPElement *elm = static_cast<SPElement *>(*it);
 			if(elm != nullptr) {
-				elm->draw(rect2.x, rect2.y, c);
+				elm->paint(rect2.x, rect2.y, c);
 			}
 		}
 		/*
@@ -775,14 +775,12 @@ namespace space {
 	        }
 			SPElement *elm = dynamic_cast<SPElement *>(*it);
 			string type = elm->getType();
-			cout << type << endl;
-	        if (elm->isVisible()) {
+			if (elm->isVisible()) {
 	            if (elm->getAbsoluteBounds() != nullptr) {
 
 	                if(x > elm->getAbsoluteBounds()->x && x < elm->getAbsoluteBounds()->x + elm->getAbsoluteBounds()->width &&
 	                    y > elm->getAbsoluteBounds()->y && y < elm->getAbsoluteBounds()->y + elm->getAbsoluteBounds()->height) {
 	                    foundElement = true;
-	                    cout << elm->getType() << endl;
 	                    elm->scroll(scrollX, scrollY, x, y);
 	                }
 	            }
@@ -818,7 +816,10 @@ namespace space {
 	SPElement *SPElement::parseElement(wxXmlNode *xmlNode, SPElement *parent,
 							   SPElement *document) {
 		SPElement *elm = nullptr;
-		elm = document->getElementById(string(xmlNode->GetAttribute("id")));
+		string elementId = xmlNode->GetAttribute("id").ToStdString();
+		if (!elementId.empty()) {
+			elm = document->getElementById(id);
+		}
 		if (elm == nullptr) {
 			elm = createElement(xmlNode->GetName().ToStdString(), parent);
 		}
@@ -830,6 +831,7 @@ namespace space {
 			}
 		}
 		for (wxXmlNode *child = xmlNode->GetChildren(); child; child = child->GetNext()) {
+			if (child->GetParent() != xmlNode) break;
 			if (child->GetType() == wxXML_TEXT_NODE) {
 				elm->setInnerText(child->GetContent().ToStdString());
 			} else if (child->GetType() == wxXML_ELEMENT_NODE) {
@@ -856,8 +858,11 @@ namespace space {
 		} else if (tagName == "button") {
 			elm = new SPButtonElement(parent);
 		} else if (tagName == "view") {
+			elm = new SPTabbarViewElement(parent);
+		} else if (tagName == "section") {
 			elm = new SPViewElement(parent);
 		}
+		elm->setTagName(tagName);
 		return elm;
 	}
 

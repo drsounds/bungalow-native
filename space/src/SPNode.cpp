@@ -6,6 +6,7 @@
 #include "SPMouseEventArgs.h"
 #include "SpaceFrame.h"
 
+#include "SPEventArgs.h"
 #include <regex>
 #include <wx/string.h>
 #include <wx/stream.h>
@@ -42,6 +43,7 @@ namespace space {
         return this->m_parent;
     }
     void SPNode::removeChild(SPNode *child) {
+		this->children->erase(std::remove(this->children->begin(), this->children->end(), child), this->children->end());
     }
     string SPNode::getStringAttribute(const string& attrName, string defaultValue) {
         return (*this->stringAttributes)[attrName];
@@ -138,6 +140,14 @@ namespace space {
     	return nullptr;
     }
 
+    string SPNode::getUri() {
+		return this->getStringAttribute("uri", "");
+    }
+
+    void SPNode::setUri(const string &value) {
+		this->set("uri", value);
+    }
+
 	void SPNode::setId(const string& id) {
 		this->set("id", id);
 	}
@@ -172,6 +182,8 @@ namespace space {
         }
         nodes->push_back(child);
         child->setParentNode(this);
+		SPEventArgs *args = new SPNodeTreeEventArgs(child, this, "append");
+		this->notify("treechanged", this, args);
     }
 
 	void SPNode::setInnerText(const string& value) {

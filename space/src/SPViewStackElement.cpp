@@ -18,13 +18,9 @@ namespace space {
     	SPNode::appendChild(child);
         SPViewElement *view = (SPViewElement *)child;
         string type = view->getType();
-        if (boost::algorithm::ends_with(type, "view")) {
-            cout << "valid view: " << type << endl;
-            ((SPElement *)child)->setVisible(false);
-            view->setIntegerAttribute("flex", 1);
-        } else {
-            exit(0);
-        }
+        cout << "valid view: " << type << endl;
+        ((SPElement *)child)->setVisible(false);
+        view->setIntegerAttribute("flex", 1);
     	this->pack();
     }
     SPViewStackElement::SPViewStackElement() {
@@ -69,20 +65,16 @@ namespace space {
     		SPViewElement *view = (SPViewElement *)node;
     		string type = view->getType();
     		std::cout << view->getType() << std::endl;
-    		if (ends_with(type, "view")) {
-    			if (view->acceptsUri(uri)) {
-    				std::cout << uri << std::endl;
-    				std::cout << view->getType() << std::endl;
-    				cout << "View " << view->getType() << " shown" << endl;
-    				view->setVisible(true);
-    				view->navigate(uri);
-    				activeView = view;
-    			} else {
-    				cout << "View " << view->getType() << " hidden" << endl;
-    				view->setVisible(false);
-    			}
+    		if (view->acceptsUri(uri)) {
+    			std::cout << uri << std::endl;
+    			std::cout << view->getType() << std::endl;
+    			cout << "View " << view->getType() << " shown" << endl;
+    			view->setVisible(true);
+    			view->navigate(uri);
+    			activeView = view;
     		} else {
-    			cout << "Wrong view: " << view->getType() << endl;
+    			cout << "View " << view->getType() << " hidden" << endl;
+    			view->setVisible(false);
     		}
     		this->invalidate();
     		this->pack();

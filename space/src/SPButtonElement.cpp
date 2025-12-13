@@ -19,7 +19,7 @@ void space::SPButtonElement::pack() {
 
 }
 
-void space::SPButtonElement::draw(int x, int y, SPGraphicsContext *c)
+void space::SPButtonElement::paint(int x, int y, SPGraphicsContext *c)
 {
     if (this->absoluteBounds == nullptr)
     this->absoluteBounds = new sp_rectangle;

@@ -10,8 +10,8 @@ private:
         SPInputElement();
         SPInputElement(SPElement *parent);
         virtual ~SPInputElement();
-        virtual void draw(int x, int y, SPGraphicsContext *g);
-        virtual string getType() {
+        virtual void paint(int x, int y, SPGraphicsContext *g);
+        virtual string getType() override {
             return "input";
         }
     protected:

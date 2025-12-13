@@ -8,8 +8,8 @@ class SPImageElement : public SPElement
     public:
         SPImageElement(SPElement *parent);
         virtual ~SPImageElement();
-        void draw(int x, int y, SPGraphicsContext *g);
-        virtual string getType() {
+        void paint(int x, int y, SPGraphicsContext *g);
+        virtual string getType() override {
             return "img";
         }
     protected:
