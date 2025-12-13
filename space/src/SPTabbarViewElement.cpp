@@ -37,7 +37,7 @@ namespace space {
 		this->addEventListener("mousedown", SPCallback(&SPTabbarViewElement::onClick), this);
     }
 	void SPTabbarViewElement::onClick(SPObject *sender, SPEventArgs *e) {
-		this->refresh();
+		// this->refresh();
     }
 	void SPTabbarViewElement::onUnload(SPObject *sender, SPEventArgs *e) {
 	    this->tabBar->clear();
