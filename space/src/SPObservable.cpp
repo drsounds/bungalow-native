@@ -32,14 +32,14 @@ int SPObservable::notify(const string &evt, SPObject *sender, SPEventArgs *data)
 		if(t == (evt)) {
 			SPCallback cb = observer->getCallback();
 			SPElement *elm = observer->getNode();
-			std::invoke(cb, observer->getNode(), elm, data);
+			std::invoke(cb, (SPElement *)sender, elm, data);
 		}
 	}
 	return 0;
 }
-void SPObservable::addEventListener(const string& event, const SPCallback& callback, SPElement *node)
+void SPObservable::addEventListener(const string& event, const SPCallback& callback, SPElement *node, SPElement *sender)
 {
-	auto *observer = new SPObserver(event, callback, node);
+	auto *observer = new SPObserver(event, callback, node, sender);
 	this->observers->push_back(observer);
 
 }

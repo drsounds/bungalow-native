@@ -30,12 +30,12 @@ namespace space {
         this->viewStack->setIntegerAttribute("flex", 1);
         this->tabBar->setHeight(28);
         this->appendChild(this->tabBar);
-        this->tabBar->addEventListener(string("tabselected"), static_cast<SPCallback>(&SPTabbarViewElement::onTabSelected), this);
+        this->tabBar->addEventListener(string("tabselected"), static_cast<SPCallback>(&SPTabbarViewElement::onTabSelected), this, this);
         this->appendChild(this->viewStack);
-    	this->addEventListener("treechanged", SPCallback(&SPTabbarViewElement::onTreeChanged), this);
-		this->addEventListener("unload", SPCallback(&SPTabbarViewElement::onUnload), this);
-		this->addEventListener("mousedown", SPCallback(&SPTabbarViewElement::onClick), this);
-    	this->addEventListener("load", SPCallback(&SPTabbarViewElement::onLoad), this);
+    	this->addEventListener("treechanged", SPCallback(&SPTabbarViewElement::onTreeChanged), this, this);
+		this->addEventListener("unload", SPCallback(&SPTabbarViewElement::onUnload), this, this);
+		this->addEventListener("mousedown", SPCallback(&SPTabbarViewElement::onClick), this, this);
+    	this->addEventListener("load", SPCallback(&SPTabbarViewElement::onLoad), this, this);
     }
     void SPTabbarViewElement::onLoad(SPObject* sender, SPEventArgs* e) {
     	if (this->tabBar->getTabs()->size() > 0) {

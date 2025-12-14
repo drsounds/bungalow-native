@@ -99,8 +99,11 @@ namespace space {
 		return color;
 	}
 
-	int SPElement::notify(const string &event, SPObject *sender,
-	                      SPEventArgs *data) {
+	int SPElement::notify(
+		const string &event,
+		SPObject *sender,
+	    SPEventArgs *data
+	) {
 		int ret = SPNode::notify(event, sender, data);
 		for (auto *child: *this->children) {
 			if (data->getType() == "SPMouseEventArgs") {
@@ -373,7 +376,7 @@ namespace space {
 		this->scrollY = 0;
 	    this->data = "";
 		if (this->m_skin != nullptr) {
-			this->applySkin();	   
+			this->applySkin();
 		}
 		this->x = 0;
 		this->y = 0;
@@ -390,7 +393,7 @@ namespace space {
 		this->padding->top = 0;
 		this->padding->right = 0;
 		this->padding->bottom = 0;
-		this->addEventListener("attributechanged", SPCallback(&SPElement::onAttributeChanged), this);
+		this->addEventListener("attributechanged", SPCallback(&SPElement::onAttributeChanged), this, this);
 	}
 
 	void SPElement::request(const string& method, const string &uri, const string &data) {
@@ -899,7 +902,7 @@ namespace space {
 			}
 			if (attribute->GetName() == "onclick") {
 				if (elm->getType() == "button") {
-					elm->addEventListener("click", SPCallback(&SPElement::onPostBackButtonClick), elm);
+					elm->addEventListener("click", SPCallback(&SPElement::onPostBackButtonClick), this, elm);
 				}
 			}
 		}

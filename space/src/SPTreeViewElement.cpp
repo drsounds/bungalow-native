@@ -79,7 +79,7 @@ SPTreeViewElement::SPTreeViewElement(SPElement *parent)
 	this->setParentNode(parent);
 	this->mItems = new vector<SPTreeItem *>;
 	this->itemHeight = 18;
-	this->addEventListener(string("mouseup"), SPCallback(&SPTreeViewElement::treeview_mouseup), this);
+	this->addEventListener(string("mouseup"), SPCallback(&SPTreeViewElement::treeview_mouseup), this, this);
 }
 
 void SPTreeViewElement::addItem(SPTreeItem *item) {

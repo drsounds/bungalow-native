@@ -46,7 +46,7 @@ namespace space {
         this->treeView = new SPTreeViewElement(this);
         this->infoElement = new SPInfoElement(this);
         this->layout();
-        this->addEventListener("navigate", static_cast<SPCallback>(&MainElement::onNavigate), this);
+        this->addEventListener("navigate", static_cast<SPCallback>(&MainElement::onNavigate), this, this);
     }
 
     int MainElement::onNavigate(SPObject* sender, SPEventArgs* args)
@@ -123,7 +123,7 @@ namespace space {
         auto *item2 = new SPTreeItem(new SPUri("spacify:internal:history"));
 
         item2->setSelected(false);
-        treeView->addEventListener("itemselected", SPCallback(&MainElement::treeview_itemselected), this);
+        treeView->addEventListener("itemselected", SPCallback(&MainElement::treeview_itemselected), this, treeView);
         treeView->addItem(item);
         treeView->addItem(item2);
 

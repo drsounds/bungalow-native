@@ -82,7 +82,7 @@ SPTabBarElement::SPTabBarElement()
     this->clipView = false;
     //ctor
     this->tabs = new std::vector<SPTab *>;
-    this->addEventListener(string("mousedown"), SPCallback(&SPTabBarElement::tabbar_mousedown), this);
+    this->addEventListener(string("mousedown"), SPCallback(&SPTabBarElement::tabbar_mousedown), this, this);
 
 }
 SPTabBarElement::SPTabBarElement(SPElement *parent)
@@ -91,7 +91,7 @@ SPTabBarElement::SPTabBarElement(SPElement *parent)
 	this->setTagName("tabbar");
     //ctor
     this->tabs = new std::vector<SPTab *>;
-    this->addEventListener(string("mousedown"), SPCallback(&SPTabBarElement::mouseDown), this);
+    this->addEventListener(string("mousedown"), SPCallback(&SPTabBarElement::mouseDown), this, this);
     std::vector<SPObserver *> *observers = this->observers;
 }
 void SPTabBarElement::mouseDown(SPObject* sender, SPEventArgs *e) {
