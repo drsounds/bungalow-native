@@ -31,8 +31,7 @@ int SPObservable::notify(const string &evt, SPObject *sender, SPEventArgs *data)
 		string t = observer->getEvent();
 		if(t == (evt)) {
 			SPCallback cb = observer->getCallback();
-			SPElement *elm = observer->getNode();
-			std::invoke(cb, (SPElement *)sender, elm, data);
+			std::invoke(cb, observer->getNode(), sender, data);
 		}
 	}
 	return 0;

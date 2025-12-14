@@ -10,7 +10,7 @@ namespace space {
         TabBarEventArgs *args = (TabBarEventArgs *)e;
         string uri = args->tab->getUri();
         SPTabbarViewElement *tabbarView = (SPTabbarViewElement *)sender;
-        tabbarView->navigate(uri);
+        this->navigate(uri);
         return 0;
     }
     SPTabbarViewElement::SPTabbarViewElement()

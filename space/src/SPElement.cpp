@@ -145,7 +145,7 @@ namespace space {
 							element->setState(SP_STATE_ACTIVE);
 							element->mouseDown((SPNode *)element, data);
 							ret = 1;
-							element->notify(event, sender, data);
+							element->notify(event, element, data);
 
 						}
 						// cout << "Element: " << this->getType() << "#" << this->getId() << " notified child: " << element->getType() << "#" << element->getId() << " event: " << event << endl;
