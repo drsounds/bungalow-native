@@ -27,6 +27,7 @@ class SpaceWidget : public wxControl
 
     int m_mouseX = 0;
     int m_mouseY = 0;
+    bool m_leftMouseButtonPressed;
 
     virtual wxSize DoGetBestSize();
 

@@ -109,7 +109,7 @@ namespace space {
                 continue;
             child->pack();
         }
-        cout << "VBoxElement#" << this->getId() << " packed to width: " << this->getWidth() << " height: " << this->getHeight() << endl;
+        //cout << "VBoxElement#" << this->getId() << " packed to width: " << this->getWidth() << " height: " << this->getHeight() << endl;
 
     };
 }

@@ -20,6 +20,7 @@
 #include "SPStylesheet.h"
 #include "SPFontStyle.h"
 #include "SPImageElement.h"
+#include "SPInputElement.h"
 #include "SPTabbarViewElement.h"
 #include "SPTextElement.h"
 #include "SPViewElement.h"
@@ -28,7 +29,7 @@
 
 #include "SpaceWidget.h"
 
-#include <boost/json.hpp>
+#include <boost/json/src.hpp>
 #include <wx/mstream.h>
 #include <wx/webrequest.h>
 namespace space {
@@ -98,8 +99,9 @@ namespace space {
 		return color;
 	}
 
-	void SPElement::notify(const string &event, SPObject *sender, SPEventArgs *data) {
-		SPNode::notify(event, sender, data);
+	int SPElement::notify(const string &event, SPObject *sender,
+	                      SPEventArgs *data) {
+		int ret = SPNode::notify(event, sender, data);
 		for (auto *child: *this->children) {
 			if (data->getType() == "SPMouseEventArgs") {
 				auto *mouseEventArgs = dynamic_cast<SPMouseEventArgs *>(data);
@@ -113,25 +115,42 @@ namespace space {
 						mouseEventArgs->getY() < element->getAbsoluteBounds()->y + element->getAbsoluteBounds()->height
 					)
 					{
-						element->setState(SP_STATE_NORMAL);
 						if (event == "mousemove") {
 							element->setState(SP_STATE_HOVER);
+							element->notify(event, sender, data);
+							ret = 1;
+						}
+						if (event == "mouseup") {
+							element->setState(SP_STATE_NORMAL);
+							element->notify(event, sender, data);
+							ret = 1;
+							continue;
 						}
 						if (event == "mousedown")
 						{
 							if (element->getType() == "tabbar")
 							{
-								cout << "Element: " << this->getType() << "#" << this->getId() << " notified child: " << element->getType() << "#" << element->getId() << " event: " << event << endl;
+								// cout << "Element: " << this->getType() << "#" << this->getId() << " notified child: " << element->getType() << "#" << element->getId() << " event: " << event << endl;
 							}
 							element->setState(SP_STATE_ACTIVE);
 							element->mouseDown((SPNode *)element, data);
+							element->notify(event, sender, data);
+							ret = 1;
 						}
-						element->notify(event, sender, data);
-						cout << "Element: " << this->getType() << "#" << this->getId() << " notified child: " << element->getType() << "#" << element->getId() << " event: " << event << endl;
+						if (event == "click")
+						{
+							element->setState(SP_STATE_ACTIVE);
+							element->mouseDown((SPNode *)element, data);
+							ret = 1;
+							element->notify(event, sender, data);
+
+						}
+						// cout << "Element: " << this->getType() << "#" << this->getId() << " notified child: " << element->getType() << "#" << element->getId() << " event: " << event << endl;
 					}
 				}
 			}
 		}
+		return ret;
 	}
 
 	SPSkin *SPElement::getSkin()
@@ -162,6 +181,11 @@ namespace space {
 		this->m_parsingDepth++;
 	}
 
+	void SPElement::postBack(const boost::json::object& payload) {
+		string uri = this->getSrc();
+		this->request("POST", uri, serialize(payload));
+	}
+
 	SPElement::SPElement() : SPNode(), fontStyle(SPFontStyle("Tahoma", 13, 1, false, false)) {
 
 		this->padding = new sp_margin();
@@ -189,7 +213,7 @@ namespace space {
 		this->applySkin();
 	}
 
-	void SPElement::click(int mouseButton, int x, int y) {
+	void SPElement::onClick(int mouseButton, int x, int y) {
 		int xx = this->getAbsoluteBounds() != NULL ? x - this->getAbsoluteBounds()->y : x;
 	    int yy = this->getAbsoluteBounds() != NULL ? y - this->getAbsoluteBounds()->y : y;
 		SPMouseEventArgs *me = new SPMouseEventArgs(mouseButton, xx, yy);
@@ -202,7 +226,7 @@ namespace space {
 			if(x > elm->getAbsoluteBounds()->x && x < elm->getAbsoluteBounds()->x + elm->getAbsoluteBounds()->width &&
 				y > elm->getAbsoluteBounds()->y && y < elm->getAbsoluteBounds()->y + elm->getAbsoluteBounds()->height) {
 
-				elm->click(mouseButton, x , y);
+				elm->onClick(mouseButton, x , y);
 			}
 		}
 	}
@@ -280,7 +304,9 @@ namespace space {
 			break;
 		case SP_COLOR_SCHEME_DARK:
 			def = def.lighten(-0.8);
+			break;
 		default:
+			break;
 		}
 		return this->getColorAttribute("bgcolor",def);
 	}
@@ -375,6 +401,10 @@ namespace space {
 			window,
 			url
 		);
+		request.SetMethod(method);
+		if (method != "get" && method != "HEAD" && method != "DELETE") {
+			request.SetData(data.c_str(), "application/json");
+		}
 		if (!request.IsOk()) {
 			throw "Failed to create wxWebRequest";
 		}
@@ -384,7 +414,9 @@ namespace space {
 			switch (event.GetState())
 			{
 			case wxWebRequest::State_Failed: {
-				cout << "Failed to load " << uri << "\r\n";
+				// cout << "Failed to load " << uri << "\r\n";
+				this->setIntegerAttribute("flex", 1);
+				this->loadXUL("resources/app/views/error.xml");
 				break;
 			}
 			case wxWebRequest::State_Completed: {
@@ -398,10 +430,22 @@ namespace space {
 		request.Start();
 	}
 
+	void SPElement::loadXUL(const string &filename) {
+		wxXmlDocument doc;
+		if (doc.Load(filename)) {
+			wxXmlNode *root = doc.GetRoot();
+			SPElement *elm = this->parseElement(root, this, this);
+			elm->setIntegerAttribute("flex", 1);
+			this->appendChild(elm);
+		}
+		this->pack();
+		this->invalidate();
+	}
+
 	void SPElement::setInnerXUL(const string &string) {
 		wxMemoryInputStream stream(string.data(), string.size());
 		wxXmlDocument doc;
-		if (doc.Load(stream, wxS("UTF-8"))) {
+		if (doc.Load(stream)) {
 			wxXmlNode *root = doc.GetRoot();
 			SPElement *elm = this->parseElement(root, this, this);
 			elm->setIntegerAttribute("flex", 1);
@@ -413,10 +457,14 @@ namespace space {
 
 	}
 
-	void SPElement::loadSrc(const string &string) {
+	void SPElement::loadSrc(const string &uri) {
 		// Create the request object
+		if (uri.empty()) {
+			return;
+		}
+		this->setStringAttributeSilently("src", uri);
 		this->notify("unload", this, new SPEventArgs(this));
-		this->request("GET", string, "");
+		this->request("GET", uri, "");
 		this->notify("load", this, new SPEventArgs(this));
 	}
 
@@ -448,6 +496,22 @@ namespace space {
 		this->m_backgroundImage = value;
 	}
 
+	boost::json::object SPElement::getFormData() {
+		boost::json::object formData;
+		for (auto & it : *this->children)
+		{
+			auto *elm = dynamic_cast<SPElement *>(it);
+			if (elm->getType() == "input") {
+				SPInputElement *input = (SPInputElement *)elm;
+				formData[input->getStringAttribute("name", "")] = input->getValue();
+			}
+			for (auto subFormData : elm->getFormData()) {
+				formData[subFormData.key()] = subFormData.value();
+			}
+		}
+		return formData;
+	}
+
 	SPElement * SPElement::getDeepestElement(const int level) {
 		for (const auto child : *this->children) {
 			return static_cast<SPElement *>(child)->getDeepestElement(level + 1);
@@ -458,7 +522,7 @@ namespace space {
 	SPWindowElement *SPElement::getWindowElement() {
 		SPElement *parent = this->getParentElement();
 		while (parent != nullptr) {
-			cout << "Parent type: " << parent->getType() << "\r\n";
+			// cout << "Parent type: " << parent->getType() << "\r\n";
 			if (parent->getType() == "window") {
 				return (SPWindowElement *)parent;
 			}
@@ -687,7 +751,7 @@ namespace space {
 
 
 	void SPElement::refresh() {
-		this->loadSrc(this->getSrc());
+		this->setAttribute("src", this->getSrc());
 	}
 
 	void SPElement::setSrc(const string &value) {
@@ -752,7 +816,7 @@ namespace space {
 
 	void SPElement::pack()
 	{
-		cout << "Element: " << this->getType() << "#" << this->getId() << " packed to width: " << this->getWidth() << " height: " << this->getHeight() << " flex: " << this->getIntegerAttribute("flex", 0) << endl;
+		//cout << "Element: " << this->getType() << "#" << this->getId() << " packed to width: " << this->getWidth() << " height: " << this->getHeight() << " flex: " << this->getIntegerAttribute("flex", 0) << endl;
 	}
 
 	void SPElement::resize(int width, int height)
@@ -768,10 +832,10 @@ namespace space {
 	void SPElement::scroll(int scrollX, int scrollY, int x, int y) {
 	    int xx = this->getAbsoluteBounds() != NULL ? x - this->getAbsoluteBounds()->y : x;
 	    int yy = this->getAbsoluteBounds() != NULL ? y - this->getAbsoluteBounds()->y : y;
-	    cout << "Current scrolling element is " << this->getType() << endl;
+	    // cout << "Current scrolling element is " << this->getType() << endl;
 	    bool foundElement = false;
 	    if (string(this->getType()) == string("toplistview")) {
-	        cout << "Test" << endl;
+	        //cout << "Test" << endl;
 	    }
 		for(vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
 	        if ((this->getWindowElement())->getDeepestElement() == nullptr) {
@@ -822,7 +886,7 @@ namespace space {
 		SPElement *elm = nullptr;
 		string elementId = xmlNode->GetAttribute("id").ToStdString();
 		if (!elementId.empty()) {
-			elm = document->getElementById(id);
+			elm = document->getElementById(elementId);
 		}
 		if (elm == nullptr) {
 			elm = createElement(xmlNode->GetName().ToStdString(), parent);
@@ -833,21 +897,36 @@ namespace space {
 			if (attribute->GetName().ToStdString() == "hidden") {
 				elm->setVisible(false);
 			}
+			if (attribute->GetName() == "onclick") {
+				if (elm->getType() == "button") {
+					elm->addEventListener("click", SPCallback(&SPElement::onPostBackButtonClick), elm);
+				}
+			}
 		}
 		for (wxXmlNode *child = xmlNode->GetChildren(); child; child = child->GetNext()) {
-			if (child->GetParent() != xmlNode) break;
+ 			if (child->GetParent() != xmlNode) {
+				break;
+			}
 			if (child->GetType() == wxXML_TEXT_NODE) {
 				elm->setInnerText(child->GetContent().ToStdString());
 			} else if (child->GetType() == wxXML_ELEMENT_NODE) {
 				SPElement *childElement = parseElement(child, elm, document);
 				elm->appendChild(childElement);
 				this->pack();
-				cout << "Packed";
+				// cout << "Packed";
 			}
 		}
 
 		elm->pack();
 		return elm;
+	}
+
+	void SPElement::onPostBackButtonClick(SPObject *sender, SPEventArgs *event) {
+		SPMouseEventArgs *args = dynamic_cast<SPMouseEventArgs*>(event);
+		SPButtonElement *button = dynamic_cast<SPButtonElement*>(sender);
+		boost::json::object formData = this->getFormData();
+		formData["command"] = button->getStringAttribute("onclick", "submit");
+		this->postBack(formData);
 	}
 
 	SPElement * SPElement::createElement(const string& tagName, SPElement *parent) {
@@ -863,6 +942,8 @@ namespace space {
 			elm = new SPButtonElement(parent);
 		} else if (tagName == "view") {
 			elm = new SPTabbarViewElement(parent);
+		} else if (tagName == "vbox") {
+			elm = new SPVBoxElement(parent);
 		} else if (tagName == "section") {
 			elm = new SPViewElement(parent);
 		}

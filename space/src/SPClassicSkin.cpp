@@ -27,7 +27,7 @@ bool SPClassicSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const stri
     }
     if (elm->getType() == "button")
     {
-    	cout << "Element id:" << elm->getId();
+    	// cout << "Element id:" << elm->getId();
         result = true;
     	SPColor bgColor = elm->getBackgroundColor();
     	if (tintColor != nullptr) {

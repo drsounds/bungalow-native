@@ -12,6 +12,7 @@
 #include "SPNode.h"
 #include "SPFontStyle.h"
 #include <vector>
+#include <boost/json/object.hpp>
 #include <wx/xml/xml.h>
 
 using namespace std;
@@ -47,7 +48,6 @@ namespace space {
         int scrollX;
         int scrollY;
         bool clipView = false;
-        string name;
         SPGradient *m_gradient;
         bool m_hasDefaultGradient = false;
         SPColor* m_tintColor;
@@ -60,6 +60,7 @@ namespace space {
     		this->m_state = value;
     		this->invalidate();
     	}
+    	boost::json::object getFormData();
     	int getState() const {
     		return this->m_state;
     	}
@@ -88,7 +89,8 @@ namespace space {
         SPColor *getTintColor();
         void setTintColor(SPColor *value);
         SPColor getColorAttribute(const string& title, SPColor defaultValue) override;
-        void notify(const string& event, SPObject* sender, SPEventArgs* data) override;
+        int notify(const string &event, SPObject *sender,
+                   SPEventArgs *data) override;
         bool hasDefaultGradient() const
         {
             return m_hasDefaultGradient;
@@ -113,6 +115,8 @@ namespace space {
         void setSkipElement(bool value) {
     		this->m_skipElement = value;
     	}
+
+        void postBack(const boost::json::object& data);
 
         bool m_skipElement = false;
 
@@ -151,12 +155,6 @@ namespace space {
         void setForegroundColor(const SPColor& value)
         {
             this->setColorAttribute("fgcolor", value);
-        }
-        void setName(const string& value) {
-            this->name = value;
-         }
-        string getName() const {
-            return name;
         }
 
         virtual void paint(int x, int y, SPGraphicsContext *c);
@@ -215,7 +213,8 @@ namespace space {
         explicit SPElement(SPElement *parent);
         void request(const string &method, const string &uri,
                      const string &data);
-        void loadSrc(const string & string);
+        void loadXUL(const string &filename);
+        void loadSrc(const string & uri);
         void onAttributeChanged(SPObject *sender, SPEventArgs *e);
 
         ~SPElement() override;
@@ -230,13 +229,14 @@ namespace space {
         SPElement *getElementById(const string &id) const;
         SPElement *parseElement(wxXmlNode *xmlNode, SPElement *parent,
                                 SPElement *document);
+        void onPostBackButtonClick(SPObject* sender, SPEventArgs* event);
         void endParseElement(void *data, const char *el);
         void startParseElement(void *data, const char *el, const char **attr);
         void setInnerXUL(const string &value);
         virtual void mouseMove(int, int) {}
         virtual void mouseClick(int, int, int);
         virtual void mouseDown(SPObject* sender, SPEventArgs* e);
-        virtual void click(int, int, int);
+        virtual void onClick(int, int, int);
         virtual void mouseUp(SPObject* sender, SPEventArgs* e);
         int getY();
         int getWidth();

@@ -24,7 +24,7 @@ protected:
     space::SPWindowElement* m_windowElement;
     SpaceWidget *m_spaceWidget;
     wxApp* m_app;
-
+	bool m_leftMouseButtonPressed;
 public:
     void setSpace(space::Space *space) {
         this->m_space = space;

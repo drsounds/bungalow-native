@@ -26,7 +26,8 @@ void space::Space::addWindow(SPWindowElement* window)
     this->m_windows->push_back(window);
 }
 
-void space::Space::notify(const string& event, SPObject* sender, SPEventArgs* data)
+int space::Space::notify(const string &event, SPObject *sender,
+                         SPEventArgs *data)
 {
     SPObservable::notify(event, sender, data);
     for (auto window : *this->m_windows)

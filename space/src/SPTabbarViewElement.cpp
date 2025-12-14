@@ -35,9 +35,14 @@ namespace space {
     	this->addEventListener("treechanged", SPCallback(&SPTabbarViewElement::onTreeChanged), this);
 		this->addEventListener("unload", SPCallback(&SPTabbarViewElement::onUnload), this);
 		this->addEventListener("mousedown", SPCallback(&SPTabbarViewElement::onClick), this);
+    	this->addEventListener("load", SPCallback(&SPTabbarViewElement::onLoad), this);
+    }
+    void SPTabbarViewElement::onLoad(SPObject* sender, SPEventArgs* e) {
+    	if (this->tabBar->getTabs()->size() > 0) {
+    		this->navigate(this->tabBar->getTabs()->at(0)->getUri());
+    	}
     }
 	void SPTabbarViewElement::onClick(SPObject *sender, SPEventArgs *e) {
-		// this->refresh();
     }
 	void SPTabbarViewElement::onUnload(SPObject *sender, SPEventArgs *e) {
 	    this->tabBar->clear();

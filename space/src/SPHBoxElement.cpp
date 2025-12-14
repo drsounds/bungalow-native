@@ -99,7 +99,7 @@ namespace space {
                 continue;
             child->pack();
         }
-        cout << "Element: " << this->getType() << " packed to width: " << this->getWidth() << " height: " << this->getHeight() << " flex: " << this->getIntegerAttribute("flex", 0) << endl;
+        // cout << "Element: " << this->getType() << " packed to width: " << this->getWidth() << " height: " << this->getHeight() << " flex: " << this->getIntegerAttribute("flex", 0) << endl;
     };
 
 }

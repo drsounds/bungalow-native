@@ -19,7 +19,7 @@ void SPTextElement::pack() {
 void SPTextElement::paint(int x, int y, SPGraphicsContext *c)  {
     SPColor fgcolor = this->getColorAttribute("fgcolor", this->getForegroundColor());
     SPFontStyle fontStyle = this->getFontStyle();
-    c->drawString(this->m_innerText, fontStyle, fgcolor, x ,y , this->getWidth(), this->getHeight());
+    c->drawString(this->m_innerText, fontStyle, fgcolor, x , y + this->getY(), this->getWidth(), this->getHeight());
 }
 SPTextElement::~SPTextElement()
 {

@@ -11,11 +11,11 @@
 using namespace space;
 
 SPImageSkin::SPImageSkin(const string& bitmap) : SPSkin() {
-    cout << bitmap << "\r\n";
+    // cout << bitmap << "\r\n";
     auto *image = new SPImage(bitmap);
-    cout << "Sizeof pixels: " << sizeof(image->pixels) << "\r\n";
+    // cout << "Sizeof pixels: " << sizeof(image->pixels) << "\r\n";
     this->image = image;
-    cout << "Sizeof pixels: " << sizeof(image->pixels) << "\r\n";
+    // cout << "Sizeof pixels: " << sizeof(image->pixels) << "\r\n";
     this->colors->insert(pair<string, pixel *>("body.background.color", this->image->getPixelPtr(0, 0)));
 
     (*this->colors)["body.foreground.color"] = this->image->getPixelPtr(1, 0);

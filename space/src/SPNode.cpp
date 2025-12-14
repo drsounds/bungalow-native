@@ -46,13 +46,22 @@ namespace space {
 		this->children->erase(std::remove(this->children->begin(), this->children->end(), child), this->children->end());
     }
     string SPNode::getStringAttribute(const string& attrName, string defaultValue) {
+		if (!this->stringAttributes->count(attrName)) {
+			return defaultValue;
+		}
         return (*this->stringAttributes)[attrName];
-    }
+	}
+	void SPNode::setStringAttributeSilently(const string& attrName, string value) {
+		string oldValue = (*this->stringAttributes)[attrName];
+		(*this->stringAttributes)[attrName] = value;
+
+	}
     void SPNode::setStringAttribute(const string& attrName, string value) {
     	string oldValue = (*this->stringAttributes)[attrName];
     	(*this->stringAttributes)[attrName] = value;
     	auto *args = new SPAttributeChangedEventArgs(attrName, value, oldValue, "string");
     	this->notify("attributechanged", this, args);
+
     }
     void SPNode::setColorAttribute(const string& attrName, SPColor value) {
     	SPColor oldValue = SPColor(0, 0, 0, 0);
@@ -60,9 +69,10 @@ namespace space {
     	auto args = new SPAttributeChangedEventArgs(attrName, value.toHTMLColor(), oldValue.toHTMLColor(), "color");
     	this->notify("attributechanged", this, args);
     }
-	void SPNode::notify(const string& event, SPObject* sender, SPEventArgs* data)
+
+    int SPNode::notify(const string &event, SPObject *sender, SPEventArgs *data)
     {
-    	SPObservable::notify(event, sender, data);
+    	return SPObservable::notify(event, sender, data);
 
     }
 
@@ -122,7 +132,7 @@ namespace space {
         (*this->properties)[attrib] = value;
     }
 
-    string SPNode::getValue(const string& attrib)
+    string SPNode::getValue()
     {
         return "";
     }
@@ -163,8 +173,10 @@ namespace space {
 		}
         this->setStringAttribute(attrName, value);
         try {
-            n = atoi(value.c_str());
-            setIntegerAttribute(attrName, n);
+        	if (std::regex_match(value, std::regex("^[0-9]+$"))) {
+        		n = atoi(value.c_str());
+        		setIntegerAttribute(attrName, n);
+        	}
         } catch (exception& e) {
             
         }

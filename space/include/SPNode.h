@@ -25,6 +25,8 @@ namespace space {
         string tagName = "node";
     	string m_id;
     	string m_innerText;
+    	string m_name;
+
     public:
     	string getUri();
     	void setUri(const string& value);
@@ -70,6 +72,15 @@ namespace space {
             this->children = value;
         }
 
+
+    	void setName(const string& value) {
+        	this->setStringAttribute("name",value);
+        	this->m_name = value;
+        }
+    	string getName() {
+        	return this->getStringAttribute("name", "");
+
+		}
         SPNode *getNodeById(const string& id) const;
         void setAttribute(const std::string &attrName,
                           const std::string &value);
@@ -77,7 +88,7 @@ namespace space {
         string get(const string& attrib);
         void *getObject(const string& attrib);
         void setObject(const string& attrib, void *value);
-        string getValue(const string& attrib);
+        string getValue();
         SPNode *getParentNode();
 
         map<string, string> *getStringAttributes() {
@@ -99,11 +110,12 @@ namespace space {
         bool hasAttribute(string attrib);
         virtual SPColor getColorAttribute(const string& title, SPColor defaultValue);
         void setColorAttribute(const string& attrName, SPColor value);
-        void notify(const string &event, SPObject *sender, SPEventArgs *data);
+	    int notify(const string &event, SPObject *sender, SPEventArgs *data);
         int getIntegerAttribute(const string& title, int defaultValue);
         void setIntegerAttribute(const string& title, int value);
-        void setStringAttribute(const string& attribute, string value);
+        void setStringAttribute(const string& attrName, string value);
         string getStringAttribute(const string& attribute, string defaultValue);
+	    void setStringAttributeSilently(const string &attrName, string value);
     };
 }
 #endif // NODE_H

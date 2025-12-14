@@ -25,7 +25,7 @@ void SPObservable::dispatchEvent(const string& event, SPEventArgs* args, SPObjec
 	this->notify(event, sender, args);
 }
 
-void SPObservable::notify(const string& evt, SPObject *sender, SPEventArgs *data)
+int SPObservable::notify(const string &evt, SPObject *sender, SPEventArgs *data)
 {
 	for(auto observer : *this->observers) {
 		string t = observer->getEvent();
@@ -35,6 +35,7 @@ void SPObservable::notify(const string& evt, SPObject *sender, SPEventArgs *data
 			std::invoke(cb, observer->getNode(), elm, data);
 		}
 	}
+	return 0;
 }
 void SPObservable::addEventListener(const string& event, const SPCallback& callback, SPElement *node)
 {

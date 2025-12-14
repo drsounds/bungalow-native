@@ -47,7 +47,8 @@ namespace space
         void setGraphicsContext(SPGraphicsContext *value) {
             this->m_graphicsContext = value;
         }
-        virtual void notify(const string& event, SPObject* sender, SPEventArgs* data) override;
+        virtual int notify(const string &event, SPObject *sender,
+                           SPEventArgs *data) override;
         Space();
         SPWindowElement * createWindow(SPSkin *skin);
         SPMessage dequeueNextMessage();

@@ -18,7 +18,7 @@ namespace space {
     	SPNode::appendChild(child);
         SPViewElement *view = (SPViewElement *)child;
         string type = view->getType();
-        cout << "valid view: " << type << endl;
+        // cout << "valid view: " << type << endl;
         ((SPElement *)child)->setVisible(false);
         view->setIntegerAttribute("flex", 1);
     	this->pack();
@@ -64,16 +64,16 @@ namespace space {
     		SPNode *node = static_cast<SPNode *>(*it);
     		SPViewElement *view = (SPViewElement *)node;
     		string type = view->getType();
-    		std::cout << view->getType() << std::endl;
+    		// std::cout << view->getType() << std::endl;
     		if (view->acceptsUri(uri)) {
-    			std::cout << uri << std::endl;
-    			std::cout << view->getType() << std::endl;
-    			cout << "View " << view->getType() << " shown" << endl;
+    			//std::cout << uri << std::endl;
+    			//std::cout << view->getType() << std::endl;
+    			//cout << "View " << view->getType() << " shown" << endl;
     			view->setVisible(true);
     			view->navigate(uri);
     			activeView = view;
     		} else {
-    			cout << "View " << view->getType() << " hidden" << endl;
+    			// cout << "View " << view->getType() << " hidden" << endl;
     			view->setVisible(false);
     		}
     		this->invalidate();

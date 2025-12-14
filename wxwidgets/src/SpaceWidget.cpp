@@ -92,7 +92,16 @@ void SpaceWidget::OnLeftUp(wxMouseEvent& event) {
         "mouseup",
         args,
         this->m_frame->getWindowElement()
-    );
+        );
+	if (this->m_leftMouseButtonPressed) {
+		auto *args2 = new space::SPMouseEventArgs(1, event.GetX(), event.GetY());
+		space::SPEvent evt2("click", args2, nullptr);
+		this->getSpace()->dispatchEvent(
+			"click",
+			args2,
+			this->m_frame->getWindowElement()
+		);
+	}
 }
 
 void SpaceWidget::OnRightDown(wxMouseEvent& event)
@@ -117,6 +126,7 @@ void SpaceWidget::OnLeftDown(wxMouseEvent& event) {
     auto pos =  event.GetPosition();
     auto *args = new space::SPMouseEventArgs(0, pos.x, pos.y);
     space::SPEvent evt("mousedown", args, nullptr);
+	this->m_leftMouseButtonPressed = true;
     this->getSpace()->dispatchEvent(
         "mousedown",
         args,
