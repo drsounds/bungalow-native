@@ -16,7 +16,7 @@ namespace space {
         }
 
         bool WhatsNewView::acceptsUri(const string& uri) {
-            bool ret = std::regex_match(uri.c_str(), std::regex("spacify:internal:start"));
+            bool ret = std::regex_match(uri.c_str(), std::regex("spacify:whatsnew"));
         	return ret;
         }
         WhatsNewView::WhatsNewView(SPElement *parent)

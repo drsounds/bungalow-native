@@ -30,8 +30,7 @@ void SPViewElement::navigate(const string& uri) {
 }
 
 bool SPViewElement::acceptsUri(const string &uri) {
-	string this_uri = this->getUri();
-	return boost::algorithm::starts_with(this_uri, uri);
+	return true;
 }
 
 SPViewElement::~SPViewElement()

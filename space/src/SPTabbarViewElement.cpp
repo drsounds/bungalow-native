@@ -5,7 +5,19 @@
 #include "SPTabBarElement.h"
 #include "SPViewStackElement.h"
 
+#include <iostream>
+#include <boost/algorithm/string/predicate.hpp>
+
 namespace space {
+	void SPTabbarViewElement::onLoad(SPObject *sender, SPEventArgs *e) {
+		SPViewElement::onLoad();
+		if (this->tabBar->getTabs()->size() == 0) {
+			return;
+		}
+		string uri = this->tabBar->getTabs()->at(0)->getUri();
+		this->viewStack->navigate(uri);
+	}
+
     int SPTabbarViewElement::onTabSelected(SPObject *sender, SPEventArgs *e) {
         TabBarEventArgs *args = (TabBarEventArgs *)e;
         string uri = args->tab->getUri();
@@ -35,19 +47,31 @@ namespace space {
     	this->addEventListener("treechanged", SPCallback(&SPTabbarViewElement::onTreeChanged), this, this);
 		this->addEventListener("unload", SPCallback(&SPTabbarViewElement::onUnload), this, this);
 		this->addEventListener("mousedown", SPCallback(&SPTabbarViewElement::onClick), this, this);
-    	this->addEventListener("load", SPCallback(&SPTabbarViewElement::onLoad), this, this);
+		this->addEventListener("load", SPCallback(&SPTabbarViewElement::onLoad), this, this);
     }
-    void SPTabbarViewElement::onLoad(SPObject* sender, SPEventArgs* e) {
-    	if (this->tabBar->getTabs()->size() > 0) {
-    		this->navigate(this->tabBar->getTabs()->at(0)->getUri());
-    	}
-    }
+	SPElement *SPTabbarViewElement::getViewStackElement() {
+		return (SPViewStackElement *)this->viewStack;
+	}
 	void SPTabbarViewElement::onClick(SPObject *sender, SPEventArgs *e) {
     }
+	void SPTabbarViewElement::clear() {
+		this->tabBar->clear();
+		this->viewStack->clear();
+	}
 	void SPTabbarViewElement::onUnload(SPObject *sender, SPEventArgs *e) {
 	    this->tabBar->clear();
     }
+	bool SPTabbarViewElement::acceptsUri(const string& uri) {
+		string this_uri = this->getUri();
+		bool ret = boost::algorithm::starts_with(uri, this_uri);
+		return ret;
+	}
 	void SPTabbarViewElement::onTreeChanged(SPObject *sender, SPEventArgs *e) {
+		SPElement *view = (SPElement *)sender;
+		string uri = this->getUri();
+		string tagName = view->getTagName();
+		cout << "tagName: " << tagName << endl;
+		if (uri.empty()) return;
 	    SPNodeTreeEventArgs *args = (SPNodeTreeEventArgs *)e;
     	if (args->getAction() == "remove") {
     		SPElement *elm = dynamic_cast<SPElement *>(args->getNode());
@@ -59,8 +83,8 @@ namespace space {
 		    SPElement *elm = dynamic_cast<SPElement *>(args->getNode());
 	    	if (elm->getTagName() == "section") {
 	    		SPViewElement *view = dynamic_cast<SPViewElement *>(elm);
-	    		view->setUri(this->getUri() + ":" + view->getId());
-	    		this->tabBar->addTab(elm->getId(), view->getStringAttribute("title", elm->getId()), elm->getUri());
+	    		view->setUri(uri + ":" + view->getId());
+	    		this->tabBar->addTab(elm->getId(), view->getStringAttribute("title", elm->getId()), view->getUri());
 	    		this->removeChild(elm);
  	    		this->viewStack->appendChild(view);
 	    	}

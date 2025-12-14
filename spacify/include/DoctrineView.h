@@ -10,8 +10,8 @@ namespace space {
             public:
                 DoctrineView(SPElement *parent);
                 virtual ~DoctrineView();
-                void navigate(string uri);
-                bool acceptsUri(string uri);
+                void navigate(const string& uri) override;
+                bool acceptsUri(const string& uri) override;
             protected:
                 SPTextElement *text;
             private:

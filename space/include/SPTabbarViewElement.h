@@ -15,12 +15,14 @@ namespace space
         {
             return "tabbarview";
         }
-
+		bool acceptsUri(const string &uri) override;
+    	void onLoad(SPObject *sender, SPEventArgs *e);
         int onTabSelected(SPObject* sender, SPEventArgs* e);
         SPTabbarViewElement();
         SPTabbarViewElement(SPElement *parent);
-        void onLoad(SPObject *sender, SPEventArgs *e);
+        SPElement *getViewStackElement() override;
         void onClick(SPObject *sender, SPEventArgs *e);
+        void clear() override;
         void onUnload(SPObject *sender, SPEventArgs *e);
         void onTreeChanged(SPObject *sender, SPEventArgs *e);
         virtual ~SPTabbarViewElement();

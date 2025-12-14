@@ -16,7 +16,7 @@ namespace space {
                 PlayQueueView();
                 PlayQueueView(SPElement *parent);
                 void navigate(string uri);
-                bool acceptsUri(string uri);
+                bool acceptsUri(const string& uri) override;
                 virtual ~PlayQueueView();
                 string getType() override;
             protected:

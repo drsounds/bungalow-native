@@ -1,0 +1,25 @@
+//
+// Created by Alexander Forselius on 2025-12-14.
+//
+
+#ifndef SPACIFYCLIENT_SPSPIDERVIEW_H
+#define SPACIFYCLIENT_SPSPIDERVIEW_H
+
+#include "SPTabbarViewElement.h"
+
+namespace space {
+class SPSpiderViewElement : public SPTabbarViewElement
+{
+public:
+    SPSpiderViewElement();
+	explicit SPSpiderViewElement(SPElement *parent);
+	~SPSpiderViewElement() override;
+	string getType() override {
+		return "spiderview";
+	}
+	void navigate(const string &uri) override;
+};
+}
+
+
+#endif //SPACIFYCLIENT_SPSPIDERVIEW_H

@@ -12,7 +12,7 @@ namespace space
     class SPClassicSkin : public SPSkin
     {
     private:
-        SPColor m_lightColor = SPColor(128, 128, 128, 255);
+        SPColor m_lightColor = SPColor(170, 170, 170, 255);
         SPColor m_shadowColor = SPColor(120, 120, 120, 255);
     	bool m_glossy = true;
     public:

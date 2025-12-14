@@ -26,6 +26,12 @@ namespace space {
         	this->m_sender = sender;
         }
         ~SPObserver() = default;
+    	SPElement *getSender() const {
+    		return m_sender;
+    	}
+    	void setSender(SPElement *value) {
+    		this->m_sender = value;
+    	}
     };
 }
 #endif // OBSERVER_H

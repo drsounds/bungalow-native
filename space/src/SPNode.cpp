@@ -43,20 +43,22 @@ namespace space {
         return this->m_parent;
     }
     void SPNode::removeChild(SPNode *child) {
-		this->children->erase(std::remove(this->children->begin(), this->children->end(), child), this->children->end());
-    }
+		if (child != nullptr) {
+			this->children->erase(std::remove(this->children->begin(), this->children->end(), child), this->children->end());
+		}
+	}
     string SPNode::getStringAttribute(const string& attrName, string defaultValue) {
 		if (!this->stringAttributes->count(attrName)) {
 			return defaultValue;
 		}
         return (*this->stringAttributes)[attrName];
 	}
-	void SPNode::setStringAttributeSilently(const string& attrName, string value) {
+	void SPNode::setStringAttributeSilently(const string& attrName, const string& value) {
 		string oldValue = (*this->stringAttributes)[attrName];
 		(*this->stringAttributes)[attrName] = value;
 
 	}
-    void SPNode::setStringAttribute(const string& attrName, string value) {
+    void SPNode::setStringAttribute(const string& attrName, const string& value) {
     	string oldValue = (*this->stringAttributes)[attrName];
     	(*this->stringAttributes)[attrName] = value;
     	auto *args = new SPAttributeChangedEventArgs(attrName, value, oldValue, "string");
@@ -75,6 +77,12 @@ namespace space {
     	return SPObservable::notify(event, sender, data);
 
     }
+
+	void SPNode::clear() {
+		while (this->children->size() > 0) {
+			this->removeChild(this->children->back());
+		}
+	}
 
     SPColor SPNode::getColorAttribute(const string& title, SPColor defaultValue) {
     	SPColor color = SPColor(0, 0, 0, 0);
@@ -151,11 +159,12 @@ namespace space {
     }
 
     string SPNode::getUri() {
-		return this->getStringAttribute("uri", "");
+		string uri = this->getStringAttribute("uri", "");
+		return uri;
     }
 
     void SPNode::setUri(const string &value) {
-		this->set("uri", value);
+		this->setStringAttribute("uri", value);
     }
 
 	void SPNode::setId(const string& id) {
@@ -170,6 +179,10 @@ namespace space {
         int n = 0;
 		if (attrName == "id") {
 			this->m_id = value;
+		}
+		string oldVal = this->getStringAttribute(attrName, "");
+		if (oldVal == value) {
+			return;
 		}
         this->setStringAttribute(attrName, value);
         try {

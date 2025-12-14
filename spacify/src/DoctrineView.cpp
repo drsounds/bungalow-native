@@ -23,13 +23,13 @@ namespace space {
             this->appendChild(text);
         }
 
-        bool DoctrineView::acceptsUri(string uri) {
+        bool DoctrineView::acceptsUri(const string& uri) {
             string uri2 = uri.c_str();
             bool a = std::regex_match(uri2, regex("spacify:doctrine:(.*)"));
             return a;
         }
 
-        void DoctrineView::navigate(string uri) {
+        void DoctrineView::navigate(const string& uri) {
 
             vector<string> strs;
             boost::split(strs, uri, boost::is_any_of(":")); 

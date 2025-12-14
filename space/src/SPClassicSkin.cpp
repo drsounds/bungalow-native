@@ -240,7 +240,7 @@ void SPClassicSkin::drawTabBarTab(SPGraphicsContext* g, SPTabBarElement *tabBar,
     {
         bgColor = bgColor.tint(*tintColor);
         shadowColor = tintColor->lighten(-0.8);
-        lColor = lColor.tint(*tintColor);
+        lColor = lColor.tint(*tintColor).lighten();
     }
 	if (tabBar->getColorScheme() == SP_COLOR_SCHEME_DARK) {
 		shadowColor = shadowColor.lighten(-0.2);
@@ -255,7 +255,9 @@ void SPClassicSkin::drawTabBarTab(SPGraphicsContext* g, SPTabBarElement *tabBar,
     }
     else
     {
-        SPGradient gradient(bgColor.lighten(0.5), bgColor, 0);
+		g->drawLine(x, y + 1, x + width, y + 1, lColor);
+		g->drawLine(x, y + 1, x, y + height - 2, lColor);
+		g->drawLine(x + width + 1, y + 1, x + width + 1, y + height - 2, lColor);
     }
     g->drawLine(x + width, y, x + width, y + height - 1,shadowColor);
 }
@@ -296,6 +298,7 @@ void SPClassicSkin::drawTabBar(
     	g->drawLinearGradient(sp_rectangle {x, y + 1, width, height / 2}, gradient2);
     }
     g->drawLine(x, y, x + width, y,shadowColor);
+    g->drawLine(x, y + 1, x + width, y + 1, lColor);
     g->drawLine(x, y + height - 1, x + width, y + height - 1,shadowColor);
 }
 

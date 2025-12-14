@@ -9,6 +9,7 @@
 #include "SPElement.h"
 
 #include <functional>
+#include <iostream>
 #include <type_traits>
 
 namespace space {
@@ -27,7 +28,9 @@ void SPObservable::dispatchEvent(const string& event, SPEventArgs* args, SPObjec
 
 int SPObservable::notify(const string &evt, SPObject *sender, SPEventArgs *data)
 {
+
 	for(auto observer : *this->observers) {
+		cout << "Notified " << evt << " to observer event " << observer->getEvent() << endl;
 		string t = observer->getEvent();
 		if(t == (evt)) {
 			SPCallback cb = observer->getCallback();
@@ -38,7 +41,7 @@ int SPObservable::notify(const string &evt, SPObject *sender, SPEventArgs *data)
 }
 void SPObservable::addEventListener(const string& event, const SPCallback& callback, SPElement *node, SPElement *sender)
 {
-	auto *observer = new SPObserver(event, callback, node, sender);
+	auto *observer = new SPObserver(event, callback, node, (SPElement*)this);
 	this->observers->push_back(observer);
 
 }

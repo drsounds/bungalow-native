@@ -30,7 +30,7 @@ namespace space {
         void PlayQueueView::navigate(string uri) {
 
         }
-        bool PlayQueueView::acceptsUri(string uri) {
+        bool PlayQueueView::acceptsUri(const string& uri) {
             return std::regex_match(uri.c_str(), std::regex("spacify:internal:(history|playqueue)"));
         }
         PlayQueueView::~PlayQueueView()

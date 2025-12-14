@@ -159,6 +159,7 @@ namespace space {
 
         virtual void paint(int x, int y, SPGraphicsContext *c);
         string getType() override;
+        void setUri(const string &uri);
         virtual void paint(int x, int y, int width, int height, SPGraphicsContext* c);
         void resizeToText(bool width, bool height);
         sp_rectangle getTextBounds();
@@ -213,6 +214,7 @@ namespace space {
         explicit SPElement(SPElement *parent);
         void request(const string &method, const string &uri,
                      const string &data);
+        virtual void onLoad();
         void loadXUL(const string &filename);
         void loadSrc(const string & uri);
         void onAttributeChanged(SPObject *sender, SPEventArgs *e);
@@ -233,6 +235,9 @@ namespace space {
         void endParseElement(void *data, const char *el);
         void startParseElement(void *data, const char *el, const char **attr);
         void setInnerXUL(const string &value);
+        void loadXULFromXMLDoc(const wxXmlDocument& xmlDoc);
+        SPElement *getTabBarViewElement();
+        virtual SPElement *getViewStackElement();
         virtual void mouseMove(int, int) {}
         virtual void mouseClick(int, int, int);
         virtual void mouseDown(SPObject* sender, SPEventArgs* e);

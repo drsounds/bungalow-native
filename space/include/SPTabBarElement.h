@@ -45,7 +45,7 @@ public:
 class SPTabBarElement : public SPElement
 {
     public:
-		void clear();
+		void clear() override;
         SPImage *tabBackgroundImage;
         SPImage *activeTabBackgroundImage;
         int tabbar_mousedown(SPObject* sender, SPEventArgs* e);

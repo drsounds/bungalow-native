@@ -1,4 +1,8 @@
 #include "StartView.h"
+
+#include "SPSpiderViewElement.h"
+
+#include <iostream>
 #include <regex>
 
 
@@ -7,16 +11,10 @@ namespace space {
         StartView::StartView() {
         }
         StartView::StartView(SPElement *parent)
-         : SPViewElement(parent)
+         : SPSpiderViewElement(parent)
         {
             this->clipView = false;
         	this->setUri("spacify:start");
-        	this->setAttribute("src", "spacify:start");
-        }
-
-        bool StartView::acceptsUri(const string& uri) {
-            bool ret = std::regex_match(uri.c_str(), std::regex("spacify:internal:(start|toplist)"));
-        	return ret;
         }
 
         string StartView::getType() {

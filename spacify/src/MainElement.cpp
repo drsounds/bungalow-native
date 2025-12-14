@@ -149,7 +149,7 @@ namespace space {
 
         // Add header buttons
         this->pack();
-        this->navigate("spacify:internal:start");
+        this->navigate("spacify:start:overview");
     }
     MainElement::~MainElement()
     {

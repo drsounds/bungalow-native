@@ -29,7 +29,7 @@ namespace space {
 
     public:
     	string getUri();
-    	void setUri(const string& value);
+    	virtual void setUri(const string& value);
     	string getId() const {
     		return this->m_id;
     	}
@@ -111,11 +111,12 @@ namespace space {
         virtual SPColor getColorAttribute(const string& title, SPColor defaultValue);
         void setColorAttribute(const string& attrName, SPColor value);
 	    int notify(const string &event, SPObject *sender, SPEventArgs *data);
-        int getIntegerAttribute(const string& title, int defaultValue);
+	    virtual void clear();
+	    int getIntegerAttribute(const string& title, int defaultValue);
         void setIntegerAttribute(const string& title, int value);
-        void setStringAttribute(const string& attrName, string value);
+        void setStringAttribute(const string& attrName, const string& value);
         string getStringAttribute(const string& attribute, string defaultValue);
-	    void setStringAttributeSilently(const string &attrName, string value);
+	    void setStringAttributeSilently(const string& attrName, const string& value);
     };
 }
 #endif // NODE_H

@@ -56,8 +56,6 @@ build CMakeFiles/spacify-client.dir/space/src/ISPRequestHandler.cpp.o: CXX_COMPI
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPAppFooterElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPAppFooterElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -66,8 +64,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPAppFooterElement.cpp.o: CXX_COMP
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPAppHeaderElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPAppHeaderElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -76,8 +72,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPAppHeaderElement.cpp.o: CXX_COMP
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPBoxElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPBoxElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -86,8 +80,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPBoxElement.cpp.o: CXX_COMPILER__
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPButtonElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPButtonElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -96,8 +88,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPButtonElement.cpp.o: CXX_COMPILE
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPClassicSkin.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPClassicSkin.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -106,8 +96,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPClassicSkin.cpp.o: CXX_COMPILER_
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPColor.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPColor.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -116,8 +104,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPColor.cpp.o: CXX_COMPILER__spaci
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPContainerViewElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPContainerViewElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -126,8 +112,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPContainerViewElement.cpp.o: CXX_
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -136,8 +120,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPElement.cpp.o: CXX_COMPILER__spa
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPEntity.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPEntity.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -146,8 +128,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPEntity.cpp.o: CXX_COMPILER__spac
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPEventArgs.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPEventArgs.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -156,8 +136,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPEventArgs.cpp.o: CXX_COMPILER__s
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPFeatureElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPFeatureElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -166,8 +144,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPFeatureElement.cpp.o: CXX_COMPIL
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPFlowElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPFlowElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -176,8 +152,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPFlowElement.cpp.o: CXX_COMPILER_
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPFontStyle.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPFontStyle.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -186,8 +160,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPFontStyle.cpp.o: CXX_COMPILER__s
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPGraphicsContext.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPGraphicsContext.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -196,8 +168,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPGraphicsContext.cpp.o: CXX_COMPI
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPHBoxElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPHBoxElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -206,8 +176,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPHBoxElement.cpp.o: CXX_COMPILER_
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPHTML.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPHTML.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -216,8 +184,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPHTML.cpp.o: CXX_COMPILER__spacif
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPHeaderElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPHeaderElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -226,8 +192,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPHeaderElement.cpp.o: CXX_COMPILE
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPImage.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPImage.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -236,8 +200,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPImage.cpp.o: CXX_COMPILER__spaci
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPImageElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPImageElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -246,8 +208,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPImageElement.cpp.o: CXX_COMPILER
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPImageSkin.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPImageSkin.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -256,8 +216,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPImageSkin.cpp.o: CXX_COMPILER__s
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPInfoElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPInfoElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -266,8 +224,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPInfoElement.cpp.o: CXX_COMPILER_
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPInputElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPInputElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -276,8 +232,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPInputElement.cpp.o: CXX_COMPILER
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPInputEventArgs.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPInputEventArgs.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -286,8 +240,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPInputEventArgs.cpp.o: CXX_COMPIL
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPLinkElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPLinkElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -296,8 +248,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPLinkElement.cpp.o: CXX_COMPILER_
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPMessageType.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPMessageType.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -306,8 +256,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPMessageType.cpp.o: CXX_COMPILER_
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPMockTableDataSource.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPMockTableDataSource.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -316,8 +264,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPMockTableDataSource.cpp.o: CXX_C
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPMouseEventArgs.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPMouseEventArgs.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -326,8 +272,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPMouseEventArgs.cpp.o: CXX_COMPIL
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPNavigateEventArgs.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPNavigateEventArgs.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -336,8 +280,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPNavigateEventArgs.cpp.o: CXX_COM
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPNode.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPNode.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -346,8 +288,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPNode.cpp.o: CXX_COMPILER__spacif
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPObservable.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPObservable.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -356,8 +296,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPObservable.cpp.o: CXX_COMPILER__
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPRequest.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPRequest.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -366,8 +304,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPRequest.cpp.o: CXX_COMPILER__spa
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPResource.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPResource.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -376,8 +312,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPResource.cpp.o: CXX_COMPILER__sp
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPResourceElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPResourceElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -386,8 +320,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPResourceElement.cpp.o: CXX_COMPI
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPResponse.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPResponse.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -396,8 +328,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPResponse.cpp.o: CXX_COMPILER__sp
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPServer.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPServer.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -406,8 +336,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPServer.cpp.o: CXX_COMPILER__spac
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPSkin.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPSkin.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -416,8 +344,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPSkin.cpp.o: CXX_COMPILER__spacif
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPSpiderServer.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPSpiderServer.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -426,8 +352,14 @@ build CMakeFiles/spacify-client.dir/space/src/SPSpiderServer.cpp.o: CXX_COMPILER
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
+
+build CMakeFiles/spacify-client.dir/space/src/SPSpiderViewElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPSpiderViewElement.cpp || cmake_object_order_depends_target_spacify-client
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/spacify-client.dir/space/src/SPSpiderViewElement.cpp.o.d
+  FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/opt/homebrew/opt/expat/include -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__  -g -std=gnu++17 -arch arm64 -fcolor-diagnostics
+  INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
+  OBJECT_DIR = CMakeFiles/spacify-client.dir
+  OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
 
 build CMakeFiles/spacify-client.dir/space/src/SPSplitterElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPSplitterElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -436,8 +368,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPSplitterElement.cpp.o: CXX_COMPI
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPStandardTableDataSource.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPStandardTableDataSource.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -446,8 +376,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPStandardTableDataSource.cpp.o: C
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPStylesheet.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPStylesheet.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -456,8 +384,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPStylesheet.cpp.o: CXX_COMPILER__
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPTabBarElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPTabBarElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -466,8 +392,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPTabBarElement.cpp.o: CXX_COMPILE
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPTabbarView.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPTabbarView.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -476,8 +400,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPTabbarView.cpp.o: CXX_COMPILER__
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPTabbarViewElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPTabbarViewElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -486,8 +408,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPTabbarViewElement.cpp.o: CXX_COM
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPTableCell.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPTableCell.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -496,8 +416,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPTableCell.cpp.o: CXX_COMPILER__s
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPTableColumn.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPTableColumn.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -506,8 +424,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPTableColumn.cpp.o: CXX_COMPILER_
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPTableColumnHeader.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPTableColumnHeader.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -516,8 +432,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPTableColumnHeader.cpp.o: CXX_COM
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPTableDataSource.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPTableDataSource.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -526,8 +440,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPTableDataSource.cpp.o: CXX_COMPI
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPTableElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPTableElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -536,8 +448,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPTableElement.cpp.o: CXX_COMPILER
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPTableRow.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPTableRow.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -546,8 +456,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPTableRow.cpp.o: CXX_COMPILER__sp
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPTableRowElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPTableRowElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -556,8 +464,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPTableRowElement.cpp.o: CXX_COMPI
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPTextElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPTextElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -566,8 +472,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPTextElement.cpp.o: CXX_COMPILER_
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPTitleElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPTitleElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -576,8 +480,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPTitleElement.cpp.o: CXX_COMPILER
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPTreeItem.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPTreeItem.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -586,8 +488,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPTreeItem.cpp.o: CXX_COMPILER__sp
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPTreeViewElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPTreeViewElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -596,8 +496,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPTreeViewElement.cpp.o: CXX_COMPI
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPUri.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPUri.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -606,8 +504,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPUri.cpp.o: CXX_COMPILER__spacify
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPVBoxElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPVBoxElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -616,8 +512,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPVBoxElement.cpp.o: CXX_COMPILER_
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPViewElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPViewElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -626,8 +520,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPViewElement.cpp.o: CXX_COMPILER_
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPViewStackElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPViewStackElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -636,8 +528,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPViewStackElement.cpp.o: CXX_COMP
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/SPWindowElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/SPWindowElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -646,8 +536,6 @@ build CMakeFiles/spacify-client.dir/space/src/SPWindowElement.cpp.o: CXX_COMPILE
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/Space.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/Space.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -656,8 +544,6 @@ build CMakeFiles/spacify-client.dir/space/src/Space.cpp.o: CXX_COMPILER__spacify
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/space/src/libspace.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/space/src/libspace.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -666,8 +552,6 @@ build CMakeFiles/spacify-client.dir/space/src/libspace.cpp.o: CXX_COMPILER__spac
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/space/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/spacify/src/ArtistOverView.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/spacify/src/ArtistOverView.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -676,8 +560,6 @@ build CMakeFiles/spacify-client.dir/spacify/src/ArtistOverView.cpp.o: CXX_COMPIL
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spacify/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/spacify/src/ArtistView.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/spacify/src/ArtistView.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -686,8 +568,6 @@ build CMakeFiles/spacify-client.dir/spacify/src/ArtistView.cpp.o: CXX_COMPILER__
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spacify/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/spacify/src/DoctrineView.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/spacify/src/DoctrineView.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -696,8 +576,6 @@ build CMakeFiles/spacify-client.dir/spacify/src/DoctrineView.cpp.o: CXX_COMPILER
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spacify/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/spacify/src/MainElement.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/spacify/src/MainElement.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -706,8 +584,6 @@ build CMakeFiles/spacify-client.dir/spacify/src/MainElement.cpp.o: CXX_COMPILER_
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spacify/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/spacify/src/PlayQueueView.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/spacify/src/PlayQueueView.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -716,8 +592,6 @@ build CMakeFiles/spacify-client.dir/spacify/src/PlayQueueView.cpp.o: CXX_COMPILE
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spacify/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/spacify/src/SpacifyApp.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/spacify/src/SpacifyApp.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -726,8 +600,6 @@ build CMakeFiles/spacify-client.dir/spacify/src/SpacifyApp.cpp.o: CXX_COMPILER__
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spacify/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/spacify/src/StartFeature.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/spacify/src/StartFeature.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -736,8 +608,6 @@ build CMakeFiles/spacify-client.dir/spacify/src/StartFeature.cpp.o: CXX_COMPILER
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spacify/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/spacify/src/StartView.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/spacify/src/StartView.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -746,8 +616,6 @@ build CMakeFiles/spacify-client.dir/spacify/src/StartView.cpp.o: CXX_COMPILER__s
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spacify/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/spacify/src/TopListView.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/spacify/src/TopListView.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -756,8 +624,6 @@ build CMakeFiles/spacify-client.dir/spacify/src/TopListView.cpp.o: CXX_COMPILER_
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spacify/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/spacify/src/UserView.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/spacify/src/UserView.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -766,8 +632,6 @@ build CMakeFiles/spacify-client.dir/spacify/src/UserView.cpp.o: CXX_COMPILER__sp
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spacify/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/spacify/src/WhatsNewView.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/spacify/src/WhatsNewView.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -776,8 +640,6 @@ build CMakeFiles/spacify-client.dir/spacify/src/WhatsNewView.cpp.o: CXX_COMPILER
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spacify/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/spacify/src/main.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/spacify/src/main.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -786,8 +648,6 @@ build CMakeFiles/spacify-client.dir/spacify/src/main.cpp.o: CXX_COMPILER__spacif
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/spacify/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/wxwidgets/src/SpaceFrame.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/wxwidgets/src/SpaceFrame.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -796,8 +656,6 @@ build CMakeFiles/spacify-client.dir/wxwidgets/src/SpaceFrame.cpp.o: CXX_COMPILER
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/wxwidgets/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/wxwidgets/src/SpaceWidget.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/wxwidgets/src/SpaceWidget.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -806,8 +664,6 @@ build CMakeFiles/spacify-client.dir/wxwidgets/src/SpaceWidget.cpp.o: CXX_COMPILE
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/wxwidgets/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 build CMakeFiles/spacify-client.dir/wxwidgets/src/WxWidgetsGraphicsContext.cpp.o: CXX_COMPILER__spacify-client_unscanned_Debug /Users/buddhalow/Documents/spacify-client/wxwidgets/src/WxWidgetsGraphicsContext.cpp || cmake_object_order_depends_target_spacify-client
   CONFIG = Debug
@@ -816,8 +672,6 @@ build CMakeFiles/spacify-client.dir/wxwidgets/src/WxWidgetsGraphicsContext.cpp.o
   INCLUDES = -I/opt/homebrew/include -I/opt/homebrew/include/lua -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/Users/buddhalow/Documents/spacify-client/include -I/Users/buddhalow/Documents/spacify-client/spacify/include -I/Users/buddhalow/Documents/spacify-client/space/include -I/Users/buddhalow/Documents/spacify-client/wxwidgets/include
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   OBJECT_FILE_DIR = CMakeFiles/spacify-client.dir/wxwidgets/src
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
-  TARGET_PDB = spacify-client.pdb
 
 
 # =============================================================================
@@ -827,7 +681,7 @@ build CMakeFiles/spacify-client.dir/wxwidgets/src/WxWidgetsGraphicsContext.cpp.o
 #############################################
 # Link the executable spacify-client
 
-build spacify-client: CXX_EXECUTABLE_LINKER__spacify-client_Debug CMakeFiles/spacify-client.dir/space/src/ISPRequestHandler.cpp.o CMakeFiles/spacify-client.dir/space/src/SPAppFooterElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPAppHeaderElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPBoxElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPButtonElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPClassicSkin.cpp.o CMakeFiles/spacify-client.dir/space/src/SPColor.cpp.o CMakeFiles/spacify-client.dir/space/src/SPContainerViewElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPEntity.cpp.o CMakeFiles/spacify-client.dir/space/src/SPEventArgs.cpp.o CMakeFiles/spacify-client.dir/space/src/SPFeatureElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPFlowElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPFontStyle.cpp.o CMakeFiles/spacify-client.dir/space/src/SPGraphicsContext.cpp.o CMakeFiles/spacify-client.dir/space/src/SPHBoxElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPHTML.cpp.o CMakeFiles/spacify-client.dir/space/src/SPHeaderElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPImage.cpp.o CMakeFiles/spacify-client.dir/space/src/SPImageElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPImageSkin.cpp.o CMakeFiles/spacify-client.dir/space/src/SPInfoElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPInputElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPInputEventArgs.cpp.o CMakeFiles/spacify-client.dir/space/src/SPLinkElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPMessageType.cpp.o CMakeFiles/spacify-client.dir/space/src/SPMockTableDataSource.cpp.o CMakeFiles/spacify-client.dir/space/src/SPMouseEventArgs.cpp.o CMakeFiles/spacify-client.dir/space/src/SPNavigateEventArgs.cpp.o CMakeFiles/spacify-client.dir/space/src/SPNode.cpp.o CMakeFiles/spacify-client.dir/space/src/SPObservable.cpp.o CMakeFiles/spacify-client.dir/space/src/SPRequest.cpp.o CMakeFiles/spacify-client.dir/space/src/SPResource.cpp.o CMakeFiles/spacify-client.dir/space/src/SPResourceElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPResponse.cpp.o CMakeFiles/spacify-client.dir/space/src/SPServer.cpp.o CMakeFiles/spacify-client.dir/space/src/SPSkin.cpp.o CMakeFiles/spacify-client.dir/space/src/SPSpiderServer.cpp.o CMakeFiles/spacify-client.dir/space/src/SPSplitterElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPStandardTableDataSource.cpp.o CMakeFiles/spacify-client.dir/space/src/SPStylesheet.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTabBarElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTabbarView.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTabbarViewElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTableCell.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTableColumn.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTableColumnHeader.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTableDataSource.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTableElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTableRow.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTableRowElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTextElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTitleElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTreeItem.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTreeViewElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPUri.cpp.o CMakeFiles/spacify-client.dir/space/src/SPVBoxElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPViewElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPViewStackElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPWindowElement.cpp.o CMakeFiles/spacify-client.dir/space/src/Space.cpp.o CMakeFiles/spacify-client.dir/space/src/libspace.cpp.o CMakeFiles/spacify-client.dir/spacify/src/ArtistOverView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/ArtistView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/DoctrineView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/MainElement.cpp.o CMakeFiles/spacify-client.dir/spacify/src/PlayQueueView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/SpacifyApp.cpp.o CMakeFiles/spacify-client.dir/spacify/src/StartFeature.cpp.o CMakeFiles/spacify-client.dir/spacify/src/StartView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/TopListView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/UserView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/WhatsNewView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/main.cpp.o CMakeFiles/spacify-client.dir/wxwidgets/src/SpaceFrame.cpp.o CMakeFiles/spacify-client.dir/wxwidgets/src/SpaceWidget.cpp.o CMakeFiles/spacify-client.dir/wxwidgets/src/WxWidgetsGraphicsContext.cpp.o | /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/libexpat.tbd /opt/homebrew/lib/liblua5.4.dylib /opt/homebrew/lib/libpng.dylib
+build spacify-client: CXX_EXECUTABLE_LINKER__spacify-client_Debug CMakeFiles/spacify-client.dir/space/src/ISPRequestHandler.cpp.o CMakeFiles/spacify-client.dir/space/src/SPAppFooterElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPAppHeaderElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPBoxElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPButtonElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPClassicSkin.cpp.o CMakeFiles/spacify-client.dir/space/src/SPColor.cpp.o CMakeFiles/spacify-client.dir/space/src/SPContainerViewElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPEntity.cpp.o CMakeFiles/spacify-client.dir/space/src/SPEventArgs.cpp.o CMakeFiles/spacify-client.dir/space/src/SPFeatureElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPFlowElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPFontStyle.cpp.o CMakeFiles/spacify-client.dir/space/src/SPGraphicsContext.cpp.o CMakeFiles/spacify-client.dir/space/src/SPHBoxElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPHTML.cpp.o CMakeFiles/spacify-client.dir/space/src/SPHeaderElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPImage.cpp.o CMakeFiles/spacify-client.dir/space/src/SPImageElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPImageSkin.cpp.o CMakeFiles/spacify-client.dir/space/src/SPInfoElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPInputElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPInputEventArgs.cpp.o CMakeFiles/spacify-client.dir/space/src/SPLinkElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPMessageType.cpp.o CMakeFiles/spacify-client.dir/space/src/SPMockTableDataSource.cpp.o CMakeFiles/spacify-client.dir/space/src/SPMouseEventArgs.cpp.o CMakeFiles/spacify-client.dir/space/src/SPNavigateEventArgs.cpp.o CMakeFiles/spacify-client.dir/space/src/SPNode.cpp.o CMakeFiles/spacify-client.dir/space/src/SPObservable.cpp.o CMakeFiles/spacify-client.dir/space/src/SPRequest.cpp.o CMakeFiles/spacify-client.dir/space/src/SPResource.cpp.o CMakeFiles/spacify-client.dir/space/src/SPResourceElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPResponse.cpp.o CMakeFiles/spacify-client.dir/space/src/SPServer.cpp.o CMakeFiles/spacify-client.dir/space/src/SPSkin.cpp.o CMakeFiles/spacify-client.dir/space/src/SPSpiderServer.cpp.o CMakeFiles/spacify-client.dir/space/src/SPSpiderViewElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPSplitterElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPStandardTableDataSource.cpp.o CMakeFiles/spacify-client.dir/space/src/SPStylesheet.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTabBarElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTabbarView.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTabbarViewElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTableCell.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTableColumn.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTableColumnHeader.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTableDataSource.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTableElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTableRow.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTableRowElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTextElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTitleElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTreeItem.cpp.o CMakeFiles/spacify-client.dir/space/src/SPTreeViewElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPUri.cpp.o CMakeFiles/spacify-client.dir/space/src/SPVBoxElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPViewElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPViewStackElement.cpp.o CMakeFiles/spacify-client.dir/space/src/SPWindowElement.cpp.o CMakeFiles/spacify-client.dir/space/src/Space.cpp.o CMakeFiles/spacify-client.dir/space/src/libspace.cpp.o CMakeFiles/spacify-client.dir/spacify/src/ArtistOverView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/ArtistView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/DoctrineView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/MainElement.cpp.o CMakeFiles/spacify-client.dir/spacify/src/PlayQueueView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/SpacifyApp.cpp.o CMakeFiles/spacify-client.dir/spacify/src/StartFeature.cpp.o CMakeFiles/spacify-client.dir/spacify/src/StartView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/TopListView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/UserView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/WhatsNewView.cpp.o CMakeFiles/spacify-client.dir/spacify/src/main.cpp.o CMakeFiles/spacify-client.dir/wxwidgets/src/SpaceFrame.cpp.o CMakeFiles/spacify-client.dir/wxwidgets/src/SpaceWidget.cpp.o CMakeFiles/spacify-client.dir/wxwidgets/src/WxWidgetsGraphicsContext.cpp.o | /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/libexpat.tbd /opt/homebrew/lib/liblua5.4.dylib /opt/homebrew/lib/libpng.dylib
   CONFIG = Debug
   FLAGS = -I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/opt/homebrew/opt/expat/include -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__  -g -arch arm64
   LINK_FLAGS = -L/usr/local/opt/libffi/lib
@@ -835,9 +689,8 @@ build spacify-client: CXX_EXECUTABLE_LINKER__spacify-client_Debug CMakeFiles/spa
   OBJECT_DIR = CMakeFiles/spacify-client.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/spacify-client.dir/
   TARGET_FILE = spacify-client
-  TARGET_PDB = spacify-client.pdb
+  TARGET_PDB = spacify-client.dbg
 
 
 #############################################
@@ -882,14 +735,14 @@ build all: phony spacify-client
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja /Users/buddhalow/Documents/spacify-client/cmake_install.cmake: RERUN_CMAKE | /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCCompiler.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCCompilerABI.c /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCXXCompiler.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCXXCompilerABI.cpp /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCompilerIdDetection.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeDetermineCCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeDetermineCXXCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeDetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeDetermineCompilerABI.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeDetermineCompilerId.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeDetermineCompilerSupport.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeDetermineSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeFindBinUtils.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeParseImplicitIncludeInfo.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeParseImplicitLinkInfo.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeParseLibraryArchitecture.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeSystem.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeTestCCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeTestCXXCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeTestCompilerCommon.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/ADSP-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/ARMCC-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/ARMClang-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/AppleClang-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Borland-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Bruce-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Clang-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Compaq-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Cray-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/CrayClang-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/GHS-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/GNU-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/HP-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/IAR-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Intel-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/LCC-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/MSVC-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/NVHPC-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/OrangeC-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/PGI-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/PathScale-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/SCO-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/SDCC-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/SunPro-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/TI-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/TIClang-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Tasking-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Watcom-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/XL-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/XLClang-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/zOS-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindEXPAT.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindLua.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindPNG.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindPackageHandleStandardArgs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindPackageMessage.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindPkgConfig.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindZLIB.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindwxWidgets.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeCLinkerInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeCXXLinkerInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeCommonLinkerInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeDetermineLinkerId.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeInspectCLinker.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeInspectCXXLinker.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/FeatureTesting.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Linker/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Linker/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Linker/AppleClang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Darwin-Determine-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Linker/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Linker/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Linker/Apple-AppleClang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/UnixPaths.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/SelectLibraryConfigurations.cmake /opt/homebrew/lib/cmake/Boost-1.89.0/BoostConfig.cmake /opt/homebrew/lib/cmake/Boost-1.89.0/BoostConfigVersion.cmake /opt/homebrew/lib/cmake/boost_headers-1.89.0/boost_headers-config-version.cmake /opt/homebrew/lib/cmake/boost_headers-1.89.0/boost_headers-config.cmake CMakeCache.txt CMakeFiles/4.0.2/CMakeCCompiler.cmake CMakeFiles/4.0.2/CMakeCXXCompiler.cmake CMakeFiles/4.0.2/CMakeSystem.cmake CMakeLists.txt
+build build.ninja /Users/buddhalow/Documents/spacify-client/cmake_install.cmake: RERUN_CMAKE | /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindEXPAT.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindLua.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindPNG.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindPackageHandleStandardArgs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindPackageMessage.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindPkgConfig.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindZLIB.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindwxWidgets.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeCLinkerInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeCXXLinkerInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeCommonLinkerInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Linker/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Linker/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Linker/AppleClang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Linker/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Linker/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Linker/Apple-AppleClang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/UnixPaths.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/SelectLibraryConfigurations.cmake /opt/homebrew/lib/cmake/Boost-1.89.0/BoostConfig.cmake /opt/homebrew/lib/cmake/Boost-1.89.0/BoostConfigVersion.cmake /opt/homebrew/lib/cmake/boost_headers-1.89.0/boost_headers-config-version.cmake /opt/homebrew/lib/cmake/boost_headers-1.89.0/boost_headers-config.cmake CMakeCache.txt CMakeFiles/4.0.2/CMakeCCompiler.cmake CMakeFiles/4.0.2/CMakeCXXCompiler.cmake CMakeFiles/4.0.2/CMakeSystem.cmake CMakeLists.txt
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCCompiler.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCCompilerABI.c /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCXXCompiler.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCXXCompilerABI.cpp /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCompilerIdDetection.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeDetermineCCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeDetermineCXXCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeDetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeDetermineCompilerABI.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeDetermineCompilerId.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeDetermineCompilerSupport.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeDetermineSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeFindBinUtils.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeParseImplicitIncludeInfo.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeParseImplicitLinkInfo.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeParseLibraryArchitecture.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeSystem.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeTestCCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeTestCXXCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeTestCompilerCommon.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/ADSP-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/ARMCC-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/ARMClang-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/AppleClang-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Borland-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Bruce-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Clang-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Compaq-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Cray-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/CrayClang-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/GHS-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/GNU-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/HP-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/IAR-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Intel-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/LCC-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/MSVC-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/NVHPC-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/OrangeC-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/PGI-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/PathScale-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/SCO-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/SDCC-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/SunPro-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/TI-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/TIClang-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Tasking-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Watcom-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/XL-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/XLClang-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/zOS-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindEXPAT.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindLua.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindPNG.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindPackageHandleStandardArgs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindPackageMessage.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindPkgConfig.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindZLIB.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindwxWidgets.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeCLinkerInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeCXXLinkerInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeCommonLinkerInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeDetermineLinkerId.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeInspectCLinker.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeInspectCXXLinker.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/FeatureTesting.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Linker/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Linker/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Linker/AppleClang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Darwin-Determine-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Linker/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Linker/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Linker/Apple-AppleClang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/UnixPaths.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/SelectLibraryConfigurations.cmake /opt/homebrew/lib/cmake/Boost-1.89.0/BoostConfig.cmake /opt/homebrew/lib/cmake/Boost-1.89.0/BoostConfigVersion.cmake /opt/homebrew/lib/cmake/boost_headers-1.89.0/boost_headers-config-version.cmake /opt/homebrew/lib/cmake/boost_headers-1.89.0/boost_headers-config.cmake CMakeCache.txt CMakeFiles/4.0.2/CMakeCCompiler.cmake CMakeFiles/4.0.2/CMakeCXXCompiler.cmake CMakeFiles/4.0.2/CMakeSystem.cmake CMakeLists.txt: phony
+build /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindEXPAT.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindLua.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindPNG.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindPackageHandleStandardArgs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindPackageMessage.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindPkgConfig.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindZLIB.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/FindwxWidgets.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeCLinkerInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeCXXLinkerInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeCommonLinkerInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Linker/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Linker/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Linker/AppleClang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Linker/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Linker/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Linker/Apple-AppleClang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/UnixPaths.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/SelectLibraryConfigurations.cmake /opt/homebrew/lib/cmake/Boost-1.89.0/BoostConfig.cmake /opt/homebrew/lib/cmake/Boost-1.89.0/BoostConfigVersion.cmake /opt/homebrew/lib/cmake/boost_headers-1.89.0/boost_headers-config-version.cmake /opt/homebrew/lib/cmake/boost_headers-1.89.0/boost_headers-config.cmake CMakeCache.txt CMakeFiles/4.0.2/CMakeCCompiler.cmake CMakeFiles/4.0.2/CMakeCXXCompiler.cmake CMakeFiles/4.0.2/CMakeSystem.cmake CMakeLists.txt: phony
 
 
 #############################################

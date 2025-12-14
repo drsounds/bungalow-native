@@ -21,6 +21,7 @@
 #include "SPFontStyle.h"
 #include "SPImageElement.h"
 #include "SPInputElement.h"
+#include "SPViewStackElement.h"
 #include "SPTabbarViewElement.h"
 #include "SPTextElement.h"
 #include "SPViewElement.h"
@@ -104,6 +105,9 @@ namespace space {
 		SPObject *sender,
 	    SPEventArgs *data
 	) {
+		if (event == "load") {
+			cout << "Load";
+		}
 		int ret = SPNode::notify(event, sender, data);
 		for (auto *child: *this->children) {
 			if (data->getType() == "SPMouseEventArgs") {
@@ -144,6 +148,12 @@ namespace space {
 						{
 							element->setState(SP_STATE_ACTIVE);
 							element->mouseDown((SPNode *)element, data);
+							ret = 1;
+							element->notify(event, element, data);
+
+						}
+						if (event == "load")
+						{
 							ret = 1;
 							element->notify(event, element, data);
 
@@ -433,33 +443,60 @@ namespace space {
 		request.Start();
 	}
 
+	void SPElement::onLoad() {
+	}
+
 	void SPElement::loadXUL(const string &filename) {
 		wxXmlDocument doc;
 		if (doc.Load(filename)) {
-			wxXmlNode *root = doc.GetRoot();
-			SPElement *elm = this->parseElement(root, this, this);
-			elm->setIntegerAttribute("flex", 1);
-			this->appendChild(elm);
+			this->loadXULFromXMLDoc(doc);
 		}
-		this->pack();
-		this->invalidate();
 	}
 
-	void SPElement::setInnerXUL(const string &string) {
-		wxMemoryInputStream stream(string.data(), string.size());
+	void SPElement::setInnerXUL(const string &uri) {
+		wxMemoryInputStream stream(uri.data(), uri.size());
 		wxXmlDocument doc;
 		if (doc.Load(stream)) {
-			wxXmlNode *root = doc.GetRoot();
+			this->loadXULFromXMLDoc(doc);
+		}
+	}
+	void SPElement::loadXULFromXMLDoc(const wxXmlDocument& xmlDoc) {
+		wxXmlNode *root = xmlDoc.GetRoot();
+		this->clear();
+		string thisType = this->getType();
+		if (root->GetName() == "view") {
+			SPViewStackElement *viewStack = (SPViewStackElement *)this->getViewStackElement();
+		 	for (wxXmlNode *child = root->GetChildren(); child; child = child->GetNext()) {
+		 		SPElement *elm = this->parseElement(child, this, this);
+				this->appendChild(elm);
+			}
+		} else {
 			SPElement *elm = this->parseElement(root, this, this);
 			elm->setIntegerAttribute("flex", 1);
 			this->appendChild(elm);
-			this->pack();
 		}
 		this->pack();
 		this->invalidate();
-
+		string type = this->getType();
+		cout << type << endl;
+		this->notify("load", this, new SPEventArgs(this));
 	}
-
+	SPElement* SPElement::getTabBarViewElement() {
+		for (auto & it : *this->children) {
+			if (it->getType() == "tabbarview") {
+				return (SPElement *)it;
+			}
+		}
+		return nullptr;
+	}
+	SPElement* SPElement::getViewStackElement() {
+		for (auto & it : *this->children) {
+			if (it->getType() == "viewstack") {
+				return (SPElement *)it;
+			}
+		}
+		return nullptr;
+	}
 	void SPElement::loadSrc(const string &uri) {
 		// Create the request object
 		if (uri.empty()) {
@@ -468,7 +505,6 @@ namespace space {
 		this->setStringAttributeSilently("src", uri);
 		this->notify("unload", this, new SPEventArgs(this));
 		this->request("GET", uri, "");
-		this->notify("load", this, new SPEventArgs(this));
 	}
 
 	void SPElement::onAttributeChanged(SPObject* sender, SPEventArgs* e) {
@@ -696,6 +732,13 @@ namespace space {
 
 	std::string SPElement::getType() {
 	    return "element";
+	}
+
+	void SPElement::setUri(const string& uri) {
+		SPNode::setUri(uri);
+		if (this->getViewStackElement() != nullptr) {
+			this->getViewStackElement()->setUri(uri);
+		}
 	}
 
 	void SPElement::paint(int x, int y, int width, int height, SPGraphicsContext *c)
