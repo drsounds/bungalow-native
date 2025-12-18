@@ -103,7 +103,7 @@ void SPTreeViewElement::paint(int x, int y, int width, int height, SPGraphicsCon
 	{
 		bgColor = bgColor.tint(*this->getTintColor());
 	}
-	if (!this->getSkin()->drawElement(g, this, "", sp_rectangle { x, y, width, height, 0 })) {
+ 	if (!this->getSkin()->drawElement(g, this, "", sp_rectangle { x, y, width, height, 0 })) {
 		g->fillRectangle(x, y, width, height, bgColor);
 	}
 	SPColor color = this->getForegroundColor();

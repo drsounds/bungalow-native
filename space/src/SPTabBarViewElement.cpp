@@ -1,6 +1,7 @@
 #include "SPTabbarViewElement.h"
 
 #include "SPElement.h"
+#include "SPSectionElement.h"
 #include "SPViewElement.h"
 #include "SPTabBarElement.h"
 #include "SPUri.h"
@@ -53,11 +54,12 @@ namespace space {
 		this->setFlex( 1);
         this->tabBar = new SPTabBarElement(this);
         this->tabStack = new SPTabStackElement(this);
-        this->tabStack->setFlex( 1);
         this->tabBar->setHeight(28);
         this->appendChild(this->tabBar);
-        this->tabBar->addEventListener(string("tabselected"), static_cast<SPCallback>(&SPTabBarViewElement::onTabSelected), this, this);
-      	this->addEventListener("treechanged", SPCallback(&SPTabBarViewElement::onTreeChanged), this, this);
+		this->appendChild(this->tabStack);
+        this->tabStack->setFlex( 1);
+        this->tabBar->addEventListener(string("tabselected"), static_cast<SPCallback>(&SPTabBarViewElement::onTabSelected), this, tabBar);
+      	this->tabStack->addEventListener("treechanged", SPCallback(&SPTabBarViewElement::onTreeChanged), this, tabStack);
 		this->addEventListener("unload", SPCallback(&SPTabBarViewElement::onUnload), this, this);
 		this->addEventListener("mousedown", SPCallback(&SPTabBarViewElement::onClick), this, this);
 		this->addEventListener("load", SPCallback(&SPTabBarViewElement::onLoad), this, this);
@@ -71,6 +73,9 @@ namespace space {
 		this->tabBar->clear();
 		this->tabStack->clear();
 	}
+	SPElement* SPTabBarViewElement::getSlotElement() {
+		return this->tabStack;
+	}
 	void SPTabBarViewElement::onUnload(SPObject *sender, SPEventArgs *e) {
 	    this->tabBar->clear();
     }
@@ -80,9 +85,9 @@ namespace space {
 		return ret;
 	}
 	void SPTabBarViewElement::onTreeChanged(SPObject *sender, SPEventArgs *e) {
-		SPElement *view = (SPElement *)sender;
+		SPTabStackElement *tabStack = (SPTabStackElement *)sender;
 		string uri = this->getUri();
-		string tagName = view->getTagName();
+		string tagName = tabStack->getTagName();
 		cout << "tagName: " << tagName << endl;
 		if (uri.empty()) return;
 	    SPNodeTreeEventArgs *args = (SPNodeTreeEventArgs *)e;
@@ -95,14 +100,13 @@ namespace space {
     	} else if (args->getAction() == "append") {
 		    SPElement *elm = dynamic_cast<SPElement *>(args->getNode());
 	    	if (elm->getTagName() == "section") {
-	    		auto *view = dynamic_cast<SPViewElement *>(elm);
+	    		auto *view = dynamic_cast<SPSectionElement *>(elm);
 	    		if (view == nullptr) return;
 	    		string viewUri = uri + "#" + view->getId();
 	    		view->setUri(viewUri);
 	    		view->setFlex( 1);
+	    		assert(view->getParentElement() == tabStack);
 	    		this->tabBar->addTab(elm->getId(), view->getStringAttribute("title", elm->getId()), view->getUri());
-	    		this->removeChild(elm);
- 	    		this->tabStack->appendChild(view);
 	    	}
 	    }
     }

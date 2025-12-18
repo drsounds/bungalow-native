@@ -7,5 +7,9 @@
 namespace space {
 SPSectionElement::SPSectionElement(SPElement *parent) : SPVBoxElement(parent) {
 	this->setTagName("section");
+	this->setHeight(300);
+}
+void SPSectionElement::pack() {
+	SPVBoxElement::pack();
 }
 }

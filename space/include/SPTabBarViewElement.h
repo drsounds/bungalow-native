@@ -25,6 +25,7 @@ namespace space
         SPElement *getViewStackElement() override;
         void onClick(SPObject *sender, SPEventArgs *e);
         void clear() override;
+        virtual SPElement* getSlotElement() override;
         void onUnload(SPObject *sender, SPEventArgs *e);
         void onTreeChanged(SPObject *sender, SPEventArgs *e);
         virtual ~SPTabBarViewElement();

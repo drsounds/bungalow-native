@@ -461,16 +461,19 @@ namespace space {
 			this->loadXULFromXMLDoc(doc);
 		}
 	}
+	SPElement *SPElement::getSlotElement() {
+		return this;
+	}
 	void SPElement::loadXULFromXMLDoc(const wxXmlDocument& xmlDoc) {
 		wxXmlNode *root = xmlDoc.GetRoot();
 		this->clear();
 		string thisType = this->getType();
 		if (root->GetName() == "view") {
-			SPViewStackElement *viewStack = (SPViewStackElement *)this->getViewStackElement();
 		 	for (wxXmlNode *child = root->GetChildren(); child; child = child->GetNext()) {
 		 		SPElement *elm = this->parseElement(child, this, this);
 				elm->setFlex( 1);
-				this->appendChild(elm);
+		 		SPElement *slot = this->getSlotElement();
+		 		slot->appendChild(elm);
 			}
 		} else {
 			SPElement *elm = this->parseElement(root, this, this);
@@ -779,7 +782,7 @@ namespace space {
     void SPElement::resizeToText(bool width, bool height) {
 		sp_rectangle bounds = this->getTextBounds();
 		if (width) {
-			this->setWidth(bounds.width);
+			this->setWidth(bounds.width * 4);
 		}
 		if (height) {
 			this->setHeight(bounds.height * 2);
@@ -854,11 +857,12 @@ namespace space {
 		SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 255));
 		int fontSize = this->getIntegerAttribute("size", 12);
 		string fontFamily = this->getStringAttribute("font", "MS Sans Serif");
+		/*
 		c->drawRectangle(rect2.x, rect2.y, width, height, SPColor(255, 0, 0,255));
-		c->drawString(this->getType(), SPFontStyle(fontFamily, fontSize, fontSize / 2, false, false), fgColor, rect2.x, rect2.y, this->getWidth(), this->getHeight());
+		c->drawString(this->getType(), SPFontStyle(fontFamily, fontSize, fontSize / 2, false, false), fgColor, rect2.x, rect2.y, rect2.width,rect2.height);
 		const string strLoc = "type=" + this->getType() + "&x=" + std::to_string(x) + "&y=" + std::to_string(y) + "&width=" + std::to_string(width) + "&height=" + std::to_string(height) + "&flex=" + std::to_string(this->getFlex());
-		c->drawString(strLoc, SPFontStyle(fontFamily, fontSize, fontSize / 2, false, false), SPColor(0, 0, 255, 255), rect2.x + (rect2.width / 2), rect2.y + (rect2.height / 2), this->getWidth(), this->getHeight());
-
+		c->drawString(strLoc, SPFontStyle(fontFamily, fontSize, fontSize / 2, false, false), SPColor(0, 0, 255, 255), rect2.x + (rect2.width / 2), rect2.y + (rect2.height / 2), rect2.width,rect2.height);
+		*/
 		if (clipView) {
 	        c->declipRect();
 		}

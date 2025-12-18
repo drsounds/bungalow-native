@@ -135,6 +135,7 @@ namespace space {
         viewStack->appendChild(new views::PlayQueueView(viewStack));
         body->appendChild(viewStack);
 
+    	/*
         body->appendChild(new SPSplitterElement(body));
         auto *rightSidebar = new SPVBoxElement(body);
         rightSidebar->setId("sidebar");
@@ -145,7 +146,7 @@ namespace space {
         footer->setHeight(32);
         footer->setId("footer");
         this->appendChild(footer);
-
+		*/
         // Add header buttons
         this->navigate("spacify:start:overview");
     }

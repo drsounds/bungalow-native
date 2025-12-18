@@ -22,4 +22,11 @@ void SPTabStackElement::setTabId(const string& tabId) {
 }
 SPTabStackElement::SPTabStackElement(SPElement *parent) : SPElement(parent) {
 }
+void SPTabStackElement::pack() {
+	for (auto child : *this->children) {
+		SPElement *elm = (SPElement *)child;
+		elm->setWidth(this->getWidth());
+		elm->setHeight(this->getHeight());
+	}
+}
 }

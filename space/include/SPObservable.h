@@ -20,7 +20,7 @@ namespace space {
             void dispatchEvent(const string& event, SPEventArgs *data, SPObject *sender);
             virtual int notify(const string &event, SPObject *sender,
                                SPEventArgs *data);
-            void addEventListener(const string& event, const SPCallback& callback, SPElement* node, SPElement* sender);
+            void addEventListener(const string& event, const SPCallback& callback, SPElement* responder, SPElement* sender);
             virtual ~SPObservable();
         protected:
             vector<SPObserver *> *observers;

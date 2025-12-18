@@ -7,11 +7,11 @@ namespace space {
     class SPObserver {
         string m_event;
         SPCallback m_callback;
-        SPElement* m_node;
+        SPElement* m_responder;
     	SPElement *m_sender;
     public:
-        SPElement* getNode() const {
-            return this->m_node;
+        SPElement* getResponder() const {
+            return this->m_responder;
         }
         string getEvent() {
             return this->m_event;
@@ -19,10 +19,10 @@ namespace space {
         SPCallback getCallback() const {
             return this->m_callback;
         }
-        SPObserver(const string& event, const SPCallback& callback, SPElement* node, SPElement *sender) {
+        SPObserver(const string& event, const SPCallback& callback, SPElement* responder, SPElement *sender) {
             this->m_event = event;
             this->m_callback = callback;
-            this->m_node = node;
+            this->m_responder = responder;
         	this->m_sender = sender;
         }
         ~SPObserver() = default;

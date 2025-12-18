@@ -184,6 +184,9 @@ bool SPClassicSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const stri
     }
     if (elm->getType() == "treeview")
     {
+    	if (elm->getColorScheme() == SP_COLOR_SCHEME_DARK) {
+    		bgColor = bgColor.lighten(0.28);
+    	}
         result = true;
         auto *treeView = dynamic_cast<SPTreeViewElement *>(elm);
         auto width = treeView->getWidth();

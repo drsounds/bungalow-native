@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <view>
-    <section bgcolor="#ff0000" title="Overview" id="overview">
+    <section title="Overview" id="overview">
         <text id="testtext">First view</text>
-        <text bg="#00ff00" id="time">Current time is ${now}</text>
+        <text bgcolor="#00ff00" id="time">Current time is ${now}</text>
         <button id="test_button" name="refresh" onclick="refresh">Test</button>
     </section>
     <section title="Test" id="test">

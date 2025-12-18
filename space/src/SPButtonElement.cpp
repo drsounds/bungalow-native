@@ -15,7 +15,7 @@ space::SPButtonElement::SPButtonElement(SPElement *parent) : SPElement(parent) {
 
 void space::SPButtonElement::pack() {
 	SPElement::pack();
-	this->resizeToText(false, true);
+	this->resizeToText(true, true);
 
 }
 

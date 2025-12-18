@@ -65,6 +65,7 @@ namespace space {
     	int getState() const {
     		return this->m_state;
     	}
+    	virtual SPElement *getSlotElement();
     	int getFlex() const {
     		return m_flex;
     	}
