@@ -17,7 +17,7 @@ void SPTreeViewElement::treeview_mousedown(SPObject *sender, SPEventArgs *e) {
     int top = 0;
     int y = args->getY() - treeView->getAbsoluteBounds()->y;
     sp_rectangle *bounds = treeView->getAbsoluteBounds();
-	for (vector<SPTreeItem *>::iterator it = treeView->items()->begin(); it != treeView->items()->end(); ++it) {
+	for (vector<SPTreeItem *>::iterator it = treeView->m_items->begin(); it != treeView->m_items->end(); ++it) {
 		SPTreeItem *item = static_cast<SPTreeItem *>(*it);
 		if (args->getY() > top + treeView->getY() && args->getY() < top + treeView->getY() + treeView->getItemHeight()) {
             item->setHighlighted(true);
@@ -48,7 +48,7 @@ void SPTreeViewElement::treeview_mouseup(SPObject *sender, SPEventArgs *e) {
     int top = 0;
     int y = args->getY() - treeView->getAbsoluteBounds()->y;
     sp_rectangle *bounds = treeView->getAbsoluteBounds();
-	for (vector<SPTreeItem *>::iterator it = treeView->items()->begin(); it != treeView->items()->end(); ++it) {
+	for (vector<SPTreeItem *>::iterator it = treeView->getItems()->begin(); it != treeView->getItems()->end(); ++it) {
 		SPTreeItem *item = static_cast<SPTreeItem *>(*it);
 		item->setHighlighted(false);
 		if (args->getY() > top + treeView->getY() && args->getY() < top + treeView->getY() + treeView->getItemHeight()) {
@@ -77,13 +77,13 @@ SPTreeViewElement::SPTreeViewElement(SPElement *parent)
 : SPElement(parent) {
 	this->setTagName("treeview");
 	this->setParentNode(parent);
-	this->mItems = new vector<SPTreeItem *>;
+	this->m_items = new vector<SPTreeItem *>;
 	this->itemHeight = 18;
 	this->addEventListener(string("mouseup"), SPCallback(&SPTreeViewElement::treeview_mouseup), this, this);
 }
 
 void SPTreeViewElement::addItem(SPTreeItem *item) {
-    this->mItems->push_back(item);
+    this->m_items->push_back(item);
 }
 void SPTreeViewElement::setItemHeight(int height) {
 	this->itemHeight = height;
@@ -110,7 +110,7 @@ void SPTreeViewElement::paint(int x, int y, int width, int height, SPGraphicsCon
 	int itemHeight = this->getItemHeight();
 
 	int top = 0;
-	for (vector<SPTreeItem *>::iterator it = this->mItems->begin(); it != this->mItems->end(); ++it) {
+	for (vector<SPTreeItem *>::iterator it = this->m_items->begin(); it != this->m_items->end(); ++it) {
 		SPTreeItem *item = static_cast<SPTreeItem *>(*it);
 		this->getSkin()->drawTreeItem(
 			g,

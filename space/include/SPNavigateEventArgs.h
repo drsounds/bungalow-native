@@ -6,17 +6,22 @@
 #define SPACIFYCLIENT_SPNAVIGATEEVENTARGS_H
 
 #include "SPEventArgs.h"
+#include "SPUri.h"
 
 namespace space
 {
     class SPObject;
     class SPNavigateEventArgs : public SPEventArgs
     {
+    	SPUri *uri;
     public:
-        explicit SPNavigateEventArgs(string url);
+        explicit SPNavigateEventArgs(const string& url);
         virtual ~SPNavigateEventArgs();
         string getUrl() {
             return this->url;
+        }
+    	SPUri *getUri() {
+	        return uri;
         }
         private:
         string url;

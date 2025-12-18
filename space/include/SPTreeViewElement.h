@@ -25,7 +25,7 @@ namespace space {
     };
     class SPTreeViewElement : public SPElement {
 	protected:
-		vector<SPTreeItem *> *mItems;
+		vector<SPTreeItem *> *m_items;
 		int itemHeight;
 	public:
         void treeview_mousedown(SPObject* sender, SPEventArgs* e);
@@ -34,10 +34,10 @@ namespace space {
         virtual string getType() override {
             return "treeview";
         }
-		void paint(int x, int y, int width, int height, SPGraphicsContext *g) override;
-        vector<SPTreeItem *> *items() {
-            return this->mItems;
+    	vector<SPTreeItem *> *getItems() const {
+	        return m_items;
         }
+		void paint(int x, int y, int width, int height, SPGraphicsContext *g) override;
 		void setItemHeight(int height);
 		int getItemHeight();
         void addItem(SPTreeItem *item);

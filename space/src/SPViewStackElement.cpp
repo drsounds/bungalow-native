@@ -6,6 +6,8 @@
 #include <regex>
 #include "SPWindowElement.h"
 #include "PlayQueueView.h"
+#include "SPUri.h"
+
 #include <vector>
 #include <boost/algorithm/string/predicate.hpp>
 inline bool ends_with(std::string const & value, std::string const & ending)
@@ -20,7 +22,7 @@ namespace space {
         string type = view->getType();
         // cout << "valid view: " << type << endl;
         ((SPElement *)child)->setVisible(false);
-        view->setIntegerAttribute("flex", 1);
+        view->setFlex( 1);
     	this->pack();
     }
     SPViewStackElement::SPViewStackElement() {
@@ -29,7 +31,7 @@ namespace space {
     }
 
     SPViewStackElement::SPViewStackElement(SPElement *parent)
-     : SPVBoxElement::SPVBoxElement(parent) {
+     : SPVBoxElement(parent) {
     	this->setTagName("viewstack");
         this->history = new std::stack<string>;
         this->future = new std::stack<string>;
@@ -37,40 +39,30 @@ namespace space {
     }
     void SPViewStackElement::pack() {
         SPVBoxElement::pack();
-         for (vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
-            SPNode *node = static_cast<SPNode *>(*it);
-            SPElement *view = (SPElement *)node;
-            string type = view->getType();
-            view->setIntegerAttribute("flex", 1);
-            view->setWidth(this->getWidth() - (view->getMargins()->bottom * 2 + this->getPadding()->bottom * 2));
-            // cout << "View of type: " << type << endl;
-            if (view->absoluteBounds != nullptr && this->absoluteBounds != nullptr) {
-                view->absoluteBounds->height = this->absoluteBounds->height;
-                view->absoluteBounds->width = this->absoluteBounds->width;
-            }
-         }
     }
     /**
      * Main navigation handler inside spacify
      **/
-    void SPViewStackElement::navigate(const string& uri) {
+    void SPViewStackElement::navigate(const string& value) {
         // TODO add navigation handler
         // Hide all views
         this->pack();
         this->invalidate();
         SPViewElement *newView = NULL;
         bool foundView = false;
+    	SPUri uri(value);
     	for (std::vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
     		SPNode *node = static_cast<SPNode *>(*it);
     		SPViewElement *view = (SPViewElement *)node;
     		string type = view->getType();
     		// std::cout << view->getType() << std::endl;
-    		if (view->acceptsUri(uri)) {
+    		if (view->acceptsUri(uri.getAddress())) {
     			//std::cout << uri << std::endl;
     			//std::cout << view->getType() << std::endl;
     			//cout << "View " << view->getType() << " shown" << endl;
     			view->setVisible(true);
-    			view->navigate(uri);
+    			view->navigate(uri.getAddress());
+    			view->setHash(uri.getHash());
     			activeView = view;
     		} else {
     			// cout << "View " << view->getType() << " hidden" << endl;

@@ -8,7 +8,8 @@ namespace space
     class SPViewElement;
     class SPViewStackElement;
     class SPTabBarElement;
-    class SPTabbarViewElement : public SPViewElement
+	class SPTabStackElement;
+    class SPTabBarViewElement : public SPViewElement
     {
     public:
         string getType() override
@@ -17,19 +18,20 @@ namespace space
         }
 		bool acceptsUri(const string &uri) override;
     	void onLoad(SPObject *sender, SPEventArgs *e);
+    	virtual void setHash(const string& hash) override;
         int onTabSelected(SPObject* sender, SPEventArgs* e);
-        SPTabbarViewElement();
-        SPTabbarViewElement(SPElement *parent);
+        SPTabBarViewElement();
+        SPTabBarViewElement(SPElement *parent);
         SPElement *getViewStackElement() override;
         void onClick(SPObject *sender, SPEventArgs *e);
         void clear() override;
         void onUnload(SPObject *sender, SPEventArgs *e);
         void onTreeChanged(SPObject *sender, SPEventArgs *e);
-        virtual ~SPTabbarViewElement();
+        virtual ~SPTabBarViewElement();
         virtual void navigate(const string& uri) override;
         void mouseDown(SPObject* sender, SPEventArgs* e) override;
     protected:
-        SPViewStackElement *viewStack;
+        SPTabStackElement *tabStack;
         SPTabBarElement *tabBar;
 
     private:

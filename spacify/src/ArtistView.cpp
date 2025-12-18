@@ -6,7 +6,7 @@
 
 namespace space {
 ArtistView::ArtistView(SPElement *parent)
- : SPTabbarViewElement(parent)
+ : SPTabBarViewElement(parent)
 {
     //ctor
 

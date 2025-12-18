@@ -47,7 +47,8 @@ namespace space {
         int z;
         int scrollX;
         int scrollY;
-        bool clipView = false;
+    	int m_flex = 0;
+        bool clipView = true;
         SPGradient *m_gradient;
         bool m_hasDefaultGradient = false;
         SPColor* m_tintColor;
@@ -63,6 +64,12 @@ namespace space {
     	boost::json::object getFormData();
     	int getState() const {
     		return this->m_state;
+    	}
+    	int getFlex() const {
+    		return m_flex;
+    	}
+    	void setFlex(int value) {
+    		this->m_flex = value;
     	}
 
 		SPElement *getDeepestElement(int level = 0);

@@ -8,12 +8,14 @@
 
 namespace space
 {
-    SPNavigateEventArgs::SPNavigateEventArgs(string url)
+    SPNavigateEventArgs::SPNavigateEventArgs(const string& url)
     {
         this->url = url;
+    	this->uri = new SPUri(url);
     }
 
     SPNavigateEventArgs::~SPNavigateEventArgs()
     {
+    	delete this->uri;
     }
 } // space

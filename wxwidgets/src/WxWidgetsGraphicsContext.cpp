@@ -46,7 +46,7 @@ namespace space
             // --------------------------------------------------------------
 
 
-            void WxWidgetsGraphicsContext::setClip(sp_rectangle rect) const
+            void WxWidgetsGraphicsContext::setClip(const sp_rectangle& rect)
             {
                 this->getPaintDC()->SetClippingRegion(rect.x - this->origo->x, rect.y - this->origo->y, rect.width, rect.height);
             }
@@ -309,12 +309,14 @@ namespace space
                 // Only supports text controls (“EDIT”)
                 if (elements->count(elm) == 0)
                 {
+                	int width = elm->getWidth();
+                	int height = elm->getHeight();
                     wxTextCtrl* ctrl = new wxTextCtrl(
                         this->m_window,
                         wxID_ANY,
                         "",
                         wxPoint(x, y),
-                        wxSize(w, h)
+                        wxSize(width, height)
                     );
 
                     (*elements)[elm] = ctrl;

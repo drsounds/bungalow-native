@@ -15,7 +15,7 @@
 #include <string>
 #include <thread>
 
-#include "SPTabbarViewElement.h"
+#include "SPTabBarViewElement.h"
 
 
 class Spider {
@@ -25,7 +25,7 @@ class Spider {
 namespace space
 {
 	class SPElement;
-	class SPSpiderElement : public SPTabbarViewElement {
+	class SPSpiderElement : public SPTabBarViewElement {
 		public:
 			explicit SPSpiderElement(SPElement *parent);
 			void start();

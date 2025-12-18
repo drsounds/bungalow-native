@@ -58,7 +58,7 @@ namespace space
         SPImage *loadImage(const string& bitmap) override;
         void drawImagePart(SPImage *image, int x, int y, int width, int height, int x1, int y1, int x2, int y2) override;
         virtual void drawSkinImage(string resourceId, int x, int y, int w, int h);
-        void setClip(sp_rectangle rect) const;
+        void setClip(const sp_rectangle& rect) override;
         void declipRect() override;
         void drawLine(int x1, int y1, int w, int h, space::SPColor color) override;
         void drawImage(SPImage *image, int x1, int y1, int w, int h) override;

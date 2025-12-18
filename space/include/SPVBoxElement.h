@@ -17,7 +17,7 @@ namespace space {
 		virtual string getType() override {
 			return "vbox";
 		}
-		void pack();
+		void pack() override;
 	};
 }
 #endif // VBOXELEMENT_H

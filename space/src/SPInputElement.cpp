@@ -16,6 +16,8 @@ SPInputElement::SPInputElement(SPElement *parent)
 
 void SPInputElement::paint(int x, int y, SPGraphicsContext *g) {
     SPElement::paint(x, y, g);
-    g->drawInputElement(this, x, y, this->getWidth(), this->getHeight());
+	int width = this->getWidth();
+	int height = this->getHeight();
+    g->drawInputElement(this, x, y, width, height);
 }
 }

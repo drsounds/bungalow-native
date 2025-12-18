@@ -1,11 +1,11 @@
 #ifndef TABBARVIEW_H
 #define TABBARVIEW_H
 
-class SPTabbarView
+class SPTabBarView
 {
     public:
-        SPTabbarView();
-        virtual ~SPTabbarView();
+        SPTabBarView();
+        virtual ~SPTabBarView();
     protected:
     private:
 };

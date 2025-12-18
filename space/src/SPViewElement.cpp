@@ -5,11 +5,11 @@
 using namespace std;
 
 namespace space {
-SPViewElement::SPViewElement() : SPVBoxElement() {
+SPViewElement::SPViewElement() {
 	this->setTagName("view");
 }
 SPViewElement::SPViewElement(SPElement *parent)
- : SPVBoxElement::SPVBoxElement(parent)
+ : SPVBoxElement(parent)
 {
 	this->setTagName("view");
     this->clipView = true;
@@ -23,7 +23,12 @@ void SPViewElement::scroll(int scrollX, int scrollY, int mouseX, int mouseY) {
     }
 }
 void SPViewElement::pack() {
-    SPVBoxElement::pack();
+	SPVBoxElement::pack();
+	for (auto child : *this->getChildNodes()) {
+		SPElement *elm = dynamic_cast<SPElement *>(child);
+		elm->pack();
+	}
+
 }
 void SPViewElement::navigate(const string& uri) {
 

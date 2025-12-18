@@ -10,7 +10,7 @@
 
 namespace space {
 
-	SPSpiderViewElement::SPSpiderViewElement(SPElement *element) : SPTabbarViewElement(element) {
+	SPSpiderViewElement::SPSpiderViewElement(SPElement *element) : SPTabBarViewElement(element) {
 
 	}
 	SPSpiderViewElement::SPSpiderViewElement() {

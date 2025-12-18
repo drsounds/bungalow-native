@@ -28,7 +28,7 @@ namespace space {
 
             string getType() override
             {
-                return "window";
+                return "main";
             }
             int onNavigate(SPObject* sender, SPEventArgs* args);
             explicit MainElement(SPElement *parent);

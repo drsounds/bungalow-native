@@ -1,11 +1,11 @@
 #ifndef ARTISTVIEW_H
 #define ARTISTVIEW_H
-#include "SPTabbarViewElement.h"
+#include "SPTabBarViewElement.h"
 
 namespace space {
-    class SPTabbarViewElement;
+    class SPTabBarViewElement;
     class SPElement;
-    class ArtistView : public SPTabbarViewElement
+    class ArtistView : public SPTabBarViewElement
     {
         public:
             ArtistView(SPElement *parent);

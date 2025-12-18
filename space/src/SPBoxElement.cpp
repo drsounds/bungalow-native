@@ -29,7 +29,7 @@ SPBoxElement::~SPBoxElement()
 **/
 void SPBoxElement::pack() {
 	SPElement::pack();
-	// cout << "Element: " << this->getType() << "#" << this->getId() << " packed to width: " << this->getWidth() << " height: " << this->getHeight() << " flex: " << this->getIntegerAttribute("flex", 0) << endl;
+	// cout << "Element: " << this->getType() << "#" << this->getId() << " packed to width: " << this->getWidth() << " height: " << this->getHeight() << " flex: " << this->getFlex() << endl;
 	vector<SPNode *> *nodes = this->getChildNodes();
     if (this->getChildNodes()->size() < 1) {
         return;

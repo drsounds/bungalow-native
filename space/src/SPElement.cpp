@@ -21,8 +21,9 @@
 #include "SPFontStyle.h"
 #include "SPImageElement.h"
 #include "SPInputElement.h"
+#include "SPSectionElement.h"
 #include "SPViewStackElement.h"
-#include "SPTabbarViewElement.h"
+#include "SPTabBarViewElement.h"
 #include "SPTextElement.h"
 #include "SPViewElement.h"
 #include "WxWidgetsGraphicsContext.h"
@@ -428,7 +429,7 @@ namespace space {
 			{
 			case wxWebRequest::State_Failed: {
 				// cout << "Failed to load " << uri << "\r\n";
-				this->setIntegerAttribute("flex", 1);
+				this->setFlex( 1);
 				this->loadXUL("resources/app/views/error.xml");
 				break;
 			}
@@ -468,11 +469,12 @@ namespace space {
 			SPViewStackElement *viewStack = (SPViewStackElement *)this->getViewStackElement();
 		 	for (wxXmlNode *child = root->GetChildren(); child; child = child->GetNext()) {
 		 		SPElement *elm = this->parseElement(child, this, this);
+				elm->setFlex( 1);
 				this->appendChild(elm);
 			}
 		} else {
 			SPElement *elm = this->parseElement(root, this, this);
-			elm->setIntegerAttribute("flex", 1);
+			elm->setFlex( 1);
 			this->appendChild(elm);
 		}
 		this->pack();
@@ -511,6 +513,9 @@ namespace space {
 		SPAttributeChangedEventArgs *args = dynamic_cast<SPAttributeChangedEventArgs *>(e);
 		if (args->getAttributeName() == "bgcolor" || args->getAttributeName() == "fgcolor") {
 			this->invalidate();
+		}
+		if (args->getAttributeName() == "flex") {
+			this->m_flex = atoi(args->getNewValue().c_str());
 		}
 		if (args->getAttributeName() == "src") {
 			this->loadSrc(args->getNewValue());
@@ -845,16 +850,15 @@ namespace space {
 				elm->paint(rect2.x, rect2.y, c);
 			}
 		}
-		/*
 		SPColor bgColor = this->getColorAttribute("bgcolor", SPColor(28, 28, 28, 255));
 		SPColor fgColor = this->getColorAttribute("fgcolor", SPColor(255, 255, 255, 255));
 		int fontSize = this->getIntegerAttribute("size", 12);
 		string fontFamily = this->getStringAttribute("font", "MS Sans Serif");
 		c->drawRectangle(rect2.x, rect2.y, width, height, SPColor(255, 0, 0,255));
 		c->drawString(this->getType(), SPFontStyle(fontFamily, fontSize, fontSize / 2, false, false), fgColor, rect2.x, rect2.y, this->getWidth(), this->getHeight());
-		const string strLoc = "type=" + this->getType() + "&x=" + std::to_string(x) + "&y=" + std::to_string(y) + "&width=" + std::to_string(width) + "&height=" + std::to_string(height) + "&flex=" + std::to_string(this->getIntegerAttribute("flex", 0));
+		const string strLoc = "type=" + this->getType() + "&x=" + std::to_string(x) + "&y=" + std::to_string(y) + "&width=" + std::to_string(width) + "&height=" + std::to_string(height) + "&flex=" + std::to_string(this->getFlex());
 		c->drawString(strLoc, SPFontStyle(fontFamily, fontSize, fontSize / 2, false, false), SPColor(0, 0, 255, 255), rect2.x + (rect2.width / 2), rect2.y + (rect2.height / 2), this->getWidth(), this->getHeight());
-		*/
+
 		if (clipView) {
 	        c->declipRect();
 		}
@@ -862,7 +866,11 @@ namespace space {
 
 	void SPElement::pack()
 	{
-		//cout << "Element: " << this->getType() << "#" << this->getId() << " packed to width: " << this->getWidth() << " height: " << this->getHeight() << " flex: " << this->getIntegerAttribute("flex", 0) << endl;
+		for (auto child : *this->getChildNodes()) {
+			SPElement *elm = dynamic_cast<SPElement *>(child);
+			elm->pack();
+		}
+		//cout << "Element: " << this->getType() << "#" << this->getId() << " packed to width: " << this->getWidth() << " height: " << this->getHeight() << " flex: " << this->getFlex() << endl;
 	}
 
 	void SPElement::resize(int width, int height)
@@ -872,7 +880,7 @@ namespace space {
 		this->invalidate();
 		this->pack();
 
-		//cout << "Element: " << this->getType() << "#" << this->getId() << " resized to width: " << width << " height: " << height << " flex: " << this->getIntegerAttribute("flex", 0) << endl;
+		//cout << "Element: " << this->getType() << "#" << this->getId() << " resized to width: " << width << " height: " << height << " flex: " << this->getFlex() << endl;
 	}
 
 	void SPElement::scroll(int scrollX, int scrollY, int x, int y) {
@@ -891,7 +899,6 @@ namespace space {
 			string type = elm->getType();
 			if (elm->isVisible()) {
 	            if (elm->getAbsoluteBounds() != nullptr) {
-
 	                if(x > elm->getAbsoluteBounds()->x && x < elm->getAbsoluteBounds()->x + elm->getAbsoluteBounds()->width &&
 	                    y > elm->getAbsoluteBounds()->y && y < elm->getAbsoluteBounds()->y + elm->getAbsoluteBounds()->height) {
 	                    foundElement = true;
@@ -987,11 +994,11 @@ namespace space {
 		} else if (tagName == "button") {
 			elm = new SPButtonElement(parent);
 		} else if (tagName == "view") {
-			elm = new SPTabbarViewElement(parent);
+			elm = new SPTabBarViewElement(parent);
 		} else if (tagName == "vbox") {
 			elm = new SPVBoxElement(parent);
 		} else if (tagName == "section") {
-			elm = new SPViewElement(parent);
+			elm = new SPSectionElement(parent);
 		}
 		elm->setTagName(tagName);
 		return elm;

@@ -32,7 +32,6 @@ namespace space {
         string uri2 = uri->getUri();
         string uri3 (uri2);
         mainWindow->navigate(uri3);
-
         return 0;
     }
     void MainElement::navigate(const string& uri) const
@@ -46,7 +45,7 @@ namespace space {
         this->treeView = new SPTreeViewElement(this);
         this->infoElement = new SPInfoElement(this);
         this->layout();
-        this->addEventListener("navigate", static_cast<SPCallback>(&MainElement::onNavigate), this, this);
+        this->getWindowElement()->addEventListener("navigate", static_cast<SPCallback>(&MainElement::onNavigate), this, this);
     }
 
     int MainElement::onNavigate(SPObject* sender, SPEventArgs* args)
@@ -76,15 +75,16 @@ namespace space {
         this->appendChild(header);
         header->setId("header");
         // add search element
-        /*
+
         auto *searchElement = new SPInputElement(header);
 
-        header->appendChild(searchElement);
-        searchElement->setIntegerAttribute("width", 120);
+        searchElement->setWidth(120);
+    	searchElement->setHeight(28);
         searchElement->setName("searchBox");
         searchElement->setColorAttribute("bgcolor", SPColor("#777777"));
-        searchElement->addEventListener("enter", reinterpret_cast<SPCallback>(&MainElement::onSearchEntered), this);
-        */
+        searchElement->addEventListener("enter", reinterpret_cast<SPCallback>(&MainElement::onSearchEntered), this, this);
+
+    	header->appendChild(searchElement);
         // Add the info element
         this->infoElement = new space::SPInfoElement(this);
         this->infoElement->setHeight(28);
@@ -95,7 +95,7 @@ namespace space {
         // Add header children
 
         auto *body = new SPHBoxElement(this);
-        body->setIntegerAttribute("flex", 1);
+        body->setFlex( 1);
         body->setId("body");
         this->appendChild(body);
         // Inside body
@@ -108,7 +108,7 @@ namespace space {
     	leftSidebar->appendChild(tabBar);
     	this->treeView = new SPTreeViewElement(leftSidebar);
     	treeView->setId("tree");
-    	treeView->setIntegerAttribute("flex", 1);
+    	treeView->setFlex( 1);
     	treeView->setHeight(920);
     	treeView->setWidth(220);
     	leftSidebar->appendChild(treeView);
@@ -130,13 +130,12 @@ namespace space {
         // Add viewstack
         this->viewStack = new space::SPViewStackElement(body);
         this->viewStack->setId("viewstack");
-        viewStack->setIntegerAttribute("flex",1);
+        viewStack->setFlex(1);
         viewStack->appendChild(new views::StartView(viewStack));
         viewStack->appendChild(new views::PlayQueueView(viewStack));
         body->appendChild(viewStack);
 
         body->appendChild(new SPSplitterElement(body));
-
         auto *rightSidebar = new SPVBoxElement(body);
         rightSidebar->setId("sidebar");
         rightSidebar->setWidth(220);
@@ -148,7 +147,6 @@ namespace space {
         this->appendChild(footer);
 
         // Add header buttons
-        this->pack();
         this->navigate("spacify:start:overview");
     }
     MainElement::~MainElement()

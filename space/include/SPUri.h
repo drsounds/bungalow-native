@@ -7,21 +7,41 @@
 using namespace std;
 
 namespace space {
-    class SPUri {
-	private:
-
-		vector<string> *fragments;
-	public:
-    	string uri;
-		string protocol;
-		string entity;
-		string id;
-    	string getUri() {
-    		return uri;
-    	}
-		SPUri(string uri);
-		~SPUri();
-	};
+class SPUri {
+	vector<string> segments;
+	string address;
+	string uri;
+	string protocol;
+	string entity;
+	string id;
+	string hash;
+	string host;
+public:
+	vector<string> getSegments() {
+		return segments;
+	}
+	string getAddress() {
+		return address;
+	}
+	string getProtocol() {
+		return protocol;
+	}
+	string getEntity() {
+		return entity;
+	}
+	string getId() {
+		return id;
+	}
+	string getHash() {
+		return hash;
+	}
+    string getUri() {
+    	return uri;
+    }
+	explicit SPUri(const string& uri);
+	~SPUri();
+    string toString();
+};
 }
 
 #endif // URI_H

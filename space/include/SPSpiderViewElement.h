@@ -5,10 +5,10 @@
 #ifndef SPACIFYCLIENT_SPSPIDERVIEW_H
 #define SPACIFYCLIENT_SPSPIDERVIEW_H
 
-#include "SPTabbarViewElement.h"
+#include "SPTabBarViewElement.h"
 
 namespace space {
-class SPSpiderViewElement : public SPTabbarViewElement
+class SPSpiderViewElement : public SPTabBarViewElement
 {
 public:
     SPSpiderViewElement();

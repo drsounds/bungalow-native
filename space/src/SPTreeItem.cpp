@@ -7,7 +7,7 @@ namespace space {
         this->uri = uri;
         this->selected = false;
         this->setText("Loading...");
-        if (std::regex_match(uri->uri, std::regex("spacify:internal:start"))) {
+        if (std::regex_match(uri->getAddress(), std::regex("spacify:internal:start"))) {
             this->setText("Start");
         }
     }

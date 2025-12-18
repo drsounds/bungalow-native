@@ -199,7 +199,9 @@
 				74,
 				75,
 				76,
-				77
+				77,
+				78,
+				79
 			]
 		}
 	],
@@ -399,15 +401,15 @@
 				74,
 				75,
 				76,
-				77
+				77,
+				78,
+				79
 			]
 		},
 		{
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
-				78,
-				79,
 				80,
 				81,
 				82,
@@ -488,7 +490,11 @@
 				157,
 				158,
 				159,
-				160
+				160,
+				161,
+				162,
+				163,
+				164
 			]
 		}
 	],
@@ -707,6 +713,12 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
+			"path" : "space/src/SPSectionElement.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
 			"path" : "space/src/SPServer.cpp",
 			"sourceGroupIndex" : 0
 		},
@@ -755,13 +767,19 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "space/src/SPTabbarView.cpp",
+			"path" : "space/src/SPTabBarView.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "space/src/SPTabbarViewElement.cpp",
+			"path" : "space/src/SPTabBarViewElement.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "space/src/SPTabStackElement.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -1149,6 +1167,11 @@
 		},
 		{
 			"backtrace" : 1,
+			"path" : "space/include/SPSectionElement.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
 			"path" : "space/include/SPServer.h",
 			"sourceGroupIndex" : 1
 		},
@@ -1189,12 +1212,17 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "space/include/SPTabbarView.h",
+			"path" : "space/include/SPTabBarView.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"path" : "space/include/SPTabbarViewElement.h",
+			"path" : "space/include/SPTabBarViewElement.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "space/include/SPTabStackElement.h",
 			"sourceGroupIndex" : 1
 		},
 		{

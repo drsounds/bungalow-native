@@ -11,7 +11,7 @@ namespace space {
             return "hbox";
         }
         SPHBoxElement() {}
-        void pack();
+        void pack() override;
     };
 }
 #endif // HBOXELEMENT_H

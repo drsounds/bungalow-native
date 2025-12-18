@@ -6,17 +6,25 @@ using namespace std;
 namespace space {
     class SPViewElement : public SPVBoxElement
     {
-        public:
-            SPViewElement();
-            SPViewElement(SPElement *parent);
-            virtual ~SPViewElement();
-            virtual void navigate(const string& uri);
-            virtual bool acceptsUri(const string& uri);
-    		string getType() override {
-    			return "view";
-    		}
-            virtual void scroll(int scrollX, int scrollY, int mouseX, int mouseY);
-            void pack();
-    };
+    private:
+		string m_hash;
+    public:
+        SPViewElement();
+        SPViewElement(SPElement *parent);
+        virtual ~SPViewElement();
+        virtual void navigate(const string& uri);
+        virtual bool acceptsUri(const string& uri);
+    	string getType() override {
+    		return "view";
+    	}
+    	string getHash() {
+    		return m_hash;
+    	}
+    	virtual void setHash(const string& hash) {
+    		this->m_hash = hash;
+    	}
+        virtual void scroll(int scrollX, int scrollY, int mouseX, int mouseY);
+        void pack();
+	};
 }
 #endif // VIEWELEMENT_H
