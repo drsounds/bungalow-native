@@ -26,7 +26,7 @@ namespace space
       {
         SpaceFrame *m_frame;
         wxWindow *m_window;
-        map<SPElement *, wxControlBase *> *elements;
+        map<string, wxControlBase *> *elements;
         map<wxControlBase *, SPElement *> *widgets;
         wxPoint *origo = new wxPoint(0, 0);
         SpaceWidget *m_widget;
@@ -56,6 +56,7 @@ namespace space
         }
         ~WxWidgetsGraphicsContext() override;
         SPImage *loadImage(const string& bitmap) override;
+        void setControlAttribute(SPElement *, const string&, const string&) override;
         void drawImagePart(SPImage *image, int x, int y, int width, int height, int x1, int y1, int x2, int y2) override;
         virtual void drawSkinImage(string resourceId, int x, int y, int w, int h);
         void setClip(const sp_rectangle& rect) override;

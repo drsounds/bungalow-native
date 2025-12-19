@@ -6,6 +6,8 @@ namespace space {
 class SPInputElement : public SPElement
 {
 private:
+    private:
+        string m_value;
     public:
         SPInputElement();
         SPInputElement(SPElement *parent);
@@ -14,6 +16,10 @@ private:
         virtual string getType() override {
             return "input";
         }
+        string getValue() const {
+            return m_value;
+        }
+        void setValue(const string& value);
     protected:
     private:
 };

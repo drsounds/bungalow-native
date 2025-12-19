@@ -34,7 +34,7 @@ namespace space {
     		return this->m_id;
     	}
     	virtual void setId(const string& value);
-    	string getTagName() const {
+        string getTagName() const {
 	        return this->tagName;
         }
     	void setTagName(const string& value) {

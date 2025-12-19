@@ -17,7 +17,19 @@
 
 using namespace std;
 
+enum sp_size_scale : short {
+    undefined = 0x0,
+    pixel = 0x1,
+    percent = 0x2
+};
+
+typedef float sp_value;
+
 namespace space {
+    struct sp_unit_value {
+        sp_value value;
+        sp_size_scale unit;
+    };
     class Space;
     class SPMessage;
     class SPSkin;
@@ -47,6 +59,8 @@ namespace space {
         int z;
         int scrollX;
         int scrollY;
+        sp_unit_value m_unitWidth = { 0, undefined };
+        sp_unit_value m_unitHeight = { 0, undefined };
         sp_rectangle absoluteBounds;
     	int m_flex = 0;
         bool clipView = true;
@@ -57,11 +71,18 @@ namespace space {
         bool drawBorder = false;
     	SPElement *m_parsingElement;
     	int m_parsingDepth = 0;
+        int m_gap = 0;
     public:
     	void setState(int value) {
     		this->m_state = value;
     		this->invalidate();
     	}
+        int getGap() const {
+            return m_gap;
+        }
+        void setGap(int value) {
+            m_gap = value;
+        }
     	boost::json::object getFormData();
     	int getState() const {
     		return this->m_state;
@@ -91,7 +112,7 @@ namespace space {
 	        this->absoluteBounds = value;
         }
         string getId() const;
-        void setId(const string& value);
+        void setId(const string& value) override;
         string getInnerXUL();
         short getColorScheme();
         void setColorScheme(short value);
@@ -118,6 +139,19 @@ namespace space {
             m_hasDefaultGradient = value;
         }
         SPSkin *getSkin();
+
+        sp_unit_value getUnitWidth() const {
+            return m_unitWidth;
+        }
+        sp_unit_value getUnitHeight() const {
+            return m_unitHeight;
+        }
+        void setUnitWidth(const sp_unit_value& value) {
+            m_unitWidth = value;
+        }
+        void setUnitHeight(const sp_unit_value& value) {
+            m_unitHeight = value;
+        }
         void increaseParsingDepth();
     	void decreaseParsingDepth();
     	int getParsingDepth() const {
@@ -239,7 +273,7 @@ namespace space {
     	void setMargins(sp_margin value);
         SPElement *parseElement(wxXmlNode *xmlNode, SPElement *parent,
                                 SPNode *document);
-        SPElement *createElement(const string& tagName, SPElement* parent);
+        virtual SPElement *createElement(const string& tagName, SPElement* parent);
         SPElement *getElementById(const string &id) const;
         SPElement *parseElement(wxXmlNode *xmlNode, SPElement *parent,
                                 SPElement *document);
@@ -255,7 +289,7 @@ namespace space {
         virtual void mouseDown(SPObject* sender, SPEventArgs* e);
         virtual void onClick(int, int, int);
         virtual void mouseUp(SPObject* sender, SPEventArgs* e);
-        int getY();
+        int getY(); 
         int getWidth();
         int getHeight();
         int getZ();

@@ -512,6 +512,15 @@ namespace space {
 		if (args->getAttributeName() == "flex") {
 			this->m_flex = atoi(args->getNewValue().c_str());
 		}
+		if (args->getAttributeName() == "gap") {
+			this->m_gap = atoi(args->getNewValue().c_str());
+		}
+		if (args->getAttributeName() == "width") {
+			this->setWidth(atoi(args->getNewValue().c_str()));
+		}
+		if (args->getAttributeName() == "height") {
+			this->setHeight(atoi(args->getNewValue().c_str()));
+		}
 		if (args->getAttributeName() == "src") {
 			this->loadSrc(args->getNewValue());
 		}
@@ -870,6 +879,30 @@ namespace space {
 
 	void SPElement::pack()
 	{
+		if (this->getUnitWidth().value > 0) {
+			switch (this->getUnitWidth().unit) {
+			case sp_size_scale::undefined:
+				break;
+			case sp_size_scale::percent:
+				this->setWidth((int)(this->getUnitWidth().value / this->getParentElement()->getWidth()));
+				break;
+			case sp_size_scale::pixel:
+				this->setWidth(this->getUnitWidth().value);
+				break;
+			}
+		}
+		if (this->getUnitHeight().value > 0) {
+			switch (this->getUnitHeight().unit) {
+			case sp_size_scale::undefined:
+				break;
+			case sp_size_scale::percent:
+				this->setHeight((int)(this->getUnitHeight().value / this->getParentElement()->getHeight()));
+				break;
+			case sp_size_scale::pixel:
+				this->setWidth(this->getUnitHeight().value);
+				break;
+			}
+		}
 		for (auto child : *this->getChildNodes()) {
 			SPElement *elm = dynamic_cast<SPElement *>(child);
 			elm->pack();
@@ -1012,7 +1045,10 @@ namespace space {
 				return (SPElement *)child;
 			}
 			for (const auto grandChild : *child->getChildNodes()) {
-				return (SPElement *)grandChild->getNodeById(id);
+				SPElement *grandChildNode = (SPElement *)grandChild->getNodeById(id);
+				if (grandChildNode != nullptr) {
+					return grandChildNode;
+				}
 			}
 		}
 		return nullptr;

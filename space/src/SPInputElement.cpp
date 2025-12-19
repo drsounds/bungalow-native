@@ -9,6 +9,10 @@ SPInputElement::~SPInputElement()
 {
 
 }
+void SPInputElement::setValue(const string& value) {
+    auto *gc = this->createGraphics();
+    gc->setControlAttribute(this, "value", value);
+}
 SPInputElement::SPInputElement(SPElement *parent)
     : SPElement(parent) {
 	this->tagName = "input";

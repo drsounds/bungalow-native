@@ -17,7 +17,8 @@ public:
 	string getType() override {
 		return "spiderview";
 	}
-	void navigate(const string &uri) override;
+	virtual bool acceptsUri(const string& uri) override;
+	virtual void navigate(const string &uri) override;
 };
 }
 

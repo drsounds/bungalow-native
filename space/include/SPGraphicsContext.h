@@ -30,6 +30,7 @@ namespace space {
     	SPGraphicsContext();
 		explicit SPGraphicsContext(Space *space);
 		SPSkin *skin{};
+		virtual void setControlAttribute(SPElement *, const string&, const string&) {}
 		virtual void drawImagePart(SPImage *image, int x, int y, int width, int height, int x1, int y1, int x2, int y2) {}
 		virtual void drawSkinImage(const string& resourceId, int x, int y, int w, int h) {}
 		virtual void restoreOrigo() {}

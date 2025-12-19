@@ -32,7 +32,7 @@ namespace space
                                                      m_widget(nullptr),
                                                      m_paintDc(nullptr)
             {
-                this->elements = new map<SPElement*, wxControlBase*>();
+                this->elements = new map<string, wxControlBase*>();
                 this->widgets = new map<wxControlBase*, SPElement*>();
                 this->origo = new wxPoint(0, 0);
             }
@@ -307,7 +307,7 @@ namespace space
                                                 int w, int h)
             {
                 // Only supports text controls (“EDIT”)
-                if (elements->count(elm) == 0)
+                if (elements->count(elm->getId()) == 0)
                 {
                 	int width = elm->getWidth();
                 	int height = elm->getHeight();
@@ -320,7 +320,7 @@ namespace space
                         wxTE_PROCESS_ENTER
                     );
 
-                    (*elements)[elm] = ctrl;
+                    (*elements)[elm->getId()] = ctrl;
                     (*widgets)[ctrl] = elm;
 
                     ctrl->Bind(
@@ -331,7 +331,10 @@ namespace space
                 }
                 else
                 {
-                    (*elements)[elm]->SetSize(x - this->origo->x, y - this->origo->y, w, h);
+                    wxControlBase *control = (*elements)[elm->getId()];
+                    if (control != nullptr) {
+                        control->SetSize(x - this->origo->x, y - this->origo->y, w, h);
+                    }
                 }
             }
 
@@ -345,12 +348,19 @@ namespace space
                     new SPInputEventArgs(widget->GetValue().utf8_string())
                 );
             }
-
+            void WxWidgetsGraphicsContext::setControlAttribute(SPElement *elm, const string& attrName, const string& value) {
+                if (elements->count(elm->getId()) > 0) {
+                    wxTextCtrl *widget = (wxTextCtrl*)(*this->elements)[elm->getId()];
+                    if (attrName == "value" || attrName == "text") {
+                        widget->SetValue(wxString(value));
+                    }
+                }
+            }
             void WxWidgetsGraphicsContext::drawInputElement(SPElement* elm,
                                                      int x, int y,
                                                      int w, int h)
             {
-                drawControl("EDIT", elm, x - this->origo->x , y - this->origo->y, w, h);
+                drawControl("EDIT", elm, elm->getX() - this->origo->x , elm->getY() - this->origo->y, elm->getWidth(), elm->getHeight());
             }
 
             void WxWidgetsGraphicsContext::setFontStyle(space::SPFontStyle* fs) const

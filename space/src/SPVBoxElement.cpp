@@ -14,10 +14,9 @@ namespace space {
         int topHeight = 0;
         int bottomHeight = 0;
         int side = -1;
-
+        int gap = this->getGap();
         // First calculate count of flex
         for(std::vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
-
             SPElement *child = static_cast<SPElement *>(*it);
             if (!child->isVisible())
                 continue;
@@ -50,7 +49,7 @@ namespace space {
         	int bottomPadding = this->getPadding().bottom - child->getMargins().bottom;
             int flex = child->getFlex();
             if(flex > 0) {
-            	child->setHeight((1 / flexes) * flexHeight - bottomPadding - topPadding);
+            	child->setHeight((1 / flexes) * flexHeight - bottomPadding - topPadding - gap);
             } else {
                 statics++;
             }
@@ -68,28 +67,42 @@ namespace space {
         	int rightPadding = this->getPadding().right + child->getMargins().right;
         	int topPadding = this->getPadding().top + child->getMargins().top;
         	int bottomPadding = this->getPadding().bottom - child->getMargins().bottom;
-            if(child->getFlex() > 0) {
+            if(child->getFlex() > 0) 
+            {
                 side = 0;
-            } else {
+            }
+            else 
+            {
                 if(side == 0)
                     side = 1;
             }
             if (side < 0)
             {
-                child->setY(top + topPadding);
+                int y = top + topPadding;
+                if (it != this->getChildNodes()->begin()) {
+                    y += gap;
+                }
+                child->setY(y);
             }
-            else if (side == 0) {
-                child->setY(topHeight + topPadding);
-
+            else if (side == 0) 
+            {
+                int y = topHeight + topPadding;
+                if (it != this->getChildNodes()->begin()) {
+                    y += gap;
+                }
+                child->setY(y);
                 child->setHeight(flexHeight - bottomPadding);
             }
             else
             {
-                child->setY(topHeight + flexHeight + bottom + topPadding);
+                int y = topHeight + flexHeight + bottom + topPadding;
+                if (it != this->getChildNodes()->begin()) {
+                    y += gap;
+                }
+                child->setY(y);
             }
         	child->setX(leftPadding);
             child->setWidth(this->getWidth() - rightPadding - leftPadding);
-
             switch(side) {
                 case -1:
                     top += child->getHeight();
@@ -102,14 +115,11 @@ namespace space {
             }
         }
 
-        // Pack child elements
         for(std::vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
             SPElement *child = (SPElement *)*it;
             if (!child->isVisible())
                 continue;
             child->pack();
         }
-        //cout << "VBoxElement#" << this->getId() << " packed to width: " << this->getWidth() << " height: " << this->getHeight() << endl;
-
     };
 }

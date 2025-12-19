@@ -10,9 +10,11 @@
 #include "SPViewStackElement.h"
 #include "SPSkin.h"
 #include "PlayQueueView.h"
+#include "SpaceView.h"
 #include "SPAppFooterElement.h"
 #include "SPAppHeaderElement.h"
 #include "SPTreeViewElement.h"
+#include "SPButtonElement.h"
 
 namespace space {
     MainElement::MainElement()
@@ -37,11 +39,112 @@ namespace space {
     void MainElement::navigate(const string& uri) const
     {
         this->viewStack->navigate(uri);
+        this->searchElement->setValue(uri);
+    }
+
+    SPElement* MainElement::createElement(const string& name, SPElement *parent) {
+        SPElement *elm = nullptr;
+        if (name == "appheader") {
+            elm = new SPAppHeaderElement(parent);
+        } else if (name == "viewstack") {
+            elm = new SPViewStackElement(parent);
+        } else if (name == "treeview") {
+            elm = new SPTreeViewElement(parent);
+        } else if (name == "appfooter") {
+            elm = new SPAppFooterElement(parent);
+        } else if (name == "tabbar") {
+            elm = new SPTabBarElement(parent);
+        } else {
+            elm = SPElement::createElement(name, parent);
+        }
+        return elm;
+    }
+
+    void MainElement::onLoad(SPNode *sender, SPEventArgs *args) {
+        this->clipView = false;
+
+        header = (SPAppHeaderElement *)this->getElementById("header");
+        header->setHeight(48);
+		header->setPadding({ 5, 5, 5, 5 });
+        header->setGap(5);
+
+        backButton = (SPButtonElement *)this->getElementById("backButton");
+        backButton->setInnerText("<");
+        backButton->setWidth(28);
+    	backButton->setHeight(28);
+
+        forwardButton = (SPButtonElement *)this->getElementById("forwardButton");
+        forwardButton->setInnerText("<");
+        forwardButton->setWidth(28);
+    	forwardButton->setHeight(28);
+
+        searchElement = (SPInputElement *)this->getElementById("searchElement");
+        searchElement->setWidth(120);
+    	searchElement->setHeight(28);
+        searchElement->setFlex(1);
+        searchElement->setColorAttribute("bgcolor", SPColor("#777777"));
+        searchElement->addEventListener("enter", reinterpret_cast<SPCallback>(&MainElement::onSearchEntered), this, this);
+
+        accountButton = (SPButtonElement *)this->getElementById("accountButton");
+        accountButton->setInnerText("A");
+        accountButton->setWidth(28);
+    	accountButton->setHeight(28);
+
+        infoElement = new space::SPInfoElement(this);
+        infoElement->setHeight(28);
+        infoElement->setId("Info");
+        infoElement->hide();
+
+        body = (SPHBoxElement *)this->getElementById("body");
+        body->setFlex( 1);
+        
+        leftSidebar = (SPVBoxElement *)this->getElementById("vbox");
+    	leftSidebar->setWidth(220);
+
+    	tabBar = (SPTabBarElement *)this->getElementById("leftTabBar");
+    	tabBar->setHeight(28);
+
+    	treeView = (SPTreeViewElement *)this->getElementById("treeview");
+    	treeView->setFlex(1);
+    	treeView->setHeight(920);
+    	treeView->setWidth(220);
+        // Add sample elements
+        auto *item = new SPTreeItem(new SPUri("spacify:internal:start"));
+        item->setSelected(false);
+        auto *item2 = new SPTreeItem(new SPUri("spacify:internal:history"));
+        item2->setSelected(false);
+        treeView->addEventListener("itemselected", SPCallback(&MainElement::treeview_itemselected), this, treeView);
+        treeView->addItem(item);
+        treeView->addItem(item2);
+
+        // Add viewstack
+        viewStack = (SPViewStackElement *)this->getElementById("viewstack");
+        viewStack->setFlex(1);
+        viewStack->appendChild(new views::SpaceView(viewStack));
+        viewStack->appendChild(new views::StartView(viewStack));
+        viewStack->appendChild(new views::PlayQueueView(viewStack));
+
+    	/*
+        body->appendChild(new SPSplitterElement(body));
+        auto *rightSidebar = new SPVBoxElement(body);
+        rightSidebar->setId("sidebar");
+        rightSidebar->setWidth(220);
+        body->appendChild(rightSidebar);
+        body->pack();
+		*/
+
+        footer = (SPAppFooterElement *)this->getElementById("footer");
+        footer->setHeight(32);
+        footer->setId("footer");
+        // Add header buttons
+        this->navigate("spacify:start:overview");
     }
 
     MainElement::MainElement(SPElement *parent) : SPVBoxElement(parent)
     { 
+        this->loadXUL("resources/app/views/app.xml");
         this->layout();
+        this->addEventListener("load", SPCallback(&MainElement::onLoad), this, this);
         this->getWindowElement()->addEventListener("navigate", static_cast<SPCallback>(&MainElement::onNavigate), this, this);
     }
 
@@ -62,87 +165,7 @@ namespace space {
         return 0;
     }
     void MainElement::layout() {
-        this->clipView = false;
-        auto *header = new SPAppHeaderElement(this);
-        header->setHeight(48);
-		header->setPadding({ 5, 5, 5, 5 });
-        this->appendChild(header);
-        header->setId("header");
-        // add search element
-
-        auto *searchElement = new SPInputElement(header);
-
-        searchElement->setWidth(120);
-    	searchElement->setHeight(28);
-        searchElement->setName("searchBox");
-        searchElement->setColorAttribute("bgcolor", SPColor("#777777"));
-        searchElement->addEventListener("enter", reinterpret_cast<SPCallback>(&MainElement::onSearchEntered), this, this);
-
-    	header->appendChild(searchElement);
-        // Add the info element
-        this->infoElement = new space::SPInfoElement(this);
-        this->infoElement->setHeight(28);
-        this->appendChild((SPNode *)this->infoElement);
-        this->infoElement->setId("Info");
-        this->infoElement->hide();
-
-        // Add header children
-
-        auto *body = new SPHBoxElement(this);
-        body->setFlex( 1);
-        body->setId("body");
-        this->appendChild(body);
-        // Inside body
-        auto *leftSidebar = new SPVBoxElement(body);
-        leftSidebar->setId("sidebar");
-    	leftSidebar->setWidth(220);
-    	auto *tabBar = new SPTabBarElement(leftSidebar);
-    	tabBar->setId("tabbar");
-    	tabBar->setHeight(28);
-    	leftSidebar->appendChild(tabBar);
-    	this->treeView = new SPTreeViewElement(leftSidebar);
-    	treeView->setId("tree");
-    	treeView->setFlex(1);
-    	treeView->setHeight(920);
-    	treeView->setWidth(220);
-    	leftSidebar->appendChild(treeView);
-        body->appendChild(leftSidebar);
-
-        body->appendChild(new SPSplitterElement(body));
-
-        // Add sample elements
-        auto *item = new SPTreeItem(new SPUri("spacify:internal:start"));
-
-        item->setSelected(false);
-        auto *item2 = new SPTreeItem(new SPUri("spacify:internal:history"));
-
-        item2->setSelected(false);
-        treeView->addEventListener("itemselected", SPCallback(&MainElement::treeview_itemselected), this, treeView);
-        treeView->addItem(item);
-        treeView->addItem(item2);
-
-        // Add viewstack
-        this->viewStack = new space::SPViewStackElement(body);
-        this->viewStack->setId("viewstack");
-        viewStack->setFlex(1);
-        viewStack->appendChild(new views::StartView(viewStack));
-        viewStack->appendChild(new views::PlayQueueView(viewStack));
-        body->appendChild(viewStack);
-
-    	/*
-        body->appendChild(new SPSplitterElement(body));
-        auto *rightSidebar = new SPVBoxElement(body);
-        rightSidebar->setId("sidebar");
-        rightSidebar->setWidth(220);
-        body->appendChild(rightSidebar);
-        body->pack();
-        auto *footer = new space::SPAppFooterElement(this);
-        footer->setHeight(32);
-        footer->setId("footer");
-        this->appendChild(footer);
-		*/
-        // Add header buttons
-        this->navigate("spacify:start:overview");
+        
     }
     MainElement::~MainElement()
     {

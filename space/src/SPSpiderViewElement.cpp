@@ -19,6 +19,9 @@ namespace space {
 	SPSpiderViewElement::~SPSpiderViewElement() {
 
 	}
+	bool SPSpiderViewElement::acceptsUri(const string& uri) {
+		return false;
+	}
 	void SPSpiderViewElement::navigate(const string &uri) {
 		vector<string> parts;
 		boost::algorithm::split(parts, uri, boost::algorithm::is_any_of(":"));

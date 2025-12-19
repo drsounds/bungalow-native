@@ -13,18 +13,35 @@ namespace space {
     class SPInfoElement;
     class SPStylesheet;
     class SPEventArgs;
+    class SPAppFooterElement;
+    class SPAppHeaderElement;
+    class SPButtonElement;
+    class SPHBoxElement;
+    class SPTabBarElement;
+    class SPInputElement;
     class MainElement : public SPVBoxElement
     {
         protected:
-
+            SPInputElement *searchElement;
             SPViewStackElement *viewStack;
             SPTreeViewElement *treeView;
             SPInfoElement *infoElement;
+            SPAppFooterElement *footer;
+            SPAppHeaderElement *header;
+            SPHBoxElement *body;
+            SPVBoxElement *leftSidebar;
+            SPTabBarElement *tabBar;
+            SPButtonElement *backButton;
+            SPButtonElement *forwardButton;
+            SPButtonElement *accountButton;
+
         public:
             void navigate(const string& uri) const;
             void hideMessage();
             int treeview_itemselected(SPObject* sender, SPEventArgs* e);
             MainElement();
+            void onLoad(SPNode *sender, SPEventArgs *args);
+            virtual SPElement* createElement(const string&, SPElement*) override;
 
             string getType() override
             {
@@ -42,6 +59,6 @@ namespace space {
             }
     };
 }
-#include "../../space/include/libspace.h"
+#include "libspace.h"
 
 #endif // MAINWINDOWELEMENT_H

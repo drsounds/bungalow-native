@@ -1,4 +1,4 @@
-#include "SPTabbarViewElement.h"
+#include "SPTabBarViewElement.h"
 
 #include "SPElement.h"
 #include "SPSectionElement.h"
