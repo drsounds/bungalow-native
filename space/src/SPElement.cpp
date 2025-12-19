@@ -458,17 +458,10 @@ namespace space {
 		wxXmlNode *root = xmlDoc.GetRoot();
 		this->clear();
 		string thisType = this->getType();
-		if (root->GetName() == "view") {
-		 	for (wxXmlNode *child = root->GetChildren(); child; child = child->GetNext()) {
-		 		SPElement *elm = this->parseElement(child, this, this);
-				elm->setFlex( 1);
-		 		SPElement *slot = this->getSlotElement();
-		 		slot->appendChild(elm);
-			}
-		} else {
-			SPElement *elm = this->parseElement(root, this, this);
-			elm->setFlex( 1);
-			this->appendChild(elm);
+		for (wxXmlNode *child = root->GetChildren(); child; child = child->GetNext()) {
+			SPElement *slot = this->getSlotElement();
+			SPElement *elm = this->parseElement(child, slot, this);
+			slot->appendChild(elm);
 		}
 		this->pack();
 		this->invalidate();
@@ -972,13 +965,16 @@ namespace space {
 	SPElement *SPElement::parseElement(wxXmlNode *xmlNode, SPElement *parent,
 							   SPElement *document) {
 		SPElement *elm = nullptr;
+		/*
 		string elementId = xmlNode->GetAttribute("id").ToStdString();
 		if (!elementId.empty()) {
 			elm = document->getElementById(elementId);
-		}
+			assert(elm != nullptr && elm->getParentElement() != parent);
+		}*/
 		if (elm == nullptr) {
 			elm = createElement(xmlNode->GetName().ToStdString(), parent);
 		}
+		assert(elm->getParentElement() != nullptr);
 		elm->setVisible(true);
 		for (const wxXmlAttribute *attribute = xmlNode->GetAttributes(); attribute != nullptr; attribute = attribute->GetNext()) {
 			elm->set(attribute->GetName().ToStdString(), attribute->GetValue().ToStdString());
@@ -996,10 +992,10 @@ namespace space {
 				break;
 			}
 			if (child->GetType() == wxXML_TEXT_NODE) {
-				elm->setInnerText(child->GetContent().ToStdString());
+				elm->getSlotElement()->setInnerText(child->GetContent().ToStdString());
 			} else if (child->GetType() == wxXML_ELEMENT_NODE) {
-				SPElement *childElement = parseElement(child, elm, document);
-				elm->appendChild(childElement);
+				SPElement *childElement = parseElement(child, elm->getSlotElement(), document);
+				elm->getSlotElement()->appendChild(childElement);
 				this->pack();
 				// cout << "Packed";
 			}
@@ -1018,9 +1014,7 @@ namespace space {
 	}
 
 	SPElement * SPElement::createElement(const string& tagName, SPElement *parent) {
-		if (parent == nullptr) {
-			parent = this;
-		}
+		assert(parent != nullptr);
 		SPElement *elm = nullptr;
 		if (tagName == "text") {
 			elm = new SPTextElement(parent);
@@ -1028,13 +1022,18 @@ namespace space {
 			elm = new SPImageElement(parent);
 		} else if (tagName == "button") {
 			elm = new SPButtonElement(parent);
+		} else if (tagName == "input") {
+			elm = new SPInputElement(parent);
 		} else if (tagName == "view") {
 			elm = new SPTabBarViewElement(parent);
 		} else if (tagName == "vbox") {
 			elm = new SPVBoxElement(parent);
 		} else if (tagName == "section") {
 			elm = new SPSectionElement(parent);
+		} else if (tagName == "document") {
+			elm = new SPElement(parent);
 		}
+		assert(elm->getParentElement() != nullptr);
 		elm->setTagName(tagName);
 		return elm;
 	}

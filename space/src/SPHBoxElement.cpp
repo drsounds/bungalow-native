@@ -6,7 +6,7 @@
 
 
 namespace space {
-	SPHBoxElement::SPHBoxElement(SPElement *parent) {
+	SPHBoxElement::SPHBoxElement(SPElement *parent) : SPElement(parent) {
 		this->setTagName("hbox");
 	}
     void SPHBoxElement::pack() {

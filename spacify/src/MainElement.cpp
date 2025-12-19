@@ -46,16 +46,22 @@ namespace space {
         SPElement *elm = nullptr;
         if (name == "appheader") {
             elm = new SPAppHeaderElement(parent);
+            assert(elm->getParentElement() != nullptr);
         } else if (name == "viewstack") {
             elm = new SPViewStackElement(parent);
+            assert(elm->getParentElement() != nullptr);
         } else if (name == "treeview") {
             elm = new SPTreeViewElement(parent);
+            assert(elm->getParentElement() != nullptr);
         } else if (name == "appfooter") {
             elm = new SPAppFooterElement(parent);
+            assert(elm->getParentElement() != nullptr);
         } else if (name == "tabbar") {
             elm = new SPTabBarElement(parent);
+            assert(elm->getParentElement() != nullptr);
         } else {
             elm = SPElement::createElement(name, parent);
+            assert(elm->getParentElement() != nullptr);
         }
         return elm;
     }
@@ -142,7 +148,7 @@ namespace space {
 
     MainElement::MainElement(SPElement *parent) : SPVBoxElement(parent)
     { 
-        this->loadXUL("resources/app/views/app.xml");
+        this->loadXUL("../resources/app/views/app.xml");
         this->layout();
         this->addEventListener("load", SPCallback(&MainElement::onLoad), this, this);
         this->getWindowElement()->addEventListener("navigate", static_cast<SPCallback>(&MainElement::onNavigate), this, this);
