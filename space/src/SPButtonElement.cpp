@@ -21,13 +21,9 @@ void space::SPButtonElement::pack() {
 
 void space::SPButtonElement::paint(int x, int y, SPGraphicsContext *c)
 {
-    if (this->absoluteBounds == nullptr)
-    this->absoluteBounds = new sp_rectangle;
-
-    this->absoluteBounds->x = x + this->getX();
-    this->absoluteBounds->y = y + this->getY();
-    this->absoluteBounds->width = this->getWidth();
-    this->absoluteBounds->height = this->getHeight();
+    this->absoluteBounds = {
+    	this->getX() + x, this->getY() + y, this->getWidth(), this->getHeight()
+    };
 
 	string strClass;
 	switch (this->getState()) {
@@ -38,14 +34,14 @@ void space::SPButtonElement::paint(int x, int y, SPGraphicsContext *c)
 		strClass = "hover";
 	}
 
-	this->getSkin()->drawElement(c, this, strClass, *this->absoluteBounds);
+	this->getSkin()->drawElement(c, this, strClass, this->absoluteBounds);
 
     if(!this->getInnerText().empty()) {
         space::SPFontStyle fontStyle = this->getFontStyle();
 		string text = this->getInnerText();
 		space::sp_rectangle tSize = c->measureString(text, fontStyle);
-		int x = (this->getWidth() / 2) - (tSize.width / 2) + this->absoluteBounds->x;
-		int y = (this->getHeight() / 2) - (tSize.height / 2) + this->absoluteBounds->y;
+		int x = (this->getWidth() / 2) - (tSize.width / 2) + this->absoluteBounds.x;
+		int y = (this->getHeight() / 2) - (tSize.height / 2) + this->absoluteBounds.y;
 
 		c->drawString(text,fontStyle, getForegroundColor(), x, y, tSize.width, tSize.height);
 	}

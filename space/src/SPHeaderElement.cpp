@@ -8,8 +8,7 @@ SPHeaderElement::SPHeaderElement(SPElement *parent)
  : SPHBoxElement(parent)
 {
 	this->setTagName("header");
-    this->getPadding()->top = 20;
-    this->getPadding()->left = 20;
+    this->setPadding({ 5, 5, 5, 5 });
 
     // Insert image
     this->image = new SPImageElement(this);
@@ -30,8 +29,7 @@ SPHeaderElement::SPHeaderElement(SPElement *parent)
 }
 SPHeaderElement::SPHeaderElement()
 {
-    this->getPadding()->top = 20;
-    this->getPadding()->left = 20;
+    this->setPadding({ 20, 20, 20, 20 });
     this->title = new SPTitleElement(this);
     title->set("flex", "1");
     title->setTitle("Title");

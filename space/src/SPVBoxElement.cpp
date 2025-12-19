@@ -70,18 +70,18 @@ namespace space {
             }
             if (side < 0)
             {
-                child->setY(top + child->getMargins()->top + this->getPadding()->top);
+                child->setY(top + child->getMargins().top + this->getPadding().top);
             }
             else if (side == 0) {
-                child->setY(topHeight + (((1 / flexes) * (flexHeight - 1)))*0 + child->getMargins()->top + this->getPadding()->top);
+                child->setY(topHeight + (((1 / flexes) * (flexHeight - 1)))*0 + child->getMargins().top + this->getPadding().top);
 
                 child->setHeight(flexHeight);
             }
             else
             {
-                child->setY(topHeight + flexHeight + bottom + child->getPadding()->top + child->getMargins()->top);
+                child->setY(topHeight + flexHeight + bottom + child->getPadding().top + child->getMargins().top);
             }
-            child->setWidth(this->getWidth() - (child->getMargins()->bottom * 2 + this->getPadding()->bottom * 2));
+            child->setWidth(this->getWidth() - (child->getMargins().bottom * 2 + this->getPadding().bottom * 2));
             //cout << "SPHBoxElement width: " << this->getHeight() << endl;
             //cout << "VBoxElement Child: " << child->getType() << "Width: " << this->getWidth() << endl;
 

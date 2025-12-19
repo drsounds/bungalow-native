@@ -73,7 +73,7 @@ namespace space {
             {
                 child->setX(leftWidth + flexWidth + right);
             }
-            child->setY(this->getPadding()->top);
+            child->setY(this->getPadding().top);
 
             child->setHeight(this->getHeight());
             //cout << "SPHBoxElement height: " << this->getHeight() << endl;

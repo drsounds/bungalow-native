@@ -35,8 +35,8 @@ namespace space {
         bool visible = true;
         short m_colorScheme = 0;
     	int m_state = 0;
-        sp_margin *margins;
-        sp_margin *padding;
+        sp_margin margins;
+        sp_margin padding;
         SPFontStyle fontStyle;
         string id;
         string data;
@@ -47,6 +47,7 @@ namespace space {
         int z;
         int scrollX;
         int scrollY;
+        sp_rectangle absoluteBounds;
     	int m_flex = 0;
         bool clipView = true;
         SPGradient *m_gradient;
@@ -83,7 +84,15 @@ namespace space {
         {
             return static_cast<SPElement *>(this->getParentNode());
         }
-
+		sp_rectangle getAbsoluteBounds() const {
+	        return this->absoluteBounds;
+        }
+    	void setAbsoluteBounds(sp_rectangle value) {
+	        this->absoluteBounds = value;
+        }
+        string getId() const;
+        void setId(const string& value);
+        string getInnerXUL();
         short getColorScheme();
         void setColorScheme(short value);
         SPGradient *getGradient() const {
@@ -97,6 +106,7 @@ namespace space {
         SPColor *getTintColor();
         void setTintColor(SPColor *value);
         SPColor getColorAttribute(const string& title, SPColor defaultValue) override;
+        string getId();
         int notify(const string &event, SPObject *sender,
                    SPEventArgs *data) override;
         bool hasDefaultGradient() const
@@ -145,7 +155,6 @@ namespace space {
         bool hasClass(string _class);
         void addClass(string _class);
         void removeClass(string _class);
-        sp_rectangle *absoluteBounds;
         void applyStylesheet(SPStylesheet *style);
     	SPColor getBackgroundColor();
     	void setBorderColor(const SPColor& value)
@@ -172,15 +181,8 @@ namespace space {
         void resizeToText(bool width, bool height);
         sp_rectangle getTextBounds();
 
-        sp_rectangle *getAbsoluteBounds() const
-        {
-            return this->absoluteBounds;
-        }
         void setBackgroundImage(SPImage *value);
         void invalidate();
-        void setAbsoluteBounds(sp_rectangle *value) {
-            this->absoluteBounds = value;
-        }
         bool isVisible() const
         {
             return this->visible;
@@ -231,8 +233,10 @@ namespace space {
         int getX();
         void processEvent(const SPEvent& event);
         virtual void processMessage(const SPMessage&);
-        sp_margin *getMargins();
-        sp_margin *getPadding();
+        sp_margin getMargins();
+        sp_margin getPadding();
+        void setPadding(sp_margin value);
+    	void setMargins(sp_margin value);
         SPElement *parseElement(wxXmlNode *xmlNode, SPElement *parent,
                                 SPNode *document);
         SPElement *createElement(const string& tagName, SPElement* parent);

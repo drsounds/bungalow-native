@@ -32,18 +32,9 @@ namespace space {
         std::vector<SPNode *> *children = this->getChildNodes();
         x += this->getX() ;
         y += this->getY();
-        if (this->absoluteBounds == NULL)
-        this->absoluteBounds = new sp_rectangle;
-
-        if (this->getMargins() == nullptr)
-        {
-            this->margins = new sp_margin;
-        }
-
-        this->absoluteBounds->x = x + this->getMargins()->left;
-        this->absoluteBounds->y = y + this->getMargins()->bottom;
-        this->absoluteBounds->width = this->getWidth() - this->getMargins()->left + this->getMargins()->right;
-        this->absoluteBounds->height = this->getHeight() - this->getMargins()->top + this->getMargins()->bottom;
+        this->absoluteBounds = {
+	        x + this->getMargins().left, y + this->getMargins().top, this->getWidth(), this->getHeight()
+        };
 
         int width =  this->getWidth();
         int height = this->getHeight();
@@ -56,7 +47,6 @@ namespace space {
 
         y = y + 1;
         SPTableDataSource *dataSource = this->dataSource;
-        sp_rectangle *absoluteBounds = this->absoluteBounds;
 
         // Draw table data here
         width = this->getWidth();
@@ -94,7 +84,7 @@ namespace space {
         // Draw column headers
         if (columnY < 60) {
             // If columnY is below zero, set it to the position at top
-            columnY = this->getParentElement()->absoluteBounds->y + 1;
+            columnY = this->getParentElement()->getAbsoluteBounds().y + 1;
         }
         this->getSkin()->drawTableHeader(g, this, 0, 0, width, 18);
         left =0;

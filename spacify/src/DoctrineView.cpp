@@ -15,8 +15,7 @@ namespace space {
         DoctrineView::DoctrineView(SPElement *parent)
          : SPContainerViewElement(parent)
         {
-            this->getPadding()->top = 20;
-            this->getPadding()->left = 20;
+            this->setPadding({ 20, 20, 20, 20 });
             //ctor
             text = new SPTextElement(this);
             text->setStringAttribute("width", "100%");

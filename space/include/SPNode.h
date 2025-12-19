@@ -33,7 +33,7 @@ namespace space {
     	string getId() const {
     		return this->m_id;
     	}
-    	void setId(const string& value);
+    	virtual void setId(const string& value);
     	string getTagName() const {
 	        return this->tagName;
         }

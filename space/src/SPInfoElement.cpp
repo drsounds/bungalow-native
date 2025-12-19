@@ -9,10 +9,7 @@ namespace space {
     	this->setTagName("info");
         //ctor
         this->set("height", "32");
-        this->getPadding()->top = 5;
-        this->getPadding()->left = 5;
-        this->getPadding()->right = 5;
-        this->getPadding()->bottom = 5;
+        this->setPadding({ 0, 0, 0, 0 });
 
         SPTextElement *icon = new SPTextElement(this);
         icon->set("width", "128");

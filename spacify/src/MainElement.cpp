@@ -67,11 +67,8 @@ namespace space {
     void MainElement::layout() {
         this->clipView = false;
         auto *header = new SPAppHeaderElement(this);
-        header->setHeight(55);
-        header->getPadding()->top = 53;
-        header->getPadding()->left = 13;
-        header->getPadding()->bottom = 13;
-        header->getPadding()->right =  13;
+        header->setHeight(48);
+		header->setPadding({ 0, 0, 0, 0 });
         this->appendChild(header);
         header->setId("header");
         // add search element

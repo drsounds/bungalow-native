@@ -101,6 +101,11 @@ namespace space {
 		return color;
 	}
 
+
+	string SPElement::getId() {
+		return this->m_id;
+	}
+
 	int SPElement::notify(
 		const string &event,
 		SPObject *sender,
@@ -116,11 +121,10 @@ namespace space {
 				auto element = dynamic_cast<SPElement *>(child);
 				if (child != nullptr) {
 					if (
-						element->getAbsoluteBounds() != nullptr &&
-						mouseEventArgs->getX() > element->getAbsoluteBounds()->x &&
-						mouseEventArgs->getX() < element->getAbsoluteBounds()->x + element->getAbsoluteBounds()->width &&
-						mouseEventArgs->getY() > element->getAbsoluteBounds()->y &&
-						mouseEventArgs->getY() < element->getAbsoluteBounds()->y + element->getAbsoluteBounds()->height
+						mouseEventArgs->getX() > element->getAbsoluteBounds().x &&
+						mouseEventArgs->getX() < element->getAbsoluteBounds().x + element->getAbsoluteBounds().width &&
+						mouseEventArgs->getY() > element->getAbsoluteBounds().y &&
+						mouseEventArgs->getY() < element->getAbsoluteBounds().y + element->getAbsoluteBounds().height
 					)
 					{
 						if (event == "mousemove") {
@@ -201,10 +205,8 @@ namespace space {
 	}
 
 	SPElement::SPElement() : SPNode(), fontStyle(SPFontStyle("Tahoma", 13, 1, false, false)) {
-
-		this->padding = new sp_margin();
-		this->margins = new sp_margin();
-
+		this->padding = { 0, 0, 0, 0 };
+		this->margins = { 0, 0, 0, 0 };
 	}
 
 	SPGraphicsContext* SPElement::createGraphics()
@@ -228,17 +230,16 @@ namespace space {
 	}
 
 	void SPElement::onClick(int mouseButton, int x, int y) {
-		int xx = this->getAbsoluteBounds() != NULL ? x - this->getAbsoluteBounds()->y : x;
-	    int yy = this->getAbsoluteBounds() != NULL ? y - this->getAbsoluteBounds()->y : y;
+		int xx =  x - this->getAbsoluteBounds().y;
+	    int yy = y - this->getAbsoluteBounds().y;
 		SPMouseEventArgs *me = new SPMouseEventArgs(mouseButton, xx, yy);
 
 		this->notify(string("click"), this, me);
 		for(vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
 			SPElement *elm = static_cast<SPElement *>(*it);
 
-			if (elm->getAbsoluteBounds() != NULL)
-			if(x > elm->getAbsoluteBounds()->x && x < elm->getAbsoluteBounds()->x + elm->getAbsoluteBounds()->width &&
-				y > elm->getAbsoluteBounds()->y && y < elm->getAbsoluteBounds()->y + elm->getAbsoluteBounds()->height) {
+			if(x > elm->getAbsoluteBounds().x && x < elm->getAbsoluteBounds().x + elm->getAbsoluteBounds().width &&
+				y > elm->getAbsoluteBounds().y && y < elm->getAbsoluteBounds().y + elm->getAbsoluteBounds().height) {
 
 				elm->onClick(mouseButton, x , y);
 			}
@@ -250,17 +251,16 @@ namespace space {
 		SPMouseEventArgs *me = dynamic_cast<SPMouseEventArgs *>(e);
 		int x = me->getX();
 		int y = me->getY();
-		int xx = this->getAbsoluteBounds() != NULL ? x - this->getAbsoluteBounds()->y : x;
-	    int yy = this->getAbsoluteBounds() != NULL ? y - this->getAbsoluteBounds()->y : y;
+		int xx = x - this->getAbsoluteBounds().y;
+	    int yy =y - this->getAbsoluteBounds().y;
 
 
 		this->setState(SP_STATE_ACTIVE);
 		this->notify(string("mousedown"), this, me);
 		for(vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
 			SPElement *elm = static_cast<SPElement *>(*it);
-	        if (elm->getAbsoluteBounds() != NULL)
-			if(x > elm->getAbsoluteBounds()->x && x < elm->getAbsoluteBounds()->x + elm->getAbsoluteBounds()->width &&
-				y > elm->getAbsoluteBounds()->y && y < elm->getAbsoluteBounds()->y + elm->getAbsoluteBounds()->height) {
+	      	if(x > elm->getAbsoluteBounds().x && x < elm->getAbsoluteBounds().x + elm->getAbsoluteBounds().width &&
+				y > elm->getAbsoluteBounds().y && y < elm->getAbsoluteBounds().y + elm->getAbsoluteBounds().height) {
 				elm->mouseDown(sender, me);
 			}
 		}
@@ -274,9 +274,8 @@ namespace space {
 		this->setState(SP_STATE_NORMAL);
 		for(vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
 			SPElement *elm = static_cast<SPElement *>(*it);
-	        if (elm->getAbsoluteBounds() != NULL)
-			if(x > elm->getAbsoluteBounds()->x && x < elm->getAbsoluteBounds()->x + elm->getAbsoluteBounds()->width &&
-				y > elm->getAbsoluteBounds()->y && y < elm->getAbsoluteBounds()->y + elm->getAbsoluteBounds()->height) {
+	     	if(x > elm->getAbsoluteBounds().x && x < elm->getAbsoluteBounds().x + elm->getAbsoluteBounds().width &&
+				y > elm->getAbsoluteBounds().y && y < elm->getAbsoluteBounds().y + elm->getAbsoluteBounds().height) {
 				elm->mouseUp(sender, e);
 			}
 		}
@@ -375,12 +374,11 @@ namespace space {
 	SPElement::SPElement(SPElement *parent) : SPNode(static_cast<SPNode*>(parent)), fontStyle("Tahoma", 13, 1, false, false) {
 		//this->setTintColor(new SPColor(0, 127, 255, 56));
 		this->m_classList = new vector<string>;
-		this->absoluteBounds = new sp_rectangle;
 		this->setScrollable(false);
 		if (parent != nullptr) {
 			this->setParentNode(parent);
 			this->fontStyle = parent->fontStyle;
-			this->absoluteBounds = new sp_rectangle { parent->getX(), parent->getY(), parent->getWidth(), parent->getHeight() };
+			this->absoluteBounds = { parent->getX(), parent->getY(), parent->getWidth(), parent->getHeight() };
 		}
 		this->visible = true;
 		this->scrollX = 0;
@@ -394,16 +392,8 @@ namespace space {
 		this->z = 0;
 		this->m_width = 0;
 		this->m_height = 0;
-		this->margins = new sp_margin();
-		this->margins->left = 0;
-		this->margins->top = 0;
-		this->margins->right = 0;
-		this->margins->bottom = 0;
-		this->padding = new sp_margin();
-		this->padding->left = 0;
-		this->padding->top = 0;
-		this->padding->right = 0;
-		this->padding->bottom = 0;
+		this->margins = { 0, 0, 0, 0 };
+		this->padding = { 0, 0, 0, 0 };
 		this->addEventListener("attributechanged", SPCallback(&SPElement::onAttributeChanged), this, this);
 	}
 
@@ -584,18 +574,24 @@ namespace space {
 
 	void SPElement::invalidate()
 	{
-	    auto *rect = this->getAbsoluteBounds();
-	    if (rect == nullptr)
-	        return;
+	    auto rect = this->getAbsoluteBounds();
 	    auto *we = this->getWindowElement();
-	    we->invalidateRegion(*rect);
+	    we->invalidateRegion(rect);
 	}
-	sp_margin *SPElement::getMargins() {
+	sp_margin SPElement::getMargins() {
 		return this->margins;
 	}
-	sp_margin *SPElement::getPadding() {
+	sp_margin SPElement::getPadding() {
 		return this->padding;
 	}
+
+	void SPElement::setMargins(sp_margin value) {
+		this->margins = value;
+	}
+	void SPElement::setPadding(sp_margin value) {
+		this->padding = value;
+	}
+
 	SPElement::~SPElement() {
 	}
 	int SPElement::getHeight() {
@@ -642,8 +638,8 @@ namespace space {
 			auto *mouseEventArgs = dynamic_cast<SPMouseEventArgs *>(event.args);
 			if (mouseEventArgs != nullptr)
 			{
-				if (mouseEventArgs->getX() > this->getAbsoluteBounds()->x && mouseEventArgs->getX() < this->getAbsoluteBounds()->y + this->getWidth() &&
-					mouseEventArgs->getY() >this->getAbsoluteBounds()->y && mouseEventArgs->getY() < this->getAbsoluteBounds()->y + this->getHeight())
+				if (mouseEventArgs->getX() > this->getAbsoluteBounds().x && mouseEventArgs->getX() < this->getAbsoluteBounds().y + this->getWidth() &&
+					mouseEventArgs->getY() >this->getAbsoluteBounds().y && mouseEventArgs->getY() < this->getAbsoluteBounds().y + this->getHeight())
 				{
 					this->dispatchEvent("mousedown", mouseEventArgs, this);
 				}
@@ -655,8 +651,8 @@ namespace space {
 			auto *mouseEventArgs = dynamic_cast<SPMouseEventArgs *>(event.args);
 			if (mouseEventArgs != nullptr)
 			{
-				if (mouseEventArgs->getX() > this->getAbsoluteBounds()->x && mouseEventArgs->getX() < this->getAbsoluteBounds()->y + this->getWidth() &&
-					mouseEventArgs->getY() >this->getAbsoluteBounds()->y && mouseEventArgs->getY() < this->getAbsoluteBounds()->y + this->getHeight())
+				if (mouseEventArgs->getX() > this->getAbsoluteBounds().x && mouseEventArgs->getX() < this->getAbsoluteBounds().y + this->getWidth() &&
+					mouseEventArgs->getY() >this->getAbsoluteBounds().y && mouseEventArgs->getY() < this->getAbsoluteBounds().y + this->getHeight())
 				{
 					this->dispatchEvent("mouseup", mouseEventArgs, this);
 				}
@@ -821,24 +817,21 @@ namespace space {
 		std::vector<SPNode *> *children = this->getChildNodes();
 		x += this->getX();
 		y += this->getY();
-		if (this->absoluteBounds == nullptr)
-	    this->absoluteBounds = new sp_rectangle;
-
-	    this->absoluteBounds->x = x;
-	    this->absoluteBounds->y = y;
-	    this->absoluteBounds->width = this->getWidth();
-	    this->absoluteBounds->height = this->getHeight();
-
 		int width =  this->getWidth();
 		int height = this->getHeight();
+	    this->absoluteBounds = {
+			x, y, width, height
+		};
+
+
 
 		sp_rectangle rect2;
-		rect2.x = this->absoluteBounds->x;
-		rect2.y = this->absoluteBounds->y;
+		rect2.x = this->absoluteBounds.x;
+		rect2.y = this->absoluteBounds.y;
 		rect2.width = width;
 		rect2.height = height;
 		if (this->clipView) {
-	        c->setClip(*absoluteBounds);
+	        c->setClip(absoluteBounds);
 		}
 		x -= this->scrollX;
 		y -= this->scrollY;
@@ -888,8 +881,8 @@ namespace space {
 	}
 
 	void SPElement::scroll(int scrollX, int scrollY, int x, int y) {
-	    int xx = this->getAbsoluteBounds() != NULL ? x - this->getAbsoluteBounds()->y : x;
-	    int yy = this->getAbsoluteBounds() != NULL ? y - this->getAbsoluteBounds()->y : y;
+	    int xx = x - this->getAbsoluteBounds().y;
+	    int yy = y - this->getAbsoluteBounds().y;
 	    // cout << "Current scrolling element is " << this->getType() << endl;
 	    bool foundElement = false;
 	    if (string(this->getType()) == string("toplistview")) {
@@ -902,13 +895,11 @@ namespace space {
 			SPElement *elm = dynamic_cast<SPElement *>(*it);
 			string type = elm->getType();
 			if (elm->isVisible()) {
-	            if (elm->getAbsoluteBounds() != nullptr) {
-	                if(x > elm->getAbsoluteBounds()->x && x < elm->getAbsoluteBounds()->x + elm->getAbsoluteBounds()->width &&
-	                    y > elm->getAbsoluteBounds()->y && y < elm->getAbsoluteBounds()->y + elm->getAbsoluteBounds()->height) {
-	                    foundElement = true;
-	                    elm->scroll(scrollX, scrollY, x, y);
-	                }
-	            }
+                if(x > elm->getAbsoluteBounds().x && x < elm->getAbsoluteBounds().x + elm->getAbsoluteBounds().width &&
+                    y > elm->getAbsoluteBounds().y && y < elm->getAbsoluteBounds().y + elm->getAbsoluteBounds().height) {
+                    foundElement = true;
+                    elm->scroll(scrollX, scrollY, x, y);
+                }
 	        }
 		}
 	}

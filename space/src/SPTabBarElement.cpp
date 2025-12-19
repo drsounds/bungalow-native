@@ -19,8 +19,8 @@ SPTab::SPTab(SPTabBarElement *tabBar, string name, string id, string uri) {
 int SPTabBarElement::tabbar_mousedown(SPObject *sender, SPEventArgs *e) {
     SPTabBarElement *tabBar = (SPTabBarElement *)sender;
     SPMouseEventArgs *me = (SPMouseEventArgs *)e;
-    int x = tabBar->getAbsoluteBounds() != NULL ? me->getX() - tabBar->getAbsoluteBounds()->y : me->getX();
-    int y = tabBar->getAbsoluteBounds() != NULL ? me->getY() - tabBar->getAbsoluteBounds()->y : me->getY();
+    int x = me->getX() - tabBar->getAbsoluteBounds().y;
+    int y = me->getY() - tabBar->getAbsoluteBounds().y;
     int left = 0;
     ;
     for(std::vector<SPTab *>::iterator it = tabBar->tabs->begin(); it != tabBar->tabs->end(); ++it) {
@@ -99,7 +99,7 @@ void SPTabBarElement::mouseDown(SPObject* sender, SPEventArgs *e) {
     SPTabBarElement *tabBar = this;
     int x = me->getX();
     SPFontStyle font = tabBar->getFontStyle();
-    int left = tabBar->getAbsoluteBounds() != NULL ? tabBar->getAbsoluteBounds()->x : 0;
+    int left = tabBar->getAbsoluteBounds().x;
     for(std::vector<SPTab *>::iterator it = tabBar->getTabs()->begin(); it != tabBar->getTabs()->end(); ++it) {
         SPTab *tab = (SPTab *)static_cast<SPTab *>(*it);
         string title = tab->getName();

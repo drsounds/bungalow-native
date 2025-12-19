@@ -8,7 +8,7 @@
 void SpaceFrame::setWindowElement(space::SPWindowElement* value)
 {
     this->m_windowElement = value;
-    this->m_windowElement->setAbsoluteBounds(new space::sp_rectangle { 0, 0, this->getSpaceWidget()->GetSize().GetWidth(), this->getSpaceWidget()->GetSize().GetHeight() });
+    this->m_windowElement->setAbsoluteBounds({ 0, 0, this->getSpaceWidget()->GetSize().GetWidth(), this->getSpaceWidget()->GetSize().GetHeight() });
 }
 
 SpaceFrame::SpaceFrame(wxApp *app, space::Space *space)

@@ -15,8 +15,7 @@ void SPTreeViewElement::treeview_mousedown(SPObject *sender, SPEventArgs *e) {
     SPMouseEventArgs *args = (SPMouseEventArgs *)e;
     SPTreeViewElement *treeView = (SPTreeViewElement *)sender;
     int top = 0;
-    int y = args->getY() - treeView->getAbsoluteBounds()->y;
-    sp_rectangle *bounds = treeView->getAbsoluteBounds();
+    int y = args->getY() - treeView->getAbsoluteBounds().y;
 	for (vector<SPTreeItem *>::iterator it = treeView->m_items->begin(); it != treeView->m_items->end(); ++it) {
 		SPTreeItem *item = static_cast<SPTreeItem *>(*it);
 		if (args->getY() > top + treeView->getY() && args->getY() < top + treeView->getY() + treeView->getItemHeight()) {
@@ -34,8 +33,8 @@ void SPTreeViewElement::treeview_mousedown(SPObject *sender, SPEventArgs *e) {
 	}
 	SPWindowElement * winElement = treeView->getWindowElement();
 	sp_rectangle region;
-	region.x = treeView->getAbsoluteBounds()->x;
-	region.y = treeView->getAbsoluteBounds()->y;
+	region.x = treeView->getAbsoluteBounds().x;
+	region.y = treeView->getAbsoluteBounds().y;
 	region.z = 0;
 	region.width = treeView->getWidth();
 	region.height = treeView->getHeight();
@@ -46,8 +45,7 @@ void SPTreeViewElement::treeview_mouseup(SPObject *sender, SPEventArgs *e) {
     SPMouseEventArgs *args = (SPMouseEventArgs *)e;
     SPTreeViewElement *treeView = (SPTreeViewElement *)sender;
     int top = 0;
-    int y = args->getY() - treeView->getAbsoluteBounds()->y;
-    sp_rectangle *bounds = treeView->getAbsoluteBounds();
+    int y = args->getY() - treeView->getAbsoluteBounds().y;
 	for (vector<SPTreeItem *>::iterator it = treeView->getItems()->begin(); it != treeView->getItems()->end(); ++it) {
 		SPTreeItem *item = static_cast<SPTreeItem *>(*it);
 		item->setHighlighted(false);

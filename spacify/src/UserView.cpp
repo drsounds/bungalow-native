@@ -13,8 +13,7 @@ namespace space {
         UserView::UserView(SPElement *parent)
          : SPViewElement(parent)
         {
-            this->getPadding()->top = 0;
-            this->getPadding()->left = 0;
+            this->setPadding({ 20, 20, 20, 20 });
             //ctor
             header = new space::SPHeaderElement(this);
             header->title->setTitle("Title");
