@@ -7,7 +7,11 @@
 
 #include "SPGraphicsContext.h"
 
+#include <iostream>
+
 #include "SPColor.h"
+
+using namespace std;
 
 namespace space {
 
@@ -16,18 +20,15 @@ void SPTreeViewElement::treeview_mousedown(SPObject *sender, SPEventArgs *e) {
     SPTreeViewElement *treeView = (SPTreeViewElement *)sender;
     int top = 0;
     int y = args->getY() - treeView->getAbsoluteBounds().y;
-	for (vector<SPTreeItem *>::iterator it = treeView->m_items->begin(); it != treeView->m_items->end(); ++it) {
+		for (vector<SPTreeItem *>::iterator it = treeView->m_items->begin(); it != treeView->m_items->end(); ++it) {
 		SPTreeItem *item = static_cast<SPTreeItem *>(*it);
 		if (args->getY() > top + treeView->getY() && args->getY() < top + treeView->getY() + treeView->getItemHeight()) {
-            item->setHighlighted(true);
-
-            // Raise treeview itemselected event
-            TreeViewEventArgs *eventArgs = new TreeViewEventArgs();
-            eventArgs->setItem(item);
-            treeView->notify(string("itemhighlighted"), treeView, eventArgs);
-
+				item->setHighlighted(true);
+				TreeViewEventArgs *eventArgs = new TreeViewEventArgs();
+				eventArgs->setItem(item);
+				treeView->notify(string("itemhighlighted"), treeView, eventArgs);
 		} else {
-            item->setHighlighted(false);
+				item->setHighlighted(false);
 		}
 		top += treeView->getItemHeight();
 	}
@@ -42,23 +43,21 @@ void SPTreeViewElement::treeview_mousedown(SPObject *sender, SPEventArgs *e) {
 }
 
 void SPTreeViewElement::treeview_mouseup(SPObject *sender, SPEventArgs *e) {
-    SPMouseEventArgs *args = (SPMouseEventArgs *)e;
-    SPTreeViewElement *treeView = (SPTreeViewElement *)sender;
-    int top = 0;
-    int y = args->getY() - treeView->getAbsoluteBounds().y;
+	SPMouseEventArgs *args = (SPMouseEventArgs *)e;
+	SPTreeViewElement *treeView = this;
+	int top = 0;
+	int y = args->getY() - treeView->getAbsoluteBounds().y;
 	for (vector<SPTreeItem *>::iterator it = treeView->getItems()->begin(); it != treeView->getItems()->end(); ++it) {
 		SPTreeItem *item = static_cast<SPTreeItem *>(*it);
 		item->setHighlighted(false);
 		if (args->getY() > top + treeView->getY() && args->getY() < top + treeView->getY() + treeView->getItemHeight()) {
-            item->setSelected(true);
-
-            // Raise treeview itemselected event
-            TreeViewEventArgs *eventArgs = new TreeViewEventArgs();
-            eventArgs->setItem(item);
-            treeView->notify(string("itemselected"), treeView, eventArgs);
-
+			item->setSelected(true);
+			// Raise treeview itemselected event
+			TreeViewEventArgs *eventArgs = new TreeViewEventArgs();
+			eventArgs->setItem(item);
+			treeView->notify(string("itemselected"), treeView, eventArgs);
 		} else {
-            item->setSelected(false);
+			item->setSelected(false);
 		}
 		top += treeView->getItemHeight();
 	}
@@ -71,6 +70,7 @@ void SPTreeViewElement::treeview_mouseup(SPObject *sender, SPEventArgs *e) {
 	region.height = treeView->getHeight();
 	winElement->invalidateRegion(region);
 }
+
 SPTreeViewElement::SPTreeViewElement(SPElement *parent)
 : SPElement(parent) {
 	this->setTagName("treeview");

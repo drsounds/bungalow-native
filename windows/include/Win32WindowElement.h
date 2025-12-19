@@ -9,13 +9,11 @@
 namespace space {
 	class Win32WindowElement : public WindowElement {
 	private:
-
-		HINSTANCE hInst;								// current instance
-		HDC memHDC;
-		HWND hWnd;
-        MainElement *mainWindow;
+			HINSTANCE hInst;	// current instance
+			HDC memHDC;
+			HWND hWnd;
+			MainElement *mainWindow;
 	public:
-
 	    void invalidateRegion(rectangle rect);
 	    GraphicsContext *createGraphics();
         MainElement *getMainWindow() {

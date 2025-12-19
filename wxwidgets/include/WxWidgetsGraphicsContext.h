@@ -6,7 +6,7 @@
 #include <wx/dcclient.h>
 #include <wx/image.h>
 #include <wx/dcprint.h>
-
+#include <wx/wx.h>
 #include "SPGraphicsContext.h"
 
 
@@ -36,7 +36,7 @@ namespace space
         static wxColor toWxColor(SPColor color);
         static SPColor fromWxColor(wxColour color);
         explicit WxWidgetsGraphicsContext(SpaceFrame*);
-
+        void OnTextEnter(wxEvent& evt);
         void setFrame(SpaceFrame *frame)
         {
           this->m_frame = frame;

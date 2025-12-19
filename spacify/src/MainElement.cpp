@@ -40,10 +40,7 @@ namespace space {
     }
 
     MainElement::MainElement(SPElement *parent) : SPVBoxElement(parent)
-    {
-        this->viewStack = new SPViewStackElement(this);
-        this->treeView = new SPTreeViewElement(this);
-        this->infoElement = new SPInfoElement(this);
+    { 
         this->layout();
         this->getWindowElement()->addEventListener("navigate", static_cast<SPCallback>(&MainElement::onNavigate), this, this);
     }
@@ -68,7 +65,7 @@ namespace space {
         this->clipView = false;
         auto *header = new SPAppHeaderElement(this);
         header->setHeight(48);
-		header->setPadding({ 0, 0, 0, 0 });
+		header->setPadding({ 5, 5, 5, 5 });
         this->appendChild(header);
         header->setId("header");
         // add search element
@@ -105,7 +102,7 @@ namespace space {
     	leftSidebar->appendChild(tabBar);
     	this->treeView = new SPTreeViewElement(leftSidebar);
     	treeView->setId("tree");
-    	treeView->setFlex( 1);
+    	treeView->setFlex(1);
     	treeView->setHeight(920);
     	treeView->setWidth(220);
     	leftSidebar->appendChild(treeView);

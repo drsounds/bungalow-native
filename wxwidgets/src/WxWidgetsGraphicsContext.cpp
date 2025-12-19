@@ -316,21 +316,34 @@ namespace space
                         wxID_ANY,
                         "",
                         wxPoint(x, y),
-                        wxSize(width, height)
+                        wxSize(width, height),
+                        wxTE_PROCESS_ENTER
                     );
 
                     (*elements)[elm] = ctrl;
+                    (*widgets)[ctrl] = elm;
 
-                    ctrl->Bind(wxEVT_TEXT_ENTER, [=](wxCommandEvent& evt)
-                    {
-                        elm->notify("enter", elm,
-                                    new SPInputEventArgs(evt.GetString().ToStdString()));
-                    });
+                    ctrl->Bind(
+                        wxEVT_COMMAND_TEXT_ENTER,
+                        &WxWidgetsGraphicsContext::OnTextEnter,
+                        this
+                    );
                 }
                 else
                 {
                     (*elements)[elm]->SetSize(x - this->origo->x, y - this->origo->y, w, h);
                 }
+            }
+
+            void WxWidgetsGraphicsContext::OnTextEnter(wxEvent& evt)
+            {
+                wxTextCtrl *widget = (wxTextCtrl *)evt.GetEventObject();
+                SPElement *elm = (*widgets)[widget];
+                elm->notify(
+                    "enter",
+                    elm,
+                    new SPInputEventArgs(widget->GetValue().utf8_string())
+                );
             }
 
             void WxWidgetsGraphicsContext::drawInputElement(SPElement* elm,

@@ -51,7 +51,7 @@ class SPSkin
         bool hasImage(string selector);
         SPColor getColor(string selector, string def);
         SPImage *getImage(string selector, string def);
-        virtual bool drawElement(SPGraphicsContext *gc, SPElement *, const string& state, const sp_rectangle& bounds) {}
+        virtual bool drawElement(SPGraphicsContext *gc, SPElement *, const string& state, const sp_rectangle& bounds) { return false; }
         virtual void drawTableRow(SPGraphicsContext* g, SPTableElement* table, int i, int x, int y, int width, int height, int row) {}
         virtual void drawTableHeader(SPGraphicsContext* g, SPTableElement* table, int x, int y, int width, int height) {}
         virtual void drawTabBarTab(SPGraphicsContext* g, SPTabBarElement *tabBar, SPTab *tab, int index, bool active, int x, int y, int width, int height) {}

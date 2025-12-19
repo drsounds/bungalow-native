@@ -7,7 +7,7 @@ namespace space {
 		this->setTagName("vbox");
 	}
 
-    void space::SPVBoxElement::pack() {
+    void SPVBoxElement::pack() {
         SPElement::pack();
         int flexes = 0;
         int statics = 0;
@@ -45,10 +45,12 @@ namespace space {
         for(std::vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
             SPElement *child = (SPElement *)*it;
              if (!child->isVisible())
-                continue;
+             	continue;
+        	int topPadding = this->getPadding().top + child->getMargins().top;
+        	int bottomPadding = this->getPadding().bottom - child->getMargins().bottom;
             int flex = child->getFlex();
             if(flex > 0) {
-            	child->setHeight((1 / flexes) * flexHeight);
+            	child->setHeight((1 / flexes) * flexHeight - bottomPadding - topPadding);
             } else {
                 statics++;
             }
@@ -62,6 +64,10 @@ namespace space {
             SPElement *child = (SPElement *)*it;
             if (!child->isVisible())
                 continue;
+        	int leftPadding = this->getPadding().left + child->getMargins().left;
+        	int rightPadding = this->getPadding().right + child->getMargins().right;
+        	int topPadding = this->getPadding().top + child->getMargins().top;
+        	int bottomPadding = this->getPadding().bottom - child->getMargins().bottom;
             if(child->getFlex() > 0) {
                 side = 0;
             } else {
@@ -70,20 +76,19 @@ namespace space {
             }
             if (side < 0)
             {
-                child->setY(top + child->getMargins().top + this->getPadding().top);
+                child->setY(top + topPadding);
             }
             else if (side == 0) {
-                child->setY(topHeight + (((1 / flexes) * (flexHeight - 1)))*0 + child->getMargins().top + this->getPadding().top);
+                child->setY(topHeight + topPadding);
 
-                child->setHeight(flexHeight);
+                child->setHeight(flexHeight - bottomPadding);
             }
             else
             {
-                child->setY(topHeight + flexHeight + bottom + child->getPadding().top + child->getMargins().top);
+                child->setY(topHeight + flexHeight + bottom + topPadding);
             }
-            child->setWidth(this->getWidth() - (child->getMargins().bottom * 2 + this->getPadding().bottom * 2));
-            //cout << "SPHBoxElement width: " << this->getHeight() << endl;
-            //cout << "VBoxElement Child: " << child->getType() << "Width: " << this->getWidth() << endl;
+        	child->setX(leftPadding);
+            child->setWidth(this->getWidth() - rightPadding - leftPadding);
 
             switch(side) {
                 case -1:
@@ -91,9 +96,6 @@ namespace space {
                     break;
                 case 0:
                     top += child->getHeight();
-                    break;
-                case 2:
-                    bottom += child->getHeight();
                     break;
                 default:
                     top += child->getHeight();

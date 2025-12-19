@@ -34,6 +34,7 @@ int space::Space::notify(const string &event, SPObject *sender,
     {
         window->notify(event, sender, data);
     }
+    return 0;
 }
 space::SPMessage space::Space::dequeueNextMessage() {
     auto message = this->m_messages->front();

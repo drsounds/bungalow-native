@@ -1,4 +1,4 @@
-#include "../include/UserView.h"
+#include "UserView.h"
 #include <boost/algorithm/string.hpp>
 #include <string>
 #include <vector>
@@ -21,7 +21,6 @@ namespace space {
             header->set("width", "100%");
             header->set("height", "180");
             this->appendChild(header);
-
         }
 
         UserView::UserView()
@@ -34,13 +33,7 @@ namespace space {
             //dtor
         }
         void UserView::navigate(const string& uri) {
-            std::vector<std::string> strs;
-            boost::split(strs, uri, boost::is_any_of(":"));
-            string id = strs.at(2);
-            char *buffer = new char[50];
-            int length = id.copy(buffer, id.size(), 0);
-            buffer[length] = '\0';
-            this->header->title->setTitle(string(buffer));
+            this->header->title->setTitle("User");
         }
         bool UserView::acceptsUri(const string& uri) {
             string uri2 = (string)uri.c_str();

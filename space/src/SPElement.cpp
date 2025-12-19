@@ -9,7 +9,7 @@
 #include <boost/algorithm/string.hpp>
 #include "Space.h"
 
-#include "wx/xml/xml.h"
+#include <wx/xml/xml.h>
 
 #include "SPWindowElement.h"
 #include "SPObservable.h"
@@ -97,7 +97,7 @@ namespace space {
 
 	SPColor SPElement::getColorAttribute(const string& title, SPColor defaultValue)
 	{
-		SPColor color = this->SPNode::getColorAttribute(title, std::move(defaultValue));
+		SPColor color = this->SPNode::getColorAttribute(title, defaultValue);
 		return color;
 	}
 
@@ -285,7 +285,7 @@ namespace space {
 	}
 
 	bool SPElement::hasClass(string value) {
-	   return  std::find(this->m_classList->begin(), this->m_classList->end(), value) != this->m_classList->end();
+	   return  std::find(this->m_classList->begin(), this->m_classList->end(), value) != this->m_classList->end(); // @suppress("Function cannot be instantiated")
 	}
 
 	void SPElement::removeClass(string value) {
@@ -478,7 +478,8 @@ namespace space {
 	}
 	SPElement* SPElement::getTabBarViewElement() {
 		for (auto & it : *this->children) {
-			if (it->getType() == "tabbarview") {
+			SPElement *elm = (SPElement*) it;
+			if (elm->getType() == "tabbarview") {
 				return (SPElement *)it;
 			}
 		}
@@ -486,7 +487,8 @@ namespace space {
 	}
 	SPElement* SPElement::getViewStackElement() {
 		for (auto & it : *this->children) {
-			if (it->getType() == "viewstack") {
+			SPElement *elm = (SPElement *)it;
+			if (elm->getType() == "viewstack") {
 				return (SPElement *)it;
 			}
 		}
@@ -606,6 +608,10 @@ namespace space {
 	void SPElement::setColorScheme(short value)
 	{
 		this->m_colorScheme	= value;
+	}
+
+	void SPElement::setId(const string &value) {
+		SPNode::setId(value);
 	}
 
 	short SPElement::getColorScheme() {
@@ -759,6 +765,7 @@ namespace space {
 			break;
 		case SP_STATE_HOVER:
 			stateClass = "hover";
+			break;
 		default:
 			stateClass = "";
 		}

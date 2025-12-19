@@ -18,7 +18,10 @@ namespace space {
         int side = -1;
         // First calculate count of flex
         for(std::vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
-            SPElement *child = (SPElement *)*it;
+        	SPElement *child = (SPElement *)*it;
+        	if (!child->isVisible()) {
+        		continue;
+        	}
             if(child->getFlex() > 0) {
                 flexes++;
                 side = 0;
@@ -42,9 +45,14 @@ namespace space {
         }
         for(std::vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
             SPElement *child = (SPElement *)*it;
+        	if (!child->isVisible()) {
+        		continue;
+        	}
+        	int leftPadding = this->getPadding().left + child->getMargins().left;
+        	int rightPadding = this->getPadding().right + child->getMargins().right;
             int flex = child->getFlex();
             if(flex > 0) {
-            	child->setWidth((flex / flexes) * flexWidth - 1);
+            	child->setWidth((flex / flexes) * flexWidth - 1 - leftPadding - rightPadding);
             } else {
                 statics++;
             }
@@ -56,37 +64,40 @@ namespace space {
         side = -1;
         for(std::vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
             SPElement *child = (SPElement *)*it;
+        	if (!child->isVisible()) {
+        		continue;
+        	}
+        	int leftPadding = this->getPadding().left + child->getMargins().left;
+        	int topPadding = this->getPadding().top + child->getMargins().top;
+        	int bottomPadding = this->getPadding().bottom - child->getMargins().bottom;
             if(child->getFlex() > 0) {
 
                 side = 0;
             } else {
                 if(side == 0)
-                    side = 1;
+					side = 1;
             }
             if(side < 0)
-                child->setX(left);
+                child->setX(left + leftPadding);
             else if(side == 0) {
-                child->setX(leftWidth);
+                child->setX(leftWidth + leftPadding);
 
             }
             else
             {
-                child->setX(leftWidth + flexWidth + right);
+                child->setX(leftPadding + leftWidth + flexWidth + right);
             }
-            child->setY(this->getPadding().top);
+            child->setY(topPadding);
+            child->setHeight(this->getHeight() - bottomPadding - topPadding);
 
-            child->setHeight(this->getHeight());
-            //cout << "SPHBoxElement height: " << this->getHeight() << endl;
-            //cout << "SPHBoxElement Child: " << child->getType() << " Height: " << this->getHeight() << endl;
-            switch(side) {
-                case -1:
-                    left += child->getWidth();
-                    break;
-                case 0:
-                    break;
-                case 2:
-                    right += child->getWidth();
-                    break;
+			switch(side) {
+            case -1:
+                left += child->getWidth();
+                break;
+            case 0:
+                break;
+			default:
+                break;
             }
         }
 
@@ -100,6 +111,5 @@ namespace space {
             child->pack();
         }
         // cout << "Element: " << this->getType() << " packed to width: " << this->getWidth() << " height: " << this->getHeight() << " flex: " << this->getIntegerAttribute("flex", 0) << endl;
-    };
-
+    }
 }

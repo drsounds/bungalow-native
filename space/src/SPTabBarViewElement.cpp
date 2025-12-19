@@ -19,7 +19,8 @@ namespace space {
 		if (this->tabBar->getTabs()->size() == 0) {
 			return;
 		}
-		string strUri = this->tabBar->getTabs()->at(0)->getUri();
+		SPTab *tab = this->tabBar->getTabs()->at(0);
+		string strUri = tab->getUri();
 		SPUri uri(strUri);
 		this->tabStack->setTabId(uri.getHash());
 	}
