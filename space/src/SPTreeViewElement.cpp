@@ -22,7 +22,7 @@ void SPTreeViewElement::treeview_mousedown(SPObject *sender, SPEventArgs *e) {
     int y = args->getY() - treeView->getAbsoluteBounds().y;
 		for (vector<SPTreeItem *>::iterator it = treeView->m_items->begin(); it != treeView->m_items->end(); ++it) {
 		SPTreeItem *item = static_cast<SPTreeItem *>(*it);
-		if (args->getY() > top + treeView->getY() && args->getY() < top + treeView->getY() + treeView->getItemHeight()) {
+		if (y > top && y < top + treeView->getItemHeight()) {
 				item->setHighlighted(true);
 				TreeViewEventArgs *eventArgs = new TreeViewEventArgs();
 				eventArgs->setItem(item);
@@ -50,14 +50,12 @@ void SPTreeViewElement::treeview_mouseup(SPObject *sender, SPEventArgs *e) {
 	for (vector<SPTreeItem *>::iterator it = treeView->getItems()->begin(); it != treeView->getItems()->end(); ++it) {
 		SPTreeItem *item = static_cast<SPTreeItem *>(*it);
 		item->setHighlighted(false);
-		if (args->getY() > top + treeView->getY() && args->getY() < top + treeView->getY() + treeView->getItemHeight()) {
+		if (y > top && y < top + treeView->getItemHeight()) {
 			item->setSelected(true);
 			// Raise treeview itemselected event
 			TreeViewEventArgs *eventArgs = new TreeViewEventArgs();
 			eventArgs->setItem(item);
 			treeView->notify(string("itemselected"), treeView, eventArgs);
-		} else {
-			item->setSelected(false);
 		}
 		top += treeView->getItemHeight();
 	}

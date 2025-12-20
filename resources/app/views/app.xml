@@ -12,6 +12,7 @@
       <tabbar id="leftTabBar" height="28" />
       <treeview id="treeview" width="228" flex="1" />
     </vbox>
+    <splitter />
     <viewstack flex="1" id="viewstack" />
   </hbox>
   <appfooter id="footer" height="30" />

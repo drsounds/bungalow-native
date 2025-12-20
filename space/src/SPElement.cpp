@@ -17,6 +17,7 @@
 #include "SPGraphicsContext.h"
 #include "SPHBoxElement.h"
 #include "SPSkin.h"
+#include "SPSplitterElement.h"
 #include "SPImage.h"
 #include "SPStylesheet.h"
 #include "SPFontStyle.h"
@@ -460,8 +461,12 @@ namespace space {
 		wxXmlNode *root = xmlDoc.GetRoot();
 		this->clear();
 		string thisType = this->getType();
+
+		SPElement *slot = this->getSlotElement();
+		for (const wxXmlAttribute *attribute = root->GetAttributes(); attribute != nullptr; attribute = attribute->GetNext()) {
+			slot->set(attribute->GetName().ToStdString(), attribute->GetValue().ToStdString());
+		}
 		for (wxXmlNode *child = root->GetChildren(); child; child = child->GetNext()) {
-			SPElement *slot = this->getSlotElement();
 			SPElement *elm = this->parseElement(child, slot, this);
 			slot->appendChild(elm);
 		}
@@ -873,6 +878,9 @@ namespace space {
 
 	void SPElement::pack()
 	{
+		if (!this->getInnerText().empty()) {
+			this->resizeToText(false, true);
+		}
 		if (this->getUnitWidth().value > 0) {
 			switch (this->getUnitWidth().unit) {
 			case sp_size_scale::undefined:
@@ -1029,6 +1037,8 @@ namespace space {
 			elm = new SPTabBarViewElement(parent);
 		} else if (tagName == "vbox") {
 			elm = new SPVBoxElement(parent);
+		} else if (tagName == "splitter") {
+			elm = new SPSplitterElement(parent);
 		} else if (tagName == "hbox") {
 			elm = new SPHBoxElement(parent);
 		} else if (tagName == "section") {

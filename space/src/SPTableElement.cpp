@@ -96,7 +96,5 @@ namespace space {
             left += columnWidth;
         }
         columnY = columnYY;
-
-
     }
 }

@@ -92,7 +92,7 @@ void SpaceWidget::OnLeftUp(wxMouseEvent& event) {
         "mouseup",
         args,
         this->m_frame->getWindowElement()
-        );
+    );
 	if (this->m_leftMouseButtonPressed) {
 		auto *args2 = new space::SPMouseEventArgs(1, event.GetX(), event.GetY());
 		space::SPEvent evt2("click", args2, nullptr);

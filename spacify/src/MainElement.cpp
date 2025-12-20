@@ -33,7 +33,7 @@ namespace space {
         SPUri *uri = selectedItem->getUri();
         string uri2 = uri->getUri();
         string uri3 (uri2);
-        mainWindow->navigate(uri3);
+        this->navigate(uri3);
         return 0;
     }
     void MainElement::navigate(const string& uri) const
@@ -112,9 +112,9 @@ namespace space {
         tabBar = (SPTabBarElement *)leftTabBar;
     	treeView = (SPTreeViewElement *)this->getElementById("treeview");
         // Add sample elements
-        auto *item = new SPTreeItem(new SPUri("spacify:internal:start"));
+        auto *item = new SPTreeItem(new SPUri("spacify:start#overview"));
         item->setSelected(false);
-        auto *item2 = new SPTreeItem(new SPUri("spacify:internal:history"));
+        auto *item2 = new SPTreeItem(new SPUri("spacify:artist#overview"));
         item2->setSelected(false);
         treeView->addEventListener("itemselected", SPCallback(&MainElement::treeview_itemselected), this, treeView);
         treeView->addItem(item);
@@ -141,7 +141,7 @@ namespace space {
         footer->setHeight(32);
         footer->setId("footer");
         // Add header buttons
-        this->navigate("spacify:start:overview");
+        this->navigate("spacify:start#overview");
     }
 
     MainElement::MainElement(SPElement *parent) : SPVBoxElement(parent)

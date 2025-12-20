@@ -19,14 +19,21 @@ bool SPClassicSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const stri
     bool result = false;
     SPColor bgColor = elm->getBackgroundColor();
     SPColor fgColor = elm->getForegroundColor();
+    SPColor shadowColor = this->m_shadowColor;
     SPColor *tintColor = elm->getTintColor();
     if (tintColor != nullptr)
     {
         bgColor = bgColor.tint(*tintColor);
         fgColor = fgColor.tint(*tintColor);
+        shadowColor = tintColor->lighten(-0);
     }
     if (elm->getType() == "input") {
         result = true;
+    }
+    if (elm->getType() == "splitter") {
+        result = true;
+        bgColor = shadowColor;
+        g->fillRectangle(bounds.x, bounds.y, bounds.width, bounds.height, bgColor);
     }
     if (elm->getType() == "button")
     {
@@ -63,7 +70,7 @@ bool SPClassicSkin::drawElement(SPGraphicsContext* g, SPElement *elm, const stri
             25,
             0,
             gradient
-            );
+        );
     	if (this->m_glossy && state != "active") {
     		SPGradient gradient2(
 				bgColor.lighten(0.2), bgColor.lighten(0.3),
@@ -245,8 +252,8 @@ void SPClassicSkin::drawTabBarTab(SPGraphicsContext* g, SPTabBarElement *tabBar,
     if (tintColor != nullptr)
     {
         bgColor = bgColor.tint(*tintColor);
-        shadowColor = tintColor->lighten(-0.8);
-        lColor = lColor.tint(*tintColor).lighten();
+        shadowColor = tintColor->lighten(-0);
+        lColor = lColor.tint(*tintColor).lighten(0.5);
     }
 	if (tabBar->getColorScheme() == SP_COLOR_SCHEME_DARK) {
 		shadowColor = shadowColor.lighten(-0.2);
@@ -257,6 +264,9 @@ void SPClassicSkin::drawTabBarTab(SPGraphicsContext* g, SPTabBarElement *tabBar,
         if (index > 0)
         {
             g->drawLine(x, y, x, y + height - 1,shadowColor);
+        } else {
+
+            g->drawLine(x + width - 1, y, x + width - 1, y + height - 1,shadowColor);
         }
     }
     else
@@ -285,7 +295,7 @@ void SPClassicSkin::drawTabBar(
     {
         bgColor = bgColor.tint(*tintColor);
         lColor = lColor.tint(*tintColor);
-        shadowColor = tintColor->lighten(-0.8);
+        shadowColor = tintColor->lighten(-0);
     }
 	if (tabBar->getColorScheme() == SP_COLOR_SCHEME_DARK) {
 		bgColor = bgColor.lighten(2);
@@ -305,7 +315,7 @@ void SPClassicSkin::drawTabBar(
     }
     g->drawLine(x, y, x + width, y,shadowColor);
     g->drawLine(x, y + 1, x + width, y + 1, lColor);
-    g->drawLine(x, y + height - 1, x + width, y + height - 1,shadowColor);
+    g->drawLine(x, y + height - 1, x + width, y + height - 1, shadowColor);
 }
 
 void SPClassicSkin::drawTreeItem(SPGraphicsContext* g, SPTreeViewElement *treeView, SPTreeItem* item, int itemHeight, int x, int y, int width, int height)
