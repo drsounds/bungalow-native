@@ -12,7 +12,7 @@ namespace space {
         SPButtonElement(SPElement *parent);
 		SPButtonElement();
         void pack() override;
-		void paint(int x, int y, SPGraphicsContext *c);
+		virtual void paint(int x, int y, SPGraphicsContext *c) override;
 		string getType() override {
             return "button";
 		}

@@ -20,8 +20,8 @@ class SPTableElement : public SPElement
         vector<SPTableColumnHeader *> *columns;
         virtual ~SPTableElement();
         virtual string getType() override;
-        virtual void paint(int x, int y, SPGraphicsContext *g);
-        virtual void scroll(int scrollX, int scrollY, int x, int y);
+        virtual void paint(int x, int y, SPGraphicsContext *g) override;
+        virtual void scroll(int scrollX, int scrollY, int x, int y) override;
 };
 }
 #endif // TABLEVIEWELEMENT_H

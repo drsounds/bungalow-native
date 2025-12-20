@@ -110,7 +110,7 @@ namespace space {
         bool hasAttribute(string attrib);
         virtual SPColor getColorAttribute(const string& title, SPColor defaultValue);
         void setColorAttribute(const string& attrName, SPColor value);
-	    int notify(const string &event, SPObject *sender, SPEventArgs *data);
+	    int notify(const string &event, SPObject *sender, SPEventArgs *data) override;
 	    virtual void clear();
 	    int getIntegerAttribute(const string& title, int defaultValue);
         void setIntegerAttribute(const string& title, int value);

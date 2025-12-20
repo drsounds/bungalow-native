@@ -14,7 +14,7 @@ class SPSectionElement : public SPVBoxElement
 {
 public:
 	explicit SPSectionElement(SPElement *parent);
-	void pack();
+	void pack() override;
 
 	string getType() override {
 		return "section";

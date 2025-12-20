@@ -178,7 +178,7 @@ namespace space {
         SPElement();
         void setSkin(SPSkin *value);
         virtual void resize(int width, int height);
-        void scroll(int x, int y);
+        virtual void scroll(int x, int y);
         void scrollTo(int x, int y);
     	void applySkin();
         virtual void scroll(int scrollX, int scrollY, int x, int y);
@@ -210,7 +210,7 @@ namespace space {
 
         virtual void paint(int x, int y, SPGraphicsContext *c);
         string getType() override;
-        void setUri(const string &uri);
+        virtual void setUri(const string &uri) override;
         virtual void paint(int x, int y, int width, int height, SPGraphicsContext* c);
         void resizeToText(bool width, bool height);
         sp_rectangle getTextBounds();

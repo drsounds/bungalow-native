@@ -12,7 +12,7 @@ private:
         SPInputElement();
         SPInputElement(SPElement *parent);
         virtual ~SPInputElement();
-        virtual void paint(int x, int y, SPGraphicsContext *g);
+        virtual void paint(int x, int y, SPGraphicsContext *g) override;
         virtual string getType() override {
             return "input";
         }

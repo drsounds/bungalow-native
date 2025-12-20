@@ -37,6 +37,10 @@ endif()
 # Executable
 add_executable(spacify-client ${SOURCES} ${HEADERS})
 
+add_custom_target(debug_mode
+    COMMAND python3 ${CMAKE_SOURCE_DIR}/launcher.py $<TARGET_FILE:spacify-client>
+    DEPENDS my_app
+)
 set(CMAKE_PREFIX_PATH ="/opt/homebrew/opt/expat")
 set(CMAKE_PKG_CONFIG_PC_PATH "/opt/homebrew/opt/expat/lib/pkgconfig")
 set(CMAKE_LINK_DEF_FILE_FLAG "-L/opt/homebrew/opt/expat/lib")

@@ -22,7 +22,7 @@ public:
 	}
 	void setTabId(const string& tabId);
 	explicit SPTabStackElement(SPElement *parent);
-	void pack();
+	void pack() override;
 };
 }
 

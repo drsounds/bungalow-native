@@ -12,7 +12,7 @@ public:
 	explicit SPBoxElement(SPElement *parent);
 	SPBoxElement();
 	~SPBoxElement();
-	void pack();
+	void pack() override;
 	virtual string getType() override {
 		return "box";
 	}

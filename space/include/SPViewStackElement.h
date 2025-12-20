@@ -14,7 +14,7 @@ namespace space {
         SPViewElement *activeView;
 
     public:
-        virtual void pack();
+        virtual void pack() override;
         virtual string getType() override {
             return "viewstack";
         }
@@ -22,7 +22,7 @@ namespace space {
         SPViewStackElement(SPElement *parent);
         void registerView(SPViewElement *view);
         void navigate(const string& uri);
-        virtual void appendChild(SPNode *child);
+        virtual void appendChild(SPNode *child) override;
     };
 }
 #endif // VIEWSTACKELEMENT_H

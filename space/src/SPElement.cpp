@@ -786,7 +786,7 @@ namespace space {
 		// adjust for scroll
 	}
 
-    void SPElement::resizeToText(bool width, bool height) {
+	void SPElement::resizeToText(bool width, bool height) {
 		sp_rectangle bounds = this->getTextBounds();
 		if (width) {
 			this->setWidth(bounds.width * 4);
@@ -920,21 +920,21 @@ namespace space {
 	    // cout << "Current scrolling element is " << this->getType() << endl;
 	    bool foundElement = false;
 	    if (string(this->getType()) == string("toplistview")) {
-	        //cout << "Test" << endl;
+				//cout << "Test" << endl;
 	    }
-		for(vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
-	        if ((this->getWindowElement())->getDeepestElement() == nullptr) {
-	            break;
-	        }
-			SPElement *elm = dynamic_cast<SPElement *>(*it);
-			string type = elm->getType();
-			if (elm->isVisible()) {
-                if(x > elm->getAbsoluteBounds().x && x < elm->getAbsoluteBounds().x + elm->getAbsoluteBounds().width &&
-                    y > elm->getAbsoluteBounds().y && y < elm->getAbsoluteBounds().y + elm->getAbsoluteBounds().height) {
-                    foundElement = true;
-                    elm->scroll(scrollX, scrollY, x, y);
-                }
-	        }
+			for(vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
+				if ((this->getWindowElement())->getDeepestElement() == nullptr) {
+						break;
+				}
+				SPElement *elm = dynamic_cast<SPElement *>(*it);
+				string type = elm->getType();
+				if (elm->isVisible()) {
+					if(x > elm->getAbsoluteBounds().x && x < elm->getAbsoluteBounds().x + elm->getAbsoluteBounds().width &&
+						y > elm->getAbsoluteBounds().y && y < elm->getAbsoluteBounds().y + elm->getAbsoluteBounds().height) {
+						foundElement = true;
+						elm->scroll(scrollX, scrollY, x, y);
+					}
+				}
 		}
 	}
 

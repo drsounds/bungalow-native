@@ -23,8 +23,8 @@ namespace space {
     	virtual void setHash(const string& hash) {
     		this->m_hash = hash;
     	}
-        virtual void scroll(int scrollX, int scrollY, int mouseX, int mouseY);
-        void pack();
+      virtual void scroll(int scrollX, int scrollY, int mouseX, int mouseY) override;
+      virtual void pack() override;
 	};
 }
 #endif // VIEWELEMENT_H

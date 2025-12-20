@@ -21,7 +21,7 @@ class SPInfoElement : public SPHBoxElement
         SPMessageType getMessageType() {
             return this->type;
         }
-        void hide();
+        void hide() override;
         void show(SPMessageType type, string text);
         void setMessageType(SPMessageType type);
         SPInfoElement(SPElement *parent);
