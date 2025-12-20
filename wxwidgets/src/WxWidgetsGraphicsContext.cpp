@@ -141,7 +141,7 @@ namespace space
 				int dir,
 	            const SPGradient &gradient
 	        ) {
-            	const std::unique_ptr<wxGraphicsContext> gc(wxGraphicsContext::Create(wxPaintDC(this->getWidget())));
+            	const std::unique_ptr<wxGraphicsContext> gc(wxGraphicsContext::Create(wxAutoBufferedPaintDC(this->getWidget())));
             	wxGraphicsBrush gradientBrush = gc->CreateLinearGradientBrush(
             		x, y, x, y + height, toWxColor(gradient.getStart()), toWxColor(gradient.getEnd()));
             	gc->SetBrush(gradientBrush);
@@ -251,6 +251,14 @@ namespace space
                     ),
                     wxSOUTH
                 );
+            }
+
+            void WxWidgetsGraphicsContext::freeze() {
+                this->m_frame->Freeze();
+            }
+
+            void WxWidgetsGraphicsContext::thaw() {
+                this->m_frame->Thaw();
             }
 
             // --------------------------------------------------------------

@@ -2,6 +2,7 @@
 #define RESOURCE_H
 #include <string>
 #include <vector>
+#include <map>
 
 #include "SPObject.h"
 
@@ -9,28 +10,19 @@ using namespace std;
 namespace space {
 class SPResource : public SPObject
 {
-protected:
+public:
     string id;
+    string type;
     string uri;
     string name;
-    vector<SPResource *> creators;
-    SPResource *parent;
-    SPResource *collection;
-public:
+    string collection_uri;
+    vector<string> creator_uris;
+    map<string, string> attributes;
+
     explicit SPResource(const string& uri);
     SPResource();
-    virtual ~SPResource();
-    virtual string getString(const string& key, const string& defaultValue);
-    virtual void setString(const string& key, const string& value);
-    string getName() const {
-        return this->name;
-    }
-    virtual string getType() const {
-        return "node";
-    }
-    SPResource *getParent() const {
-        return this->parent;
-    }
+    virtual string get(const string& key, const string& defaultValue);
+    virtual void set(const string& key, const string& value);
 };
 }
 #endif // RESOURCE_H

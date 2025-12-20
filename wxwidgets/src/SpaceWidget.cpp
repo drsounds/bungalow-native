@@ -171,7 +171,7 @@ wxSize SpaceWidget::DoGetBestSize()
 }
 
 void SpaceWidget::OnPaint(wxPaintEvent& event) {
-    wxPaintDC dc(this);
+    wxAutoBufferedPaintDC dc(this);
     int width = this->GetSize().GetWidth();
     int height = this->GetSize().GetHeight();
     // draw the widget on a wxDC...

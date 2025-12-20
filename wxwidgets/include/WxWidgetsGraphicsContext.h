@@ -8,7 +8,7 @@
 #include <wx/dcprint.h>
 #include <wx/wx.h>
 #include "SPGraphicsContext.h"
-
+#include <wx/dcbuffer.h>
 
 class wxControlBase;
 class SpaceFrame;
@@ -30,7 +30,7 @@ namespace space
         map<wxControlBase *, SPElement *> *widgets;
         wxPoint *origo = new wxPoint(0, 0);
         SpaceWidget *m_widget;
-        wxPaintDC* m_paintDc;
+        wxAutoBufferedPaintDC* m_paintDc;
       public:
         WxWidgetsGraphicsContext();
         static wxColor toWxColor(SPColor color);
@@ -80,10 +80,12 @@ namespace space
       	void drawRoundedRectangle(int x, int y, int w, int h, int r, SPColor color) override;
       	void fillRoundedLinearGradientRectangle(int x, int y, int w, int h, int r, int dir, const SPGradient& gradient) override;
       	sp_rectangle measureString(const string& text, const SPFontStyle& font) override;
-        void setPaintDC(wxPaintDC* dc) {
+        void freeze() override;
+        void thaw() override;
+        void setPaintDC(wxAutoBufferedPaintDC* dc) {
             m_paintDc = dc;
         }
-        wxPaintDC* getPaintDC() const
+        wxAutoBufferedPaintDC* getPaintDC() const
         {
             return m_paintDc;
         }

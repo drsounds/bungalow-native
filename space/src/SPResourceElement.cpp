@@ -19,7 +19,7 @@ namespace space {
         if (this->resource != NULL) {
 
             // draw title
-            string name = this->resource->getName();
+            string name = this->resource->name;
             string title = name;
             sp_rectangle txtSize = g->measureString(title, font);
             int top = (this->getHeight() / 2) - (txtSize.height / 2);

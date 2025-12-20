@@ -7,6 +7,7 @@
 #include <boost/json/string.hpp>
 #include <string>
 
+#include "Spider.h"
 #include "SPObservable.h"
 
 #include <queue>
@@ -17,16 +18,24 @@ namespace space
 {
     class SPWindowElement;
     class SPEvent;
+    class SPStore;
     class SPSkin;
     class SPGraphicsContext;
+    class SPSubscription;
     class Space : public SPObservable
     {
     protected:
+        Spider *m_spider;
+        SPStore *m_store;
         SPGraphicsContext *m_graphicsContext;
         vector<SPWindowElement *> *m_windows;
         queue<SPEvent> *m_events;
         queue<SPMessage> *m_messages;
     public:
+        spider::Spider *getSpider() {
+            return m_spider;
+        }
+        SPSubscription *subscribe(string uri);
         vector<SPWindowElement *> *getWindows() {
             return this->m_windows;
         }
@@ -38,6 +47,12 @@ namespace space
         }
         void setWindows(vector<SPWindowElement *> *value) {
             this->m_windows = value;
+        }
+        SPStore *getStore() {
+            return m_store;
+        }
+        void setStore(SPStore *value) {
+            m_store = value;
         }
         void addWindow(SPWindowElement *window);
         SPGraphicsContext *getGraphicsContext()

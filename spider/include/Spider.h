@@ -9,17 +9,18 @@
 #include <netinet/in.h>
 #include <sys/socket.h>
 #include <unistd.h>
-
-namespace space {
-class SPSpiderElement;
-}
+#include "elua.h"
+#include <vector>
+#include "SpiderView.h"
 
 namespace spider {
 	class Spider {
-		space::SPSpiderElement *element;
+		space::Space *space;
+		vector<SpiderView *> views;
 	public:
-		explicit Spider(space::SPSpiderElement *element);
-		void serve();
+		explicit Spider::Spider(space::Space *);
+		virtual string request(const string& method, const string& uri);
+		void registerView(SpiderView *view);
 	};
 }
 

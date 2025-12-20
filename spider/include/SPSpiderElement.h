@@ -12,7 +12,9 @@
 #include <boost/config.hpp>
 #include <iostream>
 #include <memory>
+#include <lauxlib.h>
 #include <string>
+#include <map>
 #include <thread>
 
 #include "SPTabBarViewElement.h"
@@ -26,9 +28,15 @@ namespace space
 {
 	class SPElement;
 	class SPSpiderElement : public SPTabBarViewElement {
-		public:
-			explicit SPSpiderElement(SPElement *parent);
-			void start();
+		string m_template;
+	public:
+		explicit SPSpiderElement(SPElement *parent);
+		virtual void process(string method, std::map<string, string> data);
+		void setTemplate(const string&);
+		string getTemplate() const {
+			return m_template;
+		}
+		void render();
 	};
 }
 

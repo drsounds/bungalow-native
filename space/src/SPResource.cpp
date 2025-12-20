@@ -5,23 +5,25 @@ namespace space {
         //ctor
         this->uri = uri;
     }
+    SPResource::SPResource() {
 
-    SPResource::~SPResource()
-    {
-        //dtor
     }
-    string SPResource::getString(const string& key, const string& defaultValue) {
+    string SPResource::get(const string& key, const string& defaultValue) {
+        string ret = defaultValue;
         if (key == "uri") {
-            return this->getUri();
+            ret = this->uri;
+        } else if (key == "name") {
+            ret = name;
+        } else if (this->attributes.count(key)) {
+            ret = this->attributes[key];
         }
-        if (key == "name") {
-            return this->getName();
-        }
-        return "";
+        return ret;
     }
-    void SPResource::setString(const string& key, const string& value) {
+    void SPResource::set(const string& key, const string& value) {
         if (key == "name") {
-            this->setName(value);
+            this->name = value;
+        } else {
+            this->attributes[key] = value;
         }
     }
 }

@@ -501,7 +501,8 @@ namespace space {
 		}
 		this->setStringAttributeSilently("src", uri);
 		this->notify("unload", this, new SPEventArgs(this));
-		this->request("GET", uri, "");
+		string result = this->getSpace()->getSpider()->request("GET", uri);
+		this->setInnerXUL(result);
 	}
 
 	void SPElement::onAttributeChanged(SPObject* sender, SPEventArgs* e) {
