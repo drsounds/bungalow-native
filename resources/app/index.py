@@ -13,6 +13,10 @@ from mako.template import Template
 def start():
     return Template(filename=os.path.join('views', 'start.xml')).render(now=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
+@app.route("/artist", methods=['GET', 'POST', 'PUT'])
+def artist():
+    return Template(filename=os.path.join('views', 'artist.xml')).render(now=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
 
 @app.errorhandler(HTTPException)
 def handle_exception(e):

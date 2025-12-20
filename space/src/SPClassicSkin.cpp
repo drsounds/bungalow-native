@@ -324,5 +324,4 @@ void SPClassicSkin::drawTreeItem(SPGraphicsContext* g, SPTreeViewElement *treeVi
 }
 
 SPClassicSkin::SPClassicSkin() {
-	this->m_glossy = false;
 }

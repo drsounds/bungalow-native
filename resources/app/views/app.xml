@@ -1,14 +1,18 @@
 <?xml version="1.0" ?>
 <document>
-  <appheader>
+  <appheader id="header" height="30">
+    <gutter width="50" />
     <button id="backButton">&lt;</button>
     <button id="forwardButton">&gt;</button>
     <input flex="1" id="searchInput" />
     <button id="accountButton">👦</button>
   </appheader>
-  <hbox flex="1">
-    <tree id="tree" />
+  <hbox flex="1" id="body">
+    <vbox width="300" id="leftSidebar">
+      <tabbar id="leftTabBar" height="28" />
+      <treeview id="treeview" width="228" flex="1" />
+    </vbox>
     <viewstack flex="1" id="viewstack" />
   </hbox>
-  <appfooter id="footer" />
+  <appfooter id="footer" height="30" />
 </document>

@@ -67,10 +67,13 @@ namespace space {
     }
 
     void MainElement::onLoad(SPNode *sender, SPEventArgs *args) {
+    }
+
+    void MainElement::layout() {
         this->clipView = false;
 
         header = (SPAppHeaderElement *)this->getElementById("header");
-        header->setHeight(48);
+        header->setHeight(38);
 		header->setPadding({ 5, 5, 5, 5 });
         header->setGap(5);
 
@@ -84,7 +87,7 @@ namespace space {
         forwardButton->setWidth(28);
     	forwardButton->setHeight(28);
 
-        searchElement = (SPInputElement *)this->getElementById("searchElement");
+        searchElement = (SPInputElement *)this->getElementById("searchInput");
         searchElement->setWidth(120);
     	searchElement->setHeight(28);
         searchElement->setFlex(1);
@@ -102,18 +105,12 @@ namespace space {
         infoElement->hide();
 
         body = (SPHBoxElement *)this->getElementById("body");
-        body->setFlex( 1);
-        
-        leftSidebar = (SPVBoxElement *)this->getElementById("vbox");
-    	leftSidebar->setWidth(220);
+        body->setFlex(1);
+        leftSidebar = (SPVBoxElement *)this->getElementById("leftSidebar");
 
-    	tabBar = (SPTabBarElement *)this->getElementById("leftTabBar");
-    	tabBar->setHeight(28);
-
+    	SPElement *leftTabBar = leftSidebar->getElementById("leftTabBar");
+        tabBar = (SPTabBarElement *)leftTabBar;
     	treeView = (SPTreeViewElement *)this->getElementById("treeview");
-    	treeView->setFlex(1);
-    	treeView->setHeight(920);
-    	treeView->setWidth(220);
         // Add sample elements
         auto *item = new SPTreeItem(new SPUri("spacify:internal:start"));
         item->setSelected(false);
@@ -122,6 +119,7 @@ namespace space {
         treeView->addEventListener("itemselected", SPCallback(&MainElement::treeview_itemselected), this, treeView);
         treeView->addItem(item);
         treeView->addItem(item2);
+        treeView->setFlex(1);
 
         // Add viewstack
         viewStack = (SPViewStackElement *)this->getElementById("viewstack");
@@ -169,9 +167,6 @@ namespace space {
         }
         this->viewStack->navigate(query);
         return 0;
-    }
-    void MainElement::layout() {
-        
     }
     MainElement::~MainElement()
     {

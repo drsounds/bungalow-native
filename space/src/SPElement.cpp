@@ -15,6 +15,7 @@
 #include "SPObservable.h"
 #include "SPMouseEventArgs.h"
 #include "SPGraphicsContext.h"
+#include "SPHBoxElement.h"
 #include "SPSkin.h"
 #include "SPImage.h"
 #include "SPStylesheet.h"
@@ -39,7 +40,7 @@ namespace space {
 	{
 		SPColor* ret = nullptr;
 
-		if (SPColor* activeColor = this->m_tintColor; activeColor != nullptr)
+		if (SPColor* activeColor = this->getTintColor(); activeColor != nullptr)
 		{
 			ret = activeColor;
 		}
@@ -128,7 +129,6 @@ namespace space {
 					)
 					{
 						if (event == "mousemove") {
-							element->setState(SP_STATE_HOVER);
 							element->notify(event, sender, data);
 							ret = 1;
 						}
@@ -419,8 +419,8 @@ namespace space {
 			{
 			case wxWebRequest::State_Failed: {
 				// cout << "Failed to load " << uri << "\r\n";
-				this->setFlex( 1);
-				this->loadXUL("resources/app/views/error.xml");
+				this->setFlex(1);
+				this->loadXUL("../resources/app/views/error.xml");
 				break;
 			}
 			case wxWebRequest::State_Completed: {
@@ -441,6 +441,8 @@ namespace space {
 		wxXmlDocument doc;
 		if (doc.Load(filename)) {
 			this->loadXULFromXMLDoc(doc);
+		} else {
+			this->loadXUL("../resources/app/views/error.xml");
 		}
 	}
 
@@ -817,7 +819,6 @@ namespace space {
 		this->setStringAttribute("src", value);
 	}
 
-
 	void SPElement::paint(int x, int y, SPGraphicsContext *c) {
 	    if (!this->isVisible()) {
 	        return;
@@ -1028,9 +1029,11 @@ namespace space {
 			elm = new SPTabBarViewElement(parent);
 		} else if (tagName == "vbox") {
 			elm = new SPVBoxElement(parent);
+		} else if (tagName == "hbox") {
+			elm = new SPHBoxElement(parent);
 		} else if (tagName == "section") {
 			elm = new SPSectionElement(parent);
-		} else if (tagName == "document") {
+		} else {
 			elm = new SPElement(parent);
 		}
 		assert(elm->getParentElement() != nullptr);
@@ -1043,11 +1046,9 @@ namespace space {
 			if (child->getStringAttribute("id", "") == id) {
 				return (SPElement *)child;
 			}
-			for (const auto grandChild : *child->getChildNodes()) {
-				SPElement *grandChildNode = (SPElement *)grandChild->getNodeById(id);
-				if (grandChildNode != nullptr) {
-					return grandChildNode;
-				}
+			SPElement *grandChildNode = ((SPElement *)child)->getElementById(id);
+			if (grandChildNode != nullptr) {
+				return grandChildNode;
 			}
 		}
 		return nullptr;

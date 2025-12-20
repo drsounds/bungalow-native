@@ -22,7 +22,7 @@ namespace space {
             return true; 
         }
         void SpaceView::navigate(const string& value) {
-        	  this->setUri(value);
+            this->setUri(value);
           	this->setAttribute("src", value);
         }
 
