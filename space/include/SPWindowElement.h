@@ -13,6 +13,7 @@ namespace space {
 	class SPGraphicsContext;
 	class MainElement;
 	class SPWindowElement : public SPElement {
+		
 	public:
 		void draw(SPGraphicsContext *gc, int width, int height);
 		explicit SPWindowElement(Space *, SPSkin *);

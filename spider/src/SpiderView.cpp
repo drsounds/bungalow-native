@@ -20,6 +20,6 @@ namespace spider {
 	}
 
 	string SpiderView::process(const string& request, const string& uri) {
-
+		status = lua_pcall(L, 0, LUA_MULTRET, 0);
 	}
 }

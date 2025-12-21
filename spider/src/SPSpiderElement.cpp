@@ -11,16 +11,9 @@ spider::SpiderElement::SpiderElement(SPElement *parent) {
   elua_init_context(&this->elua_ctx);
   luaL_openlibs(this->L);
 }
-spider::SpiderElement::~SpiderElement() {
-  elua_free_context(&elua_ctx);
-  lua_close(L);
+spider::SpiderElement::~SpiderElement() { 
 }
-void spider::SpiderElement::process(const string& method, const string& uri) {
-  if( (status = lua_pcall(L, 0, LUA_MULTRET, 0)) ) {
-    // TODO: Print source only for the rows where the error occured, like python does.
-    fprintf(stderr, "Runtime error: %s\n%s\n", lua_tostring(L, -1), elua_ctx.out->ptr);
-    lua_pop(L, 1);
-  }
+void spider::SpiderElement::process(const string& method, const string& uri) { 
 }
 
 spider::SpiderElement::setTemplate(std::string filename) {

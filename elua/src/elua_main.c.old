@@ -11,7 +11,7 @@
 // TODO: getopt and add support for outputing LUA instead of running it
 
 int main (int argc, char const *argv[]) {
-  
+   
   lua_State   *L;
   elua_context_t elua_ctx;
   int         status;

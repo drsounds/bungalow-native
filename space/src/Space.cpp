@@ -13,7 +13,7 @@ space::Space::Space()
     this->m_windows = new vector<SPWindowElement *>();
     this->m_messages = new queue<SPMessage>();
     this->m_events = new queue<SPEvent>();
-    this->m_spider = new spider::Spider(this);
+    // this->m_spider = new spider::Spider(this);
 }
 
 space::SPWindowElement* space::Space::createWindow(SPSkin *skin)

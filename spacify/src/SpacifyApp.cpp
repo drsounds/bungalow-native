@@ -15,12 +15,19 @@
 #include "SpaceWidget.h"
 #include "SPClassicSkin.h"
 #include "WxWidgetsGraphicsContext.h"
+#include <wx/process.h>
 
 wxIMPLEMENT_APP(SpacifyApp);
 
 bool SpacifyApp::OnInit(){
     if( !wxApp::OnInit() )
-        return false;
+        return false;    
+    wxProcess *muxprocess;
+    wxString command = wxString("bash ./resources/app/start.sh");
+    pythonProcess = new wxProcess(this, wxPROCESS_REDIRECT);
+    pythonProcess->Redirect();
+    pythonPid = wxExecute(command, wxEXEC_ASYNC, pythonProcess);
+    int muxpid;
     this->m_space = new space::Space();
     this->m_frame = new SpaceFrame(this, this->m_space);
     space::platform::wxwidgets::WxWidgetsGraphicsContext *gc = new space::platform::wxwidgets::WxWidgetsGraphicsContext(this->m_frame);

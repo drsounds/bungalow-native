@@ -5,6 +5,8 @@
 #include "Space.h"
 #include "SPWindowElement.h"
 
+#include <stdlib.h>
+
 void SpaceFrame::setWindowElement(space::SPWindowElement* value)
 {
     this->m_windowElement = value;

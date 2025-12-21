@@ -146,14 +146,12 @@ namespace space {
 								// cout << "Element: " << this->getType() << "#" << this->getId() << " notified child: " << element->getType() << "#" << element->getId() << " event: " << event << endl;
 							}
 							element->setState(SP_STATE_ACTIVE);
-							element->mouseDown((SPNode *)element, data);
 							element->notify(event, sender, data);
 							ret = 1;
 						}
 						if (event == "click")
 						{
-							element->setState(SP_STATE_ACTIVE);
-							element->mouseDown((SPNode *)element, data);
+							element->setState(SP_STATE_NORMAL);
 							ret = 1;
 							element->notify(event, element, data);
 
@@ -235,6 +233,7 @@ namespace space {
 	    int yy = y - this->getAbsoluteBounds().y;
 		SPMouseEventArgs *me = new SPMouseEventArgs(mouseButton, xx, yy);
 
+		this->setState(SP_STATE_NORMAL);
 		this->notify(string("click"), this, me);
 		for(vector<SPNode *>::iterator it = this->getChildNodes()->begin(); it != this->getChildNodes()->end(); ++it) {
 			SPElement *elm = static_cast<SPElement *>(*it);
@@ -501,8 +500,7 @@ namespace space {
 		}
 		this->setStringAttributeSilently("src", uri);
 		this->notify("unload", this, new SPEventArgs(this));
-		string result = this->getSpace()->getSpider()->request("GET", uri);
-		this->setInnerXUL(result);
+		this->request("GET", uri, "");
 	}
 
 	void SPElement::onAttributeChanged(SPObject* sender, SPEventArgs* e) {

@@ -7,7 +7,6 @@
 #include <boost/json/string.hpp>
 #include <string>
 
-#include "Spider.h"
 #include "SPObservable.h"
 
 #include <queue>
@@ -25,16 +24,16 @@ namespace space
     class Space : public SPObservable
     {
     protected:
-        Spider *m_spider;
+        //Spider *m_spider;
         SPStore *m_store;
         SPGraphicsContext *m_graphicsContext;
         vector<SPWindowElement *> *m_windows;
         queue<SPEvent> *m_events;
         queue<SPMessage> *m_messages;
     public:
-        spider::Spider *getSpider() {
+        /*spider::Spider *getSpider() {
             return m_spider;
-        }
+        }*/
         SPSubscription *subscribe(string uri);
         vector<SPWindowElement *> *getWindows() {
             return this->m_windows;
