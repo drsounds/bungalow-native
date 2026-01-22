@@ -1,38 +1,56 @@
 {
 	"abstract" : true,
-	"backtrace" : 3,
+	"backtrace" : 6,
 	"backtraceGraph" : 
 	{
 		"commands" : 
 		[
 			"add_library",
-			"find_package"
+			"find_package",
+			"boost_find_component"
 		],
 		"files" : 
 		[
+			"/opt/homebrew/lib/cmake/boost_headers-1.89.0/boost_headers-config.cmake",
 			"/opt/homebrew/lib/cmake/Boost-1.89.0/BoostConfig.cmake",
 			"CMakeLists.txt"
 		],
 		"nodes" : 
 		[
 			{
-				"file" : 1
+				"file" : 2
+			},
+			{
+				"command" : 1,
+				"file" : 2,
+				"line" : 14,
+				"parent" : 0
+			},
+			{
+				"file" : 1,
+				"parent" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 215,
+				"parent" : 2
 			},
 			{
 				"command" : 1,
 				"file" : 1,
-				"line" : 13,
-				"parent" : 0
+				"line" : 141,
+				"parent" : 3
 			},
 			{
 				"file" : 0,
-				"parent" : 1
+				"parent" : 4
 			},
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 277,
-				"parent" : 2
+				"line" : 28,
+				"parent" : 5
 			}
 		]
 	},
@@ -41,10 +59,10 @@
 		"major" : 2,
 		"minor" : 9
 	},
-	"id" : "Boost::dynamic_linking::@6890427a1f51a3e7e1df",
+	"id" : "Boost::headers::@6890427a1f51a3e7e1df",
 	"imported" : true,
 	"local" : true,
-	"name" : "Boost::dynamic_linking",
+	"name" : "Boost::headers",
 	"paths" : 
 	{
 		"build" : ".",

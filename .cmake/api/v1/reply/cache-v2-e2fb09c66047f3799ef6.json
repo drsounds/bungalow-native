@@ -1286,6 +1286,18 @@
 			"value" : "[/opt/homebrew/lib/libpng.dylib][/opt/homebrew/include][v1.6.51()]"
 		},
 		{
+			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Details about finding PkgConfig"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "[/opt/homebrew/bin/pkg-config][v2.5.1()]"
+		},
+		{
 			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_ZLIB",
 			"properties" : 
 			[

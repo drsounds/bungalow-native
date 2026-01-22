@@ -14,7 +14,7 @@ namespace space
     private:
         SPColor m_lightColor = SPColor(170, 170, 170, 255);
         SPColor m_shadowColor = SPColor(120, 120, 120, 255);
-    	bool m_glossy = true;
+    	bool m_glossy = false;
     public:
         bool drawElement(SPGraphicsContext *gc, SPElement *, const string& state, const sp_rectangle& bounds) override;
         void drawTableRow(SPGraphicsContext* g, SPTableElement* table, int i, int x, int y, int width, int height, int row) override;

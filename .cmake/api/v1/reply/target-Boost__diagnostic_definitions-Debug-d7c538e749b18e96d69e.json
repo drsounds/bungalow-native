@@ -1,6 +1,6 @@
 {
 	"abstract" : true,
-	"backtrace" : 5,
+	"backtrace" : 3,
 	"backtraceGraph" : 
 	{
 		"commands" : 
@@ -10,40 +10,29 @@
 		],
 		"files" : 
 		[
-			"/opt/homebrew/share/cmake/Modules/FindZLIB.cmake",
-			"/opt/homebrew/share/cmake/Modules/FindPNG.cmake",
+			"/opt/homebrew/lib/cmake/Boost-1.89.0/BoostConfig.cmake",
 			"CMakeLists.txt"
 		],
 		"nodes" : 
 		[
 			{
-				"file" : 2
+				"file" : 1
 			},
 			{
 				"command" : 1,
-				"file" : 2,
-				"line" : 16,
+				"file" : 1,
+				"line" : 14,
 				"parent" : 0
 			},
 			{
-				"file" : 1,
-				"parent" : 1
-			},
-			{
-				"command" : 1,
-				"file" : 1,
-				"line" : 105,
-				"parent" : 2
-			},
-			{
 				"file" : 0,
-				"parent" : 3
+				"parent" : 1
 			},
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 254,
-				"parent" : 4
+				"line" : 275,
+				"parent" : 2
 			}
 		]
 	},
@@ -52,15 +41,15 @@
 		"major" : 2,
 		"minor" : 9
 	},
-	"id" : "ZLIB::ZLIB::@6890427a1f51a3e7e1df",
+	"id" : "Boost::diagnostic_definitions::@6890427a1f51a3e7e1df",
 	"imported" : true,
 	"local" : true,
-	"name" : "ZLIB::ZLIB",
+	"name" : "Boost::diagnostic_definitions",
 	"paths" : 
 	{
 		"build" : ".",
 		"source" : "."
 	},
 	"sources" : [],
-	"type" : "UNKNOWN_LIBRARY"
+	"type" : "INTERFACE_LIBRARY"
 }

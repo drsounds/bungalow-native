@@ -6,11 +6,12 @@
 		"commands" : 
 		[
 			"add_library",
-			"find_package"
+			"find_package",
+			"set_target_properties"
 		],
 		"files" : 
 		[
-			"/opt/homebrew/lib/cmake/Boost-1.89.0/BoostConfig.cmake",
+			"/opt/homebrew/share/cmake/Modules/FindPNG.cmake",
 			"CMakeLists.txt"
 		],
 		"nodes" : 
@@ -21,7 +22,7 @@
 			{
 				"command" : 1,
 				"file" : 1,
-				"line" : 13,
+				"line" : 17,
 				"parent" : 0
 			},
 			{
@@ -31,7 +32,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 276,
+				"line" : 173,
+				"parent" : 2
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 174,
 				"parent" : 2
 			}
 		]
@@ -41,15 +48,29 @@
 		"major" : 2,
 		"minor" : 9
 	},
-	"id" : "Boost::disable_autolinking::@6890427a1f51a3e7e1df",
+	"id" : "PNG::PNG::@6890427a1f51a3e7e1df",
 	"imported" : true,
+	"interfaceCompileDependencies" : 
+	[
+		{
+			"backtrace" : 4,
+			"id" : "ZLIB::ZLIB::@6890427a1f51a3e7e1df"
+		}
+	],
+	"interfaceLinkLibraries" : 
+	[
+		{
+			"backtrace" : 4,
+			"id" : "ZLIB::ZLIB::@6890427a1f51a3e7e1df"
+		}
+	],
 	"local" : true,
-	"name" : "Boost::disable_autolinking",
+	"name" : "PNG::PNG",
 	"paths" : 
 	{
 		"build" : ".",
 		"source" : "."
 	},
 	"sources" : [],
-	"type" : "INTERFACE_LIBRARY"
+	"type" : "UNKNOWN_LIBRARY"
 }

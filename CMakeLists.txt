@@ -10,6 +10,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(SourceFiles wxwidgets/src/*.cpp space/src/*.cpp spacify/src/*.cpp)
 # Find dependencies
+find_package(PkgConfig REQUIRED)
 find_package(Boost REQUIRED)
 find_package(Lua REQUIRED)
 find_package(wxWidgets REQUIRED)
@@ -23,6 +24,7 @@ include_directories(${LUA_INCLUDE_DIR})
 include_directories(${wxWidgets_INCLUDE_DIRS})
 include_directories(${FFI_INCLUDE_DIRS})
 include_directories(${PNG_INCLUDE_DIRS})
+include_directories(${libpqxx_INCLUDE_DIRS})
 include_directories(include)
 set(CMAKE_BUILD_TYPE Debug)
 
@@ -43,7 +45,7 @@ set(CMAKE_LINK_DEF_FILE_FLAG "-L/opt/homebrew/opt/expat/lib")
 set(CMAKE_CXX_FLAGS "-I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/opt/homebrew/opt/expat/include -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ ")
 
 # Link libraries
-target_link_libraries(spacify-client ${EXPAT_LIBRARIES} ${LUA_LIBRARIES} ${wxWidgets_LIBRARIES} ${PNG_LIBRARY})
+target_link_libraries(spacify-client -lpqxx -lpq ${EXPAT_LIBRARIES} ${LUA_LIBRARIES} ${wxWidgets_LIBRARIES} ${PNG_LIBRARY})
 
 # Platform specific configuration
 if(WIN32)
