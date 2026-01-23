@@ -12,11 +12,15 @@ namespace space {
     void SPTableElement::scroll(int scrollX, int scrollY, int x, int y) {
         SPElement::scroll(scrollX, scrollY, x, y);
     }
-    SPTableElement::SPTableElement(SPElement *parent, SPTableDataSource *dataSource)
+    SPTableElement::SPTableElement(SPElement *parent, SPTableDataSource *dataSource) : SPTableElement(parent)
+    {
+        //ctor
+        this->dataSource = dataSource;
+    }
+    SPTableElement::SPTableElement(SPElement *parent)
     {
     	this->setTagName("table");
         //ctor
-        this->dataSource = dataSource;
         this->columns = new vector<SPTableColumnHeader *>;
         this->rows = new vector<SPTableRow *>;
     }

@@ -26,6 +26,7 @@
 #include "SPSectionElement.h"
 #include "SPViewStackElement.h"
 #include "SPTabBarViewElement.h"
+#include "SPTableElement.h"
 #include "SPTextElement.h"
 #include "SPViewElement.h"
 #include "WxWidgetsGraphicsContext.h"
@@ -457,6 +458,7 @@ namespace space {
 		return this;
 	}
 	void SPElement::loadXULFromXMLDoc(const wxXmlDocument& xmlDoc) {
+		this->freeze();
 		wxXmlNode *root = xmlDoc.GetRoot();
 		this->clear();
 		string thisType = this->getType();
@@ -474,6 +476,7 @@ namespace space {
 		string type = this->getType();
 		cout << type << endl;
 		this->notify("load", this, new SPEventArgs(this));
+		this->thaw();
 	}
 	SPElement* SPElement::getTabBarViewElement() {
 		for (auto & it : *this->children) {
@@ -1042,6 +1045,8 @@ namespace space {
 			elm = new SPHBoxElement(parent);
 		} else if (tagName == "section") {
 			elm = new SPSectionElement(parent);
+		} else if (tagName == "table") {
+			elm = new SPTableElement(parent);
 		} else {
 			elm = new SPElement(parent);
 		}
@@ -1049,7 +1054,12 @@ namespace space {
 		elm->setTagName(tagName);
 		return elm;
 	}
-
+	void SPElement::freeze() {
+			this->createGraphics()->freeze();
+	}
+	void SPElement::thaw() {
+			this->createGraphics()->thaw();
+	}
 	SPElement* SPElement::getElementById(const string& id) const {
 		for (const auto child : *this->children) {
 			if (child->getStringAttribute("id", "") == id) {

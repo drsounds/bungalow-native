@@ -57,6 +57,7 @@ namespace space {
     		string type = view->getType();
     		// std::cout << view->getType() << std::endl;
     		if (view->acceptsUri(uri.getAddress())) {
+                this->freeze();
     			//std::cout << uri << std::endl;
     			//std::cout << view->getType() << std::endl;
     			//cout << "View " << view->getType() << " shown" << endl;
@@ -64,6 +65,7 @@ namespace space {
     			view->navigate(uri.getAddress());
     			view->setHash(uri.getHash());
     			activeView = view;
+                this->thaw();
     		} else {
     			// cout << "View " << view->getType() << " hidden" << endl;
     			view->setVisible(false);

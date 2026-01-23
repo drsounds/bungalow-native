@@ -299,6 +299,8 @@ namespace space {
         void setHeight(int height);
         void setZ(int z);
         virtual void pack();
+        void freeze();
+        void thaw();
 
     };
 }

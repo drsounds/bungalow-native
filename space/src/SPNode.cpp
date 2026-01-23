@@ -60,6 +60,9 @@ namespace space {
 	}
     void SPNode::setStringAttribute(const string& attrName, const string& value) {
     	string oldValue = (*this->stringAttributes)[attrName];
+			if (oldValue == value) {
+				return;
+			}
     	(*this->stringAttributes)[attrName] = value;
     	auto *args = new SPAttributeChangedEventArgs(attrName, value, oldValue, "string");
     	this->notify("attributechanged", this, args);
@@ -175,8 +178,8 @@ namespace space {
 		setAttribute(title, value);
 	}
 
-    void SPNode::setAttribute(const std::string& attrName, const std::string& value) {
-        int n = 0;
+	void SPNode::setAttribute(const std::string& attrName, const std::string& value) {
+		int n = 0;
 		if (attrName == "id") {
 			this->m_id = value;
 		}
@@ -184,32 +187,32 @@ namespace space {
 		if (oldVal == value) {
 			return;
 		}
-        this->setStringAttribute(attrName, value);
-        try {
-        	if (std::regex_match(value, std::regex("^[0-9]+$"))) {
-        		n = atoi(value.c_str());
-        		setIntegerAttribute(attrName, n);
-        	}
-        } catch (exception& e) {
-            
-        }
+		this->setStringAttribute(attrName, value);
+		try {
+			if (std::regex_match(value, std::regex("^[0-9]+$"))) {
+				n = atoi(value.c_str());
+				setIntegerAttribute(attrName, n);
+			}
+		} catch (exception& e) {
+				
+		}
 
-        if(regex_match(value, std::regex("^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$"))) {
-            SPColor c = SPColor(value);
-            this->setColorAttribute(attrName, c);
-        }
-    }
+		if(regex_match(value, std::regex("^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$"))) {
+			SPColor c = SPColor(value);
+			this->setColorAttribute(attrName, c);
+		}
+	}
 
-    void SPNode::appendChild(space::SPNode *child) {
-        vector<SPNode *> *nodes = this->children;
-        if (nodes == nullptr) {
-            nodes = new vector<SPNode *>();
-        }
-        nodes->push_back(child);
-        child->setParentNode(this);
+	void SPNode::appendChild(space::SPNode *child) {
+		vector<SPNode *> *nodes = this->children;
+		if (nodes == nullptr) {
+				nodes = new vector<SPNode *>();
+		}
+		nodes->push_back(child);
+		child->setParentNode(this);
 		SPEventArgs *args = new SPNodeTreeEventArgs(child, this, "append");
 		this->notify("treechanged", this, args);
-    }
+	}
 
 	void SPNode::setInnerText(const string& value) {
 		this->m_innerText = value;

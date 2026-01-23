@@ -15,6 +15,7 @@ class SPTableElement : public SPElement
     public:
         SPTableDataSource *dataSource;
         SPTableElement();
+        SPTableElement(SPElement *parent);
         SPTableElement(SPElement *parent, SPTableDataSource *dataSource);
         vector<SPTableRow *> *rows;
         vector<SPTableColumnHeader *> *columns;
