@@ -306,6 +306,7 @@ namespace space
             {
                 if (this->m_window == nullptr) return;
                 this->m_window->RefreshRect(wxRect(rect.x - this->origo->x, rect.y - this->origo->y, rect.width, rect.height));
+                this->m_window->Update();
             }
 
             // --------------------------------------------------------------
@@ -314,7 +315,7 @@ namespace space
 
             void WxWidgetsGraphicsContext::drawControl(const std::string& control,
                                                 SPElement* elm,
-                                                int x, int y,
+                                                int  x, int y,
                                                 int w, int h)
             {
                 // Only supports text controls (“EDIT”)

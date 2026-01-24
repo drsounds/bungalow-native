@@ -470,6 +470,7 @@ namespace space {
 		return this;
 	}
 	void SPElement::loadXULFromXMLDoc(const wxXmlDocument& xmlDoc) {
+		this->freeze();
 		wxXmlNode *root = xmlDoc.GetRoot();
 		this->clear();
 		string thisType = this->getType();
@@ -487,6 +488,7 @@ namespace space {
 		string type = this->getType();
 		cout << type << endl;
 		this->notify("load", this, new SPEventArgs(this));
+		this->thaw();
 	}
 	SPElement* SPElement::getTabBarViewElement() {
 		for (auto & it : *this->children) {
