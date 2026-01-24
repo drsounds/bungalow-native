@@ -117,10 +117,12 @@ namespace space {
         tabBar = (SPTabBarElement *)leftTabBar;
     	treeView = (SPTreeViewElement *)this->getElementById("treeview");
         // Add sample elements
-        auto *item = new SPTreeItem(new SPUri("spacify:library"));
+        auto *item = new SPTreeItem(new SPUri("spacify:start#overview"));
+        auto *item2 = new SPTreeItem(new SPUri("spacify:library"));
         item->setSelected(true);
         treeView->addEventListener("itemselected", SPCallback(&MainElement::treeview_itemselected), this, treeView);
         treeView->addItem(item);
+        treeView->addItem(item2);
         treeView->setFlex(1);
 
         // Add viewstack

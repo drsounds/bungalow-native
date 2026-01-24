@@ -28,7 +28,7 @@ namespace space {
         }
 
         void LibraryView::navigate(const string& uri) {
-            this->setSrc(uri);
+            this->setUri(uri);
         }
 
         LibraryView::~LibraryView()
