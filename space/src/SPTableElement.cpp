@@ -17,7 +17,7 @@ namespace space {
         //ctor
         this->dataSource = dataSource;
     }
-    SPTableElement::SPTableElement(SPElement *parent)
+    SPTableElement::SPTableElement(SPElement *parent) : SPElement(parent)
     {
     	this->setTagName("table");
         //ctor
@@ -66,6 +66,9 @@ namespace space {
         clipRect.height = this->getParentElement()->getHeight();
         int left = 0;
         int padding = 10;
+        if (dataSource == nullptr) {
+            return;
+        }
         int columnWidth = width / dataSource->getColumnCount();
         int top = columnY + 18;
         // Draw rows

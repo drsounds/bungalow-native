@@ -1,0 +1,10 @@
+<view>
+  <section id="overview" title="Library">
+    <hbox>
+      <vbox flex="1">
+        <text id="title">Library</text>
+      </vbox>
+    </hbox>
+    <table id="table" flex="1" />
+  </section>
+</view>

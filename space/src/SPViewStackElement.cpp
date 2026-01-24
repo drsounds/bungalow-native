@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#include "Timer.h"
+
 #include "WhatsNewView.h"
 #include <regex>
 #include "SPWindowElement.h"
@@ -65,7 +67,9 @@ namespace space {
     			view->navigate(uri.getAddress());
     			view->setHash(uri.getHash());
     			activeView = view;
-                this->thaw();
+                Timer timer(100, false, []() {
+                    thaw();
+                })
     		} else {
     			// cout << "View " << view->getType() << " hidden" << endl;
     			view->setVisible(false);

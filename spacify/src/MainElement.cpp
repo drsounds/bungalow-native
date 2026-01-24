@@ -8,9 +8,11 @@
 #include "SPInfoElement.h"
 #include "SPTreeItem.h"
 #include "SPViewStackElement.h"
+#include "SPTableElement.h"
 #include "SPSkin.h"
 #include "PlayQueueView.h"
 #include "SpaceView.h"
+#include "LibraryView.h"
 #include "SPAppFooterElement.h"
 #include "SPAppHeaderElement.h"
 #include "SPTreeViewElement.h"
@@ -52,6 +54,9 @@ namespace space {
             assert(elm->getParentElement() != nullptr);
         } else if (name == "treeview") {
             elm = new SPTreeViewElement(parent);
+            assert(elm->getParentElement() != nullptr);
+        } else if (name == "table") {
+            elm = new SPTableElement(parent);
             assert(elm->getParentElement() != nullptr);
         } else if (name == "appfooter") {
             elm = new SPAppFooterElement(parent);
@@ -112,13 +117,10 @@ namespace space {
         tabBar = (SPTabBarElement *)leftTabBar;
     	treeView = (SPTreeViewElement *)this->getElementById("treeview");
         // Add sample elements
-        auto *item = new SPTreeItem(new SPUri("spacify:start#overview"));
-        item->setSelected(false);
-        auto *item2 = new SPTreeItem(new SPUri("spacify:artist#overview"));
-        item2->setSelected(false);
+        auto *item = new SPTreeItem(new SPUri("spacify:library"));
+        item->setSelected(true);
         treeView->addEventListener("itemselected", SPCallback(&MainElement::treeview_itemselected), this, treeView);
         treeView->addItem(item);
-        treeView->addItem(item2);
         treeView->setFlex(1);
 
         // Add viewstack
@@ -127,6 +129,7 @@ namespace space {
         viewStack->appendChild(new views::SpaceView(viewStack));
         viewStack->appendChild(new views::StartView(viewStack));
         viewStack->appendChild(new views::PlayQueueView(viewStack));
+        viewStack->appendChild(new views::LibraryView(viewStack));
 
     	/*
         body->appendChild(new SPSplitterElement(body));
@@ -141,7 +144,7 @@ namespace space {
         footer->setHeight(32);
         footer->setId("footer");
         // Add header buttons
-        this->navigate("spacify:start#overview");
+        this->navigate("spacify:library#overview");
     }
 
     MainElement::MainElement(SPElement *parent) : SPVBoxElement(parent)

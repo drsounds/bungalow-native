@@ -18,6 +18,11 @@ def artist():
     return Template(filename=os.path.join('views', 'artist.xml')).render(now=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
 
+@app.route("/library", methods=['GET', 'POST', 'PUT'])
+def library():
+    return Template(filename=os.path.join('views', 'library.xml')).render(now=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
+
 @app.errorhandler(HTTPException)
 def handle_exception(e):
     """Return JSON instead of HTML for HTTP errors."""
