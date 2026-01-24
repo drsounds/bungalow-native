@@ -1,17 +1,25 @@
 #include "SPViewStackElement.h"
 
 #include <iostream>
+#include <regex>
+#include <vector>
 
-#include "Timer.h"
+#include "SPGraphicsContext.h"
+#include "WxWidgetsGraphicsContext.h"
+#include <wx/wx.h>
+#include <boost/asio.hpp>
+#include <boost/asio/io_context.hpp>
+#include <boost/asio/deadline_timer.hpp>
+#include <boost/date_time/posix_time/posix_time.hpp>
+#include <boost/algorithm/string/predicate.hpp>
 
 #include "WhatsNewView.h"
-#include <regex>
 #include "SPWindowElement.h"
 #include "PlayQueueView.h"
 #include "SPUri.h"
+#include "Timer.h"
 
-#include <vector>
-#include <boost/algorithm/string/predicate.hpp>
+
 inline bool ends_with(std::string const & value, std::string const & ending)
 {
     if (ending.size() > value.size()) return false;
@@ -67,9 +75,7 @@ namespace space {
     			view->navigate(uri.getAddress());
     			view->setHash(uri.getHash());
     			activeView = view;
-                Timer timer(100, false, []() {
-                    thaw();
-                })
+                this->scheduleThaw(100);
     		} else {
     			// cout << "View " << view->getType() << " hidden" << endl;
     			view->setVisible(false);

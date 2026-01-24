@@ -15,6 +15,7 @@ namespace space {
 	class SPWindowElement : public SPElement {
 		
 	public:
+		void tick();
 		void draw(SPGraphicsContext *gc, int width, int height);
 		explicit SPWindowElement(Space *, SPSkin *);
 		void invalidateRegion(sp_rectangle rect);

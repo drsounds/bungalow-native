@@ -28,6 +28,19 @@ SpaceWidget::SpaceWidget(wxWindow *parent,
     this->Create(parent, winId, label, pos, size, style, val, name);
 }
 
+void SpaceWidget::ScheduleThaw(int milliseconds) {
+    this->m_frame->ScheduleThaw(milliseconds);
+}
+
+void SpaceWidget::Tick() {
+    auto *args = new space::SPEventArgs();
+    space::SPEvent evt("tick", args, nullptr);
+    this->getSpace()->dispatchEvent(
+        "tick",
+        args,
+        this->m_frame->getWindowElement()
+    );
+}
 
 wxSize SpaceWidget::DoGetBestSize() const
 {

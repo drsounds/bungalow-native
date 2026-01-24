@@ -34,6 +34,8 @@ class SpaceWidget : public wxControl
     void OnPaint(wxPaintEvent&);
 
 public:
+    void Tick();
+    void ScheduleThaw(int);
     void setSpace(space::Space *space) {
         this->m_space = space;
     }

@@ -20,6 +20,11 @@ namespace space
     	this->setTagName("window");
         this->setSpace(space);
         this->setSkin(skin);
+        this->addEventListener("tick", SPCallback(&SPWindowElement::tick), this, this);
+    }
+
+    void SPWindowElement::tick() {
+        this->thaw();
     }
 
     void SPWindowElement::draw(SPGraphicsContext *gc, int x, int y) {

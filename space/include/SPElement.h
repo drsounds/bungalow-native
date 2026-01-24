@@ -14,6 +14,7 @@
 #include <vector>
 #include <boost/json/object.hpp>
 #include <wx/xml/xml.h>
+#include <wx/wx.h>
 
 using namespace std;
 
@@ -40,6 +41,7 @@ namespace space {
     class SPFontStyle;
     class SPElement : public SPNode {
     protected:
+        wxTimer *timer;
         SPImage *m_backgroundImage;
         vector<string> *m_classList;
         SPSkin *m_skin;
@@ -73,6 +75,9 @@ namespace space {
     	int m_parsingDepth = 0;
         int m_gap = 0;
     public:
+        void scheduleThaw();
+        void scheduleThaw(int milliseconds);
+        void OnTimerTimeout(wxTimerEvent&);
     	void setState(int value) {
     		this->m_state = value;
     		this->invalidate();

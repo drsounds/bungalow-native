@@ -13,8 +13,12 @@ void SpaceFrame::setWindowElement(space::SPWindowElement* value)
     this->m_windowElement->setAbsoluteBounds({ 0, 0, this->getSpaceWidget()->GetSize().GetWidth(), this->getSpaceWidget()->GetSize().GetHeight() });
 }
 
+void SpaceFrame::ScheduleThaw(int milliseconds) {
+    this->m_timer.StartOnce(milliseconds);
+}
+
 SpaceFrame::SpaceFrame(wxApp *app, space::Space *space)
-    : wxFrame(nullptr, wxID_ANY, "Space", wxDefaultPosition, wxSize(1280, 720), wxFRAME_EX_METAL)
+    : wxFrame(nullptr, wxID_ANY, "Space", wxDefaultPosition, wxSize(1280, 720), wxFRAME_EX_METAL), m_timer(this)
 {
     this->m_app = app;
     this->m_space = space;
@@ -29,6 +33,11 @@ SpaceFrame::SpaceFrame(wxApp *app, space::Space *space)
         wxCLIP_CHILDREN
     );
     this->AddChild(this->m_spaceWidget);
+    Bind(wxEVT_TIMER, &SpaceFrame::OnTimer, this);
+}
+
+void SpaceFrame::OnTimer(wxTimerEvent& event) {
+    this->m_spaceWidget->Tick();
 }
 
 void SpaceFrame::OnSize(wxSizeEvent& event) {

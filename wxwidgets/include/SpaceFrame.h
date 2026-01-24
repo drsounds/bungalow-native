@@ -24,8 +24,11 @@ protected:
     space::SPWindowElement* m_windowElement;
     SpaceWidget *m_spaceWidget;
     wxApp* m_app;
+    wxTimer m_timer;
 	bool m_leftMouseButtonPressed;
 public:
+    void OnTimer(wxTimerEvent&);
+    void ScheduleThaw(int milliseconds);
     void setSpace(space::Space *space) {
         this->m_space = space;
     }

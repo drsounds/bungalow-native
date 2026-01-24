@@ -33,6 +33,7 @@ namespace space
         wxAutoBufferedPaintDC* m_paintDc;
       public:
         WxWidgetsGraphicsContext();
+        void scheduleThaw(int) override;
         static wxColor toWxColor(SPColor color);
         static SPColor fromWxColor(wxColour color);
         explicit WxWidgetsGraphicsContext(SpaceFrame*);

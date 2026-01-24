@@ -49,6 +49,7 @@ namespace space {
 		virtual void drawHTMLText(const string& html, SPFontStyle fs, SPColor color, int x, int y, int w, int h) { }
 		virtual void drawLinearGradient(const sp_rectangle& rect, const SPGradient& gradient) {}
 		virtual SPImage *loadImage(const string& bitmap) { return NULL; }
+		virtual void scheduleThaw(int) {}
 		virtual void freeze() {}
 		virtual void thaw() {}
 		virtual sp_rectangle measureString(const string& text, const SPFontStyle& font) { return sp_rectangle(); }

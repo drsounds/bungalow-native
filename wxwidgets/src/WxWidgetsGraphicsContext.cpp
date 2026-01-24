@@ -12,6 +12,9 @@ namespace space
     {
         namespace wxwidgets
         {
+            void WxWidgetsGraphicsContext::scheduleThaw(int milliseconds) {
+                this->getWidget()->ScheduleThaw(milliseconds);
+            }
             WxWidgetsGraphicsContext::WxWidgetsGraphicsContext(SpaceFrame *frame) : WxWidgetsGraphicsContext()
             {
                 this->m_frame = frame;

@@ -1,6 +1,9 @@
 #ifndef VIEWSTACKELEMENT_H
 #define VIEWSTACKELEMENT_H
 #include "SPVBoxElement.h"
+
+#include <wx/wx.h>
+
 #include <stack>
 #include <string>
 using namespace std;
@@ -12,7 +15,6 @@ namespace space {
         std::stack<string> *history;
         std::stack<string> *future;
         SPViewElement *activeView;
-
     public:
         virtual void pack() override;
         virtual string getType() override {

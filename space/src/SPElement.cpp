@@ -30,7 +30,7 @@
 #include "SPTextElement.h"
 #include "SPViewElement.h"
 #include "WxWidgetsGraphicsContext.h"
-#include "wx/wx.h"
+#include <wx/wx.h>
 
 #include "SpaceWidget.h"
 
@@ -207,6 +207,18 @@ namespace space {
 	SPElement::SPElement() : SPNode(), fontStyle(SPFontStyle("Tahoma", 13, 1, false, false)) {
 		this->padding = { 0, 0, 0, 0 };
 		this->margins = { 0, 0, 0, 0 };
+	}
+
+	void SPElement::scheduleThaw() {
+		this->scheduleThaw(100);
+	}
+
+	void SPElement::scheduleThaw(int milliseconds) {
+		this->createGraphics()->scheduleThaw(milliseconds);
+	}
+
+	void SPElement::OnTimerTimeout(wxTimerEvent& event) {
+		this->thaw();
 	}
 
 	SPGraphicsContext* SPElement::createGraphics()
@@ -606,6 +618,7 @@ namespace space {
 	}
 
 	SPElement::~SPElement() {
+		delete this->timer;
 	}
 	int SPElement::getHeight() {
 		return this->m_height;
