@@ -6,8 +6,8 @@
 
 namespace WTL
 {
-    using ATL::CPoint;
-    using ATL::CSize;
+    using ::CPoint;
+    using ::CSize;
 }
 
 #include "NativeApplication.h"
