@@ -26,8 +26,6 @@ find_package(EXPAT 2.2.8 REQUIRED)
 
 if(BUNGALOW_UI_BACKEND STREQUAL "wxwidgets")
     find_package(wxWidgets REQUIRED)
-else()
-    find_package(wxWidgets REQUIRED COMPONENTS base)
 endif()
 
 file(GLOB SPACE_SOURCES CONFIGURE_DEPENDS "space/src/*.cpp")
@@ -55,10 +53,10 @@ else()
     else()
         list(APPEND BACKEND_SOURCES windows/src/main.cpp)
     endif()
-    set(PLATFORM_LIBRARIES ${wxWidgets_LIBRARIES} winhttp msimg32 comctl32 gdi32 user32)
+    set(PLATFORM_LIBRARIES winhttp msimg32 comctl32 gdi32 user32)
 endif()
 
-if(wxWidgets_USE_FILE)
+if(BUNGALOW_UI_BACKEND STREQUAL "wxwidgets" AND wxWidgets_USE_FILE)
     include(${wxWidgets_USE_FILE})
 endif()
 
@@ -75,12 +73,11 @@ target_include_directories(spacify-client PRIVATE
     ${LUA_INCLUDE_DIR}
     ${PNG_INCLUDE_DIRS}
     ${EXPAT_INCLUDE_DIRS}
-    ${wxWidgets_INCLUDE_DIRS}
     space/include
     spacify/include)
 
 if(BUNGALOW_UI_BACKEND STREQUAL "wxwidgets")
-    target_include_directories(spacify-client PRIVATE wxwidgets/include)
+    target_include_directories(spacify-client PRIVATE wxwidgets/include ${wxWidgets_INCLUDE_DIRS})
 else()
     target_include_directories(spacify-client PRIVATE windows/include)
     if(BUNGALOW_UI_BACKEND STREQUAL "wtl")

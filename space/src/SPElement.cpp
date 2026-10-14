@@ -9,7 +9,6 @@
 #include <boost/algorithm/string.hpp>
 #include "Space.h"
 
-#include <wx/xml/xml.h>
 
 #include "SPWindowElement.h"
 #include "SPObservable.h"
@@ -31,7 +30,6 @@
 #include "SPViewElement.h"
 
 #include <boost/json/src.hpp>
-#include <wx/mstream.h>
 namespace space {
 	SPColor* SPElement::getActiveColor()
 	{
@@ -417,8 +415,8 @@ namespace space {
 	}
 
 	void SPElement::loadXUL(const string &filename) {
-		wxXmlDocument doc;
-		if (doc.Load(filename)) {
+		SPXmlDocument doc;
+		if (doc.loadFile(filename)) {
 			this->loadXULFromXMLDoc(doc);
 		} else {
 			this->loadXUL("../resources/app/views/error.xml");
@@ -426,27 +424,29 @@ namespace space {
 	}
 
 	void SPElement::setInnerXUL(const string &uri) {
-		wxMemoryInputStream stream(uri.data(), uri.size());
-		wxXmlDocument doc;
-		if (doc.Load(stream)) {
+		SPXmlDocument doc;
+		if (doc.loadString(uri)) {
 			this->loadXULFromXMLDoc(doc);
 		}
 	}
 	SPElement *SPElement::getSlotElement() {
 		return this;
 	}
-	void SPElement::loadXULFromXMLDoc(const wxXmlDocument& xmlDoc) {
+	void SPElement::loadXULFromXMLDoc(const SPXmlDocument& xmlDoc) {
 		this->freeze();
-		wxXmlNode *root = xmlDoc.GetRoot();
+		const SPXmlNode *root = xmlDoc.getRoot();
 		this->clear();
 		string thisType = this->getType();
 
 		SPElement *slot = this->getSlotElement();
-		for (const wxXmlAttribute *attribute = root->GetAttributes(); attribute != nullptr; attribute = attribute->GetNext()) {
-			slot->set(attribute->GetName().ToStdString(), attribute->GetValue().ToStdString());
+		for (const auto &attribute : root->getAttributes()) {
+			slot->set(attribute.first, attribute.second);
 		}
-		for (wxXmlNode *child = root->GetChildren(); child; child = child->GetNext()) {
-			SPElement *elm = this->parseElement(child, slot, this);
+		for (const auto &child : root->getChildren()) {
+			if (child->getType() != SPXmlNodeType::Element) {
+				continue;
+			}
+			SPElement *elm = this->parseElement(child.get(), slot, this);
 			slot->appendChild(elm);
 		}
 		this->pack();
@@ -953,42 +953,29 @@ namespace space {
 
 	}
 
-	SPElement *SPElement::parseElement(wxXmlNode *xmlNode, SPElement *parent,
+	SPElement *SPElement::parseElement(const SPXmlNode *xmlNode, SPElement *parent,
 							   SPElement *document) {
-		SPElement *elm = nullptr;
-		/*
-		string elementId = xmlNode->GetAttribute("id").ToStdString();
-		if (!elementId.empty()) {
-			elm = document->getElementById(elementId);
-			assert(elm != nullptr && elm->getParentElement() != parent);
-		}*/
-		if (elm == nullptr) {
-			elm = createElement(xmlNode->GetName().ToStdString(), parent);
-		}
+		SPElement *elm = createElement(xmlNode->getName(), parent);
 		assert(elm->getParentElement() != nullptr);
 		elm->setVisible(true);
-		for (const wxXmlAttribute *attribute = xmlNode->GetAttributes(); attribute != nullptr; attribute = attribute->GetNext()) {
-			elm->set(attribute->GetName().ToStdString(), attribute->GetValue().ToStdString());
-			if (attribute->GetName().ToStdString() == "hidden") {
+		for (const auto &attribute : xmlNode->getAttributes()) {
+			elm->set(attribute.first, attribute.second);
+			if (attribute.first == "hidden") {
 				elm->setVisible(false);
 			}
-			if (attribute->GetName() == "onclick") {
+			if (attribute.first == "onclick") {
 				if (elm->getType() == "button") {
 					elm->addEventListener("click", SPCallback(&SPElement::onPostBackButtonClick), this, elm);
 				}
 			}
 		}
-		for (wxXmlNode *child = xmlNode->GetChildren(); child; child = child->GetNext()) {
- 			if (child->GetParent() != xmlNode) {
-				break;
-			}
-			if (child->GetType() == wxXML_TEXT_NODE) {
-				elm->getSlotElement()->setInnerText(child->GetContent().ToStdString());
-			} else if (child->GetType() == wxXML_ELEMENT_NODE) {
-				SPElement *childElement = parseElement(child, elm->getSlotElement(), document);
+		for (const auto &child : xmlNode->getChildren()) {
+			if (child->getType() == SPXmlNodeType::Text) {
+				elm->getSlotElement()->setInnerText(child->getContent());
+			} else {
+				SPElement *childElement = parseElement(child.get(), elm->getSlotElement(), document);
 				elm->getSlotElement()->appendChild(childElement);
 				this->pack();
-				// cout << "Packed";
 			}
 		}
 
