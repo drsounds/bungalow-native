@@ -10,7 +10,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Find dependencies
 find_package(Boost REQUIRED)
-find_packagce(Lua REQUIRED)
+find_package(Lua REQUIRED)
 
 # Include directories
 include_directories(${Boost_INCLUDE_DIRS})

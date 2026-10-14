@@ -5,10 +5,13 @@
 #include <vector>
 
 #include <Winhttp.h>
+#include <commctrl.h>
 #include <wingdi.h>
 
 #include "SPElement.h"
 #include "SPImage.h"
+#include "SPInputElement.h"
+#include "SPInputEventArgs.h"
 #include "SPSkin.h"
 
 namespace space
@@ -23,6 +26,35 @@ namespace space
             std::wstring result(size, L'\0');
             MultiByteToWideChar(CP_UTF8, 0, value.data(), static_cast<int>(value.size()), result.data(), size);
             return result;
+        }
+
+        string toUtf8(const std::wstring& value)
+        {
+            if (value.empty())
+                return {};
+            const int size = WideCharToMultiByte(CP_UTF8, 0, value.data(), static_cast<int>(value.size()),
+                                                  nullptr, 0, nullptr, nullptr);
+            string result(size, '\0');
+            WideCharToMultiByte(CP_UTF8, 0, value.data(), static_cast<int>(value.size()), result.data(),
+                                size, nullptr, nullptr);
+            return result;
+        }
+
+        LRESULT CALLBACK inputEditProcedure(HWND edit, UINT message, WPARAM wParam, LPARAM lParam,
+                                             UINT_PTR, DWORD_PTR refData)
+        {
+            if (message == WM_KEYDOWN && wParam == VK_RETURN)
+            {
+                auto *element = reinterpret_cast<SPInputElement *>(refData);
+                const int length = GetWindowTextLengthW(edit);
+                std::wstring value(length + 1, L'\0');
+                if (length > 0)
+                    GetWindowTextW(edit, value.data(), length + 1);
+                value.resize(length);
+                element->notify("enter", element, new SPInputEventArgs(toUtf8(value)));
+                return 0;
+            }
+            return DefSubclassProc(edit, message, wParam, lParam);
         }
 
         COLORREF nativeColor(SPColor color)
@@ -47,6 +79,45 @@ namespace space
     void Win32GraphicsContext::setDeviceContext(HDC dc)
     {
         this->dc = dc;
+    }
+
+    bool Win32GraphicsContext::handleCommand(WPARAM wParam, LPARAM lParam)
+    {
+        if (HIWORD(wParam) != EN_CHANGE || lParam == 0)
+            return false;
+        HWND control = reinterpret_cast<HWND>(lParam);
+        const auto found = inputElements.find(control);
+        if (found == inputElements.end())
+            return false;
+        const int length = GetWindowTextLengthW(control);
+        std::wstring value(length + 1, L'\0');
+        if (length > 0)
+            GetWindowTextW(control, value.data(), length + 1);
+        value.resize(length);
+        if (auto *input = dynamic_cast<SPInputElement *>(found->second))
+            input->setValue(toUtf8(value));
+        return true;
+    }
+
+    void Win32GraphicsContext::setControlAttribute(SPElement *element, const string& name, const string& value)
+    {
+        if (name != "value" && name != "text")
+            return;
+        for (const auto& entry : inputElements)
+        {
+            if (entry.second == element)
+            {
+                const int length = GetWindowTextLengthW(entry.first);
+                std::wstring current(length + 1, L'\0');
+                if (length > 0)
+                    GetWindowTextW(entry.first, current.data(), length + 1);
+                current.resize(length);
+                const std::wstring replacement = toWide(value);
+                if (current != replacement)
+                    SetWindowTextW(entry.first, replacement.c_str());
+                return;
+            }
+        }
     }
 
     void Win32GraphicsContext::request(const string& method, const string& url, const string& data, RequestCallback callback)
@@ -358,11 +429,31 @@ namespace space
     {
         if (!element)
             return;
-        const SPColor background = element->getBackgroundColor();
-        fillRectangle(x, y, width, height, background);
-        drawRectangle(x, y, width, height, element->getBorderColor());
-        drawString(element->getStringAttribute("value", ""), element->getFontStyle(),
-            element->getForegroundColor(), x + 5, y + 2, width - 10, height - 4);
+        HWND control = nullptr;
+        for (const auto& entry : inputElements)
+        {
+            if (entry.second == element)
+            {
+                control = entry.first;
+                break;
+            }
+        }
+        if (!control && window)
+        {
+            control = CreateWindowExW(WS_EX_CLIENTEDGE, L"EDIT", L"",
+                WS_CHILD | WS_VISIBLE | ES_AUTOHSCROLL | WS_TABSTOP,
+                x, y, width, height, window, nullptr, GetModuleHandleW(nullptr), nullptr);
+            if (control)
+            {
+                inputElements.emplace(control, element);
+                SetWindowSubclass(control, inputEditProcedure, 1, reinterpret_cast<DWORD_PTR>(element));
+            }
+        }
+        if (!control)
+            return;
+        SetWindowPos(control, nullptr, x, y, width, height, SWP_NOZORDER | SWP_NOACTIVATE);
+        if (GetFocus() != control)
+            SetWindowTextW(control, toWide(element->getStringAttribute("value", "")).c_str());
     }
 
     void Win32GraphicsContext::setOrigo(const int& x, const int& y)

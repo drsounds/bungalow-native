@@ -10,6 +10,8 @@ SPInputElement::~SPInputElement()
 
 }
 void SPInputElement::setValue(const string& value) {
+    m_value = value;
+    this->setStringAttribute("value", value);
     auto *gc = this->createGraphics();
     gc->setControlAttribute(this, "value", value);
 }

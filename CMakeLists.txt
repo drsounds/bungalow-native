@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.16)
 project(BungalowNative LANGUAGES CXX)
 
+if(POLICY CMP0167)
+    cmake_policy(SET CMP0167 NEW)
+endif()
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -51,7 +55,7 @@ else()
     else()
         list(APPEND BACKEND_SOURCES windows/src/main.cpp)
     endif()
-    set(PLATFORM_LIBRARIES ${wxWidgets_LIBRARIES} winhttp msimg32 gdi32 user32)
+    set(PLATFORM_LIBRARIES ${wxWidgets_LIBRARIES} winhttp msimg32 comctl32 gdi32 user32)
 endif()
 
 if(wxWidgets_USE_FILE)
@@ -82,7 +86,7 @@ else()
     if(BUNGALOW_UI_BACKEND STREQUAL "wtl")
         target_include_directories(spacify-client PRIVATE "${WTL_INCLUDE_DIR}")
     endif()
-    target_compile_definitions(spacify-client PRIVATE NOMINMAX WIN32_LEAN_AND_MEAN)
+    target_compile_definitions(spacify-client PRIVATE NOMINMAX WIN32_LEAN_AND_MEAN _WIN32_WINNT=0x0601)
 endif()
 
 target_link_libraries(spacify-client PRIVATE

@@ -7,12 +7,15 @@
 #include "Space.h"
 #include "Win32GraphicsContext.h"
 
+#include <commctrl.h>
 #include <string>
 
 namespace space
 {
     bool NativeApplication::initialize(HWND window)
     {
+        INITCOMMONCONTROLSEX controls{sizeof(controls), ICC_STANDARD_CLASSES};
+        InitCommonControlsEx(&controls);
         windowHandle = window;
         space = new Space();
         graphics = new Win32GraphicsContext(window);
@@ -72,5 +75,11 @@ namespace space
     {
         if (graphics)
             graphics->thaw();
+    }
+
+    void NativeApplication::command(WPARAM wParam, LPARAM lParam)
+    {
+        if (graphics)
+            graphics->handleCommand(wParam, lParam);
     }
 }

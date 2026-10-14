@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Windows.h>
+#include <map>
 #include <vector>
 
 #include "SPGraphicsContext.h"
@@ -12,7 +13,9 @@ namespace space
     public:
         explicit Win32GraphicsContext(HWND window);
         void setDeviceContext(HDC dc);
+        bool handleCommand(WPARAM wParam, LPARAM lParam);
 
+        void setControlAttribute(SPElement *element, const string& name, const string& value) override;
         void request(const string& method, const string& url, const string& data, RequestCallback callback) override;
         void drawImagePart(SPImage *image, int x, int y, int width, int height, int x1, int y1, int x2, int y2) override;
         void drawSkinImage(const string& resourceId, int x, int y, int width, int height) override;
@@ -48,5 +51,6 @@ namespace space
         std::vector<int> savedClipStates;
         POINT origin{0, 0};
         bool frozen = false;
+        std::map<HWND, SPElement *> inputElements;
     };
 }

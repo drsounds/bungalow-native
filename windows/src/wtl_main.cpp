@@ -4,8 +4,8 @@
 
 #include "NativeApplication.h"
 
-CAppModule _Module;
 using namespace ATL;
+CAppModule _Module;
 
 namespace
 {
@@ -24,6 +24,7 @@ namespace
             MSG_WM_LBUTTONUP(OnLeftButtonUp)
             MSG_WM_MOUSEMOVE(OnMouseMove)
             MSG_WM_TIMER(OnTimer)
+            MESSAGE_HANDLER(WM_COMMAND, OnCommand)
             CHAIN_MSG_MAP(CFrameWindowImpl<MainFrame>)
         END_MSG_MAP()
 
@@ -63,6 +64,12 @@ namespace
         void OnTimer(UINT_PTR)
         {
             app.timer();
+        }
+
+        LRESULT OnCommand(UINT, WPARAM wParam, LPARAM lParam, BOOL&)
+        {
+            app.command(wParam, lParam);
+            return 0;
         }
     };
 }

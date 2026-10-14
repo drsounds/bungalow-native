@@ -15,6 +15,7 @@ namespace space
         void resize();
         void paint(HDC dc);
         void mouseEvent(const char *name, int x, int y, int button = 0);
+        void command(WPARAM wParam, LPARAM lParam);
         void timer();
 
     private:

@@ -1,4 +1,5 @@
 #include <Windows.h>
+#include <windowsx.h>
 
 #include "NativeApplication.h"
 
@@ -52,6 +53,10 @@ namespace
         case WM_TIMER:
             if (app)
                 app->timer();
+            return 0;
+        case WM_COMMAND:
+            if (app)
+                app->command(wParam, lParam);
             return 0;
         case WM_DESTROY:
             PostQuitMessage(0);
