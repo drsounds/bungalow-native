@@ -1,6 +1,8 @@
 #include <atlbase.h>
 #include <atlapp.h>
 #include <atlframe.h>
+#include <atltypes.h>
+#include <atlcrack.h>
 
 #include "NativeApplication.h"
 
