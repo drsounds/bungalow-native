@@ -58,6 +58,7 @@ namespace space
         ~WxWidgetsGraphicsContext() override;
         SPImage *loadImage(const string& bitmap) override;
         void setControlAttribute(SPElement *, const string&, const string&) override;
+        void request(const string&, const string&, const string&, RequestCallback) override;
         void drawImagePart(SPImage *image, int x, int y, int width, int height, int x1, int y1, int x2, int y2) override;
         virtual void drawSkinImage(string resourceId, int x, int y, int w, int h);
         void setClip(const sp_rectangle& rect) override;

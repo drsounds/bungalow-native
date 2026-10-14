@@ -29,14 +29,9 @@
 #include "SPTableElement.h"
 #include "SPTextElement.h"
 #include "SPViewElement.h"
-#include "WxWidgetsGraphicsContext.h"
-#include <wx/wx.h>
-
-#include "SpaceWidget.h"
 
 #include <boost/json/src.hpp>
 #include <wx/mstream.h>
-#include <wx/webrequest.h>
 namespace space {
 	SPColor* SPElement::getActiveColor()
 	{
@@ -215,10 +210,6 @@ namespace space {
 
 	void SPElement::scheduleThaw(int milliseconds) {
 		this->createGraphics()->scheduleThaw(milliseconds);
-	}
-
-	void SPElement::OnTimerTimeout(wxTimerEvent& event) {
-		this->thaw();
 	}
 
 	SPGraphicsContext* SPElement::createGraphics()
@@ -411,40 +402,15 @@ namespace space {
 	}
 
 	void SPElement::request(const string& method, const string &uri, const string &data) {
-		platform::wxwidgets::WxWidgetsGraphicsContext *gc = static_cast<platform::wxwidgets::WxWidgetsGraphicsContext *>(this->createGraphics());
-		wxWindow *window = gc->getWidget()->GetParent();
 		string url = "http://127.0.0.1:2855/" + boost::algorithm::replace_all_copy(uri, ":", "/").substr(strlen("spacify:"));
-		wxWebRequest request = wxWebSession::GetDefault().CreateRequest(
-			window,
-			url
-		);
-		request.SetMethod(method);
-		if (method != "get" && method != "HEAD" && method != "DELETE") {
-			request.SetData(data.c_str(), "application/json");
-		}
-		if (!request.IsOk()) {
-			throw "Failed to create wxWebRequest";
-		}
-		window->Bind(wxEVT_WEBREQUEST_STATE, [&](wxWebRequestEvent& event) {
-			// Request completed
-			// Request completed
-			switch (event.GetState())
-			{
-			case wxWebRequest::State_Failed: {
-				// cout << "Failed to load " << uri << "\r\n";
+		this->createGraphics()->request(method, url, data, [this](bool success, const string& response) {
+			if (!success) {
 				this->setFlex(1);
 				this->loadXUL("../resources/app/views/error.xml");
-				break;
-			}
-			case wxWebRequest::State_Completed: {
-				wxString res = event.GetResponse().AsString();
-				this->setInnerXUL(res.ToStdString());
-				break;
-			}
-			default:;
+			} else {
+				this->setInnerXUL(response);
 			}
 		});
-		request.Start();
 	}
 
 	void SPElement::onLoad() {
@@ -620,7 +586,6 @@ namespace space {
 	}
 
 	SPElement::~SPElement() {
-		delete this->timer;
 	}
 	int SPElement::getHeight() {
 		return this->m_height;
@@ -1090,5 +1055,4 @@ namespace space {
 	}
 
 }
-
 

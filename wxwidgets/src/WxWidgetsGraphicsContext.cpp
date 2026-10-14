@@ -5,6 +5,7 @@
 #include "SPElement.h"
 #include "SpaceFrame.h"
 #include "SpaceWidget.h"
+#include <wx/webrequest.h>
 
 namespace space
 {
@@ -42,6 +43,27 @@ namespace space
 
             WxWidgetsGraphicsContext::~WxWidgetsGraphicsContext()
             {
+            }
+
+            void WxWidgetsGraphicsContext::request(const string& method, const string& url, const string& data, RequestCallback callback)
+            {
+                wxWindow *window = this->getWidget()->GetParent();
+                wxWebRequest request = wxWebSession::GetDefault().CreateRequest(window, url);
+                request.SetMethod(method);
+                if (method != "get" && method != "HEAD" && method != "DELETE")
+                    request.SetData(data.c_str(), "application/json");
+                if (!request.IsOk())
+                {
+                    callback(false, string());
+                    return;
+                }
+                window->Bind(wxEVT_WEBREQUEST_STATE, [callback = std::move(callback)](wxWebRequestEvent& event) {
+                    if (event.GetState() == wxWebRequest::State_Completed)
+                        callback(true, event.GetResponse().AsString().ToStdString());
+                    else if (event.GetState() == wxWebRequest::State_Failed)
+                        callback(false, string());
+                });
+                request.Start();
             }
 
             // --------------------------------------------------------------

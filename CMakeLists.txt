@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.10)
-project(SpacifyClient)
+cmake_minimum_required(VERSION 3.16)
+project(BungalowNative LANGUAGES CXX)
 
 if(POLICY CMP0167)
     cmake_policy(SET CMP0167 NEW)
@@ -7,47 +7,96 @@ endif()
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-set(SourceFiles wxwidgets/src/*.cpp space/src/*.cpp spacify/src/*.cpp)
-# Find dependencies
-find_package(PkgConfig REQUIRED)
+set(BUNGALOW_UI_BACKEND "wxwidgets" CACHE STRING "UI backend: wxwidgets, win32, or wtl")
+set_property(CACHE BUNGALOW_UI_BACKEND PROPERTY STRINGS wxwidgets win32 wtl)
+string(TOLOWER "${BUNGALOW_UI_BACKEND}" BUNGALOW_UI_BACKEND)
+if(NOT BUNGALOW_UI_BACKEND MATCHES "^(wxwidgets|win32|wtl)$")
+    message(FATAL_ERROR "BUNGALOW_UI_BACKEND must be wxwidgets, win32, or wtl")
+endif()
+if(NOT BUNGALOW_UI_BACKEND STREQUAL "wxwidgets" AND NOT WIN32)
+    message(FATAL_ERROR "The ${BUNGALOW_UI_BACKEND} backend is only supported on Windows")
+endif()
+
 find_package(Boost REQUIRED)
 find_package(Lua REQUIRED)
-find_package(wxWidgets REQUIRED)
 find_package(PNG REQUIRED)
+find_package(EXPAT 2.2.8 REQUIRED)
 
-find_package(EXPAT 2.2.8 MODULE REQUIRED)
-
-# Include directories
-include_directories(${Boost_INCLUDE_DIRS})
-include_directories(${LUA_INCLUDE_DIR})
-include_directories(${wxWidgets_INCLUDE_DIRS})
-include_directories(${FFI_INCLUDE_DIRS})
-include_directories(${PNG_INCLUDE_DIRS})
-include_directories(${libpqxx_INCLUDE_DIRS})
-include_directories(include)
-set(CMAKE_BUILD_TYPE Debug)
-
-if(WIN32)
-    file(GLOB SOURCES "spacify/src/*.cpp" "space/src/*.cpp" "windows/src/*.cpp")
-    file(GLOB HEADERS "spacify/include/*.h" "space/include/*.h" "windows/include/*.h")
+if(BUNGALOW_UI_BACKEND STREQUAL "wxwidgets")
+    find_package(wxWidgets REQUIRED)
 else()
-    file(GLOB SOURCES "spacify/src/*.cpp" "space/src/*.cpp" "wxwidgets/src/*.cpp")
-    file(GLOB HEADERS "spacify/include/*.h" "space/include/*.h" "wxwidgets/include/*.h")
-    include_directories(spacify/include space/include wxwidgets/include)
+    find_package(wxWidgets REQUIRED COMPONENTS base)
 endif()
-# Executable
-add_executable(spacify-client ${SOURCES} ${HEADERS})
 
-set(CMAKE_PREFIX_PATH ="/opt/homebrew/opt/expat")
-set(CMAKE_PKG_CONFIG_PC_PATH "/opt/homebrew/opt/expat/lib/pkgconfig")
-set(CMAKE_LINK_DEF_FILE_FLAG "-L/opt/homebrew/opt/expat/lib")
-set(CMAKE_CXX_FLAGS "-I/opt/homebrew/lib/wx/include/osx_cocoa-unicode-3.3 -I/opt/homebrew/include/wx-3.3 -I/opt/homebrew/opt/expat/include -D_FILE_OFFSET_BITS=64 -DwxDEBUG_LEVEL=0 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ ")
+file(GLOB SPACE_SOURCES CONFIGURE_DEPENDS "space/src/*.cpp")
+file(GLOB SPACIFY_SOURCES CONFIGURE_DEPENDS "spacify/src/*.cpp")
+file(GLOB SPACE_HEADERS CONFIGURE_DEPENDS "space/include/*.h")
+file(GLOB SPACIFY_HEADERS CONFIGURE_DEPENDS "spacify/include/*.h")
+list(FILTER SPACIFY_SOURCES EXCLUDE REGEX "/main\\.cpp$")
 
-# Link libraries
-target_link_libraries(spacify-client -lpqxx -lpq ${EXPAT_LIBRARIES} ${LUA_LIBRARIES} ${wxWidgets_LIBRARIES} ${PNG_LIBRARY})
+if(BUNGALOW_UI_BACKEND STREQUAL "wxwidgets")
+    file(GLOB BACKEND_SOURCES CONFIGURE_DEPENDS "wxwidgets/src/*.cpp")
+    file(GLOB BACKEND_HEADERS CONFIGURE_DEPENDS "wxwidgets/include/*.h")
+    set(PLATFORM_LIBRARIES ${wxWidgets_LIBRARIES})
+else()
+    list(FILTER SPACIFY_SOURCES EXCLUDE REGEX "/SpacifyApp\\.cpp$")
+    file(GLOB BACKEND_HEADERS CONFIGURE_DEPENDS "windows/include/*.h")
+    set(BACKEND_SOURCES
+        windows/src/NativeApplication.cpp
+        windows/src/Win32GraphicsContext.cpp)
+    if(BUNGALOW_UI_BACKEND STREQUAL "wtl")
+        find_path(WTL_INCLUDE_DIR atlapp.h DOC "Directory containing the WTL headers")
+        if(NOT WTL_INCLUDE_DIR)
+            message(FATAL_ERROR "WTL was not found. Set WTL_INCLUDE_DIR to its include directory.")
+        endif()
+        list(APPEND BACKEND_SOURCES windows/src/wtl_main.cpp)
+    else()
+        list(APPEND BACKEND_SOURCES windows/src/main.cpp)
+    endif()
+    set(PLATFORM_LIBRARIES ${wxWidgets_LIBRARIES} winhttp msimg32 comctl32 gdi32 user32)
+endif()
 
-# Platform specific configuration
+if(wxWidgets_USE_FILE)
+    include(${wxWidgets_USE_FILE})
+endif()
+
+add_executable(spacify-client
+    ${SPACE_SOURCES}
+    ${SPACIFY_SOURCES}
+    ${BACKEND_SOURCES}
+    ${SPACE_HEADERS}
+    ${SPACIFY_HEADERS}
+    ${BACKEND_HEADERS})
+
+target_include_directories(spacify-client PRIVATE
+    ${Boost_INCLUDE_DIRS}
+    ${LUA_INCLUDE_DIR}
+    ${PNG_INCLUDE_DIRS}
+    ${EXPAT_INCLUDE_DIRS}
+    ${wxWidgets_INCLUDE_DIRS}
+    space/include
+    spacify/include)
+
+if(BUNGALOW_UI_BACKEND STREQUAL "wxwidgets")
+    target_include_directories(spacify-client PRIVATE wxwidgets/include)
+else()
+    target_include_directories(spacify-client PRIVATE windows/include)
+    if(BUNGALOW_UI_BACKEND STREQUAL "wtl")
+        target_include_directories(spacify-client PRIVATE "${WTL_INCLUDE_DIR}")
+    endif()
+    target_compile_definitions(spacify-client PRIVATE NOMINMAX WIN32_LEAN_AND_MEAN _WIN32_WINNT=0x0601)
+endif()
+
+target_link_libraries(spacify-client PRIVATE
+    ${PLATFORM_LIBRARIES}
+    PNG::PNG
+    EXPAT::EXPAT
+    ${LUA_LIBRARIES})
+
 if(WIN32)
-    target_link_libraries(spacify-client gdi32 user32 kernel32 wxwidgets)
+    set_target_properties(spacify-client PROPERTIES WIN32_EXECUTABLE TRUE)
 endif()
+
+install(TARGETS spacify-client RUNTIME DESTINATION .)

@@ -2,8 +2,6 @@
 #define VIEWSTACKELEMENT_H
 #include "SPVBoxElement.h"
 
-#include <wx/wx.h>
-
 #include <stack>
 #include <string>
 using namespace std;
