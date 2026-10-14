@@ -6,11 +6,6 @@
 #include "SPMouseEventArgs.h"
 #include "SPEventArgs.h"
 #include <regex>
-#include <wx/string.h>
-#include <wx/stream.h>
-#include <wx/xml/xml.h>
-#include <wx/mstream.h> // For wxMemoryInputStream
-#include <wx/txtstrm.h>
 
 using namespace std;
 
@@ -216,34 +211,37 @@ namespace space {
 		this->m_innerText = value;
 	}
 
-	SPNode *SPNode::parseNode(wxXmlNode *xmlNode, SPNode *parent,
+	SPNode *SPNode::parseNode(const SPXmlNode *xmlNode, SPNode *parent,
 								   SPNode *document) {
 		SPNode *elm = nullptr;
-		elm = document->getNodeById(string(xmlNode->GetAttribute("id")));
+		elm = document->getNodeById(xmlNode->getAttribute("id"));
 		if (elm == nullptr) {
-			elm = createNode(xmlNode->GetName().ToStdString(), parent);
+			elm = createNode(xmlNode->getName(), parent);
 		}
-		for (int i = 0; i < sizeof(xmlNode->GetAttributes()); i++) {
-			auto attribute = xmlNode->GetAttributes()[i];
-			elm->set(attribute.GetName().ToStdString(), attribute.GetValue().ToStdString());
+		for (const auto &attribute : xmlNode->getAttributes()) {
+			elm->set(attribute.first, attribute.second);
 		}
-		elm->setInnerText(xmlNode->GetContent().ToStdString());
-		for (wxXmlNode *child = xmlNode->GetChildren(); child; child = child->GetNext()) {
-			parseNode(child, elm, document);
+		for (const auto &child : xmlNode->getChildren()) {
+			if (child->getType() == SPXmlNodeType::Text) {
+				elm->setInnerText(child->getContent());
+			} else {
+				parseNode(child.get(), elm, document);
+			}
 		}
 		return elm;
 	}
 	void SPNode::setInnerXml(const string& value) {
-		wxMemoryInputStream wmis(value.data(), value.size());
-    	wxXmlDocument doc;
-		doc.Load(wmis);
-    	// start processing the XML file
-    	wxXmlNode *child = doc.GetRoot()->GetChildren();
-    	SPNode *parsingNode = this;
-    	for (; child; child = child->GetNext()) {
-    		parsingNode = parseNode(child, parsingNode, this);
-    	}
-    }
+		SPXmlDocument doc;
+		if (!doc.loadString(value)) {
+			return;
+		}
+		SPNode *parsingNode = this;
+		for (const auto &child : doc.getRoot()->getChildren()) {
+			if (child->getType() == SPXmlNodeType::Element) {
+				parsingNode = parseNode(child.get(), parsingNode, this);
+			}
+		}
+	}
 
 	SPNode * SPNode::createNode(const string& tagName, SPNode *parent) {
     	if (parent == nullptr) {

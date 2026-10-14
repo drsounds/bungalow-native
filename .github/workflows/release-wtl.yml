@@ -42,18 +42,20 @@ jobs:
       - name: Install build dependencies
         shell: pwsh
         run: |
-          & "$env:VCPKG_INSTALLATION_ROOT/vcpkg.exe" install boost-headers boost-json boost-algorithm boost-asio boost-lexical-cast boost-property-tree lua libpng expat wxwidgets --triplet x64-windows-static
+          & "$env:VCPKG_INSTALLATION_ROOT/vcpkg.exe" install boost-headers boost-json boost-algorithm boost-asio boost-lexical-cast boost-property-tree lua libpng expat --triplet x64-windows-static-md
 
       - name: Configure and build
         shell: pwsh
         run: |
           cmake -S . -B build -G "Visual Studio 17 2022" -A x64 `
             "-DCMAKE_TOOLCHAIN_FILE=$env:VCPKG_INSTALLATION_ROOT/scripts/buildsystems/vcpkg.cmake" `
-            -DVCPKG_TARGET_TRIPLET=x64-windows-static `
+            -DVCPKG_TARGET_TRIPLET=x64-windows-static-md `
             "-DWTL_INCLUDE_DIR=$env:GITHUB_WORKSPACE/vendor/WTL/Include" `
             -DBUNGALOW_UI_BACKEND=wtl
           cmake --build build --config Release
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           cmake --install build --config Release --prefix package
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           Copy-Item resources package/resources -Recurse
           Compress-Archive -Path package/* -DestinationPath bungalow-native-wtl-windows-x64.zip
 

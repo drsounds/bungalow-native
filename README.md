@@ -6,7 +6,7 @@ It uses an own written GUI framework called **Space** which is a lightweight abs
 
 ## Building
 
-Build dependencies include CMake, a C++17 compiler, Boost, Lua, libpng, Expat, and wxWidgets. The native Windows backends use wxWidgets' base library for XML parsing, but do not use its GUI toolkit.
+Build dependencies include CMake, a C++17 compiler, Boost, Lua, libpng, Expat, and (for the wxwidgets backend only) wxWidgets. XML parsing uses Expat for all backends; the win32 and wtl backends neither find, include nor link wxWidgets.
 
 The UI backend is selected with `BUNGALOW_UI_BACKEND`:
 
