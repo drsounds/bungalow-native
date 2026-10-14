@@ -28,19 +28,33 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ${{ runner.temp }}/vcpkg-cache
-          key: vcpkg-${{ runner.os }}-${{ github.workflow }}-${{ github.run_id }}
+          key: vcpkg-${{ runner.os }}-${{ github.workflow }}-${{ hashFiles('CMakeLists.txt', 'vcpkg.json', '.github/workflows/*.yml') }}-${{ github.run_id }}
           restore-keys: |
+            vcpkg-${{ runner.os }}-${{ github.workflow }}-${{ hashFiles('CMakeLists.txt', 'vcpkg.json', '.github/workflows/*.yml') }}-
             vcpkg-${{ runner.os }}-${{ github.workflow }}-
+
+      - name: Set up ccache
+        uses: hendrikmuhs/ccache-action@v1.2
+        with:
+          key: ${{ runner.os }}-${{ github.workflow }}
 
       - name: Install build dependencies
         shell: pwsh
         run: |
           & "$env:VCPKG_INSTALLATION_ROOT/vcpkg.exe" install boost-json lua libpng expat --triplet x64-windows-static-md
 
+      - name: Set up MSVC environment
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+
       - name: Configure and build
         shell: pwsh
         run: |
-          cmake -S . -B build -G "Visual Studio 17 2022" -A x64 `
+          cmake -S . -B build -G Ninja `
+            -DCMAKE_BUILD_TYPE=Release `
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache `
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache `
             "-DCMAKE_TOOLCHAIN_FILE=$env:VCPKG_INSTALLATION_ROOT/scripts/buildsystems/vcpkg.cmake" `
             -DVCPKG_TARGET_TRIPLET=x64-windows-static-md `
             -DBUNGALOW_UI_BACKEND=win32
