@@ -24,6 +24,21 @@ jobs:
           ref: 065ef5597383c1231bd4892cf8e94331b29bdb97
           path: vendor/WTL
 
+      - name: Set up vcpkg binary cache
+        shell: pwsh
+        run: |
+          $cache = Join-Path $env:RUNNER_TEMP "vcpkg-cache"
+          New-Item -ItemType Directory -Force -Path $cache | Out-Null
+          "VCPKG_DEFAULT_BINARY_CACHE=$cache" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+      - name: Cache vcpkg dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/vcpkg-cache
+          key: vcpkg-${{ runner.os }}-${{ github.workflow }}-${{ github.run_id }}
+          restore-keys: |
+            vcpkg-${{ runner.os }}-${{ github.workflow }}-
+
       - name: Install build dependencies
         shell: pwsh
         run: |
