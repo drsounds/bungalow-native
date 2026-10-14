@@ -20,7 +20,7 @@ namespace
     class MainFrame : public CFrameWindowImpl<MainFrame>
     {
     public:
-        DECLARE_FRAME_WND_CLASS(L"BungalowNativeWtlWindow", 0)
+        DECLARE_FRAME_WND_CLASS(_T("BungalowNativeWtlWindow"), 0)
 
         space::NativeApplication app;
 
