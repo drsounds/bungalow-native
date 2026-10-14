@@ -1,6 +1,7 @@
 #include "Win32GraphicsContext.h"
 
 #include <algorithm>
+#include <limits>
 #include <string>
 #include <vector>
 
@@ -192,15 +193,25 @@ namespace space
     {
         if (!image)
             return;
+        const size_t pixelWidth = image->width;
+        const size_t pixelHeight = image->height;
+        if (pixelWidth == 0 || pixelHeight == 0 ||
+            pixelWidth > static_cast<size_t>(std::numeric_limits<LONG>::max()) ||
+            pixelHeight > static_cast<size_t>(std::numeric_limits<LONG>::max()) ||
+            pixelWidth > std::numeric_limits<size_t>::max() / pixelHeight)
+            return;
+        const size_t pixelCount = pixelWidth * pixelHeight;
+        if (pixelCount > std::numeric_limits<size_t>::max() / 4)
+            return;
         BITMAPINFO info{};
         info.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
-        info.bmiHeader.biWidth = static_cast<LONG>(image->width);
-        info.bmiHeader.biHeight = -static_cast<LONG>(image->height);
+        info.bmiHeader.biWidth = static_cast<LONG>(pixelWidth);
+        info.bmiHeader.biHeight = -static_cast<LONG>(pixelHeight);
         info.bmiHeader.biPlanes = 1;
         info.bmiHeader.biBitCount = 32;
         info.bmiHeader.biCompression = BI_RGB;
-        std::vector<unsigned char> pixels(image->width * image->height * 4);
-        for (size_t i = 0; i < image->width * image->height; ++i)
+        std::vector<unsigned char> pixels(pixelCount * 4);
+        for (size_t i = 0; i < pixelCount; ++i)
         {
             pixels[i * 4] = image->pixels[i].b;
             pixels[i * 4 + 1] = image->pixels[i].g;
