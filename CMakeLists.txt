@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 project(BungalowNative LANGUAGES CXX)
+include(CTest)
 
 if(POLICY CMP0167)
     cmake_policy(SET CMP0167 NEW)
@@ -98,3 +99,15 @@ if(WIN32)
 endif()
 
 install(TARGETS spacify-client RUNTIME DESTINATION .)
+
+if(BUILD_TESTING)
+    add_executable(spacify-template-test
+        space/tests/SPTemplateTest.cpp
+        space/src/SPTemplate.cpp)
+    target_include_directories(spacify-template-test PRIVATE
+        ${Boost_INCLUDE_DIRS}
+        ${LUA_INCLUDE_DIR}
+        space/include)
+    target_link_libraries(spacify-template-test PRIVATE Boost::json ${LUA_LIBRARIES})
+    add_test(NAME spacify-template-test COMMAND spacify-template-test)
+endif()
