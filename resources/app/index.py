@@ -1,26 +1,25 @@
 import json
-import os
 from datetime import datetime
 from flask import Flask
 from werkzeug.exceptions import HTTPException
 
-app = Flask(__name__)
+from template_engine import render_template
 
-from mako.template import Template
+app = Flask(__name__)
 
 
 @app.route("/start", methods=['GET', 'POST', 'PUT'])
 def start():
-    return Template(filename=os.path.join('views', 'start.xml')).render(now=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    return render_template('start.xml', now=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
 @app.route("/artist", methods=['GET', 'POST', 'PUT'])
 def artist():
-    return Template(filename=os.path.join('views', 'artist.xml')).render(now=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    return render_template('artist.xml', now=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
 
 @app.route("/library", methods=['GET', 'POST', 'PUT'])
 def library():
-    return Template(filename=os.path.join('views', 'library.xml')).render(now=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    return render_template('library.xml', now=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
 
 @app.errorhandler(HTTPException)
@@ -36,8 +35,6 @@ def handle_exception(e):
     })
     response.content_type = "text/html"
 
-    template = Template(filename=os.path.join('views', 'error.xml'))
-
-    response.data = template.render(data=data).encode('utf-8')
+    response.data = render_template('error.xml', data=data).encode('utf-8')
 
     return response
