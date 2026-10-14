@@ -8,7 +8,6 @@
 #include <map>
 #include <functional>
 
-#include "SpaceBase.h"
 #include "Space.h"
 
 using namespace std;

@@ -5,8 +5,6 @@
 #include <vector>
 
 #include "SPGraphicsContext.h"
-#include "WxWidgetsGraphicsContext.h"
-#include <wx/wx.h>
 #include <boost/asio.hpp>
 #include <boost/asio/io_context.hpp>
 #include <boost/asio/deadline_timer.hpp>
