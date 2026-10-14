@@ -19,7 +19,7 @@ if(NOT BUNGALOW_UI_BACKEND STREQUAL "wxwidgets" AND NOT WIN32)
     message(FATAL_ERROR "The ${BUNGALOW_UI_BACKEND} backend is only supported on Windows")
 endif()
 
-find_package(Boost REQUIRED)
+find_package(Boost CONFIG REQUIRED)
 find_package(Lua REQUIRED)
 find_package(PNG REQUIRED)
 find_package(EXPAT 2.2.8 REQUIRED)
