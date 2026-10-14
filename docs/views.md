@@ -1,26 +1,15 @@
 # Views framework
 
-The views framework will allow for extending Spacify
-and will be using a V8 based JavaScript engine to allow integrations
+Views are XML templates rendered by the embedded Lua engine. `${expr}` inserts a
+Lua expression, while lines beginning with `%` are Lua code:
 
-Each view is written in JS
+```xml
+<view>
+  % for i,3 do
+  <text>${i}</text>
+  % end
+</view>
+```
 
-````javascript
-
-import render from '@spacify/ui'
-
-function Page() {
-   return render(
-      'view',
-      {
-         flex: 1
-      },
-      render(
-         'text',
-         {},
-         'Hello World!'
-      )
-   )
-}
-
-````
+Templates can read the `method`, `uri`, `action`, `data`, and `model` globals.
+The count-form loop shorthand `% for i,3 do` expands to Lua's `for i=1,3 do`.

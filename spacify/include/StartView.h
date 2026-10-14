@@ -11,6 +11,7 @@ namespace space {
                 StartView();
                 explicit StartView(SPElement *parent);
                 void onLoad(SPObject *sender, SPEventArgs *e);
+                bool acceptsUri(const string& uri) override;
                 virtual ~StartView();
                 virtual string getType() override;
             protected:

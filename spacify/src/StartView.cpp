@@ -21,6 +21,10 @@ namespace space {
             return "startview";
         }
 
+        bool StartView::acceptsUri(const string& uri) {
+            return uri == "spacify:start";
+        }
+
         StartView::~StartView()
         {
             //dtor

@@ -20,8 +20,6 @@ protected:
     space::SPWindowElement *m_windowElement;
     SpaceFrame* m_frame;
     space::MainElement* m_main;
-    int pythonPid;
-    wxProcess *pythonProcess;
 public:
     virtual bool OnInit() override;
 };

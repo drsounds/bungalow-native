@@ -28,8 +28,10 @@
 #include "SPTableElement.h"
 #include "SPTextElement.h"
 #include "SPViewElement.h"
+#include "SPTemplate.h"
 
 #include <boost/json/src.hpp>
+#include <map>
 namespace space {
 	SPColor* SPElement::getActiveColor()
 	{
@@ -400,7 +402,45 @@ namespace space {
 	}
 
 	void SPElement::request(const string& method, const string &uri, const string &data) {
-		string url = "http://127.0.0.1:2855/" + boost::algorithm::replace_all_copy(uri, ":", "/").substr(strlen("spacify:"));
+		if (uri.rfind("spacify:", 0) == 0) {
+			string route = uri.substr(strlen("spacify:"));
+			const auto suffix = route.find_first_of("?#");
+			if (suffix != string::npos) {
+				route.erase(suffix);
+			}
+			static const map<string, string> templates = {
+				{"start", "start.xml"},
+				{"artist", "artist.xml"},
+				{"library", "library.xml"}
+			};
+			const auto view = templates.find(route);
+			const string filename = view == templates.end()
+				? "../resources/app/views/error.xml"
+				: "../resources/app/views/" + view->second;
+			boost::json::object requestData;
+			if (method == "POST") {
+				boost::system::error_code error;
+				const auto payload = boost::json::parse(data, error);
+				if (!error && payload.is_object()) {
+					requestData = payload.as_object();
+				}
+			}
+			string action;
+			if (const auto value = requestData.if_contains("action"); value != nullptr && value->is_string()) {
+				action = value->as_string().c_str();
+			} else if (const auto value = requestData.if_contains("command"); value != nullptr && value->is_string()) {
+				action = value->as_string().c_str();
+			}
+			try {
+				this->setInnerXUL(SPTemplate::renderFile(
+					filename, method, uri, action, requestData, boost::json::object{}));
+			} catch (const std::exception& error) {
+				cerr << "Template error: " << error.what() << endl;
+				this->loadXUL("../resources/app/views/error.xml");
+			}
+			return;
+		}
+		string url = uri;
 		this->createGraphics()->request(method, url, data, [this](bool success, const string& response) {
 			if (!success) {
 				this->setFlex(1);
@@ -1042,4 +1082,3 @@ namespace space {
 	}
 
 }
-
