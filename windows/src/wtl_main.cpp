@@ -4,6 +4,12 @@
 #include <atltypes.h>
 #include <atlcrack.h>
 
+namespace WTL
+{
+    using ATL::CPoint;
+    using ATL::CSize;
+}
+
 #include "NativeApplication.h"
 
 using namespace ATL;
